@@ -35,11 +35,11 @@
         --muted:   rgba(238,242,255,0.55);
         --dim:     rgba(238,242,255,0.30);
 
-        /* Accent — electric blue */
-        --blue:    #2563EB;
-        --blue-l:  #5B8EF5;
-        --blue-d:  #1A40B8;
-        --blue-faint: rgba(37,99,235,0.08);
+        /* Accent — deep emerald */
+        --blue:    #0C5E44;
+        --blue-l:  #3DB88A;
+        --blue-d:  #094530;
+        --blue-faint: rgba(12,94,68,0.07);
 
         /* Borders */
         --b:  rgba(255,255,255,0.10);
@@ -217,7 +217,7 @@
     #hero::before {
         content:'';
         position:absolute; inset:0;
-        background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(37,99,235,0.18) 0%, transparent 70%);
+        background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(12,94,68,0.20) 0%, transparent 70%);
         z-index:1; pointer-events:none;
     }
     #hero::after {
@@ -632,7 +632,7 @@
         transition:border-color var(--t), background var(--t);
     }
     .fg select {
-        background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath d='M1 1l5 4.5L11 1' stroke='%235B8EF5' stroke-width='1.3' fill='none'/%3E%3C/svg%3E");
+        background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath d='M1 1l5 4.5L11 1' stroke='%233DB88A' stroke-width='1.3' fill='none'/%3E%3C/svg%3E");
         background-repeat:no-repeat; background-position:right 14px center; padding-right:38px;
     }
     .fg select option { background:var(--navy-2); color:var(--bright); }
@@ -1134,11 +1134,11 @@
     function resize() { W = canvas.width = canvas.offsetWidth; H = canvas.height = canvas.offsetHeight; }
 
     const orbs = [
-        { xR:.25, yR:.35, rF:.58, r:37,  g:99,  b:235, a:.10, sp:.00016, ph:0.0 },
-        { xR:.75, yR:.25, rF:.50, r:79,  g:70,  b:229, a:.09, sp:.00011, ph:1.6 },
-        { xR:.50, yR:.72, rF:.55, r:6,   g:182, b:212, a:.06, sp:.00014, ph:3.0 },
-        { xR:.12, yR:.60, rF:.40, r:99,  g:102, b:241, a:.08, sp:.00018, ph:4.3 },
-        { xR:.88, yR:.50, rF:.36, r:165, g:180, b:252, a:.06, sp:.00009, ph:5.7 },
+        { xR:.25, yR:.35, rF:.58, r:12,  g:94,  b:68,  a:.12, sp:.00016, ph:0.0 },
+        { xR:.75, yR:.25, rF:.50, r:6,   g:148, b:95,  a:.10, sp:.00011, ph:1.6 },
+        { xR:.50, yR:.72, rF:.55, r:0,   g:112, b:80,  a:.07, sp:.00014, ph:3.0 },
+        { xR:.12, yR:.60, rF:.40, r:9,   g:69,  b:48,  a:.10, sp:.00018, ph:4.3 },
+        { xR:.88, yR:.50, rF:.36, r:61,  g:190, b:140, a:.06, sp:.00009, ph:5.7 },
     ];
     orbs.forEach(o => { o.pY=o.ph+1.4; o.aX=.10+o.ph*.01; o.aY=.07+o.ph*.008; });
 
@@ -1166,7 +1166,7 @@
             p.y-=p.vy; p.x+=p.vx; p.life++;
             if(p.y<-4){Object.assign(p,mkP());p.y=H+4;}
             const a=p.op*Math.sin(Math.min(p.life/p.max,1)*Math.PI);
-            ctx.fillStyle=`rgba(165,180,252,${a.toFixed(3)})`;
+            ctx.fillStyle=`rgba(61,184,138,${a.toFixed(3)})`;
             ctx.beginPath(); ctx.arc(p.x,p.y,p.s,0,Math.PI*2); ctx.fill();
         });
     }

@@ -765,10 +765,9 @@
         border-top: 1px solid var(--line-soft);
         border-bottom: 1px solid var(--line-soft);
         background:
-            linear-gradient(90deg, rgba(105,216,255,.08), rgba(124,92,255,.06), rgba(216,195,154,.07)),
-            rgba(255,255,255,.035);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
+            radial-gradient(circle at 8% 24%, rgba(52,245,197,.11), transparent 26%),
+            radial-gradient(circle at 92% 24%, rgba(52,245,197,.11), transparent 26%),
+            linear-gradient(115deg, rgba(5,7,13,.98) 0%, rgba(8,18,34,.95) 54%, rgba(10,13,26,.98) 100%);
     }
     .trust-row {
         display: grid;
@@ -871,30 +870,33 @@
     }
     .about-caption {
         display: grid;
-        grid-template-columns: 1fr auto;
-        gap: 18px;
-        align-items: center;
+        grid-template-columns: 1fr;
+        gap: 8px;
         padding: 22px;
         background: #fff;
         color: var(--dark-text);
     }
     .about-caption strong { display: block; font-size: 15px; }
     .about-caption span { color: var(--soft-text); font-size: 13px; }
-    .caption-chip {
-        border: 1px solid rgba(16,24,40,.12);
-        border-radius: 999px;
-        padding: 8px 11px;
-        color: #344054;
-        font-size: 11px;
-        font-weight: 800;
-        letter-spacing: .08em;
-        text-transform: uppercase;
-        white-space: nowrap;
-    }
     .about-p {
         color: var(--soft-text);
         font-size: 17px;
         margin-top: 20px;
+    }
+    .about-fit {
+        margin-top: 16px;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: .01em;
+        color: #4b5565;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+    }
+    .about-fit .sep {
+        color: rgba(16,24,40,.24);
+        font-weight: 500;
     }
     .about-principles {
         margin-top: 34px;
@@ -929,11 +931,15 @@
     .principle strong {
         color: var(--dark-text);
         display: block;
-        margin-bottom: 6px;
+        margin-bottom: 9px;
+        line-height: 1.25;
     }
     .principle span {
+        display: block;
         color: var(--soft-text);
         font-size: 13px;
+        line-height: 1.55;
+        max-width: 34ch;
     }
 
     #services {
@@ -1737,7 +1743,6 @@
         .floating-card.one { top: 24px; }
         .floating-card.two { bottom: 0; }
         .about-caption { grid-template-columns: 1fr; }
-        .caption-chip { width: max-content; }
         .section-heading { font-size: clamp(32px, 10.5vw, 46px); }
         .footer-bottom { align-items: flex-start; flex-direction: column; }
     }
@@ -1803,11 +1808,6 @@
                     <a href="#services" class="btn-secondary">Explore Services
                         <svg width="16" height="10" viewBox="0 0 16 10" fill="none" aria-hidden="true"><path d="M11 1l4 4-4 4M1 5h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </a>
-                </div>
-                <div class="hero-proof r on d4">
-                    <div class="proof-item"><strong>Strategic clarity</strong><span>Decision frameworks for leadership teams.</span></div>
-                    <div class="proof-item"><strong>Operating rhythm</strong><span>Systems that align people, process, and priorities.</span></div>
-                    <div class="proof-item"><strong>Growth readiness</strong><span>Structures built to scale beyond the founder stage.</span></div>
                 </div>
             </div>
             <div class="hero-visual" aria-hidden="true">
@@ -1880,22 +1880,26 @@
                     <img src="img/team-meeting-modern-office-lrg.jpg" alt="A modern consulting team collaborating in a conference room">
                     <div class="about-caption">
                         <div>
-                            <strong>Designed for executive-level business challenges</strong>
-                            <span>Strategy, operations, growth, and performance working as one system.</span>
+                            <strong>Built for complex business decisions</strong>
+                            <span>We align strategy, operations, growth, and performance into one practical system.</span>
                         </div>
-                        <div class="caption-chip">Firm model</div>
                     </div>
                 </div>
                 <div class="about-text">
                     <span class="eyebrow r">About Elevated Group</span>
-                    <h2 class="section-heading r d1">A modern consulting partner for businesses that need smarter scale.</h2>
-                    <p class="about-p r d2">Our team helps organizations move from reactive execution to deliberate growth. We combine strategic thinking, operational discipline, and practical implementation support so leaders can make better decisions and build durable systems.</p>
-                    <p class="about-p r d3">We work with clients who are entering a more complex stage of business: expanding teams, tightening processes, repositioning in the market, improving performance, or preparing for the next growth horizon.</p>
+                    <h2 class="section-heading r d1">A consulting partner for businesses ready to scale smarter.</h2>
+                    <div class="about-fit r d2" aria-label="Best fit scenarios">
+                        <span>Leadership</span><span class="sep">|</span>
+                        <span>Team effectiveness</span><span class="sep">|</span>
+                        <span>Role clarity</span><span class="sep">|</span>
+                        <span>Performance growth</span>
+                    </div>
+                    <p class="about-p r d3">We help organizations move from reactive execution to deliberate growth through clear strategy, tighter operations, and practical implementation for teams navigating growth, process change, repositioning, and performance pressure.</p>
                     <div class="about-principles r d4">
                         <div class="principle"><strong>Executive clarity</strong><span>We turn ambition into a clear operating agenda.</span></div>
                         <div class="principle"><strong>Scalable execution</strong><span>We design systems teams can actually run.</span></div>
-                        <div class="principle"><strong>Integrated expertise</strong><span>Our approach connects strategy, operations, brand, and analytics.</span></div>
-                        <div class="principle"><strong>Premium partnership</strong><span>Clients get a rigorous, discreet, and high-touch experience.</span></div>
+                        <div class="principle"><strong>Integrated expertise</strong><span>We connect strategy, operations, brand, and analytics.</span></div>
+                        <div class="principle"><strong>Premium partnership</strong><span>Clients get a rigorous, discreet, high-touch experience.</span></div>
                     </div>
                 </div>
             </div>
@@ -1907,45 +1911,45 @@
             <div class="intro-row">
                 <div>
                     <span class="eyebrow r">Services</span>
-                    <h2 class="section-heading r d1">Consulting built around the systems that drive growth.</h2>
+                    <h2 class="section-heading r d1">Consulting built around the systems behind growth.</h2>
                 </div>
-                <p class="section-copy r d2">Each engagement is tailored to the business context, then structured around the decisions, systems, and execution habits required for long-term performance.</p>
+                <p class="section-copy r d2">Each engagement is tailored to your context and built around the decisions, systems, and habits that drive long-term performance.</p>
             </div>
             <div class="service-grid">
                 <article class="service-card r">
                     <div class="service-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 18L18 4M8 4h10v10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
                     <h3>Business Strategy</h3>
-                    <p>Strategic planning, priority setting, market direction, and decision frameworks for leadership teams navigating complexity.</p>
+                    <p>Strategic planning, priorities, market direction, and decision frameworks for leadership teams.</p>
                 </article>
                 <article class="service-card r d1">
                     <div class="service-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
                     <h3>Operations Consulting</h3>
-                    <p>Operating models, team workflows, accountability rhythms, and management systems that improve clarity and execution.</p>
+                    <p>Operating models, team workflows, and management systems that improve clarity and execution.</p>
                 </article>
                 <article class="service-card r d2">
                     <div class="service-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M5 19V9m7 10V5m7 14v-7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M3 19h18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
                     <h3>Growth &amp; Scaling</h3>
-                    <p>Growth architecture, expansion planning, leadership alignment, and scalable systems for businesses moving into a larger stage.</p>
+                    <p>Growth architecture, expansion planning, leadership alignment, and systems for the next stage.</p>
                 </article>
                 <article class="service-card r">
                     <div class="service-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v18M5 8h14M7 16h10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
                     <h3>Process Optimization</h3>
-                    <p>Process audits, workflow redesign, documentation, and performance improvements that remove friction from day-to-day operations.</p>
+                    <p>Process audits, workflow redesign, and documentation that remove friction from daily operations.</p>
                 </article>
                 <article class="service-card r d1">
                     <div class="service-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M5 5h6v6H5zM13 5h6v6h-6zM5 13h6v6H5zM13 13h6v6h-6z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
                     <h3>Digital Transformation</h3>
-                    <p>Technology roadmaps, tool ecosystems, workflow automation, and practical adoption plans that modernize the business.</p>
+                    <p>Technology roadmaps, tool ecosystems, workflow automation, and adoption plans that modernize the business.</p>
                 </article>
                 <article class="service-card r d2">
                     <div class="service-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 15s3-7 8-7 8 7 8 7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M9 15a3 3 0 106 0 3 3 0 00-6 0z" stroke="currentColor" stroke-width="1.7"/></svg></div>
                     <h3>Brand &amp; Market Positioning</h3>
-                    <p>Positioning strategy, offer clarity, market narrative, and premium client experience design for stronger commercial presence.</p>
+                    <p>Positioning strategy, offer clarity, market narrative, and premium client experience design.</p>
                 </article>
                 <article class="service-card r">
                     <div class="service-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 19V5M4 19h16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M8 15l3-4 3 2 5-7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
                     <h3>Analytics &amp; Performance Insights</h3>
-                    <p>Metric design, performance dashboards, reporting cadences, and insight systems that support better business decisions.</p>
+                    <p>Metric design, dashboards, reporting cadence, and insight systems for better decisions.</p>
                 </article>
             </div>
         </div>
@@ -1954,14 +1958,14 @@
     <section id="process">
         <div class="shell">
             <span class="eyebrow r">Process</span>
-            <h2 class="section-heading r d1">A structured consulting framework from insight to execution.</h2>
-            <p class="section-copy r d2">We bring order to ambiguity through a disciplined model that keeps strategy connected to real operating change.</p>
+            <h2 class="section-heading r d1">A clear framework from insight to execution.</h2>
+            <p class="section-copy r d2">We turn ambiguity into action with a disciplined model that ties strategy to operating change.</p>
             <div class="process-line">
-                <div class="step r"><span class="step-num">01</span><h3>Discover</h3><p>Understand business context, leadership priorities, market constraints, and the current operating reality.</p></div>
-                <div class="step r d1"><span class="step-num">02</span><h3>Diagnose</h3><p>Identify the highest-leverage issues across strategy, systems, process, people, and performance.</p></div>
-                <div class="step r d2"><span class="step-num">03</span><h3>Design</h3><p>Build a practical roadmap with clear decisions, operating principles, timelines, and accountability.</p></div>
-                <div class="step r d3"><span class="step-num">04</span><h3>Execute</h3><p>Support implementation through working sessions, tools, team alignment, and executive guidance.</p></div>
-                <div class="step r d4"><span class="step-num">05</span><h3>Optimize</h3><p>Refine the system using performance signals, feedback loops, and the realities of business growth.</p></div>
+                <div class="step r"><span class="step-num">01</span><h3>Discover</h3><p>Clarify context, priorities, constraints, and current operations.</p></div>
+                <div class="step r d1"><span class="step-num">02</span><h3>Diagnose</h3><p>Pinpoint the highest-leverage issues across strategy, systems, people, and performance.</p></div>
+                <div class="step r d2"><span class="step-num">03</span><h3>Design</h3><p>Build a practical roadmap with clear decisions, timelines, and accountability.</p></div>
+                <div class="step r d3"><span class="step-num">04</span><h3>Execute</h3><p>Guide implementation through working sessions, tools, and leadership alignment.</p></div>
+                <div class="step r d4"><span class="step-num">05</span><h3>Optimize</h3><p>Refine the system using performance signals and feedback loops.</p></div>
             </div>
         </div>
     </section>
@@ -1970,14 +1974,14 @@
         <div class="shell">
             <span class="eyebrow r">Why Elevated Group</span>
             <h2 class="section-heading r d1">Premium thinking with implementation discipline.</h2>
-            <p class="section-copy r d2">We are built for companies that need more than advice. Our clients need strategic clarity, sharper systems, and the operating confidence to scale.</p>
+            <p class="section-copy r d2">We are built for companies that need more than advice: strategic clarity, sharper systems, and confidence to scale.</p>
             <div class="why-grid">
-                <div class="why-card r"><h3>Strategic clarity</h3><p>We help leadership teams define what matters, what changes, and what gets sequenced first.</p></div>
-                <div class="why-card r d1"><h3>Data-informed decisions</h3><p>We connect judgment with meaningful business signals, not vanity metrics or guesswork.</p></div>
-                <div class="why-card r d2"><h3>Scalable systems</h3><p>We design operating structures that support complexity without adding unnecessary bureaucracy.</p></div>
-                <div class="why-card r"><h3>Premium client experience</h3><p>Engagements are polished, discreet, responsive, and built around executive-level standards.</p></div>
-                <div class="why-card r d1"><h3>Execution focus</h3><p>Our work is designed to move into operating cadences, team workflows, and practical decisions.</p></div>
-                <div class="why-card r d2"><h3>Long-term growth mindset</h3><p>We help clients build capability, not dependency, so the business keeps getting stronger.</p></div>
+                <div class="why-card r"><h3>Strategic clarity</h3><p>We help leaders define what matters, what changes, and what comes first.</p></div>
+                <div class="why-card r d1"><h3>Data-informed decisions</h3><p>We combine judgment with meaningful signals, not vanity metrics.</p></div>
+                <div class="why-card r d2"><h3>Scalable systems</h3><p>We design operating structures that support complexity without excess bureaucracy.</p></div>
+                <div class="why-card r"><h3>Premium client experience</h3><p>Engagements are polished, discreet, and responsive to executive standards.</p></div>
+                <div class="why-card r d1"><h3>Execution focus</h3><p>Our work translates into operating cadence, workflows, and practical decisions.</p></div>
+                <div class="why-card r d2"><h3>Long-term growth mindset</h3><p>We build client capability so performance keeps improving.</p></div>
             </div>
         </div>
     </section>
@@ -1985,13 +1989,13 @@
     <section id="team">
         <div class="shell">
             <span class="eyebrow r">Company Model</span>
-            <h2 class="section-heading r d1">Built around a network of strategic, operational, and creative professionals.</h2>
-            <p class="section-copy r d2">Elevated Group operates as an integrated consulting partner, bringing the right mix of strategic, operational, growth, and analytics capabilities into each engagement.</p>
+            <h2 class="section-heading r d1">Built on a network of strategic and operational specialists.</h2>
+            <p class="section-copy r d2">Elevated Group is an integrated consulting partner that brings the right mix of strategy, operations, growth, and analytics to each engagement.</p>
             <div class="team-system">
-                <div class="role-card r"><div class="role-avatar"></div><h3>Strategy Leads</h3><p>Business direction, prioritization, decision architecture, and executive alignment.</p></div>
-                <div class="role-card r d1"><div class="role-avatar"></div><h3>Operations Advisors</h3><p>Operating models, workflow design, process improvement, and team accountability.</p></div>
-                <div class="role-card r d2"><div class="role-avatar"></div><h3>Growth Specialists</h3><p>Market positioning, offer clarity, client experience, and scalable growth systems.</p></div>
-                <div class="role-card r d3"><div class="role-avatar"></div><h3>Insight Partners</h3><p>Performance measurement, dashboards, analysis, and management reporting rhythms.</p></div>
+                <div class="role-card r"><div class="role-avatar"></div><h3>Strategy Leads</h3><p>Business direction, priorities, decision architecture, and executive alignment.</p></div>
+                <div class="role-card r d1"><div class="role-avatar"></div><h3>Operations Advisors</h3><p>Operating models, workflow design, process improvement, and accountability.</p></div>
+                <div class="role-card r d2"><div class="role-avatar"></div><h3>Growth Specialists</h3><p>Market positioning, offer clarity, client experience, and growth systems.</p></div>
+                <div class="role-card r d3"><div class="role-avatar"></div><h3>Insight Partners</h3><p>Performance measurement, dashboards, analysis, and reporting cadence.</p></div>
             </div>
             <div class="ceo-feature" id="ceo">
                 <div class="ceo-portrait r">
@@ -2006,9 +2010,9 @@
                 </div>
                 <div class="ceo-copy r d2">
                     <span class="eyebrow">Executive Leadership</span>
-                    <h3>Led by a strategic operator with a high-standard consulting lens.</h3>
-                    <p>Joana brings the executive clarity, client discipline, and growth mindset behind Elevated Group's consulting model. Her role is to ensure every engagement feels rigorous, focused, and built around measurable business improvement.</p>
-                    <p>As CEO, she leads the firm's approach across strategy, operations, growth systems, and premium client experience, supported by a network of specialist partners.</p>
+                    <h3>Led by a strategic operator with a high consulting standard.</h3>
+                    <p>Joana brings the executive clarity and client discipline behind Elevated Group's model, keeping each engagement focused and measurable.</p>
+                    <p>As CEO, she leads the firm's approach across strategy, operations, growth systems, and client experience with support from specialist partners.</p>
                     <div class="ceo-points">
                         <div class="ceo-point"><span>Focus</span><strong>Strategy and scalable operations</strong></div>
                         <div class="ceo-point"><span>Standard</span><strong>Premium client partnership</strong></div>
@@ -2023,7 +2027,7 @@
         <div class="shell">
             <span class="eyebrow r">Results &amp; Impact</span>
             <h2 class="section-heading r d1">The outcomes clients can build on.</h2>
-            <p class="section-copy r d2">Without relying on unsupported numerical claims, our impact is framed around the operational and strategic improvements that matter most.</p>
+            <p class="section-copy r d2">Our impact is shown through the operational and strategic improvements that matter most.</p>
             <div class="impact-grid">
                 <div class="impact-card r"><span>Operations</span><h3>Sharper operations</h3><p>Less friction, clearer ownership, and better execution rhythms.</p></div>
                 <div class="impact-card r d1"><span>Strategy</span><h3>Clearer growth strategy</h3><p>Focused priorities and a leadership team aligned around what comes next.</p></div>
@@ -2039,7 +2043,7 @@
                 <div>
                     <span class="eyebrow r">Start the Conversation</span>
                     <h2 class="section-heading r d1">Build the next stage of your business with clarity.</h2>
-                    <p class="section-copy r d2">Tell us where the business is headed and what needs to work better. A member of our team will follow up to understand the opportunity and recommend the right next step.</p>
+                    <p class="section-copy r d2">Tell us where you're headed and what needs to work better. Our team will follow up with a clear next step.</p>
                     <div class="contact-meta r d3">
                         <div class="meta-line"><span>Email</span><strong>hello@elevatedgroup.co</strong></div>
                         <div class="meta-line"><span>Base</span><strong>Toronto, Canada</strong></div>
@@ -2105,7 +2109,7 @@
                         <span class="brand-sub">Consulting</span>
                     </span>
                 </a>
-                <p class="footer-copy">A modern consulting partner helping businesses operate smarter, scale faster, and make better decisions.</p>
+                <p class="footer-copy">A consulting partner helping businesses operate smarter, scale faster, and decide with confidence.</p>
             </div>
             <div class="footer-col">
                 <h4>Navigation</h4>

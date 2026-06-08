@@ -3,1989 +3,1924 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elevated Group | Strategic Consulting for Scalable Growth</title>
-    <meta name="description" content="Elevated Group is a modern consulting partner helping ambitious businesses sharpen strategy, optimize operations, and build scalable systems for growth.">
+    <title>Elevated Group | Strategy, Systems, and Execution</title>
+    <meta name="description" content="Elevated Group helps ambitious teams build the strategy, operating systems, and execution discipline behind scalable growth.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
     <style>
     :root {
-        --midnight: #05070d;
-        --navy: #09111f;
-        --ink: #0c1220;
-        --panel: rgba(255,255,255,0.075);
-        --panel-strong: rgba(255,255,255,0.12);
-        --line: rgba(255,255,255,0.12);
-        --line-soft: rgba(255,255,255,0.075);
-        --white: #f7f9fc;
-        --muted: rgba(247,249,252,0.68);
-        --faint: rgba(247,249,252,0.44);
-        --paper: #f4f7fb;
-        --paper-2: #e9eef6;
-        --dark-text: #101828;
-        --soft-text: #596579;
-        --blue: #69a7ff;
-        --violet: #9f8cff;
-        --purple: #7c5cff;
-        --teal: #34f5c5;
-        --royal: #2f6dff;
-        --champagne: #d8c39a;
-        --cyan: #69d8ff;
-        --accent-flow: linear-gradient(115deg, var(--cyan), var(--royal) 38%, var(--purple) 68%, var(--champagne));
-        --shadow: 0 30px 90px rgba(0,0,0,0.34);
+        --bg: #f7faff;
+        --surface: #ffffff;
+        --surface-2: #eef6ff;
+        --surface-3: #f2fbf8;
+        --navy: #07162f;
+        --ink: #15233a;
+        --muted: #64748b;
+        --soft: #d8e4f2;
+        --line: rgba(15, 35, 66, .11);
+        --line-strong: rgba(15, 35, 66, .18);
+        --blue: #1769ff;
+        --blue-2: #00a3ff;
+        --teal: #17c6a3;
+        --mint: #c9f7e8;
+        --coral: #ff7f6e;
+        --amber: #ffc857;
+        --shadow-sm: 0 8px 24px rgba(20, 45, 85, .08);
+        --shadow-md: 0 18px 55px rgba(20, 45, 85, .12);
+        --shadow-lg: 0 30px 90px rgba(20, 45, 85, .16);
         --radius: 8px;
-        --max: 1200px;
-        --px: clamp(20px, 5vw, 72px);
-        --section: clamp(84px, 10vw, 136px);
-        --ease: cubic-bezier(.2,.8,.2,1);
-        --fast: 220ms var(--ease);
-        --slow: 780ms var(--ease);
+        --max: 1180px;
+        --px: 24px;
+        --ease: ease-out;
+        --fast: 180ms ease-out;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
     body {
-        font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        background:
-            radial-gradient(circle at 18% -10%, rgba(47,109,255,.18), transparent 34%),
-            radial-gradient(circle at 82% 8%, rgba(124,92,255,.12), transparent 30%),
-            var(--midnight);
-        color: var(--white);
-        line-height: 1.6;
+        min-width: 320px;
         overflow-x: hidden;
+        background:
+            radial-gradient(circle at 9% 7%, rgba(23, 105, 255, .12), transparent 28rem),
+            radial-gradient(circle at 91% 3%, rgba(23, 198, 163, .13), transparent 27rem),
+            var(--bg);
+        color: var(--ink);
+        font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 16px;
+        line-height: 1.6;
         -webkit-font-smoothing: antialiased;
         text-rendering: optimizeLegibility;
     }
-    a { color: inherit; text-decoration: none; }
-    img { display: block; max-width: 100%; }
-    button, input, select, textarea { font: inherit; }
+
+    body.menu-open {
+        overflow: hidden;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+        font: inherit;
+    }
+
+    button {
+        cursor: pointer;
+    }
+
+    :focus-visible {
+        outline: 3px solid rgba(23, 105, 255, .34);
+        outline-offset: 3px;
+    }
 
     .shell {
         width: min(100%, var(--max));
         margin: 0 auto;
         padding: 0 var(--px);
     }
+
+    .section {
+        position: relative;
+        padding: 104px 0;
+    }
+
+    .section-soft {
+        background: linear-gradient(180deg, rgba(255, 255, 255, .86), rgba(239, 247, 255, .92));
+    }
+
     .eyebrow {
         display: inline-flex;
         align-items: center;
         gap: 10px;
-        color: var(--champagne);
-        font-size: 11px;
-        font-weight: 700;
-        letter-spacing: .14em;
+        color: var(--blue);
+        font-size: .76rem;
+        font-weight: 800;
+        letter-spacing: 0;
+        line-height: 1.2;
         text-transform: uppercase;
-        margin-bottom: 18px;
     }
+
     .eyebrow::before {
         content: "";
-        width: 7px;
-        height: 7px;
+        display: block;
+        width: 24px;
+        height: 2px;
         border-radius: 999px;
-        background: var(--accent-flow);
-        box-shadow: 0 0 18px rgba(105,216,255,.76);
+        background: currentColor;
     }
-    .section-heading {
-        max-width: 720px;
-        font-size: clamp(34px, 5vw, 62px);
-        line-height: 1.02;
-        letter-spacing: -.04em;
-        font-weight: 800;
-    }
-    .section-copy {
-        max-width: 560px;
-        color: var(--muted);
-        font-size: clamp(15px, 1.4vw, 18px);
-        margin-top: 20px;
-    }
-    .light .section-heading { color: var(--dark-text); }
-    .light .section-copy { color: var(--soft-text); }
-    .light .eyebrow { color: #6f5b32; }
-    .r {
-        opacity: 1;
-        transform: translateY(0);
-        transition: opacity var(--slow), transform var(--slow);
-    }
-    .motion-ready .r:not(.on) {
-        opacity: 0;
-        transform: translateY(18px) scale(.985);
-    }
-    .r.on { opacity: 1; transform: translateY(0); }
-    .d1 { transition-delay: .08s; }
-    .d2 { transition-delay: .16s; }
-    .d3 { transition-delay: .24s; }
-    .d4 { transition-delay: .32s; }
 
-    #nav {
-        position: fixed;
-        z-index: 50;
-        top: 14px;
-        left: 0;
-        right: 0;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 28px;
-        width: min(calc(100% - 32px), 1320px);
-        margin: 0 auto;
-        padding: 10px 10px 10px 14px;
-        border-bottom: 1px solid transparent;
-        border: 1px solid rgba(255,255,255,.11);
-        border-radius: 18px;
-        background:
-            linear-gradient(135deg, rgba(255,255,255,.105), rgba(255,255,255,.045)),
-            rgba(5,7,13,.34);
-        box-shadow: 0 18px 60px rgba(0,0,0,.18), inset 0 1px 0 rgba(255,255,255,.13);
-        backdrop-filter: blur(22px);
-        -webkit-backdrop-filter: blur(22px);
-        transition: background var(--fast), border-color var(--fast), padding var(--fast), top var(--fast), box-shadow var(--fast);
+    .eyebrow.light {
+        color: #bfe3ff;
     }
-    #nav.scrolled {
-        top: 10px;
-        background:
-            linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.05)),
-            rgba(5,7,13,.82);
-        border-color: rgba(255,255,255,.14);
-        box-shadow: 0 18px 70px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.15);
-    }
-    .brand {
-        display: inline-flex;
-        align-items: center;
-        gap: 11px;
-        min-width: max-content;
-        padding: 4px 8px 4px 4px;
-        border-radius: 14px;
-        transition: background var(--fast), transform var(--fast);
-    }
-    .brand:hover {
-        background: rgba(255,255,255,.055);
-    }
-    .brand-mark {
-        position: relative;
-        width: 38px;
-        height: 38px;
-        border: 1px solid rgba(255,255,255,.16);
-        border-radius: 12px;
-        display: grid;
-        place-items: center;
-        background:
-            radial-gradient(circle at 30% 18%, rgba(105,216,255,.24), transparent 34%),
-            linear-gradient(145deg, rgba(255,255,255,.16), rgba(255,255,255,.045));
-        box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 0 24px rgba(105,167,255,.08);
-        font-size: 13px;
+
+    h1,
+    h2,
+    h3 {
+        color: var(--navy);
         font-weight: 800;
-        color: var(--white);
+        letter-spacing: 0;
+        text-wrap: balance;
     }
-    .brand-mark::after {
-        content: "";
-        position: absolute;
-        right: -3px;
-        top: -3px;
-        width: 8px;
-        height: 8px;
-        border-radius: 999px;
-        background: var(--cyan);
-        box-shadow: 0 0 18px rgba(105,216,255,.8);
+
+    p {
+        text-wrap: pretty;
     }
-    .brand-text {
-        display: flex;
-        flex-direction: column;
-        line-height: 1;
+
+    .section-title {
+        margin-top: 14px;
+        max-width: 760px;
+        font-size: 3.35rem;
+        line-height: 1.04;
     }
-    .brand-name {
-        font-size: 14px;
-        font-weight: 800;
-        letter-spacing: .075em;
-        text-transform: uppercase;
-    }
-    .brand-sub {
-        margin-top: 5px;
-        font-size: 8px;
-        color: var(--faint);
-        letter-spacing: .26em;
-        text-transform: uppercase;
-    }
-    .nav-links {
-        display: flex;
-        align-items: center;
-        gap: 4px;
-        list-style: none;
-        padding: 5px;
-        border: 1px solid rgba(255,255,255,.08);
-        border-radius: 999px;
-        background: rgba(255,255,255,.045);
-    }
-    .nav-links a {
-        position: relative;
-        display: inline-flex;
-        align-items: center;
-        min-height: 34px;
-        padding: 0 14px;
-        border-radius: 999px;
+
+    .section-copy {
+        max-width: 590px;
+        margin-top: 18px;
         color: var(--muted);
-        font-size: 12px;
-        font-weight: 700;
-        transition: color var(--fast), background var(--fast), box-shadow var(--fast);
+        font-size: 1rem;
+        line-height: 1.8;
     }
-    .nav-links a:hover,
-    .nav-links a.active {
-        color: var(--white);
-        background: rgba(255,255,255,.075);
-        box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
+
+    .section-head {
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(280px, .72fr);
+        gap: 42px;
+        align-items: end;
+        margin-bottom: 40px;
     }
-    .nav-cta,
+
+    .pill-link,
     .btn-primary,
     .btn-secondary,
     .btn-form {
-        min-height: 46px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
         gap: 10px;
-        border-radius: var(--radius);
-        font-size: 13px;
+        min-height: 46px;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        font-size: .9rem;
         font-weight: 800;
-        transition: transform var(--fast), border-color var(--fast), background var(--fast), box-shadow var(--fast), color var(--fast);
-    }
-    .nav-cta,
-    .btn-primary,
-    .btn-form {
-        color: #07101d;
-        background: linear-gradient(135deg, #ffffff, #dce9ff 38%, #b9c6ff 64%, #d8c39a);
-        background-size: 160% 160%;
-        border: 0;
-        padding: 0 22px;
-        box-shadow: 0 14px 42px rgba(105,167,255,.18);
-    }
-    .nav-cta {
-        min-height: 42px;
-        padding: 0 20px;
-        border-radius: 13px;
+        line-height: 1;
         white-space: nowrap;
+        transition: transform var(--fast), box-shadow var(--fast), background var(--fast), border-color var(--fast), color var(--fast);
     }
-    .nav-cta:hover,
-    .btn-primary:hover,
-    .btn-form:hover {
+
+    .btn-primary {
+        padding: 0 22px;
+        background: var(--blue);
+        color: #fff;
+        box-shadow: 0 12px 30px rgba(23, 105, 255, .24);
+    }
+
+    .btn-primary:hover {
         transform: translateY(-2px);
-        box-shadow: 0 18px 52px rgba(105,167,255,.28);
-        background-position: 100% 50%;
+        background: #0758ed;
+        box-shadow: 0 16px 38px rgba(23, 105, 255, .3);
     }
+
     .btn-secondary {
-        padding: 0 21px;
-        border: 1px solid var(--line);
-        color: var(--white);
-        background: rgba(255,255,255,.055);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
+        padding: 0 20px;
+        border-color: var(--line-strong);
+        background: rgba(255, 255, 255, .72);
+        color: var(--navy);
+        box-shadow: 0 10px 26px rgba(20, 45, 85, .06);
     }
+
     .btn-secondary:hover {
-        border-color: rgba(216,195,154,.55);
-        background:
-            linear-gradient(135deg, rgba(105,216,255,.14), rgba(124,92,255,.1)),
-            rgba(255,255,255,.095);
         transform: translateY(-2px);
+        border-color: rgba(23, 105, 255, .28);
+        color: var(--blue);
+        box-shadow: var(--shadow-sm);
     }
-    .nav-ham {
+
+    svg {
+        flex: 0 0 auto;
+    }
+
+    /* Navigation */
+    #nav {
+        position: fixed;
+        z-index: 50;
+        top: calc(16px + env(safe-area-inset-top));
+        left: 50%;
+        width: min(calc(100% - 28px), 1040px);
+        min-height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        padding: 8px 10px 8px 20px;
+        border: 1px solid rgba(255, 255, 255, .78);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, .78);
+        box-shadow: 0 18px 55px rgba(20, 45, 85, .12);
+        transform: translateX(-50%);
+        transition: box-shadow var(--fast), background var(--fast), border-color var(--fast);
+    }
+
+    #nav.scrolled {
+        border-color: var(--line);
+        background: rgba(255, 255, 255, .94);
+        box-shadow: 0 16px 42px rgba(20, 45, 85, .14);
+    }
+
+    .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--navy);
+        font-weight: 900;
+        line-height: 1;
+    }
+
+    .brand-mark {
+        width: 34px;
+        height: 34px;
+        display: grid;
+        place-items: center;
+        border-radius: 999px;
+        background: linear-gradient(135deg, var(--blue), var(--teal));
+        color: #fff;
+        box-shadow: 0 12px 25px rgba(23, 105, 255, .25);
+    }
+
+    .brand-name {
+        font-size: .98rem;
+    }
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        list-style: none;
+    }
+
+    .nav-links a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 40px;
+        padding: 0 13px;
+        border-radius: 999px;
+        color: #53657f;
+        font-size: .84rem;
+        font-weight: 750;
+        transition: background var(--fast), color var(--fast);
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+        background: rgba(23, 105, 255, .08);
+        color: var(--blue);
+    }
+
+    .nav-cta {
+        padding: 0 18px;
+        min-height: 44px;
+    }
+
+    .nav-menu {
         display: none;
         width: 44px;
         height: 44px;
-        border-radius: 13px;
-        border: 1px solid rgba(255,255,255,.14);
-        background: rgba(255,255,255,.07);
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        gap: 5px;
-        cursor: pointer;
-        transition: background var(--fast), border-color var(--fast), transform var(--fast);
+        place-items: center;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: #fff;
+        color: var(--navy);
     }
-    .nav-ham:hover {
-        background: rgba(255,255,255,.11);
-        border-color: rgba(255,255,255,.22);
-    }
-    .nav-ham span {
-        width: 19px;
+
+    .nav-menu span,
+    .nav-menu span::before,
+    .nav-menu span::after {
+        display: block;
+        width: 17px;
         height: 2px;
-        background: var(--white);
+        border-radius: 999px;
+        background: currentColor;
         transition: transform var(--fast), opacity var(--fast);
     }
-    .nav-ham.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .nav-ham.open span:nth-child(2) { opacity: 0; }
-    .nav-ham.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .nav-menu span {
+        position: relative;
+    }
+
+    .nav-menu span::before,
+    .nav-menu span::after {
+        content: "";
+        position: absolute;
+        left: 0;
+    }
+
+    .nav-menu span::before {
+        top: -6px;
+    }
+
+    .nav-menu span::after {
+        top: 6px;
+    }
+
+    .nav-menu.open span {
+        background: transparent;
+    }
+
+    .nav-menu.open span::before {
+        transform: translateY(6px) rotate(45deg);
+    }
+
+    .nav-menu.open span::after {
+        transform: translateY(-6px) rotate(-45deg);
+    }
 
     #mob-nav {
         position: fixed;
+        z-index: 45;
         inset: 0;
-        z-index: 40;
-        background:
-            linear-gradient(135deg, rgba(9,17,31,.98), rgba(5,7,13,.98)),
-            radial-gradient(circle at 80% 20%, rgba(105,167,255,.18), transparent 34%);
-        padding: 118px var(--px) 32px;
-        transform: translateX(104%);
-        transition: transform 420ms var(--ease);
-        display: flex;
-        flex-direction: column;
-    }
-    #mob-nav.open { transform: translateX(0); }
-    .mob-links {
-        list-style: none;
         display: grid;
-        gap: 20px;
-    }
-    .mob-links a {
-        display: block;
-        padding: 14px 0;
-        border-bottom: 1px solid rgba(255,255,255,.08);
-        font-size: clamp(30px, 11vw, 48px);
-        line-height: 1;
-        font-weight: 800;
-        letter-spacing: -.04em;
-        color: var(--white);
-        transition: color var(--fast), padding-left var(--fast);
-    }
-    .mob-links a:hover {
-        color: var(--champagne);
-        padding-left: 8px;
-    }
-    .mob-footer {
-        margin-top: auto;
-        border-top: 1px solid var(--line);
-        padding-top: 24px;
-        color: var(--faint);
-        font-size: 13px;
+        grid-template-rows: 1fr auto;
+        gap: 28px;
+        padding: 104px var(--px) 34px;
+        background:
+            radial-gradient(circle at 18% 12%, rgba(23, 105, 255, .16), transparent 22rem),
+            radial-gradient(circle at 88% 22%, rgba(23, 198, 163, .14), transparent 22rem),
+            rgba(247, 250, 255, .98);
+        transform: translateX(100%);
+        transition: transform 260ms ease-out;
     }
 
+    #mob-nav.open {
+        transform: translateX(0);
+    }
+
+    .mob-links {
+        display: grid;
+        align-content: center;
+        gap: 6px;
+        list-style: none;
+    }
+
+    .mob-links a {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 58px;
+        border-bottom: 1px solid var(--line);
+        color: var(--navy);
+        font-size: 1.5rem;
+        font-weight: 850;
+    }
+
+    .mob-links a::after {
+        content: ">";
+        color: var(--blue);
+        font-size: 1rem;
+    }
+
+    .mob-footer {
+        display: grid;
+        gap: 12px;
+        color: var(--muted);
+        font-size: .95rem;
+    }
+
+    /* Hero */
     #hero {
         position: relative;
-        overflow: hidden;
         min-height: 100svh;
-        padding: 126px 0 66px;
-        background:
-            radial-gradient(circle at 13% 20%, rgba(105,216,255,.13), transparent 27%),
-            radial-gradient(circle at 84% 24%, rgba(47,109,255,.18), transparent 32%),
-            radial-gradient(circle at 74% 78%, rgba(216,195,154,.09), transparent 28%),
-            linear-gradient(112deg, #05070d 0%, #09111f 52%, #05070d 100%);
+        display: grid;
+        align-items: center;
+        padding: 132px 0 46px;
+        overflow: hidden;
     }
+
     #hero::before {
         content: "";
         position: absolute;
         inset: 0;
-        pointer-events: none;
         background:
-            linear-gradient(rgba(255,255,255,.022) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,.022) 1px, transparent 1px);
-        background-size: 72px 72px;
-        mask-image: linear-gradient(to bottom, rgba(0,0,0,.76), transparent 78%);
-    }
-    #hero::after {
-        content: "";
-        position: absolute;
-        inset: -20% -10% auto -10%;
-        height: 78%;
+            linear-gradient(rgba(23, 105, 255, .055) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(23, 105, 255, .055) 1px, transparent 1px);
+        background-size: 44px 44px;
+        mask-image: linear-gradient(to bottom, rgba(0, 0, 0, .72), transparent 82%);
         pointer-events: none;
-        background:
-            radial-gradient(ellipse at 18% 18%, rgba(105,216,255,.18), transparent 42%),
-            radial-gradient(ellipse at 72% 14%, rgba(124,92,255,.18), transparent 38%);
-        filter: blur(6px);
-        opacity: .72;
     }
-    .hero-shell {
+
+    .hero-wrap {
         position: relative;
-        z-index: 2;
-        width: min(100%, 1320px);
+        z-index: 1;
+        width: min(100%, 1260px);
         margin: 0 auto;
         padding: 0 var(--px);
+    }
+
+    .hero-main {
         display: grid;
-        grid-template-columns: minmax(0, .96fr) minmax(420px, 1.04fr);
-        gap: clamp(30px, 5vw, 78px);
+        grid-template-columns: minmax(0, 1.02fr) minmax(430px, .88fr);
+        gap: 62px;
         align-items: center;
     }
-    .hero-content {
-        position: relative;
-        z-index: 3;
-        max-width: 760px;
+
+    .hero-content,
+    .hero-visual,
+    .system-card,
+    .module-row {
+        min-width: 0;
     }
+
     .hero-kicker {
         display: inline-flex;
         align-items: center;
         gap: 10px;
-        padding: 0;
-        border: 0;
-        border-radius: 0;
-        background: transparent;
-        color: rgba(247,249,252,.74);
-        font-size: 11px;
-        font-weight: 800;
-        letter-spacing: .12em;
-        text-transform: uppercase;
+        min-height: 36px;
+        padding: 0 14px;
+        border: 1px solid rgba(23, 105, 255, .16);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, .76);
+        color: var(--blue);
+        font-size: .82rem;
+        font-weight: 850;
+        box-shadow: var(--shadow-sm);
     }
-    .hero-kicker span {
+
+    .hero-kicker::before {
+        content: "";
         width: 8px;
         height: 8px;
         border-radius: 999px;
-        background: var(--cyan);
-        box-shadow: 0 0 24px rgba(105,216,255,.9);
+        background: var(--teal);
+        box-shadow: 0 0 0 5px rgba(23, 198, 163, .12);
     }
-    .hero-title {
-        margin-top: 22px;
-        font-size: clamp(46px, 5.7vw, 78px);
-        line-height: 1;
-        letter-spacing: -.054em;
-        font-weight: 800;
-        max-width: 720px;
+
+    .hero-h {
+        max-width: 760px;
+        margin-top: 24px;
+        font-size: 4.9rem;
+        line-height: .98;
     }
-    .hero-title em {
-        font-style: normal;
-        color: transparent;
-        background: linear-gradient(110deg, #fff 6%, #a8d7ff 36%, #b9a8ff 62%, #d8c39a 92%);
-        background-size: 140% 140%;
-        -webkit-background-clip: text;
-        background-clip: text;
-        animation: gradientText 8s var(--ease) infinite alternate;
+
+    .hero-h span {
+        color: var(--blue);
     }
-    .hero-copy {
-        max-width: 590px;
-        margin-top: 23px;
-        color: var(--muted);
-        font-size: clamp(16px, 1.55vw, 20px);
+
+    .hero-p {
+        max-width: 610px;
+        margin-top: 24px;
+        color: #51647f;
+        font-size: 1.12rem;
+        line-height: 1.82;
     }
+
     .hero-actions {
-        display: inline-flex;
-        align-items: center;
+        display: flex;
         flex-wrap: wrap;
-        gap: 14px;
-        margin-top: 32px;
-        padding: 10px;
-        border: 1px solid rgba(255,255,255,.12);
-        border-radius: 16px;
-        background:
-            linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.032)),
-            rgba(5,7,13,.26);
-        box-shadow: 0 22px 70px rgba(0,0,0,.2), inset 0 1px 0 rgba(255,255,255,.1);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
+        gap: 12px;
+        margin-top: 34px;
     }
-    .hero-trust {
-        position: relative;
-        z-index: 2;
-        width: min(100%, 1320px);
-        margin: clamp(20px, 3vh, 34px) auto 0;
-        padding: 0 var(--px);
+
+    .hero-proof {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        max-width: 640px;
+        margin-top: 42px;
     }
-    .hero-trust-row {
-        min-height: 74px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 24px;
-        border-top: 1px solid rgba(255,255,255,.085);
-        border-bottom: 1px solid rgba(255,255,255,.065);
-        color: rgba(247,249,252,.42);
+
+    .proof-chip {
+        min-height: 84px;
+        padding: 15px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: rgba(255, 255, 255, .72);
+        box-shadow: 0 10px 30px rgba(20, 45, 85, .06);
     }
-    .hero-trust-label {
-        color: rgba(247,249,252,.58);
-        font-size: 10px;
+
+    .proof-chip strong {
+        display: block;
+        color: var(--navy);
+        font-size: 1.24rem;
         font-weight: 900;
-        letter-spacing: .14em;
-        text-transform: uppercase;
-        white-space: nowrap;
+        line-height: 1.1;
     }
-    .hero-trust-items {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        gap: clamp(18px, 3vw, 38px);
-        width: 100%;
+
+    .proof-chip span {
+        display: block;
+        margin-top: 7px;
+        color: var(--muted);
+        font-size: .82rem;
+        line-height: 1.35;
     }
-    .hero-trust-items span {
-        position: relative;
-        font-size: 11px;
-        font-weight: 850;
-        letter-spacing: .13em;
-        text-transform: uppercase;
-        white-space: nowrap;
-    }
-    .hero-trust-items span::before {
-        content: "";
-        position: absolute;
-        left: -13px;
-        top: 50%;
-        width: 3px;
-        height: 3px;
-        border-radius: 999px;
-        background: rgba(216,195,154,.5);
-        transform: translateY(-50%);
-    }
-    .hero-system-bg {
-        position: absolute;
-        inset: 0;
-        z-index: 1;
-        pointer-events: none;
-        overflow: hidden;
-    }
-    .hero-system-bg::before {
-        content: "";
-        position: absolute;
-        left: -16vw;
-        right: -16vw;
-        top: 24vh;
-        height: clamp(82px, 8vw, 116px);
-        border-radius: 999px;
-        background:
-            linear-gradient(96deg,
-                transparent 0%,
-                rgba(105,216,255,.08) 13%,
-                rgba(105,216,255,.34) 26%,
-                rgba(47,109,255,.48) 42%,
-                rgba(124,92,255,.44) 58%,
-                rgba(216,195,154,.32) 74%,
-                rgba(216,195,154,.08) 88%,
-                transparent 100%);
-        box-shadow:
-            0 -1px 0 rgba(255,255,255,.2) inset,
-            0 1px 0 rgba(255,255,255,.14) inset,
-            0 0 42px rgba(105,216,255,.26),
-            0 0 86px rgba(47,109,255,.18);
-        filter: blur(1px) saturate(1.14);
-        opacity: .5;
-        transform: rotate(-10deg) skewX(-12deg);
-        transform-origin: center;
-        mix-blend-mode: screen;
-        mask-image:
-            linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent),
-            linear-gradient(180deg, transparent, #000 10%, #000 90%, transparent);
-        mask-composite: intersect;
-    }
-    .hero-system-bg::after {
-        content: "";
-        position: absolute;
-        left: -10vw;
-        right: -20vw;
-        top: 28.4vh;
-        height: clamp(24px, 2.6vw, 38px);
-        border-radius: 999px;
-        background:
-            linear-gradient(96deg,
-                transparent 0%,
-                rgba(255,255,255,.08) 12%,
-                rgba(105,216,255,.72) 29%,
-                rgba(255,255,255,.58) 43%,
-                rgba(124,92,255,.68) 61%,
-                rgba(216,195,154,.46) 77%,
-                rgba(255,255,255,.08) 89%,
-                transparent 100%);
-        box-shadow: 0 0 30px rgba(105,216,255,.26);
-        filter: blur(1px) saturate(1.2);
-        opacity: .54;
-        transform: rotate(-10deg) skewX(-12deg);
-        mix-blend-mode: screen;
-        mask-image: linear-gradient(90deg, transparent, #000 11%, #000 88%, transparent);
-    }
+
     .hero-visual {
         position: relative;
-        min-height: 610px;
-        pointer-events: none;
-    }
-    .visual-stage {
-        position: absolute;
-        inset: 0;
-        isolation: isolate;
-    }
-    .visual-aura {
-        position: absolute;
-        inset: 6% -4% 8% 2%;
-        background:
-            radial-gradient(circle at 58% 24%, rgba(105,216,255,.24), transparent 30%),
-            radial-gradient(circle at 76% 66%, rgba(124,92,255,.18), transparent 32%),
-            radial-gradient(circle at 30% 72%, rgba(216,195,154,.12), transparent 28%);
-        filter: blur(34px) saturate(1.08);
-        opacity: .72;
-        animation: heroVisualFloat 8s var(--ease) infinite alternate;
-    }
-    .dashboard-orbits {
-        position: absolute;
-        inset: 7% 2% 5% 4%;
-        z-index: 1;
-        opacity: .62;
-    }
-    .dashboard-orbits::before,
-    .dashboard-orbits::after {
-        content: "";
-        position: absolute;
-        inset: 8% 3% 14% 12%;
-        border: 1px solid rgba(105,216,255,.18);
-        border-left-color: transparent;
-        border-bottom-color: transparent;
-        border-radius: 999px;
-        transform: rotate(-14deg);
-    }
-    .dashboard-orbits::after {
-        inset: 23% 18% 22% 28%;
-        border-color: rgba(216,195,154,.16);
-        border-right-color: transparent;
-        transform: rotate(22deg);
-    }
-    .dash-card {
-        position: absolute;
-        z-index: 3;
-        border: 1px solid rgba(255,255,255,.14);
-        border-radius: 20px;
-        background:
-            linear-gradient(145deg, rgba(255,255,255,.14), rgba(255,255,255,.045)),
-            rgba(5,7,13,.76);
-        box-shadow: 0 28px 90px rgba(0,0,0,.32), inset 0 1px 0 rgba(255,255,255,.18);
-        backdrop-filter: blur(22px);
-        -webkit-backdrop-filter: blur(22px);
-        animation: cardDrift 7s var(--ease) infinite alternate;
-    }
-    .dash-card span {
-        display: block;
-        color: var(--champagne);
-        font-size: 10px;
-        font-weight: 900;
-        letter-spacing: .14em;
-        text-transform: uppercase;
-    }
-    .dash-card strong {
-        display: block;
-        color: var(--white);
-        letter-spacing: -.035em;
-    }
-    .dash-card small {
-        display: block;
-        color: rgba(247,249,252,.62);
-        font-size: 12px;
-        line-height: 1.45;
-    }
-    .dashboard-main {
-        left: 9%;
-        top: 12%;
-        width: min(455px, 74%);
-        min-height: 330px;
-        padding: 22px;
-        background:
-            radial-gradient(circle at 22% 0%, rgba(105,216,255,.18), transparent 42%),
-            linear-gradient(145deg, rgba(255,255,255,.16), rgba(255,255,255,.048)),
-            rgba(5,7,13,.82);
-        box-shadow:
-            0 34px 110px rgba(0,0,0,.34),
-            0 0 60px rgba(47,109,255,.14),
-            inset 0 1px 0 rgba(255,255,255,.2);
-    }
-    .dashboard-head {
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
-        gap: 18px;
-        margin-bottom: 24px;
-    }
-    .dashboard-head strong {
-        margin-top: 10px;
-        font-size: 24px;
-        line-height: 1.08;
-    }
-    .dash-status {
-        min-width: max-content;
-        border: 1px solid rgba(255,255,255,.15);
-        border-radius: 999px;
-        padding: 7px 10px;
-        color: #07101d;
-        background: linear-gradient(135deg, #fff, #dce9ff 42%, #d8c39a);
-        font-size: 10px;
-        font-weight: 900;
-        letter-spacing: .1em;
-        text-transform: uppercase;
-    }
-    .chart-frame {
-        position: relative;
-        height: 142px;
-        border: 1px solid rgba(255,255,255,.09);
-        border-radius: 16px;
-        background:
-            linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px),
-            rgba(255,255,255,.035);
-        background-size: 34px 34px;
-        overflow: hidden;
-    }
-    .chart-line {
-        position: absolute;
-        left: 8%;
-        right: 7%;
-        top: 24%;
-        height: 54%;
-        border-bottom: 3px solid rgba(105,216,255,.82);
-        border-right: 3px solid rgba(124,92,255,.72);
-        border-radius: 0 0 42px 0;
-        transform: skewX(-24deg) rotate(-6deg);
-        box-shadow: 0 16px 34px rgba(105,216,255,.16);
-    }
-    .chart-line::after {
-        content: "";
-        position: absolute;
-        right: -7px;
-        top: -8px;
-        width: 13px;
-        height: 13px;
-        border-radius: 999px;
-        background: var(--champagne);
-        box-shadow: 0 0 22px rgba(216,195,154,.54);
-    }
-    .chart-bars {
-        position: absolute;
-        left: 18px;
-        right: 18px;
-        bottom: 16px;
+        min-height: 640px;
         display: grid;
-        grid-template-columns: repeat(6, 1fr);
-        align-items: end;
-        gap: 9px;
-        height: 62px;
-    }
-    .chart-bars i {
-        display: block;
-        border-radius: 999px 999px 3px 3px;
-        background: linear-gradient(180deg, rgba(105,216,255,.76), rgba(124,92,255,.24));
-    }
-    .chart-bars i:nth-child(1) { height: 34%; }
-    .chart-bars i:nth-child(2) { height: 48%; }
-    .chart-bars i:nth-child(3) { height: 42%; }
-    .chart-bars i:nth-child(4) { height: 67%; }
-    .chart-bars i:nth-child(5) { height: 76%; }
-    .chart-bars i:nth-child(6) { height: 88%; background: linear-gradient(180deg, rgba(216,195,154,.82), rgba(105,216,255,.22)); }
-    .dashboard-meta {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
-        margin-top: 14px;
-    }
-    .dashboard-meta div {
-        border: 1px solid rgba(255,255,255,.08);
-        border-radius: 12px;
-        padding: 11px;
-        background: rgba(255,255,255,.035);
-    }
-    .dashboard-meta strong {
-        font-size: 16px;
-        line-height: 1;
-    }
-    .dashboard-meta small {
-        margin-top: 6px;
-        font-size: 10px;
-    }
-    .kpi-card {
-        right: 3%;
-        top: 22%;
-        width: 185px;
-        padding: 18px;
-        animation-delay: -2s;
-    }
-    .kpi-card strong {
-        margin-top: 12px;
-        font-size: 42px;
-        line-height: .9;
-    }
-    .kpi-card small { margin-top: 9px; }
-    .progress-card {
-        left: 2%;
-        bottom: 12%;
-        width: 260px;
-        padding: 18px;
-        animation-delay: -3.8s;
-    }
-    .progress-card strong {
-        margin-top: 10px;
-        font-size: 19px;
-        line-height: 1.08;
-    }
-    .progress-bars {
-        display: grid;
-        gap: 8px;
-        margin-top: 16px;
-    }
-    .progress-bars i {
-        display: block;
-        height: 7px;
-        border-radius: 999px;
-        background: linear-gradient(90deg, rgba(105,216,255,.95), rgba(124,92,255,.78), rgba(216,195,154,.72));
-        box-shadow: 0 0 24px rgba(105,216,255,.18);
-    }
-    .progress-bars i:nth-child(1) { width: 88%; }
-    .progress-bars i:nth-child(2) { width: 72%; opacity: .72; }
-    .progress-bars i:nth-child(3) { width: 54%; opacity: .52; }
-    .network-card {
-        right: 7%;
-        bottom: 7%;
-        width: 220px;
-        min-height: 150px;
-        padding: 18px;
-        animation-delay: -1.2s;
-    }
-    .network-map {
-        position: relative;
-        height: 92px;
-        margin-top: 14px;
-        border-radius: 14px;
-        background:
-            radial-gradient(circle at 24% 34%, rgba(105,216,255,.2), transparent 10%),
-            radial-gradient(circle at 68% 22%, rgba(124,92,255,.2), transparent 10%),
-            radial-gradient(circle at 78% 76%, rgba(216,195,154,.18), transparent 10%),
-            rgba(255,255,255,.032);
-        overflow: hidden;
-    }
-    .network-map::before,
-    .network-map::after {
-        content: "";
-        position: absolute;
-        left: 18%;
-        right: 16%;
-        top: 38%;
-        height: 1px;
-        background: linear-gradient(90deg, rgba(105,216,255,.56), rgba(124,92,255,.42), rgba(216,195,154,.5));
-        transform: rotate(14deg);
-    }
-    .network-map::after {
-        top: 57%;
-        transform: rotate(-22deg);
-        opacity: .58;
-    }
-    .visual-chip {
-        position: absolute;
-        z-index: 4;
-        right: 14%;
-        top: 8%;
-        min-width: 182px;
-        border: 1px solid rgba(255,255,255,.14);
-        border-radius: 999px;
-        padding: 10px 13px;
-        background: rgba(5,7,13,.62);
-        color: var(--champagne);
-        font-size: 10px;
-        font-weight: 900;
-        letter-spacing: .12em;
-        text-transform: uppercase;
-        box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
-        backdrop-filter: blur(16px);
-    }
-    @keyframes cardDrift {
-        from { transform: translate3d(0,0,0); }
-        to { transform: translate3d(0,-10px,0); }
-    }
-    @keyframes heroVisualFloat {
-        from { opacity: .56; transform: translate3d(0,0,0) scale(.98); }
-        to { opacity: .78; transform: translate3d(2%, -2%, 0) scale(1.02); }
-    }
-    @keyframes gradientText {
-        from { background-position: 0% 50%; }
-        to { background-position: 100% 50%; }
+        align-items: center;
     }
 
-    #about {
-        position: relative;
-        padding: var(--section) 0;
-        background: var(--paper);
-        overflow: hidden;
-    }
-    #about::before {
-        content: "";
+    .visual-glow {
         position: absolute;
-        inset: 0;
+        inset: 8% -2% 4% 8%;
+        border-radius: 40%;
         background:
-            radial-gradient(circle at 82% 18%, rgba(124,92,255,.12), transparent 28%),
-            linear-gradient(120deg, rgba(105,216,255,.17), transparent 42%),
-            linear-gradient(0deg, rgba(255,255,255,.72), transparent);
+            radial-gradient(circle at 24% 28%, rgba(23, 105, 255, .22), transparent 22rem),
+            radial-gradient(circle at 74% 70%, rgba(23, 198, 163, .24), transparent 18rem),
+            radial-gradient(circle at 64% 18%, rgba(255, 127, 110, .15), transparent 15rem);
+        filter: blur(10px);
         pointer-events: none;
     }
-    #about::after,
-    #why::after,
-    #impact::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(47,109,255,.28), rgba(124,92,255,.2), transparent);
-        pointer-events: none;
-    }
-    .about-grid {
+
+    .system-card {
         position: relative;
-        display: grid;
-        grid-template-columns: .95fr 1.05fr;
-        gap: clamp(42px, 7vw, 92px);
-        align-items: center;
-    }
-    .about-card {
-        position: relative;
-        border: 1px solid rgba(16,24,40,.1);
-        border-radius: 22px;
+        width: min(100%, 520px);
+        margin-left: auto;
+        border: 1px solid rgba(255, 255, 255, .9);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, .86);
+        box-shadow: var(--shadow-lg);
         overflow: hidden;
-        box-shadow: 0 26px 80px rgba(16,24,40,.14);
-        background: #fff;
-        isolation: isolate;
     }
-    .about-card::before {
-        content: "";
-        position: absolute;
-        inset: -1px;
-        border-radius: 22px;
-        background: linear-gradient(135deg, rgba(105,216,255,.45), rgba(124,92,255,.22), rgba(216,195,154,.38));
-        z-index: -1;
-        opacity: .38;
-    }
-    .about-card img {
-        width: 100%;
-        height: 500px;
-        object-fit: cover;
-        filter: saturate(.82) contrast(1.05);
-    }
-    .about-caption {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 8px;
-        padding: 22px;
-        background: #fff;
-        color: var(--dark-text);
-    }
-    .about-caption strong { display: block; font-size: 15px; }
-    .about-caption span { color: var(--soft-text); font-size: 13px; }
-    .about-p {
-        color: var(--soft-text);
-        font-size: 17px;
-        margin-top: 20px;
-    }
-    .about-fit {
-        margin-top: 16px;
-        font-size: 11px;
-        font-weight: 600;
-        letter-spacing: .01em;
-        color: #4b5565;
+
+    .system-top {
         display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
         align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 18px 20px;
+        border-bottom: 1px solid var(--line);
     }
-    .about-fit .sep {
-        color: rgba(16,24,40,.24);
-        font-weight: 500;
+
+    .traffic {
+        display: flex;
+        gap: 6px;
     }
-    .about-principles {
-        margin-top: 34px;
+
+    .traffic span {
+        width: 9px;
+        height: 9px;
+        border-radius: 999px;
+    }
+
+    .traffic span:nth-child(1) {
+        background: var(--coral);
+    }
+
+    .traffic span:nth-child(2) {
+        background: var(--amber);
+    }
+
+    .traffic span:nth-child(3) {
+        background: var(--teal);
+    }
+
+    .system-label {
+        color: var(--muted);
+        font-size: .76rem;
+        font-weight: 850;
+        text-transform: uppercase;
+    }
+
+    .system-body {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 14px;
+        gap: 16px;
+        padding: 20px;
     }
-    .principle {
-        position: relative;
-        border: 1px solid rgba(16,24,40,.1);
+
+    .module-row {
+        display: grid;
+        grid-template-columns: 44px 1fr auto;
+        gap: 14px;
+        align-items: center;
+        padding: 16px;
+        border: 1px solid var(--line);
         border-radius: var(--radius);
-        background: rgba(255,255,255,.72);
-        padding: 18px;
-        overflow: hidden;
+        background: linear-gradient(135deg, rgba(255, 255, 255, .96), rgba(239, 247, 255, .9));
         transition: transform var(--fast), border-color var(--fast), box-shadow var(--fast);
     }
-    .principle::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        width: 3px;
-        background: var(--accent-flow);
-        opacity: .7;
-    }
-    .principle:hover {
-        transform: translateY(-3px);
-        border-color: rgba(47,109,255,.22);
-        box-shadow: 0 18px 46px rgba(16,24,40,.1);
-    }
-    .principle strong {
-        color: var(--dark-text);
-        display: block;
-        margin-bottom: 9px;
-        line-height: 1.25;
-    }
-    .principle span {
-        display: block;
-        color: var(--soft-text);
-        font-size: 13px;
-        line-height: 1.55;
-        max-width: 34ch;
+
+    .module-row:hover {
+        transform: translateY(-2px);
+        border-color: rgba(23, 105, 255, .25);
+        box-shadow: var(--shadow-sm);
     }
 
-    #services {
-        position: relative;
-        padding: var(--section) 0;
-        background:
-            radial-gradient(circle at 12% 18%, rgba(52,245,197,.09), transparent 24%),
-            radial-gradient(circle at 86% 40%, rgba(124,92,255,.13), transparent 28%),
-            linear-gradient(180deg, var(--midnight), #08111f 58%, var(--midnight));
+    .module-icon,
+    .service-icon,
+    .why-icon,
+    .layer-icon {
+        width: 44px;
+        height: 44px;
+        display: grid;
+        place-items: center;
+        border-radius: 8px;
+        background: rgba(23, 105, 255, .09);
+        color: var(--blue);
+    }
+
+    .module-icon svg,
+    .service-icon svg,
+    .why-icon svg,
+    .layer-icon svg {
+        width: 21px;
+        height: 21px;
+        stroke-width: 1.8;
+    }
+
+    .module-row:nth-child(2) .module-icon,
+    .service-card:nth-child(2n) .service-icon,
+    .why-card:nth-child(2n) .why-icon {
+        background: rgba(23, 198, 163, .12);
+        color: #069f84;
+    }
+
+    .module-row:nth-child(3) .module-icon,
+    .service-card:nth-child(3n) .service-icon,
+    .why-card:nth-child(3n) .why-icon {
+        background: rgba(255, 127, 110, .12);
+        color: #e55948;
+    }
+
+    .module-row h3 {
+        font-size: .98rem;
+        line-height: 1.2;
+    }
+
+    .module-row p {
+        margin-top: 3px;
+        color: var(--muted);
+        font-size: .8rem;
+        line-height: 1.45;
+    }
+
+    .module-meter {
+        width: 72px;
+        height: 8px;
+        border-radius: 999px;
+        background: #e2eaf5;
         overflow: hidden;
     }
-    #services::before,
-    #team::before,
-    #contact::after {
-        content: "";
+
+    .module-meter span {
+        display: block;
+        width: var(--w);
+        height: 100%;
+        border-radius: inherit;
+        background: linear-gradient(90deg, var(--blue), var(--teal));
+    }
+
+    .visual-badge {
         position: absolute;
-        inset: 0;
-        pointer-events: none;
-        background:
-            linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
-        background-size: 58px 58px;
-        mask-image: radial-gradient(circle at 50% 20%, rgba(0,0,0,.75), transparent 68%);
+        display: grid;
+        gap: 3px;
+        min-width: 170px;
+        padding: 14px 16px;
+        border: 1px solid rgba(255, 255, 255, .92);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, .92);
+        box-shadow: var(--shadow-md);
     }
-    .intro-row {
+
+    .visual-badge span {
+        color: var(--muted);
+        font-size: .72rem;
+        font-weight: 800;
+        text-transform: uppercase;
+    }
+
+    .visual-badge strong {
+        color: var(--navy);
+        font-size: .95rem;
+        line-height: 1.22;
+    }
+
+    .badge-a {
+        top: 50px;
+        left: 0;
+    }
+
+    .badge-b {
+        right: 0;
+        bottom: 44px;
+    }
+
+    .hero-trust {
+        position: relative;
+        z-index: 1;
+        margin-top: 58px;
+        padding-top: 22px;
+        border-top: 1px solid var(--line);
+    }
+
+    .trust-row {
         display: flex;
+        align-items: center;
         justify-content: space-between;
-        align-items: flex-end;
-        gap: 40px;
-        margin-bottom: 54px;
+        gap: 26px;
     }
+
+    .trust-label {
+        color: var(--muted);
+        font-size: .82rem;
+        font-weight: 850;
+        text-transform: uppercase;
+        white-space: nowrap;
+    }
+
+    .trust-tags {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 10px;
+    }
+
+    .trust-tags span {
+        display: inline-flex;
+        align-items: center;
+        min-height: 32px;
+        padding: 0 13px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, .66);
+        color: #4e627e;
+        font-size: .82rem;
+        font-weight: 800;
+    }
+
+    /* About */
+    .about-layout {
+        display: grid;
+        grid-template-columns: minmax(360px, .82fr) minmax(0, 1fr);
+        gap: 62px;
+        align-items: center;
+    }
+
+    .image-stack {
+        position: relative;
+        min-height: 585px;
+    }
+
+    .photo-card {
+        position: absolute;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, .88);
+        border-radius: 8px;
+        background: #fff;
+        box-shadow: var(--shadow-md);
+    }
+
+    .photo-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .photo-main {
+        inset: 0 72px 78px 0;
+    }
+
+    .photo-main img {
+        object-position: center 31%;
+    }
+
+    .photo-sub {
+        right: 0;
+        bottom: 0;
+        width: 48%;
+        height: 238px;
+    }
+
+    .photo-sub img {
+        object-position: center 44%;
+    }
+
+    .image-note {
+        position: absolute;
+        left: 24px;
+        bottom: 32px;
+        width: min(72%, 310px);
+        padding: 18px;
+        border: 1px solid rgba(255, 255, 255, .82);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, .92);
+        box-shadow: var(--shadow-sm);
+    }
+
+    .image-note strong {
+        display: block;
+        color: var(--navy);
+        font-size: .96rem;
+    }
+
+    .image-note span {
+        display: block;
+        margin-top: 5px;
+        color: var(--muted);
+        font-size: .83rem;
+        line-height: 1.45;
+    }
+
+    .proof-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 30px;
+    }
+
+    .proof-card {
+        min-height: 130px;
+        padding: 20px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, .78);
+        box-shadow: 0 10px 30px rgba(20, 45, 85, .05);
+    }
+
+    .proof-card strong {
+        display: block;
+        color: var(--navy);
+        font-size: .98rem;
+        line-height: 1.35;
+    }
+
+    .proof-card span {
+        display: block;
+        margin-top: 9px;
+        color: var(--muted);
+        font-size: .88rem;
+        line-height: 1.6;
+    }
+
+    /* Services */
+    #services {
+        background:
+            radial-gradient(circle at 9% 15%, rgba(23, 105, 255, .12), transparent 26rem),
+            radial-gradient(circle at 88% 22%, rgba(23, 198, 163, .16), transparent 24rem),
+            #fff;
+    }
+
     .service-grid {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 14px;
     }
+
     .service-card {
-        position: relative;
-        min-height: 300px;
-        border: 1px solid var(--line-soft);
-        border-radius: 18px;
-        padding: 28px;
-        background:
-            linear-gradient(160deg, rgba(255,255,255,.095), rgba(255,255,255,.035)),
-            rgba(255,255,255,.025);
-        box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
-        overflow: hidden;
-        isolation: isolate;
-        transition: transform var(--fast), border-color var(--fast), background var(--fast), box-shadow var(--fast);
-    }
-    .service-card::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background:
-            radial-gradient(circle at var(--mx, 50%) var(--my, 0%), rgba(105,216,255,.22), transparent 34%),
-            linear-gradient(135deg, rgba(105,216,255,.14), transparent 34%, rgba(124,92,255,.1));
-        opacity: 0;
-        transition: opacity var(--fast);
-        z-index: -1;
-    }
-    .service-card::after {
-        content: "";
-        position: absolute;
-        left: 28px;
-        right: 28px;
-        top: 0;
-        height: 2px;
-        background: var(--accent-flow);
-        transform: scaleX(.28);
-        transform-origin: left;
-        opacity: .74;
-        transition: transform var(--fast), opacity var(--fast);
-    }
-    .service-card:hover {
-        transform: translateY(-8px);
-        border-color: rgba(105,216,255,.44);
-        background:
-            linear-gradient(160deg, rgba(105,167,255,.14), rgba(255,255,255,.045)),
-            rgba(255,255,255,.035);
-        box-shadow: 0 24px 70px rgba(47,109,255,.18), inset 0 1px 0 rgba(255,255,255,.14);
-    }
-    .service-card:hover::before {
-        opacity: 1;
-    }
-    .service-card:hover::after {
-        transform: scaleX(1);
-        opacity: 1;
-    }
-    .service-icon {
-        width: 44px;
-        height: 44px;
-        border-radius: var(--radius);
-        display: grid;
-        place-items: center;
-        margin-bottom: 34px;
-        border: 1px solid rgba(255,255,255,.13);
-        background:
-            linear-gradient(135deg, rgba(105,216,255,.12), rgba(124,92,255,.1)),
-            rgba(255,255,255,.06);
-        color: var(--champagne);
-        box-shadow: 0 0 0 0 rgba(105,216,255,0);
-        transition: color var(--fast), border-color var(--fast), box-shadow var(--fast), transform var(--fast);
-    }
-    .service-card:hover .service-icon {
-        color: var(--cyan);
-        border-color: rgba(105,216,255,.36);
-        box-shadow: 0 0 34px rgba(105,216,255,.12);
-        transform: translateY(-2px);
-    }
-    .service-icon svg { width: 22px; height: 22px; }
-    .service-card h3 {
-        font-size: 22px;
-        letter-spacing: -.02em;
-        line-height: 1.15;
-        margin-bottom: 13px;
-    }
-    .service-card p {
-        color: var(--muted);
-        font-size: 14px;
-    }
-
-    #operating-layers {
-        position: relative;
-        padding: var(--section) 0;
-        background:
-            radial-gradient(circle at 14% 16%, rgba(47,109,255,.12), transparent 25%),
-            radial-gradient(circle at 84% 24%, rgba(216,195,154,.14), transparent 24%),
-            linear-gradient(180deg, var(--paper), #fff);
-        overflow: hidden;
-    }
-    #operating-layers::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background:
-            linear-gradient(rgba(16,24,40,.035) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(16,24,40,.035) 1px, transparent 1px);
-        background-size: 62px 62px;
-        mask-image: radial-gradient(circle at 50% 10%, rgba(0,0,0,.65), transparent 70%);
-        pointer-events: none;
-    }
-    .layers-wrap {
-        position: relative;
-    }
-    .layers-header {
-        display: grid;
-        grid-template-columns: minmax(0, .95fr) minmax(280px, .55fr);
-        gap: clamp(28px, 6vw, 72px);
-        align-items: end;
-        margin-bottom: 50px;
-    }
-    .layers-note {
-        border: 1px solid rgba(16,24,40,.1);
-        border-radius: 18px;
-        padding: 22px;
-        background: rgba(255,255,255,.78);
-        box-shadow: 0 18px 50px rgba(16,24,40,.08);
-    }
-    .layers-note span {
-        display: block;
-        color: #6f5b32;
-        font-size: 11px;
-        font-weight: 800;
-        letter-spacing: .12em;
-        text-transform: uppercase;
-    }
-    .layers-note strong {
-        display: block;
-        margin-top: 10px;
-        color: var(--dark-text);
-        font-size: 18px;
-        line-height: 1.25;
-        letter-spacing: -.02em;
-    }
-    .layer-grid {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 14px;
-    }
-    .layer-card {
-        position: relative;
-        min-height: 270px;
-        border: 1px solid rgba(16,24,40,.1);
-        border-radius: 18px;
-        padding: 24px;
-        background:
-            radial-gradient(circle at var(--mx, 50%) var(--my, 0%), rgba(47,109,255,.13), transparent 38%),
-            rgba(255,255,255,.82);
-        color: var(--dark-text);
-        box-shadow: 0 18px 50px rgba(16,24,40,.08);
-        overflow: hidden;
-        transition: transform var(--fast), border-color var(--fast), box-shadow var(--fast);
-    }
-    .layer-card::before {
-        content: "";
-        position: absolute;
-        left: 24px;
-        right: 24px;
-        top: 0;
-        height: 2px;
-        background: var(--accent-flow);
-        opacity: .7;
-    }
-    .layer-card:hover {
-        transform: translateY(-5px);
-        border-color: rgba(47,109,255,.2);
-        box-shadow: 0 24px 64px rgba(16,24,40,.12);
-    }
-    .layer-mark {
-        width: 46px;
-        height: 46px;
-        border-radius: var(--radius);
-        display: grid;
-        place-items: center;
-        margin-bottom: 42px;
-        color: #07101d;
-        background: linear-gradient(135deg, #fff, #dce9ff 38%, #d8c39a);
-        box-shadow: 0 12px 32px rgba(47,109,255,.16);
-    }
-    .layer-mark svg {
-        width: 22px;
-        height: 22px;
-    }
-    .layer-card span {
-        color: #6f5b32;
-        font-size: 11px;
-        font-weight: 800;
-        letter-spacing: .12em;
-        text-transform: uppercase;
-    }
-    .layer-card h3 {
-        margin-top: 12px;
-        font-size: 22px;
-        line-height: 1.12;
-        letter-spacing: -.03em;
-    }
-    .layer-card p {
-        margin-top: 12px;
-        color: var(--soft-text);
-        font-size: 14px;
-    }
-
-    #process {
-        position: relative;
-        padding: var(--section) 0;
-        background:
-            radial-gradient(circle at 24% 0%, rgba(47,109,255,.15), transparent 30%),
-            radial-gradient(circle at 76% 80%, rgba(52,245,197,.08), transparent 28%),
-            #07101d;
-        border-top: 1px solid var(--line-soft);
-        border-bottom: 1px solid var(--line-soft);
-        overflow: hidden;
-    }
-    .process-line {
-        position: relative;
-        margin-top: 60px;
-        display: grid;
-        grid-template-columns: repeat(5, minmax(0, 1fr));
-        border: 1px solid var(--line-soft);
-        border-radius: 18px;
-        overflow: hidden;
-        background: var(--line-soft);
-        gap: 1px;
-    }
-    .process-line::before {
-        content: "";
-        position: absolute;
-        left: 28px;
-        right: 28px;
-        top: 28px;
-        height: 1px;
-        background: linear-gradient(90deg, var(--cyan), var(--royal), var(--purple), var(--champagne));
-        opacity: .72;
-        z-index: 2;
-    }
-    .step {
-        overflow: hidden;
-        min-height: 300px;
-        padding: 28px 24px;
-        background:
-            linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.025)),
-            #07101d;
-        position: relative;
-        transition: transform var(--fast), background var(--fast), box-shadow var(--fast);
-    }
-    .step::before {
-        content: "";
-        position: absolute;
-        width: 140px;
-        aspect-ratio: 1;
-        right: -72px;
-        top: -70px;
-        border-radius: 999px;
-        background: radial-gradient(circle, rgba(105,216,255,.18), transparent 62%);
-        opacity: 0;
-        transition: opacity var(--fast), transform var(--fast);
-    }
-    .step:hover {
-        transform: translateY(-5px);
-        background:
-            linear-gradient(180deg, rgba(105,216,255,.09), rgba(124,92,255,.04)),
-            #07101d;
-        box-shadow: 0 22px 58px rgba(0,0,0,.2);
-    }
-    .step:hover::before {
-        opacity: 1;
-        transform: translate(-10px, 12px);
-    }
-    .step-num {
-        color: var(--champagne);
-        font-size: 12px;
-        font-weight: 800;
-        letter-spacing: .14em;
-        position: relative;
-        z-index: 3;
-    }
-    .step h3 {
-        margin-top: 92px;
-        font-size: 24px;
-        letter-spacing: -.03em;
-    }
-    .step p {
-        margin-top: 10px;
-        color: var(--muted);
-        font-size: 13px;
-    }
-
-    #why {
-        position: relative;
-        padding: var(--section) 0;
-        background:
-            radial-gradient(circle at 8% 16%, rgba(105,216,255,.12), transparent 24%),
-            radial-gradient(circle at 92% 28%, rgba(124,92,255,.1), transparent 24%),
-            var(--paper);
-        overflow: hidden;
-    }
-    .why-grid {
-        margin-top: 50px;
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 14px;
-    }
-    .why-card,
-    .impact-card {
-        position: relative;
-        border: 1px solid rgba(16,24,40,.1);
-        border-radius: 18px;
-        background: rgba(255,255,255,.74);
-        padding: 26px;
-        color: var(--dark-text);
-        transition: transform var(--fast), box-shadow var(--fast);
-        overflow: hidden;
-    }
-    .why-card::before,
-    .impact-card::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(circle at var(--mx, 50%) var(--my, 0%), rgba(47,109,255,.14), transparent 38%);
-        opacity: 0;
-        transition: opacity var(--fast);
-    }
-    .why-card:hover,
-    .impact-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 22px 56px rgba(16,24,40,.12);
-    }
-    .why-card:hover::before,
-    .impact-card:hover::before {
-        opacity: 1;
-    }
-    .why-card h3 {
-        font-size: 19px;
-        margin-bottom: 10px;
-        letter-spacing: -.02em;
-    }
-    .why-card p,
-    .impact-card p {
-        color: var(--soft-text);
-        font-size: 14px;
-    }
-
-    #team {
-        position: relative;
-        padding: var(--section) 0;
-        background:
-            radial-gradient(circle at 14% 28%, rgba(124,92,255,.12), transparent 28%),
-            radial-gradient(circle at 88% 72%, rgba(105,216,255,.1), transparent 30%),
-            linear-gradient(180deg, var(--midnight), #0b1222);
-        overflow: hidden;
-    }
-    .team-system {
-        margin-top: 54px;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        gap: 14px;
-    }
-    .role-card {
-        isolation: isolate;
-        border: 1px solid var(--line-soft);
-        border-radius: 18px;
-        min-height: 250px;
-        padding: 24px;
-        background: linear-gradient(145deg, rgba(255,255,255,.095), rgba(255,255,255,.032));
-        position: relative;
-        overflow: hidden;
-        transition: transform var(--fast), border-color var(--fast), box-shadow var(--fast);
-    }
-    .role-card::before {
-        content: "";
-        position: absolute;
-        left: 24px;
-        right: 24px;
-        top: 78px;
-        height: 1px;
-        background: linear-gradient(90deg, var(--blue), transparent);
-    }
-    .role-card::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(circle at var(--mx, 50%) var(--my, 0%), rgba(124,92,255,.22), transparent 42%);
-        opacity: 0;
-        transition: opacity var(--fast);
-        z-index: -1;
-    }
-    .role-card:hover {
-        transform: translateY(-6px);
-        border-color: rgba(124,92,255,.38);
-        box-shadow: 0 24px 70px rgba(47,109,255,.12);
-    }
-    .role-card:hover::after {
-        opacity: 1;
-    }
-    .role-avatar {
-        width: 46px;
-        height: 46px;
-        border-radius: 999px;
-        border: 1px solid rgba(255,255,255,.16);
-        background:
-            linear-gradient(135deg, rgba(105,216,255,.42), rgba(124,92,255,.3), rgba(216,195,154,.2)),
-            rgba(255,255,255,.05);
-        box-shadow: inset 0 1px 0 rgba(255,255,255,.18);
-    }
-    .role-card h3 {
-        margin-top: 70px;
-        font-size: 21px;
-        letter-spacing: -.02em;
-    }
-    .role-card p {
-        margin-top: 10px;
-        color: var(--muted);
-        font-size: 13px;
-    }
-    .ceo-feature {
-        margin-top: clamp(48px, 7vw, 84px);
-        display: grid;
-        grid-template-columns: .78fr 1fr;
-        gap: clamp(32px, 6vw, 72px);
-        align-items: center;
-    }
-    .ceo-portrait {
-        position: relative;
-        border: 1px solid rgba(255,255,255,.14);
-        border-radius: 24px;
-        overflow: hidden;
-        background:
-            radial-gradient(circle at var(--mx, 50%) var(--my, 0%), rgba(105,216,255,.18), transparent 38%),
-            linear-gradient(145deg, rgba(255,255,255,.11), rgba(255,255,255,.035));
-        box-shadow: 0 30px 90px rgba(0,0,0,.26), 0 0 70px rgba(47,109,255,.12);
-    }
-    .ceo-portrait::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background:
-            linear-gradient(180deg, transparent 46%, rgba(5,7,13,.74)),
-            radial-gradient(circle at 18% 16%, rgba(105,216,255,.18), transparent 34%);
-        z-index: 1;
-        pointer-events: none;
-    }
-    .ceo-portrait::after {
-        content: "";
-        position: absolute;
-        left: 22px;
-        right: 22px;
-        top: 0;
-        height: 2px;
-        background: var(--accent-flow);
-        z-index: 2;
-    }
-    .ceo-portrait img {
-        width: 100%;
-        aspect-ratio: 4 / 5;
-        height: auto;
-        object-fit: cover;
-        object-position: center 12%;
-        filter: saturate(.9) contrast(1.04);
-        transition: transform 800ms var(--ease), filter var(--fast);
-    }
-    .ceo-portrait:hover img {
-        transform: scale(1.035);
-        filter: saturate(1) contrast(1.06);
-    }
-    .ceo-badge {
-        position: absolute;
-        z-index: 3;
-        left: 22px;
-        right: 22px;
-        bottom: 22px;
-        display: flex;
-        justify-content: space-between;
-        gap: 18px;
-        align-items: end;
-    }
-    .ceo-badge strong {
-        display: block;
-        font-size: 18px;
-        letter-spacing: -.02em;
-        line-height: 1.15;
-    }
-    .ceo-badge span {
-        display: block;
-        margin-top: 5px;
-        color: var(--muted);
-        font-size: 12px;
-        font-weight: 700;
-        letter-spacing: .08em;
-        text-transform: uppercase;
-    }
-    .ceo-chip {
-        flex: 0 0 auto;
-        border: 1px solid rgba(255,255,255,.16);
-        border-radius: 999px;
-        padding: 8px 11px;
-        background: rgba(5,7,13,.52);
-        color: var(--champagne);
-        font-size: 11px;
-        font-weight: 800;
-        letter-spacing: .08em;
-        text-transform: uppercase;
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-    }
-    .ceo-copy {
-        position: relative;
-        border: 1px solid var(--line-soft);
-        border-radius: 24px;
-        padding: clamp(28px, 5vw, 48px);
-        background:
-            radial-gradient(circle at var(--mx, 50%) var(--my, 0%), rgba(124,92,255,.16), transparent 38%),
-            linear-gradient(145deg, rgba(255,255,255,.085), rgba(255,255,255,.03));
-        box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
-        overflow: hidden;
-    }
-    .ceo-copy::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        width: 2px;
-        background: var(--accent-flow);
-    }
-    .ceo-copy h3 {
-        font-size: clamp(30px, 4vw, 52px);
-        line-height: 1.02;
-        letter-spacing: -.045em;
-        max-width: 680px;
-    }
-    .ceo-copy p {
-        margin-top: 18px;
-        color: var(--muted);
-        font-size: 16px;
-        max-width: 650px;
-    }
-    .ceo-points {
-        margin-top: 30px;
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 10px;
-    }
-    .ceo-point {
-        border: 1px solid var(--line-soft);
-        border-radius: 14px;
-        padding: 16px;
-        background: rgba(255,255,255,.045);
-    }
-    .ceo-point span {
-        color: var(--champagne);
-        font-size: 11px;
-        font-weight: 800;
-        letter-spacing: .1em;
-        text-transform: uppercase;
-    }
-    .ceo-point strong {
-        display: block;
-        margin-top: 8px;
-        font-size: 14px;
-        line-height: 1.3;
-    }
-
-    #impact {
-        position: relative;
-        padding: var(--section) 0;
-        background:
-            radial-gradient(circle at 15% 24%, rgba(52,245,197,.1), transparent 24%),
-            radial-gradient(circle at 78% 12%, rgba(47,109,255,.11), transparent 24%),
-            linear-gradient(180deg, var(--paper), var(--paper-2));
-        overflow: hidden;
-    }
-    .impact-grid {
-        margin-top: 50px;
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 14px;
-    }
-    .impact-card {
-        min-height: 210px;
+        min-height: 286px;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
-    }
-    .impact-card span {
-        color: #6f5b32;
-        font-size: 11px;
-        font-weight: 800;
-        letter-spacing: .12em;
-        text-transform: uppercase;
-    }
-    .impact-card h3 {
-        margin-top: 34px;
-        font-size: 24px;
-        letter-spacing: -.03em;
-        line-height: 1.12;
-    }
-    .impact-card h3,
-    .impact-card p,
-    .impact-card span,
-    .why-card h3,
-    .why-card p {
-        position: relative;
-        z-index: 1;
+        padding: 24px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, .8);
+        box-shadow: 0 14px 40px rgba(20, 45, 85, .06);
+        transition: transform var(--fast), box-shadow var(--fast), border-color var(--fast);
     }
 
-    #contact {
-        position: relative;
-        padding: var(--section) 0;
-        background:
-            radial-gradient(ellipse at 22% 0%, rgba(105,216,255,.18), transparent 42%),
-            radial-gradient(ellipse at 82% 32%, rgba(124,92,255,.16), transparent 36%),
-            linear-gradient(135deg, rgba(9,17,31,.94), rgba(5,7,13,1));
+    .service-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(23, 105, 255, .22);
+        box-shadow: var(--shadow-md);
+    }
+
+    .service-card header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 34px;
+    }
+
+    .service-num {
+        color: var(--muted);
+        font-size: .78rem;
+        font-weight: 900;
+    }
+
+    .service-card h3 {
+        margin-top: auto;
+        font-size: 1.22rem;
+        line-height: 1.2;
+    }
+
+    .service-card p {
+        margin-top: 12px;
+        color: var(--muted);
+        font-size: .92rem;
+        line-height: 1.72;
+    }
+
+    /* Operating Layers */
+    #operating-layers {
         overflow: hidden;
+        background: #f2f8ff;
     }
-    #contact::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background:
-            linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
-        background-size: 64px 64px;
-        pointer-events: none;
-    }
-    .contact-panel {
+
+    .layers-board {
         position: relative;
         display: grid;
-        grid-template-columns: .88fr 1.12fr;
-        gap: clamp(36px, 6vw, 74px);
-        padding: clamp(28px, 5vw, 56px);
-        border: 1px solid var(--line);
-        border-radius: 24px;
+        grid-template-columns: .78fr 1fr;
+        gap: 26px;
+        align-items: stretch;
+        padding: 24px;
+        border: 1px solid rgba(255, 255, 255, .82);
+        border-radius: 8px;
         background:
-            radial-gradient(circle at var(--mx, 20%) var(--my, 0%), rgba(105,216,255,.12), transparent 38%),
-            linear-gradient(145deg, rgba(255,255,255,.11), rgba(255,255,255,.035));
-        box-shadow: 0 34px 100px rgba(47,109,255,.13), var(--shadow);
-        backdrop-filter: blur(22px);
-        -webkit-backdrop-filter: blur(22px);
+            linear-gradient(rgba(23, 105, 255, .06) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(23, 105, 255, .06) 1px, transparent 1px),
+            rgba(255, 255, 255, .7);
+        background-size: 36px 36px;
+        box-shadow: var(--shadow-md);
+    }
+
+    .layer-map {
+        position: relative;
+        min-height: 520px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, .78);
         overflow: hidden;
     }
-    .contact-panel::before {
+
+    .layer-node {
+        position: absolute;
+        display: grid;
+        gap: 8px;
+        width: 190px;
+        padding: 16px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+        box-shadow: var(--shadow-sm);
+    }
+
+    .layer-node::after {
+        content: "";
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        border: 3px solid #fff;
+        border-radius: 999px;
+        background: var(--blue);
+        box-shadow: 0 0 0 1px rgba(23, 105, 255, .24);
+    }
+
+    .node-one {
+        top: 46px;
+        left: 42px;
+    }
+
+    .node-one::after {
+        right: -7px;
+        top: 50%;
+    }
+
+    .node-two {
+        top: 178px;
+        right: 44px;
+    }
+
+    .node-two::after {
+        left: -7px;
+        top: 50%;
+        background: var(--teal);
+    }
+
+    .node-three {
+        left: 54px;
+        bottom: 118px;
+    }
+
+    .node-three::after {
+        right: -7px;
+        top: 50%;
+        background: var(--coral);
+    }
+
+    .node-four {
+        right: 54px;
+        bottom: 36px;
+    }
+
+    .node-four::after {
+        left: -7px;
+        top: 50%;
+        background: var(--amber);
+    }
+
+    .layer-node span {
+        color: var(--muted);
+        font-size: .72rem;
+        font-weight: 900;
+        text-transform: uppercase;
+    }
+
+    .layer-node strong {
+        color: var(--navy);
+        font-size: 1rem;
+        line-height: 1.25;
+    }
+
+    .layer-line {
+        position: absolute;
+        left: 50%;
+        top: 74px;
+        bottom: 74px;
+        width: 2px;
+        border-radius: 999px;
+        background: linear-gradient(var(--blue), var(--teal), var(--coral), var(--amber));
+        transform: translateX(-50%);
+    }
+
+    .layer-list {
+        display: grid;
+        gap: 12px;
+    }
+
+    .layer-item {
+        display: grid;
+        grid-template-columns: 50px 1fr;
+        gap: 16px;
+        align-items: start;
+        padding: 20px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, .84);
+        box-shadow: 0 10px 30px rgba(20, 45, 85, .05);
+    }
+
+    .layer-item h3 {
+        font-size: 1.08rem;
+        line-height: 1.24;
+    }
+
+    .layer-item p {
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: .91rem;
+        line-height: 1.68;
+    }
+
+    /* Process */
+    #process {
+        background: #fff;
+    }
+
+    .process-strip {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 0;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+        box-shadow: var(--shadow-md);
+        overflow: hidden;
+    }
+
+    .process-step {
+        position: relative;
+        min-height: 300px;
+        padding: 26px 20px 24px;
+        border-right: 1px solid var(--line);
+        background: linear-gradient(180deg, #fff, #f8fbff);
+    }
+
+    .process-step:last-child {
+        border-right: 0;
+    }
+
+    .process-step::before {
         content: "";
         position: absolute;
         left: 0;
         right: 0;
         top: 0;
-        height: 2px;
-        background: var(--accent-flow);
-        opacity: .78;
+        height: 4px;
+        background: var(--step-color);
     }
-    .contact-meta {
-        margin-top: 40px;
+
+    .step-num {
+        display: inline-grid;
+        place-items: center;
+        width: 38px;
+        height: 38px;
+        border-radius: 999px;
+        background: color-mix(in srgb, var(--step-color) 14%, #fff);
+        color: var(--step-color);
+        font-size: .8rem;
+        font-weight: 900;
+        font-variant-numeric: tabular-nums;
+    }
+
+    .process-step h3 {
+        margin-top: 74px;
+        font-size: 1.12rem;
+    }
+
+    .process-step p {
+        margin-top: 11px;
+        color: var(--muted);
+        font-size: .9rem;
+        line-height: 1.66;
+    }
+
+    /* Why */
+    #why {
+        background:
+            linear-gradient(135deg, rgba(23, 105, 255, .08), transparent 36rem),
+            linear-gradient(315deg, rgba(23, 198, 163, .12), transparent 30rem),
+            #f7fbff;
+    }
+
+    .why-grid {
         display: grid;
-        gap: 16px;
-    }
-    .meta-line {
-        padding-top: 16px;
-        border-top: 1px solid var(--line-soft);
-    }
-    .meta-line span {
-        display: block;
-        color: var(--faint);
-        font-size: 11px;
-        font-weight: 800;
-        letter-spacing: .12em;
-        text-transform: uppercase;
-    }
-    .meta-line strong {
-        display: block;
-        margin-top: 4px;
-        font-size: 16px;
-    }
-    .cform {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 14px;
     }
-    .field { display: grid; gap: 7px; }
-    .field.full { grid-column: 1 / -1; }
-    .field label {
-        color: var(--faint);
-        font-size: 10px;
-        font-weight: 800;
-        letter-spacing: .13em;
+
+    .why-card {
+        min-height: 214px;
+        padding: 24px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, .78);
+        box-shadow: 0 12px 34px rgba(20, 45, 85, .06);
+    }
+
+    .why-card h3 {
+        margin-top: 28px;
+        font-size: 1.12rem;
+        line-height: 1.25;
+    }
+
+    .why-card p {
+        margin-top: 10px;
+        color: var(--muted);
+        font-size: .9rem;
+        line-height: 1.68;
+    }
+
+    /* Team */
+    #team {
+        background: #fff;
+    }
+
+    .team-layout {
+        display: grid;
+        grid-template-columns: .82fr 1fr;
+        gap: 62px;
+        align-items: center;
+    }
+
+    .ceo-photo {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--surface-2);
+        box-shadow: var(--shadow-md);
+    }
+
+    .ceo-photo img {
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        object-fit: cover;
+        object-position: center 12%;
+    }
+
+    .ceo-card {
+        position: absolute;
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+        padding: 18px;
+        border: 1px solid rgba(255, 255, 255, .74);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, .9);
+        box-shadow: var(--shadow-sm);
+    }
+
+    .ceo-card strong {
+        display: block;
+        color: var(--navy);
+        font-size: 1.08rem;
+    }
+
+    .ceo-card span {
+        display: block;
+        margin-top: 4px;
+        color: var(--blue);
+        font-size: .78rem;
+        font-weight: 900;
         text-transform: uppercase;
     }
+
+    .team-pill-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 30px;
+    }
+
+    .team-pill {
+        min-height: 104px;
+        padding: 16px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: linear-gradient(180deg, #fff, #f8fbff);
+    }
+
+    .team-pill span {
+        color: var(--muted);
+        font-size: .75rem;
+        font-weight: 900;
+        text-transform: uppercase;
+    }
+
+    .team-pill strong {
+        display: block;
+        margin-top: 10px;
+        color: var(--navy);
+        font-size: .95rem;
+        line-height: 1.35;
+    }
+
+    /* Impact */
+    #impact {
+        background:
+            linear-gradient(180deg, #f7fbff, #fff);
+    }
+
+    .impact-layout {
+        display: grid;
+        grid-template-columns: 1fr .78fr;
+        gap: 52px;
+        align-items: stretch;
+    }
+
+    .impact-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 32px;
+    }
+
+    .metric-card {
+        min-height: 184px;
+        padding: 22px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, .82);
+        box-shadow: 0 12px 34px rgba(20, 45, 85, .06);
+    }
+
+    .metric-card span {
+        color: var(--blue);
+        font-size: .78rem;
+        font-weight: 900;
+        text-transform: uppercase;
+    }
+
+    .metric-card h3 {
+        margin-top: 36px;
+        font-size: 1.2rem;
+        line-height: 1.22;
+    }
+
+    .metric-card p {
+        margin-top: 10px;
+        color: var(--muted);
+        font-size: .9rem;
+        line-height: 1.64;
+    }
+
+    .impact-image {
+        position: relative;
+        overflow: hidden;
+        min-height: 560px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--surface-2);
+        box-shadow: var(--shadow-md);
+    }
+
+    .impact-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 46%;
+    }
+
+    .impact-image::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, transparent 48%, rgba(7, 22, 47, .64));
+    }
+
+    .impact-caption {
+        position: absolute;
+        z-index: 1;
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+        padding: 18px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, .9);
+        box-shadow: var(--shadow-sm);
+    }
+
+    .impact-caption strong {
+        display: block;
+        color: var(--navy);
+    }
+
+    .impact-caption span {
+        display: block;
+        margin-top: 5px;
+        color: var(--muted);
+        font-size: .86rem;
+        line-height: 1.5;
+    }
+
+    /* Contact */
+    #contact {
+        overflow: hidden;
+        background:
+            radial-gradient(circle at 18% 20%, rgba(23, 105, 255, .16), transparent 27rem),
+            radial-gradient(circle at 80% 78%, rgba(23, 198, 163, .16), transparent 24rem),
+            #eef6ff;
+    }
+
+    .contact-panel {
+        display: grid;
+        grid-template-columns: .86fr 1fr;
+        gap: 34px;
+        padding: 24px;
+        border: 1px solid rgba(255, 255, 255, .86);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, .74);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .contact-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 32px;
+        padding: 30px;
+        border-radius: 8px;
+        background: linear-gradient(135deg, var(--navy), #123d87 66%, #0b86a8);
+        color: #fff;
+        overflow: hidden;
+    }
+
+    .contact-info h2 {
+        margin-top: 14px;
+        color: #fff;
+        font-size: 3rem;
+        line-height: 1.06;
+    }
+
+    .contact-info p {
+        max-width: 470px;
+        margin-top: 16px;
+        color: rgba(255, 255, 255, .78);
+        line-height: 1.75;
+    }
+
+    .contact-details {
+        display: grid;
+        gap: 10px;
+    }
+
+    .contact-detail {
+        display: grid;
+        gap: 4px;
+        padding-top: 14px;
+        border-top: 1px solid rgba(255, 255, 255, .16);
+    }
+
+    .contact-detail span {
+        color: rgba(255, 255, 255, .58);
+        font-size: .75rem;
+        font-weight: 900;
+        text-transform: uppercase;
+    }
+
+    .contact-detail strong,
+    .contact-detail a {
+        color: #fff;
+        font-size: .98rem;
+        font-weight: 700;
+        line-height: 1.35;
+    }
+
+    .contact-image {
+        min-height: 210px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, .18);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, .1);
+    }
+
+    .contact-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 34%;
+    }
+
+    .contact-form {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+        padding: 12px;
+    }
+
+    .field {
+        display: grid;
+        gap: 7px;
+    }
+
+    .field.full {
+        grid-column: 1 / -1;
+    }
+
+    .field label {
+        color: var(--navy);
+        font-size: .78rem;
+        font-weight: 900;
+    }
+
     .field input,
     .field select,
     .field textarea {
         width: 100%;
-        border: 1px solid var(--line-soft);
-        border-radius: var(--radius);
+        min-height: 50px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+        color: var(--navy);
+        padding: 0 14px;
         outline: none;
-        color: var(--white);
-        background: rgba(5,7,13,.42);
-        padding: 14px 14px;
-        transition: border-color var(--fast), background var(--fast), box-shadow var(--fast);
+        transition: border-color var(--fast), box-shadow var(--fast);
     }
+
+    .field textarea {
+        min-height: 132px;
+        padding: 13px 14px;
+        resize: vertical;
+    }
+
     .field select {
         appearance: none;
         -webkit-appearance: none;
-        background-image: linear-gradient(45deg, transparent 50%, var(--champagne) 50%), linear-gradient(135deg, var(--champagne) 50%, transparent 50%);
-        background-position: calc(100% - 18px) 21px, calc(100% - 12px) 21px;
-        background-size: 6px 6px, 6px 6px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9' fill='none'%3E%3Cpath d='M1 1.5L7 7.5L13 1.5' stroke='%2364748b' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        background-position: calc(100% - 14px) 50%;
         background-repeat: no-repeat;
-        padding-right: 42px;
+        padding-right: 40px;
     }
-    .field select option {
-        background: var(--midnight);
-        color: var(--white);
-    }
-    .field textarea {
-        min-height: 132px;
-        resize: vertical;
-    }
+
     .field input:focus,
     .field select:focus,
     .field textarea:focus {
-        border-color: rgba(105,167,255,.68);
-        background: rgba(5,7,13,.6);
-        box-shadow: 0 0 0 4px rgba(105,167,255,.1);
+        border-color: rgba(23, 105, 255, .48);
+        box-shadow: 0 0 0 4px rgba(23, 105, 255, .1);
     }
-    .field ::placeholder { color: rgba(247,249,252,.32); }
+
+    .field ::placeholder {
+        color: #95a3b6;
+    }
+
     .form-ok {
         display: none;
         grid-column: 1 / -1;
-        padding: 16px;
-        border: 1px solid rgba(216,195,154,.4);
-        border-radius: var(--radius);
-        background: rgba(216,195,154,.09);
-        color: var(--white);
+        padding: 14px 16px;
+        border: 1px solid rgba(23, 198, 163, .25);
+        border-radius: 8px;
+        background: rgba(23, 198, 163, .1);
+        color: #087b6a;
+        font-weight: 700;
     }
+
     .form-foot {
         grid-column: 1 / -1;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 18px;
-        margin-top: 6px;
+        gap: 16px;
+        margin-top: 4px;
     }
+
     .form-note {
-        color: var(--faint);
-        font-size: 12px;
+        color: var(--muted);
+        font-size: .84rem;
+        line-height: 1.45;
     }
+
     .btn-form {
-        cursor: pointer;
-        padding: 0 24px;
+        min-width: 190px;
+        padding: 0 22px;
+        border: 0;
+        background: var(--blue);
+        color: #fff;
+        box-shadow: 0 12px 30px rgba(23, 105, 255, .24);
     }
+
+    .btn-form:hover {
+        transform: translateY(-2px);
+        background: #0758ed;
+    }
+
     .btn-form:disabled {
-        cursor: default;
-        opacity: .58;
+        cursor: not-allowed;
+        opacity: .62;
         transform: none;
     }
 
+    /* Footer */
     #footer {
-        background: var(--midnight);
-        border-top: 1px solid var(--line-soft);
-        padding: 60px 0 34px;
+        padding: 54px 0 28px;
+        background: #07162f;
+        color: rgba(255, 255, 255, .78);
     }
+
     .footer-grid {
         display: grid;
-        grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
-        gap: 44px;
-        margin-bottom: 44px;
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+        gap: 38px;
+        margin-bottom: 38px;
     }
+
+    .footer-brand {
+        display: block;
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 900;
+    }
+
     .footer-copy {
-        color: var(--faint);
-        max-width: 330px;
-        margin-top: 18px;
-        font-size: 14px;
+        max-width: 310px;
+        margin-top: 12px;
+        color: rgba(255, 255, 255, .6);
+        font-size: .9rem;
+        line-height: 1.7;
     }
+
     .footer-col h4 {
-        font-size: 11px;
-        letter-spacing: .14em;
+        color: rgba(255, 255, 255, .5);
+        font-size: .76rem;
+        font-weight: 900;
         text-transform: uppercase;
-        color: var(--faint);
-        margin-bottom: 16px;
     }
+
     .footer-links {
-        list-style: none;
         display: grid;
-        gap: 10px;
+        gap: 9px;
+        margin-top: 14px;
+        list-style: none;
     }
+
     .footer-links a {
-        color: var(--muted);
-        font-size: 14px;
+        color: rgba(255, 255, 255, .72);
+        font-size: .88rem;
         transition: color var(--fast);
     }
-    .footer-links a:hover { color: var(--white); }
+
+    .footer-links a:hover {
+        color: #fff;
+    }
+
     .footer-bottom {
-        border-top: 1px solid var(--line-soft);
-        padding-top: 24px;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 20px;
-        color: var(--faint);
-        font-size: 12px;
+        gap: 18px;
+        padding-top: 22px;
+        border-top: 1px solid rgba(255, 255, 255, .12);
+        color: rgba(255, 255, 255, .5);
+        font-size: .82rem;
         flex-wrap: wrap;
     }
+
     .footer-legal {
         display: flex;
-        gap: 20px;
+        gap: 18px;
     }
 
+    /* Motion */
+    .r {
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 520ms ease-out, transform 520ms ease-out;
+    }
+
+    .motion-ready .r:not(.on) {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    .d1 {
+        transition-delay: 70ms;
+    }
+
+    .d2 {
+        transition-delay: 140ms;
+    }
+
+    .d3 {
+        transition-delay: 210ms;
+    }
+
+    /* Responsive */
     @media (max-width: 1120px) {
-        .hero-shell { grid-template-columns: 1fr; }
-        .hero-content { max-width: 820px; }
-        .hero-visual { min-height: 560px; max-width: 760px; width: 100%; margin: 0 auto; }
+        .hero-main,
+        .about-layout,
+        .team-layout,
+        .impact-layout,
+        .contact-panel {
+            grid-template-columns: 1fr;
+        }
+
+        .hero-visual {
+            min-height: 560px;
+            max-width: 720px;
+        }
+
+        .system-card {
+            margin-left: 0;
+        }
+
         .service-grid,
-        .layer-grid,
-        .why-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-        .process-line { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-        .team-system,
-        .impact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-        .ceo-feature { grid-template-columns: 1fr; }
-        .ceo-portrait { max-width: 520px; }
-        .footer-grid { grid-template-columns: 1fr 1fr; }
+        .why-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .layers-board {
+            grid-template-columns: 1fr;
+        }
+
+        .impact-image {
+            min-height: 390px;
+        }
+
+        .footer-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
     }
-    @media (max-width: 820px) {
+
+    @media (max-width: 880px) {
+        :root {
+            --px: 20px;
+        }
+
+        #nav {
+            min-height: 60px;
+            padding-left: 16px;
+        }
+
         .nav-links,
-        .nav-cta { display: none; }
-        .nav-ham { display: flex; }
-        .hero-shell { padding-top: 8px; }
-        .hero-trust-row {
-            align-items: flex-start;
-            flex-direction: column;
-            gap: 14px;
-            padding: 20px 0;
+        .nav-cta {
+            display: none;
         }
-        .hero-trust-items {
+
+        .nav-menu {
+            display: grid;
+        }
+
+        .hero-h {
+            font-size: 3.45rem;
+        }
+
+        .section-title {
+            font-size: 2.65rem;
+        }
+
+        .section-head {
+            grid-template-columns: 1fr;
+            gap: 18px;
+        }
+
+        .hero-main {
+            gap: 38px;
+        }
+
+        .hero-proof,
+        .trust-row {
+            grid-template-columns: 1fr;
+        }
+
+        .hero-proof {
+            display: grid;
+        }
+
+        .trust-row {
+            display: grid;
+            align-items: start;
+        }
+
+        .trust-tags {
             justify-content: flex-start;
-            flex-wrap: wrap;
-            row-gap: 10px;
         }
-        .hero-visual { min-height: 500px; overflow: hidden; }
-        .visual-stage { inset: -8px -10px 0 -10px; }
-        .dashboard-main { left: 7%; top: 7%; width: 76%; min-height: 318px; }
-        .kpi-card { right: 0; top: 18%; }
-        .progress-card { left: 0; bottom: 7%; }
-        .network-card { right: 4%; bottom: 4%; }
-        .about-grid,
-        .contact-panel,
-        .layers-header { grid-template-columns: 1fr; }
-        .about-card img { height: 360px; }
-        .ceo-points { grid-template-columns: 1fr; }
-        .intro-row { display: block; }
-        .process-line { grid-template-columns: 1fr; }
-        .step { min-height: 230px; }
-        .step h3 { margin-top: 54px; }
+
+        .process-strip {
+            grid-template-columns: 1fr;
+        }
+
+        .process-step {
+            min-height: auto;
+            border-right: 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .process-step:last-child {
+            border-bottom: 0;
+        }
+
+        .process-step h3 {
+            margin-top: 34px;
+        }
+
+        .layer-map {
+            min-height: 470px;
+        }
+
+        .layer-node {
+            width: 172px;
+        }
+
+        .team-pill-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .contact-info h2 {
+            font-size: 2.45rem;
+        }
     }
-    @media (max-width: 620px) {
-        :root { --px: 18px; }
-        #hero { padding-top: 122px; }
-        .hero-title {
-            font-size: clamp(40px, 12.2vw, 58px);
-            line-height: 1;
-            letter-spacing: -.052em;
+
+    @media (max-width: 640px) {
+        .section {
+            padding: 78px 0;
         }
-        .hero-copy { margin-top: 22px; }
+
+        #hero {
+            min-height: auto;
+            padding-top: 118px;
+        }
+
+        .brand-name {
+            max-width: 145px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .hero-h {
+            max-width: 100%;
+            overflow-wrap: break-word;
+            font-size: 2.35rem;
+            line-height: 1.08;
+        }
+
+        .hero-kicker {
+            max-width: 100%;
+            white-space: normal;
+        }
+
+        .section-title,
+        .contact-info h2 {
+            font-size: 2.2rem;
+        }
+
+        .hero-p {
+            font-size: 1rem;
+        }
+
         .hero-actions,
-        .form-foot { align-items: stretch; flex-direction: column; }
-        .hero-actions {
-            display: flex;
-            width: 100%;
-            border-radius: 18px;
+        .form-foot {
+            flex-direction: column;
+            align-items: stretch;
         }
+
         .btn-primary,
         .btn-secondary,
-        .btn-form { width: 100%; }
-        .hero-trust { margin-top: 14px; }
-        .hero-trust-items {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 10px 20px;
+        .btn-form {
+            width: 100%;
         }
-        .hero-trust-items span {
-            white-space: normal;
-            line-height: 1.25;
-        }
+
+        .hero-proof,
+        .proof-grid,
         .service-grid,
-        .layer-grid,
         .why-grid,
-        .team-system,
         .impact-grid,
-        .footer-grid,
-        .about-principles,
-        .cform { grid-template-columns: 1fr; }
-        .ceo-badge {
-            align-items: flex-start;
-            flex-direction: column;
+        .contact-form,
+        .footer-grid {
+            grid-template-columns: 1fr;
         }
-        .ceo-copy { padding: 26px; }
-        .hero-visual { min-height: 620px; }
-        .visual-stage {
-            inset: 0;
-            transform-origin: center top;
+
+        .hero-visual {
+            min-height: auto;
+            padding: 28px 0 60px;
         }
-        .dashboard-main {
-            left: 0;
-            right: 0;
-            top: 4%;
-            width: auto;
-            min-height: 300px;
-            padding: 17px;
+
+        .system-card {
+            width: 100%;
         }
-        .dashboard-head { margin-bottom: 16px; }
-        .dashboard-head strong { font-size: 21px; }
-        .chart-frame { height: 118px; }
-        .dashboard-meta { grid-template-columns: 1fr 1fr 1fr; gap: 7px; }
-        .dashboard-meta div { padding: 9px; }
-        .dashboard-meta strong { font-size: 14px; }
-        .kpi-card {
-            right: 0;
-            top: 400px;
-            width: min(170px, 44%);
-            padding: 15px;
+
+        .module-row {
+            grid-template-columns: 40px 1fr;
         }
-        .kpi-card strong { font-size: 32px; }
-        .progress-card {
-            left: 0;
-            top: 400px;
+
+        .module-meter {
+            grid-column: 2;
+            width: 100%;
+        }
+
+        .visual-badge {
+            position: relative;
+            min-width: 0;
+            margin-top: 12px;
+        }
+
+        .badge-a,
+        .badge-b {
+            top: auto;
+            right: auto;
             bottom: auto;
-            width: min(205px, 53%);
-            padding: 15px;
+            left: auto;
         }
-        .progress-card strong { font-size: 16px; }
-        .network-card { display: none; }
-        .visual-chip { right: 4%; top: auto; bottom: 7%; min-width: 0; }
-        .about-caption { grid-template-columns: 1fr; }
-        .section-heading { font-size: clamp(32px, 10.5vw, 46px); }
-        .footer-bottom { align-items: flex-start; flex-direction: column; }
+
+        .image-stack {
+            min-height: 455px;
+        }
+
+        .photo-main {
+            inset: 0 0 92px 0;
+        }
+
+        .photo-sub {
+            display: none;
+        }
+
+        .image-note {
+            left: 16px;
+            right: 16px;
+            width: auto;
+        }
+
+        .layers-board,
+        .contact-panel {
+            padding: 12px;
+        }
+
+        .layer-map {
+            display: none;
+        }
+
+        .layer-item {
+            grid-template-columns: 44px 1fr;
+            padding: 16px;
+        }
+
+        .ceo-card,
+        .impact-caption {
+            left: 12px;
+            right: 12px;
+            bottom: 12px;
+        }
+
+        .contact-info {
+            padding: 22px;
+        }
+
+        .footer-bottom {
+            flex-direction: column;
+            align-items: flex-start;
+        }
     }
+
     @media (prefers-reduced-motion: reduce) {
-        *, *::before, *::after {
+        *,
+        *::before,
+        *::after {
             animation-duration: .01ms !important;
             animation-iteration-count: 1 !important;
             scroll-behavior: auto !important;
@@ -1995,344 +1930,502 @@
     </style>
 </head>
 <body>
-<div id="mob-nav">
-    <ul class="mob-links">
-        <li><a href="#about" onclick="closeMob()">About</a></li>
-        <li><a href="#services" onclick="closeMob()">Services</a></li>
-        <li><a href="#process" onclick="closeMob()">Process</a></li>
-        <li><a href="#team" onclick="closeMob()">Team</a></li>
-        <li><a href="#impact" onclick="closeMob()">Impact</a></li>
-        <li><a href="#contact" onclick="closeMob()">Contact</a></li>
-    </ul>
-    <div class="mob-footer">Strategic consulting for businesses building their next stage.</div>
-</div>
 
-<nav id="nav">
+<nav id="nav" aria-label="Main navigation">
     <a href="#hero" class="brand" aria-label="Elevated Group home">
-        <span class="brand-mark">EG</span>
-        <span class="brand-text">
-            <span class="brand-name">Elevated Group</span>
-            <span class="brand-sub">Consulting</span>
+        <span class="brand-mark" aria-hidden="true">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none">
+                <path d="M5 16.5L12 4l7 12.5M8.5 12h7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
         </span>
+        <span class="brand-name">Elevated Group</span>
     </a>
     <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#services">Services</a></li>
+        <li><a href="#operating-layers">Method</a></li>
         <li><a href="#process">Process</a></li>
-        <li><a href="#team">Team</a></li>
+        <li><a href="#team">Leadership</a></li>
         <li><a href="#impact">Impact</a></li>
     </ul>
-    <a class="nav-cta" href="#contact">Book a Consultation</a>
-    <button class="nav-ham" id="ham" type="button" aria-label="Open menu" onclick="toggleMob()">
-        <span></span><span></span><span></span>
+    <a class="btn-primary nav-cta" href="#contact">Book a Call</a>
+    <button class="nav-menu" id="ham" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mob-nav">
+        <span aria-hidden="true"></span>
     </button>
 </nav>
 
+<aside id="mob-nav" aria-label="Mobile navigation" aria-hidden="true" inert>
+    <ul class="mob-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#operating-layers">Method</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#team">Leadership</a></li>
+        <li><a href="#impact">Impact</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="mob-footer">
+        <strong>Strategy, systems, and execution for ambitious teams.</strong>
+        <a class="btn-primary" href="#contact">Book a Consultation</a>
+    </div>
+</aside>
+
 <main>
     <section id="hero">
-        <div class="hero-system-bg" aria-hidden="true"></div>
-        <div class="hero-shell">
-            <div class="hero-content">
-                <div class="hero-kicker r on"><span></span>Strategy, operations, growth systems</div>
-                <h1 class="hero-title r on d1">Strategy and operating systems for your next stage of <em>growth.</em></h1>
-                <p class="hero-copy r on d2">Elevated Group helps ambitious companies align direction, operations, execution, and insight into one practical system for scaling with confidence.</p>
-                <div class="hero-actions r on d3">
-                    <a href="#contact" class="btn-primary">Book a Consultation</a>
-                    <a href="#services" class="btn-secondary">Explore Services
-                        <svg width="16" height="10" viewBox="0 0 16 10" fill="none" aria-hidden="true"><path d="M11 1l4 4-4 4M1 5h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </a>
+        <div class="hero-wrap">
+            <div class="hero-main">
+                <div class="hero-content">
+                    <div class="hero-kicker r on">Premium growth operations partner</div>
+                    <h1 class="hero-h r on d1">Build the systems behind your next stage of <span>growth.</span></h1>
+                    <p class="hero-p r on d2">Elevated Group connects strategy, operations, and execution so ambitious teams can make cleaner decisions, run tighter workflows, and scale with confidence.</p>
+                    <div class="hero-actions r on d3">
+                        <a class="btn-primary" href="#contact">Book a Consultation</a>
+                        <a class="btn-secondary" href="#services">
+                            Explore Services
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="hero-proof r on d3" aria-label="Engagement qualities">
+                        <div class="proof-chip"><strong>01</strong><span>Clear strategic priorities</span></div>
+                        <div class="proof-chip"><strong>02</strong><span>Systems your team can run</span></div>
+                        <div class="proof-chip"><strong>03</strong><span>Execution cadence that sticks</span></div>
+                    </div>
+                </div>
+
+                <div class="hero-visual r on d2" aria-label="Elevated Group operating system preview">
+                    <div class="visual-glow" aria-hidden="true"></div>
+                    <div class="visual-badge badge-a">
+                        <span>Operating Layer</span>
+                        <strong>Strategy aligned to daily execution</strong>
+                    </div>
+                    <div class="system-card">
+                        <div class="system-top">
+                            <div class="traffic" aria-hidden="true"><span></span><span></span><span></span></div>
+                            <div class="system-label">Growth System</div>
+                        </div>
+                        <div class="system-body">
+                            <article class="module-row">
+                                <div class="module-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none"><path d="M4 12h16M13 5l7 7-7 7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </div>
+                                <div>
+                                    <h3>Direction</h3>
+                                    <p>Decisions, priorities, and the roadmap for growth.</p>
+                                </div>
+                                <div class="module-meter" aria-hidden="true"><span style="--w: 86%"></span></div>
+                            </article>
+                            <article class="module-row">
+                                <div class="module-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none"><path d="M6 7h12M6 12h9M6 17h6" stroke="currentColor" stroke-linecap="round"/></svg>
+                                </div>
+                                <div>
+                                    <h3>Workflow</h3>
+                                    <p>Ownership, meeting rhythm, and repeatable operating habits.</p>
+                                </div>
+                                <div class="module-meter" aria-hidden="true"><span style="--w: 74%"></span></div>
+                            </article>
+                            <article class="module-row">
+                                <div class="module-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none"><path d="M4 19V5M4 19h16M8 15l3-4 3 2 5-7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </div>
+                                <div>
+                                    <h3>Insight</h3>
+                                    <p>Useful signals that turn reporting into better decisions.</p>
+                                </div>
+                                <div class="module-meter" aria-hidden="true"><span style="--w: 91%"></span></div>
+                            </article>
+                            <article class="module-row">
+                                <div class="module-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none"><path d="M5 6h14v10H8l-3 3V6z" stroke="currentColor" stroke-linejoin="round"/></svg>
+                                </div>
+                                <div>
+                                    <h3>Experience</h3>
+                                    <p>Positioning, offer clarity, and client follow-through.</p>
+                                </div>
+                                <div class="module-meter" aria-hidden="true"><span style="--w: 79%"></span></div>
+                            </article>
+                        </div>
+                    </div>
+                    <div class="visual-badge badge-b">
+                        <span>Current Focus</span>
+                        <strong>Cleaner workflows. Better follow-through.</strong>
+                    </div>
                 </div>
             </div>
-            <div class="hero-visual" aria-hidden="true">
-                <div class="visual-stage">
-                    <div class="visual-aura"></div>
-                    <div class="dashboard-orbits"></div>
-                    <div class="dash-card dashboard-main">
-                        <div class="dashboard-head">
-                            <div>
-                                <span>Performance architecture</span>
-                                <strong>Executive growth system</strong>
-                            </div>
-                            <div class="dash-status">Active</div>
-                        </div>
-                        <div class="chart-frame">
-                            <div class="chart-line"></div>
-                            <div class="chart-bars"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-                        </div>
-                        <div class="dashboard-meta">
-                            <div><strong>92%</strong><small>Alignment</small></div>
-                            <div><strong>4.8x</strong><small>Signal quality</small></div>
-                            <div><strong>18d</strong><small>Cycle gain</small></div>
-                        </div>
+
+            <div class="hero-trust" aria-label="Capabilities">
+                <div class="trust-row">
+                    <span class="trust-label">Capability System</span>
+                    <div class="trust-tags">
+                        <span>Strategy</span>
+                        <span>Operations</span>
+                        <span>Growth Systems</span>
+                        <span>Analytics</span>
+                        <span>Digital Enablement</span>
+                        <span>Brand Positioning</span>
                     </div>
-                    <div class="dash-card kpi-card">
-                        <span>KPI focus</span>
-                        <strong>27%</strong>
-                        <small>Sharper operating cadence across priority workflows.</small>
-                    </div>
-                    <div class="dash-card progress-card">
-                        <span>Strategic progress</span>
-                        <strong>Direction, ownership, execution.</strong>
-                        <div class="progress-bars"><i></i><i></i><i></i></div>
-                    </div>
-                    <div class="dash-card network-card">
-                        <span>Decision network</span>
-                        <div class="network-map"></div>
-                    </div>
-                    <div class="visual-chip">Operating system view</div>
-                </div>
-            </div>
-        </div>
-        <div class="hero-trust" aria-label="Capabilities">
-            <div class="hero-trust-row">
-                <div class="hero-trust-label">Trusted operating layers</div>
-                <div class="hero-trust-items">
-                    <span>Strategy</span>
-                    <span>Operations</span>
-                    <span>Growth</span>
-                    <span>Systems</span>
-                    <span>Client Success</span>
-                    <span>Analytics</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="about" class="light">
+    <section class="section section-soft" id="about">
         <div class="shell">
-            <div class="about-grid">
-                <div class="about-card r">
-                    <img src="img/team-meeting-modern-office-lrg.jpg" alt="A modern consulting team collaborating in a conference room">
-                    <div class="about-caption">
-                        <div>
-                            <strong>Built for complex business decisions</strong>
-                            <span>We align strategy, operations, growth, and performance into one practical system.</span>
-                        </div>
+            <div class="about-layout">
+                <div class="image-stack r">
+                    <div class="photo-card photo-main">
+                        <img src="img/team-meeting-modern-office-lrg.jpg" alt="Modern team meeting in a bright office">
+                    </div>
+                    <div class="photo-card photo-sub">
+                        <img src="branding/branding1.png" alt="Elevated Group branded office detail">
+                    </div>
+                    <div class="image-note">
+                        <strong>A practical operating model for your next stage.</strong>
+                        <span>Built around the decisions, systems, and habits that determine whether growth becomes repeatable.</span>
                     </div>
                 </div>
-                <div class="about-text">
-                    <span class="eyebrow r">About Elevated Group</span>
-                    <h2 class="section-heading r d1">A consulting partner for businesses ready to scale smarter.</h2>
-                    <div class="about-fit r d2" aria-label="Best fit scenarios">
-                        <span>Leadership</span><span class="sep">|</span>
-                        <span>Team effectiveness</span><span class="sep">|</span>
-                        <span>Role clarity</span><span class="sep">|</span>
-                        <span>Performance growth</span>
-                    </div>
-                    <p class="about-p r d3">We help organizations move from reactive execution to deliberate growth through clear strategy, tighter operations, and practical implementation for teams navigating growth, process change, repositioning, and performance pressure.</p>
-                    <div class="about-principles r d4">
-                        <div class="principle"><strong>Executive clarity</strong><span>We turn ambition into a clear operating agenda.</span></div>
-                        <div class="principle"><strong>Scalable execution</strong><span>We design systems teams can actually run.</span></div>
-                        <div class="principle"><strong>Integrated expertise</strong><span>We connect strategy, operations, brand, and analytics.</span></div>
-                        <div class="principle"><strong>Premium partnership</strong><span>Clients get a rigorous, discreet, high-touch experience.</span></div>
+                <div>
+                    <span class="eyebrow r d1">About Elevated Group</span>
+                    <h2 class="section-title r d2">Clarity where growth gets complex.</h2>
+                    <p class="section-copy r d2">Elevated Group helps leadership teams move from scattered initiatives to a connected operating model. We translate ambition into priorities, workflows, decision systems, and practical execution.</p>
+                    <div class="proof-grid r d3">
+                        <article class="proof-card">
+                            <strong>Strategic clarity</strong>
+                            <span>Turn high-level ambition into a focused agenda that leaders and teams can use.</span>
+                        </article>
+                        <article class="proof-card">
+                            <strong>Scalable systems</strong>
+                            <span>Build operating habits that hold as teams, services, and client expectations grow.</span>
+                        </article>
+                        <article class="proof-card">
+                            <strong>Better decisions</strong>
+                            <span>Design useful signals, reporting rhythms, and accountability around the work that matters.</span>
+                        </article>
+                        <article class="proof-card">
+                            <strong>Cleaner workflows</strong>
+                            <span>Remove friction from daily operations without adding unnecessary bureaucracy.</span>
+                        </article>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="services">
+    <section class="section" id="services">
         <div class="shell">
-            <div class="intro-row">
+            <div class="section-head">
                 <div>
                     <span class="eyebrow r">Services</span>
-                    <h2 class="section-heading r d1">Consulting built around the systems behind growth.</h2>
+                    <h2 class="section-title r d1">Productized consulting modules, tailored to your context.</h2>
                 </div>
-                <p class="section-copy r d2">Each engagement is tailored to your context and built around the decisions, systems, and habits that drive long-term performance.</p>
+                <p class="section-copy r d2">Each module can stand alone or connect into a broader operating system for strategy, operations, growth, and performance.</p>
             </div>
             <div class="service-grid">
                 <article class="service-card r">
-                    <div class="service-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 18L18 4M8 4h10v10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                    <header>
+                        <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l2.8 6.2 6.7.7-5 4.5 1.4 6.6L12 17.6 6.1 21l1.4-6.6-5-4.5 6.7-.7L12 3z" stroke="currentColor" stroke-linejoin="round"/></svg></div>
+                        <span class="service-num">01</span>
+                    </header>
                     <h3>Business Strategy</h3>
-                    <p>Strategic planning, priorities, market direction, and decision frameworks for leadership teams.</p>
+                    <p>Strategic planning, decision frameworks, market direction, and priority design for leadership teams.</p>
                 </article>
                 <article class="service-card r d1">
-                    <div class="service-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+                    <header>
+                        <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 6h14M5 12h10M5 18h6" stroke="currentColor" stroke-linecap="round"/></svg></div>
+                        <span class="service-num">02</span>
+                    </header>
                     <h3>Operations Consulting</h3>
-                    <p>Operating models, team workflows, and management systems that improve clarity and execution.</p>
+                    <p>Operating models, team workflows, ownership systems, and management cadence that improve execution.</p>
                 </article>
                 <article class="service-card r d2">
-                    <div class="service-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M5 19V9m7 10V5m7 14v-7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M3 19h18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+                    <header>
+                        <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 19V5M4 19h16M8 15l3-4 3 2 5-7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                        <span class="service-num">03</span>
+                    </header>
                     <h3>Growth &amp; Scaling</h3>
-                    <p>Growth architecture, expansion planning, leadership alignment, and systems for the next stage.</p>
+                    <p>Growth architecture, expansion planning, role clarity, and systems for a more demanding stage.</p>
                 </article>
                 <article class="service-card r">
-                    <div class="service-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v18M5 8h14M7 16h10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+                    <header>
+                        <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 4v4M12 16v4M4 12h4M16 12h4M7.1 7.1l2.8 2.8M14.1 14.1l2.8 2.8M16.9 7.1l-2.8 2.8M9.9 14.1l-2.8 2.8" stroke="currentColor" stroke-linecap="round"/></svg></div>
+                        <span class="service-num">04</span>
+                    </header>
                     <h3>Process Optimization</h3>
-                    <p>Process audits, workflow redesign, and documentation that remove friction from daily operations.</p>
+                    <p>Process audits, workflow redesign, documentation, and repeatable routines that reduce drag.</p>
                 </article>
                 <article class="service-card r d1">
-                    <div class="service-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M5 5h6v6H5zM13 5h6v6h-6zM5 13h6v6H5zM13 13h6v6h-6z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
+                    <header>
+                        <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="6" height="6" rx="1" stroke="currentColor"/><rect x="14" y="4" width="6" height="6" rx="1" stroke="currentColor"/><rect x="4" y="14" width="6" height="6" rx="1" stroke="currentColor"/><path d="M15 17h5M17.5 14.5v5" stroke="currentColor" stroke-linecap="round"/></svg></div>
+                        <span class="service-num">05</span>
+                    </header>
                     <h3>Digital Transformation</h3>
-                    <p>Technology roadmaps, tool ecosystems, workflow automation, and adoption plans that modernize the business.</p>
+                    <p>Technology roadmaps, tool ecosystems, automation planning, and adoption support for modern operations.</p>
                 </article>
                 <article class="service-card r d2">
-                    <div class="service-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 15s3-7 8-7 8 7 8 7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M9 15a3 3 0 106 0 3 3 0 00-6 0z" stroke="currentColor" stroke-width="1.7"/></svg></div>
+                    <header>
+                        <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16v10H4z" stroke="currentColor" stroke-linejoin="round"/><path d="M8 17v3M16 17v3M8 11h8" stroke="currentColor" stroke-linecap="round"/></svg></div>
+                        <span class="service-num">06</span>
+                    </header>
                     <h3>Brand &amp; Market Positioning</h3>
-                    <p>Positioning strategy, offer clarity, market narrative, and premium client experience design.</p>
+                    <p>Offer clarity, market narrative, client journey design, and positioning for stronger growth.</p>
                 </article>
                 <article class="service-card r">
-                    <div class="service-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 19V5M4 19h16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M8 15l3-4 3 2 5-7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                    <header>
+                        <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 19V5M8 17v-5M12 17V8M16 17v-7M20 17V6" stroke="currentColor" stroke-linecap="round"/></svg></div>
+                        <span class="service-num">07</span>
+                    </header>
                     <h3>Analytics &amp; Performance Insights</h3>
-                    <p>Metric design, dashboards, reporting cadence, and insight systems for better decisions.</p>
+                    <p>Metric design, dashboards, reporting cadence, and insight systems that help teams decide faster.</p>
                 </article>
             </div>
         </div>
     </section>
 
-    <section id="operating-layers" class="light">
-        <div class="shell layers-wrap">
-            <div class="layers-header">
+    <section class="section" id="operating-layers">
+        <div class="shell">
+            <div class="section-head">
                 <div>
                     <span class="eyebrow r">Operating Layers</span>
-                    <h2 class="section-heading r d1">One integrated system for work that keeps moving.</h2>
-                    <p class="section-copy r d2">Inspired by product ecosystems, our consulting model connects the core layers leaders need to move from strategy to measurable execution.</p>
+                    <h2 class="section-title r d1">Strategy, operations, and execution - connected.</h2>
                 </div>
-                <div class="layers-note r d3">
-                    <span>Engagement Design</span>
-                    <strong>Every layer can stand alone, but the strongest results come when the parts work together.</strong>
+                <p class="section-copy r d2">Our signature methodology turns consulting work into a clear system of layers. Each layer has a job, and together they create momentum.</p>
+            </div>
+            <div class="layers-board r d1">
+                <div class="layer-map" aria-hidden="true">
+                    <div class="layer-line"></div>
+                    <div class="layer-node node-one"><span>01 Direction</span><strong>Where are we going?</strong></div>
+                    <div class="layer-node node-two"><span>02 Workflow</span><strong>How does work move?</strong></div>
+                    <div class="layer-node node-three"><span>03 Insight</span><strong>What signals matter?</strong></div>
+                    <div class="layer-node node-four"><span>04 Experience</span><strong>How do clients feel it?</strong></div>
                 </div>
-            </div>
-            <div class="layer-grid">
-                <article class="layer-card r">
-                    <div class="layer-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-                    <span>Direction</span>
-                    <h3>Strategy architecture</h3>
-                    <p>Priorities, decision rules, market direction, and leadership alignment for the next stage.</p>
-                </article>
-                <article class="layer-card r d1">
-                    <div class="layer-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M7 12h10M10 17h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
-                    <span>Workflow</span>
-                    <h3>Operating cadence</h3>
-                    <p>Meeting rhythms, ownership, documentation, and repeatable systems teams can run.</p>
-                </article>
-                <article class="layer-card r d2">
-                    <div class="layer-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M5 19V5m0 14h16M9 15l3-4 3 2 5-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-                    <span>Insight</span>
-                    <h3>Performance intelligence</h3>
-                    <p>Dashboards, useful metrics, reporting habits, and signals that guide better decisions.</p>
-                </article>
-                <article class="layer-card r d3">
-                    <div class="layer-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M5 6h14v10H8l-3 3V6z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
-                    <span>Experience</span>
-                    <h3>Client growth system</h3>
-                    <p>Offer clarity, client journey, positioning, and follow-through that supports premium growth.</p>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <section id="process">
-        <div class="shell">
-            <span class="eyebrow r">Process</span>
-            <h2 class="section-heading r d1">A clear framework from insight to execution.</h2>
-            <p class="section-copy r d2">We turn ambiguity into action with a disciplined model that ties strategy to operating change.</p>
-            <div class="process-line">
-                <div class="step r"><span class="step-num">01</span><h3>Discover</h3><p>Clarify context, priorities, constraints, and current operations.</p></div>
-                <div class="step r d1"><span class="step-num">02</span><h3>Diagnose</h3><p>Pinpoint the highest-leverage issues across strategy, systems, people, and performance.</p></div>
-                <div class="step r d2"><span class="step-num">03</span><h3>Design</h3><p>Build a practical roadmap with clear decisions, timelines, and accountability.</p></div>
-                <div class="step r d3"><span class="step-num">04</span><h3>Execute</h3><p>Guide implementation through working sessions, tools, and leadership alignment.</p></div>
-                <div class="step r d4"><span class="step-num">05</span><h3>Optimize</h3><p>Refine the system using performance signals and feedback loops.</p></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="why" class="light">
-        <div class="shell">
-            <span class="eyebrow r">Why Elevated Group</span>
-            <h2 class="section-heading r d1">Premium thinking with implementation discipline.</h2>
-            <p class="section-copy r d2">We are built for companies that need more than advice: strategic clarity, sharper systems, and confidence to scale.</p>
-            <div class="why-grid">
-                <div class="why-card r"><h3>Strategic clarity</h3><p>We help leaders define what matters, what changes, and what comes first.</p></div>
-                <div class="why-card r d1"><h3>Data-informed decisions</h3><p>We combine judgment with meaningful signals, not vanity metrics.</p></div>
-                <div class="why-card r d2"><h3>Scalable systems</h3><p>We design operating structures that support complexity without excess bureaucracy.</p></div>
-                <div class="why-card r"><h3>Premium client experience</h3><p>Engagements are polished, discreet, and responsive to executive standards.</p></div>
-                <div class="why-card r d1"><h3>Execution focus</h3><p>Our work translates into operating cadence, workflows, and practical decisions.</p></div>
-                <div class="why-card r d2"><h3>Long-term growth mindset</h3><p>We build client capability so performance keeps improving.</p></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="team">
-        <div class="shell">
-            <span class="eyebrow r">Company Model</span>
-            <h2 class="section-heading r d1">Built on a network of strategic and operational specialists.</h2>
-            <p class="section-copy r d2">Elevated Group is an integrated consulting partner that brings the right mix of strategy, operations, growth, and analytics to each engagement.</p>
-            <div class="team-system">
-                <div class="role-card r"><div class="role-avatar"></div><h3>Strategy Leads</h3><p>Business direction, priorities, decision architecture, and executive alignment.</p></div>
-                <div class="role-card r d1"><div class="role-avatar"></div><h3>Operations Advisors</h3><p>Operating models, workflow design, process improvement, and accountability.</p></div>
-                <div class="role-card r d2"><div class="role-avatar"></div><h3>Growth Specialists</h3><p>Market positioning, offer clarity, client experience, and growth systems.</p></div>
-                <div class="role-card r d3"><div class="role-avatar"></div><h3>Insight Partners</h3><p>Performance measurement, dashboards, analysis, and reporting cadence.</p></div>
-            </div>
-            <div class="ceo-feature" id="ceo">
-                <div class="ceo-portrait r">
-                    <img src="img/joana.jpg" alt="Joana Oliveira, CEO of Elevated Group">
-                    <div class="ceo-badge">
+                <div class="layer-list">
+                    <article class="layer-item">
+                        <div class="layer-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
                         <div>
-                            <strong>Joana Oliveira</strong>
-                            <span>Chief Executive Officer</span>
+                            <h3>Direction layer</h3>
+                            <p>Priorities, decision rules, market direction, and leadership alignment for the next stage.</p>
                         </div>
-                        <div class="ceo-chip">Founder-led</div>
-                    </div>
-                </div>
-                <div class="ceo-copy r d2">
-                    <span class="eyebrow">Executive Leadership</span>
-                    <h3>Led by a strategic operator with a high consulting standard.</h3>
-                    <p>Joana brings the executive clarity and client discipline behind Elevated Group's model, keeping each engagement focused and measurable.</p>
-                    <p>As CEO, she leads the firm's approach across strategy, operations, growth systems, and client experience with support from specialist partners.</p>
-                    <div class="ceo-points">
-                        <div class="ceo-point"><span>Focus</span><strong>Strategy and scalable operations</strong></div>
-                        <div class="ceo-point"><span>Standard</span><strong>Premium client partnership</strong></div>
-                        <div class="ceo-point"><span>Model</span><strong>Founder-led, team-supported</strong></div>
-                    </div>
+                    </article>
+                    <article class="layer-item">
+                        <div class="layer-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 7h14M7 12h10M9 17h6" stroke="currentColor" stroke-linecap="round"/></svg></div>
+                        <div>
+                            <h3>Workflow layer</h3>
+                            <p>Ownership, documentation, handoffs, meeting rhythms, and the operating habits that keep work moving.</p>
+                        </div>
+                    </article>
+                    <article class="layer-item">
+                        <div class="layer-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 19V5M4 19h16M8 15l3-4 3 2 5-7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                        <div>
+                            <h3>Insight layer</h3>
+                            <p>Metrics, dashboards, reporting habits, and signals that clarify where the business is gaining or losing speed.</p>
+                        </div>
+                    </article>
+                    <article class="layer-item">
+                        <div class="layer-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 6h14v10H8l-3 3V6z" stroke="currentColor" stroke-linejoin="round"/></svg></div>
+                        <div>
+                            <h3>Experience layer</h3>
+                            <p>Positioning, offer clarity, client journey, and follow-through that make growth easier to sustain.</p>
+                        </div>
+                    </article>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="impact" class="light">
+    <section class="section" id="process">
         <div class="shell">
-            <span class="eyebrow r">Results &amp; Impact</span>
-            <h2 class="section-heading r d1">The outcomes clients can build on.</h2>
-            <p class="section-copy r d2">Our impact is shown through the operational and strategic improvements that matter most.</p>
-            <div class="impact-grid">
-                <div class="impact-card r"><span>Operations</span><h3>Sharper operations</h3><p>Less friction, clearer ownership, and better execution rhythms.</p></div>
-                <div class="impact-card r d1"><span>Strategy</span><h3>Clearer growth strategy</h3><p>Focused priorities and a leadership team aligned around what comes next.</p></div>
-                <div class="impact-card r d2"><span>Insight</span><h3>Better decision-making</h3><p>Useful signals, cleaner reporting, and more confident executive choices.</p></div>
-                <div class="impact-card r d3"><span>Systems</span><h3>Scalable business systems</h3><p>Processes and operating structures built for the next stage of growth.</p></div>
+            <div class="section-head">
+                <div>
+                    <span class="eyebrow r">Process</span>
+                    <h2 class="section-title r d1">A clear path from insight to execution.</h2>
+                </div>
+                <p class="section-copy r d2">The work moves through five simple stages so leaders can see what is happening, why it matters, and what changes next.</p>
+            </div>
+            <div class="process-strip r d1">
+                <article class="process-step" style="--step-color: #1769ff">
+                    <span class="step-num">01</span>
+                    <h3>Discover</h3>
+                    <p>Clarify the business context, current operating model, constraints, and leadership priorities.</p>
+                </article>
+                <article class="process-step" style="--step-color: #00a3ff">
+                    <span class="step-num">02</span>
+                    <h3>Diagnose</h3>
+                    <p>Pinpoint the highest-leverage issues across strategy, systems, people, and performance.</p>
+                </article>
+                <article class="process-step" style="--step-color: #17c6a3">
+                    <span class="step-num">03</span>
+                    <h3>Design</h3>
+                    <p>Build a practical roadmap with clear decisions, ownership, timelines, and success signals.</p>
+                </article>
+                <article class="process-step" style="--step-color: #ff7f6e">
+                    <span class="step-num">04</span>
+                    <h3>Execute</h3>
+                    <p>Guide implementation through working sessions, tools, rhythm, and leadership alignment.</p>
+                </article>
+                <article class="process-step" style="--step-color: #ffc857">
+                    <span class="step-num">05</span>
+                    <h3>Optimize</h3>
+                    <p>Refine the system using feedback loops, performance signals, and real operating behavior.</p>
+                </article>
             </div>
         </div>
     </section>
 
-    <section id="contact">
+    <section class="section" id="why">
+        <div class="shell">
+            <div class="section-head">
+                <div>
+                    <span class="eyebrow r">Why Elevated Group</span>
+                    <h2 class="section-title r d1">Outcome-driven consulting for teams that need traction.</h2>
+                </div>
+                <p class="section-copy r d2">The work is practical, structured, and designed around the realities of scaling teams.</p>
+            </div>
+            <div class="why-grid">
+                <article class="why-card r">
+                    <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v18M5 8h14M7 16h10" stroke="currentColor" stroke-linecap="round"/></svg></div>
+                    <h3>Strategic clarity</h3>
+                    <p>Define what matters, what changes, and what gets sequenced first.</p>
+                </article>
+                <article class="why-card r d1">
+                    <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                    <h3>Execution discipline</h3>
+                    <p>Make follow-through visible through operating cadence and accountability.</p>
+                </article>
+                <article class="why-card r d2">
+                    <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 19V5M8 17v-4M12 17V8M16 17v-7M20 17V6" stroke="currentColor" stroke-linecap="round"/></svg></div>
+                    <h3>Better decisions</h3>
+                    <p>Replace noise with useful signals leaders can use in real time.</p>
+                </article>
+                <article class="why-card r">
+                    <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 7h10v10H7zM4 4h16v16H4z" stroke="currentColor" stroke-linejoin="round"/></svg></div>
+                    <h3>Scalable systems</h3>
+                    <p>Create structures that support growth without adding excess complexity.</p>
+                </article>
+                <article class="why-card r d1">
+                    <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 6h14v10H8l-3 3V6z" stroke="currentColor" stroke-linejoin="round"/></svg></div>
+                    <h3>Stronger client experience</h3>
+                    <p>Align positioning, delivery, and follow-through around premium expectations.</p>
+                </article>
+                <article class="why-card r d2">
+                    <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 18L18 6M8 6h10v10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                    <h3>Cleaner workflows</h3>
+                    <p>Reduce friction in how teams plan, hand off, communicate, and decide.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="team">
+        <div class="shell">
+            <div class="team-layout">
+                <div class="ceo-photo r">
+                    <img src="img/joana.jpg" alt="Joana Oliveira, Chief Executive Officer of Elevated Group">
+                    <div class="ceo-card">
+                        <strong>Joana Oliveira</strong>
+                        <span>Chief Executive Officer</span>
+                    </div>
+                </div>
+                <div>
+                    <span class="eyebrow r d1">Executive Leadership</span>
+                    <h2 class="section-title r d2">Founder-led strategy with a modern operating standard.</h2>
+                    <p class="section-copy r d2">Joana leads Elevated Group's approach across strategy, operations, growth systems, and client experience. Each engagement is kept focused, measurable, and built around practical change.</p>
+                    <div class="team-pill-grid r d3">
+                        <div class="team-pill"><span>Focus</span><strong>Strategy and scalable operations</strong></div>
+                        <div class="team-pill"><span>Standard</span><strong>Premium client partnership</strong></div>
+                        <div class="team-pill"><span>Model</span><strong>Founder-led, specialist-supported</strong></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="impact">
+        <div class="shell">
+            <div class="impact-layout">
+                <div>
+                    <span class="eyebrow r">Impact</span>
+                    <h2 class="section-title r d1">Cleaner workflows. Better decisions. Stronger follow-through.</h2>
+                    <p class="section-copy r d2">The goal is not a binder of recommendations. It is a clearer system for how the business decides, runs, measures, and improves.</p>
+                    <div class="impact-grid r d3">
+                        <article class="metric-card">
+                            <span>Operations</span>
+                            <h3>Sharper operating rhythm</h3>
+                            <p>Clearer ownership, less friction, and a cadence that keeps important work moving.</p>
+                        </article>
+                        <article class="metric-card">
+                            <span>Strategy</span>
+                            <h3>Aligned growth priorities</h3>
+                            <p>A leadership agenda that focuses energy on the decisions that shape the next stage.</p>
+                        </article>
+                        <article class="metric-card">
+                            <span>Insight</span>
+                            <h3>More useful performance signals</h3>
+                            <p>Reporting and metrics designed for decisions, not dashboard noise.</p>
+                        </article>
+                        <article class="metric-card">
+                            <span>Experience</span>
+                            <h3>More consistent client delivery</h3>
+                            <p>A clearer offer, smoother delivery model, and stronger follow-through.</p>
+                        </article>
+                    </div>
+                </div>
+                <div class="impact-image r d2">
+                    <img src="branding/branding4.png" alt="Elevated Group brand materials in a polished office setting">
+                    <div class="impact-caption">
+                        <strong>Designed for executive clarity.</strong>
+                        <span>Modern consulting work should feel focused, polished, and easy to act on.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="contact">
         <div class="shell">
             <div class="contact-panel">
-                <div>
-                    <span class="eyebrow r">Start the Conversation</span>
-                    <h2 class="section-heading r d1">Build the next stage of your business with clarity.</h2>
-                    <p class="section-copy r d2">Tell us where you're headed and what needs to work better. Our team will follow up with a clear next step.</p>
-                    <div class="contact-meta r d3">
-                        <div class="meta-line"><span>Email</span><strong>hello@elevatedgroup.co</strong></div>
-                        <div class="meta-line"><span>Base</span><strong>Toronto, Canada</strong></div>
-                        <div class="meta-line"><span>Engagements</span><strong>Strategy, operations, growth, and systems</strong></div>
+                <div class="contact-info r">
+                    <div>
+                        <span class="eyebrow light">Start the Conversation</span>
+                        <h2>Ready to build the operating system behind your growth?</h2>
+                        <p>Tell us where growth is getting complex and what needs to work better. We will follow up with a clear next step.</p>
+                    </div>
+                    <div class="contact-details">
+                        <div class="contact-detail">
+                            <span>Email</span>
+                            <a href="mailto:hello@elevatedgroup.co">hello@elevatedgroup.co</a>
+                        </div>
+                        <div class="contact-detail">
+                            <span>Base</span>
+                            <strong>Toronto, Canada</strong>
+                        </div>
+                        <div class="contact-detail">
+                            <span>Engagements</span>
+                            <strong>Strategy, operations, growth, and systems</strong>
+                        </div>
+                    </div>
+                    <div class="contact-image">
+                        <img src="branding/branding6.png" alt="Elevated Group office signage">
                     </div>
                 </div>
-                <form class="cform r d2" id="cform" onsubmit="sendForm(event)">
+
+                <form class="contact-form r d2" id="cform" onsubmit="sendForm(event)">
                     <div class="field">
                         <label for="f-name">Full Name *</label>
-                        <input type="text" id="f-name" name="name" placeholder="Your name" required>
+                        <input type="text" id="f-name" name="name" placeholder="Your name" required autocomplete="name">
                     </div>
                     <div class="field">
                         <label for="f-email">Email Address *</label>
-                        <input type="email" id="f-email" name="email" placeholder="you@company.com" required>
+                        <input type="email" id="f-email" name="email" placeholder="you@company.com" required autocomplete="email">
                     </div>
                     <div class="field">
                         <label for="f-co">Company</label>
-                        <input type="text" id="f-co" name="company" placeholder="Organization name">
+                        <input type="text" id="f-co" name="company" placeholder="Organization name" autocomplete="organization">
                     </div>
                     <div class="field">
                         <label for="f-ph">Phone</label>
-                        <input type="tel" id="f-ph" name="phone" placeholder="+1 (000) 000-0000">
+                        <input type="tel" id="f-ph" name="phone" placeholder="+1 (000) 000-0000" autocomplete="tel">
                     </div>
                     <div class="field full">
                         <label for="f-int">Area of Interest</label>
@@ -2352,11 +2445,14 @@
                         <label for="f-msg">Message</label>
                         <textarea id="f-msg" name="message" placeholder="Briefly describe the business challenge or growth opportunity."></textarea>
                     </div>
-                    <div class="form-ok" id="form-ok">Thank you. Your inquiry has been received and a member of our team will follow up shortly.</div>
+                    <div class="form-ok" id="form-ok" role="status" aria-live="polite">Thank you. Your inquiry has been received and a member of our team will follow up shortly.</div>
                     <div class="form-foot">
                         <span class="form-note">Confidential inquiry. Executive-friendly follow up.</span>
-                        <button type="submit" class="btn-form" id="f-btn">Book a Consultation
-                            <svg width="16" height="10" viewBox="0 0 16 10" fill="none" aria-hidden="true"><path d="M11 1l4 4-4 4M1 5h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <button type="submit" class="btn-form" id="f-btn">
+                            Book a Consultation
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
                         </button>
                     </div>
                 </form>
@@ -2369,22 +2465,16 @@
     <div class="shell">
         <div class="footer-grid">
             <div>
-                <a href="#hero" class="brand">
-                    <span class="brand-mark">EG</span>
-                    <span class="brand-text">
-                        <span class="brand-name">Elevated Group</span>
-                        <span class="brand-sub">Consulting</span>
-                    </span>
-                </a>
-                <p class="footer-copy">A consulting partner helping businesses operate smarter, scale faster, and decide with confidence.</p>
+                <span class="footer-brand">Elevated Group</span>
+                <p class="footer-copy">Strategy, systems, and execution for ambitious teams building their next stage of growth.</p>
             </div>
             <div class="footer-col">
                 <h4>Navigation</h4>
                 <ul class="footer-links">
                     <li><a href="#about">About</a></li>
                     <li><a href="#services">Services</a></li>
+                    <li><a href="#operating-layers">Method</a></li>
                     <li><a href="#process">Process</a></li>
-                    <li><a href="#team">Company Model</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -2420,86 +2510,80 @@
 requestAnimationFrame(() => document.documentElement.classList.add('motion-ready'));
 
 const nav = document.getElementById('nav');
+const menuButton = document.getElementById('ham');
+const mobileNav = document.getElementById('mob-nav');
+const navAnchors = [...document.querySelectorAll('.nav-links a')];
+const sectionMap = navAnchors.map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+
+function setMenu(open) {
+    mobileNav.classList.toggle('open', open);
+    mobileNav.setAttribute('aria-hidden', String(!open));
+    mobileNav.inert = !open;
+    menuButton.classList.toggle('open', open);
+    menuButton.setAttribute('aria-expanded', String(open));
+    menuButton.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    document.body.classList.toggle('menu-open', open);
+}
+
+menuButton.addEventListener('click', () => setMenu(!mobileNav.classList.contains('open')));
+
+mobileNav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => setMenu(false));
+});
+
+window.addEventListener('keydown', event => {
+    if (event.key === 'Escape') setMenu(false);
+});
+
 window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 48);
+    nav.classList.toggle('scrolled', window.scrollY > 36);
 }, { passive: true });
 
-const navAnchors = [...document.querySelectorAll('.nav-links a')];
-const sectionMap = navAnchors
-    .map((link) => document.querySelector(link.getAttribute('href')))
-    .filter(Boolean);
-
-function updateActiveNav() {
-    const marker = window.scrollY + window.innerHeight * 0.32;
+function updateNav() {
+    const marker = window.scrollY + window.innerHeight * .32;
     let current = sectionMap[0];
-    if (sectionMap[0] && marker < sectionMap[0].offsetTop) {
-        navAnchors.forEach((link) => link.classList.remove('active'));
-        return;
-    }
-    sectionMap.forEach((section) => {
+    sectionMap.forEach(section => {
         if (section.offsetTop <= marker) current = section;
     });
-    navAnchors.forEach((link) => {
-        link.classList.toggle('active', link.getAttribute('href') === `#${current.id}`);
+    navAnchors.forEach(link => {
+        link.classList.toggle('active', current && link.getAttribute('href') === `#${current.id}`);
     });
 }
 
-window.addEventListener('scroll', updateActiveNav, { passive: true });
-window.addEventListener('load', updateActiveNav);
+window.addEventListener('scroll', updateNav, { passive: true });
+window.addEventListener('load', updateNav);
 
-function toggleMob() {
-    const menu = document.getElementById('mob-nav');
-    const ham = document.getElementById('ham');
-    menu.classList.toggle('open');
-    ham.classList.toggle('open');
-    ham.setAttribute('aria-label', menu.classList.contains('open') ? 'Close menu' : 'Open menu');
-    document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
-}
-
-function closeMob() {
-    document.getElementById('mob-nav').classList.remove('open');
-    const ham = document.getElementById('ham');
-    ham.classList.remove('open');
-    ham.setAttribute('aria-label', 'Open menu');
-    document.body.style.overflow = '';
-}
-
-const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
         if (!entry.isIntersecting) return;
         entry.target.classList.add('on');
-        revealObserver.unobserve(entry.target);
+        observer.unobserve(entry.target);
     });
-}, { threshold: 0.08, rootMargin: '0px 0px -36px 0px' });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
-document.querySelectorAll('.r:not(.on)').forEach((el) => revealObserver.observe(el));
-
-const reactiveCards = document.querySelectorAll('.service-card, .layer-card, .why-card, .impact-card, .role-card, .ceo-portrait, .ceo-copy, .contact-panel');
-reactiveCards.forEach((card) => {
-    card.addEventListener('pointermove', (event) => {
-        const rect = card.getBoundingClientRect();
-        card.style.setProperty('--mx', `${event.clientX - rect.left}px`);
-        card.style.setProperty('--my', `${event.clientY - rect.top}px`);
-    });
-});
+document.querySelectorAll('.r:not(.on)').forEach(element => observer.observe(element));
 
 function sendForm(event) {
     event.preventDefault();
-    const btn = document.getElementById('f-btn');
+    const button = document.getElementById('f-btn');
     const form = document.getElementById('cform');
     const foot = form.querySelector('.form-foot');
-    const ok = document.getElementById('form-ok');
-    btn.textContent = 'Sending...';
-    btn.disabled = true;
+    const success = document.getElementById('form-ok');
+    const original = button.innerHTML;
+
+    button.textContent = 'Sending...';
+    button.disabled = true;
+
     setTimeout(() => {
         foot.style.display = 'none';
-        ok.style.display = 'block';
+        success.style.display = 'block';
         form.reset();
+
         setTimeout(() => {
-            ok.style.display = 'none';
+            success.style.display = 'none';
             foot.style.display = 'flex';
-            btn.innerHTML = 'Book a Consultation <svg width="16" height="10" viewBox="0 0 16 10" fill="none" aria-hidden="true"><path d="M11 1l4 4-4 4M1 5h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-            btn.disabled = false;
+            button.innerHTML = original;
+            button.disabled = false;
         }, 6000);
     }, 800);
 }

@@ -10,21 +10,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
     :root {
-        --ink:            #12100D;
-        --dark-surface:   #1A1713;
-        --dark-elevated:  #1A1713;
-        --hairline-dark:  #2C2823;
-        --paper:          #F6F3EC;
-        --light-surface:  #F6F3EC;
-        --hairline-light: #E4DFD4;
-        --cream:          #D8C2A3;
-        --cream-strong:   #D8C2A3;
-        --cream-mist:     #F6F3EC;
-        --muted-light:    #8A8378;
-        --muted-dark:     #9A9388;
-        --body-light:     #46413A;
-        --body-dark:      #C9C4BB;
-        --heading-dark:   #FBF9F3;
+        --ink:            #171614;
+        --dark-surface:   #211F1C;
+        --dark-elevated:  #292622;
+        --hairline-dark:  #37322D;
+        --paper:          #F4F1EB;
+        --light-surface:  #F4F1EB;
+        --hairline-light: #DDD8CF;
+        --cream:          #B2ACA3;
+        --cream-strong:   #A8A197;
+        --cream-mist:     #ECE8E1;
+        --muted-light:    #79736B;
+        --muted-dark:     #A69F95;
+        --body-light:     #4A453F;
+        --body-dark:      #CDC6BC;
+        --heading-dark:   #F7F4EE;
         --max: 1180px;
         --px: 24px;
         --fast: 180ms ease-out;
@@ -185,28 +185,28 @@
     #hero .btn-primary,
     #impact .btn-primary,
     .mob-footer .btn-primary {
-        border-color: var(--cream);
-        background: var(--cream);
+        border-color: var(--heading-dark);
+        background: var(--heading-dark);
         color: var(--ink);
     }
 
     #hero .btn-secondary {
-        border-color: rgba(216, 194, 163, 0.48);
+        border-color: rgba(247, 244, 238, 0.32);
         color: var(--heading-dark);
     }
 
     #hero .btn-primary:hover,
     #impact .btn-primary:hover,
     .mob-footer .btn-primary:hover {
-        border-color: var(--cream-mist);
-        background: var(--cream-mist);
+        border-color: #FFFFFF;
+        background: #FFFFFF;
         color: var(--ink);
     }
 
     #hero .btn-secondary:hover {
-        border-color: var(--cream);
-        background: rgba(216, 194, 163, 0.08);
-        color: var(--cream-mist);
+        border-color: var(--heading-dark);
+        background: rgba(247, 244, 238, 0.06);
+        color: #FFFFFF;
     }
 
     /* ===== NAVIGATION ===== */
@@ -222,23 +222,24 @@
         justify-content: space-between;
         gap: 18px;
         padding: 8px 12px 8px 18px;
-        border: 1px solid rgba(22, 19, 15, 0.12);
+        border: 1px solid rgba(23, 22, 20, 0.12);
         border-radius: 20px;
-        background: rgba(246, 243, 236, 0.86);
+        background: rgba(244, 241, 235, 0.86);
         backdrop-filter: blur(12px);
         transform: translateX(-50%);
         transition: background var(--fast), border-color var(--fast);
     }
 
     #nav.scrolled {
-        background: rgba(246, 243, 236, 0.97);
-        border-color: rgba(22, 19, 15, 0.12);
+        background: rgba(244, 241, 235, 0.97);
+        border-color: rgba(23, 22, 20, 0.12);
     }
 
     .brand {
         display: inline-flex;
         align-items: center;
         gap: 0;
+        flex-shrink: 0;
         color: var(--ink);
         font-family: "Inter", sans-serif;
         font-weight: 600;
@@ -246,13 +247,33 @@
         text-transform: uppercase;
     }
 
-    .brand-mark {
-        display: none;
+    .brand-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 52px;
+        padding: 0;
+        border-radius: 14px;
+        background: #11100F;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
     }
 
-    .brand-name {
-        font-size: .74rem;
-        letter-spacing: 0.24em;
+    .brand-lockup,
+    .brand-mark {
+        display: block;
+        width: auto;
+        max-width: none;
+        user-select: none;
+        pointer-events: none;
+    }
+
+    .brand-lockup {
+        height: 32px;
+    }
+
+    .brand-mark {
+        display: none;
+        height: 24px;
     }
 
     .nav-links {
@@ -287,7 +308,7 @@
         min-height: 36px;
         padding: 0 18px;
         border-radius: 6px;
-        border: 1px solid rgba(22, 19, 15, 0.22);
+        border: 1px solid rgba(23, 22, 20, 0.22);
         background: transparent;
         color: var(--ink);
         font-family: "Inter", sans-serif;
@@ -404,8 +425,8 @@
         position: absolute;
         inset: 0;
         background:
-            linear-gradient(rgba(216, 194, 163, 0.05) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(216, 194, 163, 0.05) 1px, transparent 1px);
+            linear-gradient(rgba(178, 172, 163, 0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(178, 172, 163, 0.05) 1px, transparent 1px);
         background-size: 44px 44px;
         mask-image: linear-gradient(to bottom, rgba(0,0,0,.55), transparent 72%);
         pointer-events: none;
@@ -434,9 +455,9 @@
         gap: 10px;
         min-height: 34px;
         padding: 0 14px;
-        border: 1px solid rgba(216, 194, 163, 0.22);
+        border: 1px solid rgba(247, 244, 238, 0.18);
         border-radius: 6px;
-        color: var(--cream);
+        color: var(--heading-dark);
         font-family: "Inter", sans-serif;
         font-size: .74rem;
         font-weight: 500;
@@ -449,7 +470,7 @@
         width: 6px;
         height: 6px;
         border-radius: 999px;
-        background: var(--cream);
+        background: #FFFFFF;
         flex-shrink: 0;
     }
 
@@ -463,14 +484,14 @@
     }
 
     .hero-h span {
-        color: var(--cream);
+        color: #FFFFFF;
         font-style: italic;
     }
 
     .hero-p {
         max-width: 610px;
         margin-top: 24px;
-        color: var(--body-dark);
+        color: rgba(247, 244, 238, 0.82);
         font-size: 1.08rem;
         line-height: 1.82;
     }
@@ -510,7 +531,7 @@
     .proof-chip span {
         display: block;
         margin-top: 7px;
-        color: var(--muted-dark);
+        color: rgba(247, 244, 238, 0.68);
         font-size: .82rem;
         line-height: 1.35;
     }
@@ -529,7 +550,7 @@
         position: relative;
         width: min(100%, 520px);
         margin-left: auto;
-        border: 1px solid rgba(216, 194, 163, 0.14);
+        border: 1px solid rgba(178, 172, 163, 0.14);
         background: var(--dark-surface);
         overflow: hidden;
     }
@@ -540,7 +561,7 @@
         justify-content: space-between;
         gap: 20px;
         padding: 15px 20px;
-        border-bottom: 1px solid rgba(216, 194, 163, 0.12);
+        border-bottom: 1px solid rgba(178, 172, 163, 0.12);
     }
 
     .traffic { display: flex; gap: 6px; }
@@ -549,11 +570,11 @@
         width: 8px;
         height: 8px;
         border-radius: 999px;
-        background: rgba(216, 194, 163, 0.14);
+        background: rgba(178, 172, 163, 0.14);
     }
 
     .system-label {
-        color: var(--cream);
+        color: rgba(247, 244, 238, 0.86);
         font-family: "Inter", sans-serif;
         font-size: .68rem;
         font-weight: 500;
@@ -564,7 +585,7 @@
     .system-body {
         display: grid;
         gap: 1px;
-        background: rgba(216, 194, 163, 0.12);
+        background: rgba(178, 172, 163, 0.12);
     }
 
     .module-row {
@@ -587,7 +608,7 @@
         height: 38px;
         display: grid;
         place-items: center;
-        border: 1px solid rgba(216, 194, 163, 0.14);
+        border: 1px solid rgba(178, 172, 163, 0.14);
         color: var(--cream);
         background: transparent;
         flex-shrink: 0;
@@ -616,7 +637,7 @@
     /* on light sections, icon borders/color flip */
     #operating-layers .layer-icon,
     #why .why-icon {
-        border-color: rgba(22, 19, 15, 0.12);
+        border-color: rgba(23, 22, 20, 0.12);
         color: var(--cream-strong);
     }
 
@@ -624,13 +645,13 @@
         font-family: "Inter", sans-serif;
         font-size: .9rem;
         font-weight: 500;
-        color: var(--body-dark);
+        color: var(--heading-dark);
         letter-spacing: 0;
     }
 
     .module-row p {
         margin-top: 2px;
-        color: var(--muted-dark);
+        color: rgba(247, 244, 238, 0.62);
         font-size: .78rem;
         line-height: 1.4;
     }
@@ -654,13 +675,13 @@
         gap: 4px;
         min-width: 160px;
         padding: 12px 14px;
-        border: 1px solid rgba(216, 194, 163, 0.18);
+        border: 1px solid rgba(178, 172, 163, 0.18);
         border-left: 2px solid var(--cream);
         background: rgba(26, 23, 19, 0.94);
     }
 
     .visual-badge span {
-        color: var(--cream);
+        color: rgba(247, 244, 238, 0.84);
         font-family: "Inter", sans-serif;
         font-size: .68rem;
         font-weight: 500;
@@ -669,7 +690,7 @@
     }
 
     .visual-badge strong {
-        color: var(--body-dark);
+        color: var(--heading-dark);
         font-family: "Inter", sans-serif;
         font-size: .88rem;
         font-weight: 400;
@@ -695,7 +716,7 @@
     }
 
     .trust-label {
-        color: var(--cream);
+        color: rgba(247, 244, 238, 0.84);
         font-family: "Inter", sans-serif;
         font-size: .68rem;
         font-weight: 500;
@@ -716,8 +737,8 @@
         align-items: center;
         min-height: 28px;
         padding: 0 12px;
-        border: 1px solid rgba(216, 194, 163, 0.14);
-        color: var(--body-dark);
+        border: 1px solid rgba(247, 244, 238, 0.14);
+        color: rgba(247, 244, 238, 0.72);
         font-family: "Inter", sans-serif;
         font-size: .74rem;
         font-weight: 400;
@@ -761,9 +782,9 @@
         bottom: 32px;
         width: min(72%, 310px);
         padding: 18px;
-        border: 1px solid rgba(22, 19, 15, 0.1);
+        border: 1px solid rgba(23, 22, 20, 0.1);
         border-left: 2px solid var(--cream);
-        background: rgba(246, 243, 236, 0.94);
+        background: rgba(244, 241, 235, 0.94);
     }
 
     .image-note strong {
@@ -794,7 +815,7 @@
     .proof-card {
         min-height: auto;
         padding: 16px 0 0;
-        border-top: 1px solid rgba(22, 19, 15, 0.12);
+        border-top: 1px solid rgba(23, 22, 20, 0.12);
         background: transparent;
     }
 
@@ -891,8 +912,8 @@
         gap: 6px;
         width: 180px;
         padding: 14px;
-        border: 1px solid rgba(22, 19, 15, 0.12);
-        background: rgba(246, 243, 236, 0.9);
+        border: 1px solid rgba(23, 22, 20, 0.12);
+        background: rgba(244, 241, 235, 0.9);
     }
 
     .layer-node::after {
@@ -954,7 +975,7 @@
         gap: 16px;
         align-items: start;
         padding: 22px;
-        background: rgba(246, 243, 236, 0.82);
+        background: rgba(244, 241, 235, 0.82);
     }
 
     .layer-item h3 {
@@ -1012,7 +1033,7 @@
         font-size: .74rem;
         font-weight: 500;
         font-variant-numeric: tabular-nums;
-        background: rgba(216, 194, 163, 0.06);
+        background: rgba(178, 172, 163, 0.06);
     }
 
     .process-step h3 {
@@ -1041,7 +1062,7 @@
     .why-card {
         min-height: auto;
         padding: 0 0 22px;
-        border-bottom: 1px solid rgba(22, 19, 15, 0.12);
+        border-bottom: 1px solid rgba(23, 22, 20, 0.12);
         background: transparent;
         transition: background var(--fast);
     }
@@ -1075,7 +1096,7 @@
         position: relative;
         overflow: hidden;
         border: 1px solid var(--hairline-light);
-        background: rgba(22, 19, 15, 0.12);
+        background: rgba(23, 22, 20, 0.12);
     }
 
     .ceo-photo img {
@@ -1092,9 +1113,9 @@
         right: 20px;
         bottom: 20px;
         padding: 16px 18px;
-        border: 1px solid rgba(22, 19, 15, 0.1);
+        border: 1px solid rgba(23, 22, 20, 0.1);
         border-left: 2px solid var(--cream);
-        background: rgba(246, 243, 236, 0.94);
+        background: rgba(244, 241, 235, 0.94);
     }
 
     .ceo-card strong {
@@ -1128,11 +1149,11 @@
     .team-pill {
         min-height: auto;
         padding: 18px 0;
-        border-bottom: 1px solid rgba(22, 19, 15, 0.12);
+        border-bottom: 1px solid rgba(23, 22, 20, 0.12);
         background: transparent;
     }
 
-    .team-pill:first-child { border-top: 1px solid rgba(22, 19, 15, 0.12); }
+    .team-pill:first-child { border-top: 1px solid rgba(23, 22, 20, 0.12); }
 
     .team-pill span {
         color: var(--cream-strong);
@@ -1230,7 +1251,7 @@
         right: 20px;
         bottom: 20px;
         padding: 16px 18px;
-        border: 1px solid rgba(216, 194, 163, 0.18);
+        border: 1px solid rgba(178, 172, 163, 0.18);
         border-left: 2px solid var(--cream);
         background: rgba(26, 23, 19, 0.94);
     }
@@ -1355,7 +1376,7 @@
     .field textarea {
         width: 100%;
         min-height: 48px;
-        border: 1px solid rgba(216, 194, 163, 0.12);
+        border: 1px solid rgba(178, 172, 163, 0.12);
         border-radius: 0;
         background: var(--dark-surface);
         color: var(--body-dark);
@@ -1548,6 +1569,8 @@
         #nav { min-height: 56px; padding-left: 16px; }
         .nav-links, .nav-cta { display: none; }
         .nav-menu { display: grid; }
+        .brand-badge { min-height: 44px; padding: 0; border-radius: 12px; }
+        .brand-lockup { height: 24px; }
 
         .hero-h { font-size: 3.45rem; }
         .section-title { font-size: 2.65rem; }
@@ -1575,7 +1598,14 @@
         .section { padding: 78px 0; }
         #hero { min-height: auto; padding-top: 118px; }
 
-        .brand-name { max-width: 145px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .brand-badge {
+            min-width: 44px;
+            min-height: 44px;
+            padding: 0;
+            border-radius: 12px;
+        }
+        .brand-lockup { display: none; }
+        .brand-mark { display: block; height: 26px; }
 
         .hero-h { max-width: 100%; overflow-wrap: break-word; font-size: 2.35rem; line-height: 1.1; }
         .hero-kicker { max-width: 100%; white-space: normal; }
@@ -1627,7 +1657,10 @@
 
 <nav id="nav" aria-label="Main navigation">
     <a href="#hero" class="brand" aria-label="Elevated Group home">
-        <span class="brand-name">Elevated Group</span>
+        <span class="brand-badge">
+            <img class="brand-lockup" src="branding/elevatedlogotext-nav.png" alt="" aria-hidden="true">
+            <img class="brand-mark" src="branding/elevatedlogo-nav.png" alt="" aria-hidden="true">
+        </span>
     </a>
     <ul class="nav-links">
         <li><a href="#about">About</a></li>

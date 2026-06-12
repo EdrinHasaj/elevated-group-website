@@ -7,7 +7,7 @@
     <meta name="description" content="Elevated Group helps ambitious teams build the strategy, operating systems, and execution discipline behind scalable growth.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
     :root {
         --ink:            #171614;
@@ -28,6 +28,8 @@
         --max: 1180px;
         --px: 24px;
         --fast: 180ms ease-out;
+        --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        --font-display: "Space Grotesk", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
     /* ===== RESET ===== */
@@ -39,7 +41,7 @@
         overflow-x: hidden;
         background: var(--paper);
         color: var(--body-light);
-        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-family: var(--font-body);
         font-size: 16px;
         line-height: 1.6;
         -webkit-font-smoothing: antialiased;
@@ -79,7 +81,7 @@
 
     /* ===== TYPOGRAPHY ===== */
     h1, h2, h3 {
-        font-family: "Fraunces", Georgia, serif;
+        font-family: var(--font-display);
         font-weight: 400;
         letter-spacing: -0.01em;
         text-wrap: balance;
@@ -127,7 +129,7 @@
         max-width: 760px;
         font-size: 3.35rem;
         line-height: 1.06;
-        font-weight: 300;
+        font-weight: 400;
     }
 
     .section-copy {
@@ -418,6 +420,14 @@
         align-items: center;
         padding: 132px 0 46px;
         overflow: hidden;
+        background-color: var(--ink);
+        background-image:
+            linear-gradient(90deg, rgba(23, 22, 20, 0.88) 0%, rgba(23, 22, 20, 0.8) 42%, rgba(23, 22, 20, 0.76) 100%),
+            linear-gradient(180deg, rgba(23, 22, 20, 0.68) 0%, rgba(23, 22, 20, 0.82) 100%),
+            url("img/hero.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 
     #hero::before {
@@ -480,12 +490,13 @@
         font-size: 4.9rem;
         line-height: .98;
         color: var(--heading-dark);
-        font-weight: 300;
+        font-weight: 400;
     }
 
     .hero-h span {
         color: #FFFFFF;
-        font-style: italic;
+        font-style: normal;
+        font-weight: 500;
     }
 
     .hero-p {
@@ -522,7 +533,7 @@
     .proof-chip strong {
         display: block;
         color: var(--heading-dark);
-        font-family: "Fraunces", Georgia, serif;
+        font-family: var(--font-display);
         font-size: 1.05rem;
         font-weight: 300;
         line-height: 1.1;
@@ -790,7 +801,7 @@
     .image-note strong {
         display: block;
         color: var(--ink);
-        font-family: "Fraunces", Georgia, serif;
+        font-family: var(--font-display);
         font-size: .96rem;
         font-weight: 400;
     }
@@ -822,7 +833,7 @@
     .proof-card strong {
         display: block;
         color: var(--ink);
-        font-family: "Fraunces", Georgia, serif;
+        font-family: var(--font-display);
         font-size: .98rem;
         font-weight: 400;
         line-height: 1.3;
@@ -946,7 +957,7 @@
 
     .layer-node strong {
         color: var(--ink);
-        font-family: "Fraunces", Georgia, serif;
+        font-family: var(--font-display);
         font-size: .92rem;
         font-weight: 400;
         line-height: 1.25;
@@ -1104,7 +1115,6 @@
         aspect-ratio: 4 / 5;
         object-fit: cover;
         object-position: center 12%;
-        filter: grayscale(100%) sepia(12%);
     }
 
     .ceo-card {
@@ -1121,7 +1131,7 @@
     .ceo-card strong {
         display: block;
         color: var(--ink);
-        font-family: "Fraunces", Georgia, serif;
+        font-family: var(--font-display);
         font-size: 1.05rem;
         font-weight: 400;
     }
@@ -1259,7 +1269,7 @@
     .impact-caption strong {
         display: block;
         color: var(--heading-dark);
-        font-family: "Fraunces", Georgia, serif;
+        font-family: var(--font-display);
         font-size: .96rem;
         font-weight: 400;
     }
@@ -1528,6 +1538,40 @@
     }
 
     .footer-legal { display: flex; gap: 18px; }
+
+    .eyebrow,
+    .pill-link,
+    .btn-primary,
+    .btn-secondary,
+    .btn-form,
+    .brand,
+    .nav-links a,
+    .nav-cta,
+    .mob-links a,
+    .hero-kicker,
+    .proof-chip strong,
+    .system-label,
+    .module-row h3,
+    .visual-badge span,
+    .visual-badge strong,
+    .trust-label,
+    .trust-tags span,
+    .image-note strong,
+    .proof-card strong,
+    .layer-node strong,
+    .step-num,
+    .ceo-card strong,
+    .ceo-card span,
+    .team-pill span,
+    .team-pill strong,
+    .metric-card span,
+    .impact-caption strong,
+    .contact-detail span,
+    .field label,
+    .footer-brand,
+    .footer-col h4 {
+        font-family: var(--font-display);
+    }
 
     /* ===== MOTION ===== */
     .r {

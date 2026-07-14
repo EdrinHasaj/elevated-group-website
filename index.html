@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elevated Group | HR &amp; Leadership Coaching</title>
-    <meta name="description" content="Elevated Group coaches managers and people leaders to have harder conversations, retain their best people, and lead with confidence.">
+    <title>Elevated Coaching Group | Executive Coaching &amp; Leadership Development</title>
+    <meta name="description" content="Elevated Coaching Group partners with founders, executives, and growing organizations to build exceptional leaders, strengthen management capability, and create high-performing teams.">
+    <meta name="theme-color" content="#171614">
+    <link rel="icon" href="branding/elevatedlogo.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <script>document.documentElement.classList.add('js');</script>
     <style>
     :root {
         --ink:            #171614;
@@ -34,7 +37,7 @@
 
     /* ===== RESET ===== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; scroll-padding-top: 112px; }
 
     body {
         min-width: 320px;
@@ -55,9 +58,27 @@
     button { cursor: pointer; }
 
     :focus-visible {
-        outline: 1px solid var(--ink);
+        outline: 2px solid currentColor;
         outline-offset: 3px;
     }
+
+    main section[id] { scroll-margin-top: 112px; }
+
+    .skip-link {
+        position: fixed;
+        z-index: 60;
+        top: calc(8px + env(safe-area-inset-top));
+        left: 12px;
+        padding: 10px 14px;
+        background: var(--heading-dark);
+        color: var(--ink);
+        font-size: .82rem;
+        font-weight: 600;
+        transform: translateY(-160%);
+        transition: transform var(--fast);
+    }
+
+    .skip-link:focus { transform: translateY(0); }
 
     svg { flex: 0 0 auto; }
 
@@ -71,12 +92,13 @@
     .section { position: relative; padding: 104px 0; }
 
     /* section register backgrounds */
-    .section-soft, #about    { background: var(--paper); }
+    .section-soft, #about, #organizations, #leadership,
+    #team-effectiveness, #getting-started, #reviews, #why { background: var(--paper); }
     #services                 { background: var(--ink); padding: 92px 0; }
     #operating-layers         { background: var(--paper); overflow: hidden; }
     #process                  { background: var(--ink); }
     #why                      { background: var(--paper); }
-    #team                     { background: var(--paper); }
+    #leadership               { background: var(--paper); }
     #hero, #impact, #contact  { background: var(--ink); }
 
     /* ===== TYPOGRAPHY ===== */
@@ -361,7 +383,7 @@
         padding: 104px var(--px) 34px;
         background: rgba(17, 16, 15, 0.98);
         transform: translateX(100%);
-        transition: transform 260ms ease-out;
+        transition: transform var(--fast);
     }
 
     #mob-nav.open { transform: translateX(0); }
@@ -612,7 +634,8 @@
         color: var(--cream-strong);
     }
 
-    .module-row h3 {
+    .module-row h3,
+    .module-row .module-title {
         font-family: "Inter", sans-serif;
         font-size: .9rem;
         font-weight: 500;
@@ -1095,9 +1118,6 @@
         background: var(--paper);
     }
 
-    .review-stars { display: flex; gap: 4px; color: var(--cream-strong); }
-    .review-stars svg { width: 15px; height: 15px; }
-
     .review-quote {
         color: var(--body-light);
         font-family: var(--font-display);
@@ -1114,21 +1134,6 @@
         margin-top: auto;
         padding-top: 20px;
         border-top: 1px solid var(--hairline-light);
-    }
-
-    .review-avatar {
-        display: grid;
-        place-items: center;
-        width: 42px;
-        height: 42px;
-        border-radius: 999px;
-        border: 1px solid rgba(23, 22, 20, 0.12);
-        background: var(--cream-mist);
-        color: var(--ink);
-        font-family: var(--font-display);
-        font-size: .8rem;
-        font-weight: 500;
-        flex-shrink: 0;
     }
 
     .review-author strong {
@@ -1159,13 +1164,14 @@
     .ceo-photo {
         position: relative;
         overflow: hidden;
+        aspect-ratio: 4 / 5;
         border: 1px solid var(--hairline-light);
         background: rgba(23, 22, 20, 0.12);
     }
 
     .ceo-photo img {
         width: 100%;
-        aspect-ratio: 4 / 5;
+        height: 100%;
         object-fit: cover;
         object-position: center 12%;
     }
@@ -1400,6 +1406,7 @@
     }
 
     .contact-image {
+        height: 220px;
         min-height: 180px;
         overflow: hidden;
         border: 1px solid var(--hairline-dark);
@@ -1486,15 +1493,6 @@
     .field textarea:focus { border-color: var(--cream); }
 
     .field ::placeholder { color: var(--cream); opacity: .38; }
-
-    .form-ok {
-        display: none;
-        grid-column: 1 / -1;
-        padding: 14px 16px;
-        border: 1px solid var(--hairline-dark);
-        color: var(--body-dark);
-        font-size: .9rem;
-    }
 
     .form-foot {
         grid-column: 1 / -1;
@@ -1609,6 +1607,714 @@
     }
 
     .footer-legal { display: flex; gap: 18px; }
+
+    /* ===== CONTENT INTEGRATION ===== */
+    .hero-p + .hero-p { margin-top: 10px; }
+
+    .module-mark {
+        display: grid;
+        place-items: center;
+        width: 28px;
+        height: 28px;
+        border-left: 1px solid var(--hairline-dark);
+        color: var(--cream);
+    }
+
+    .module-mark svg { width: 14px; height: 14px; }
+
+    /* trusted organizations */
+    #organizations {
+        padding: 46px 0;
+        border-bottom: 1px solid var(--hairline-light);
+    }
+
+    .organizations-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        margin-bottom: 24px;
+    }
+
+    .organizations-title {
+        color: var(--muted-light);
+        font-family: var(--font-display);
+        font-size: .72rem;
+        font-weight: 500;
+        letter-spacing: .15em;
+        line-height: 1.35;
+        text-transform: uppercase;
+    }
+
+    .organizations-rule {
+        height: 1px;
+        flex: 1;
+        background: var(--hairline-light);
+    }
+
+    .organization-grid {
+        display: grid;
+        grid-template-columns: repeat(7, minmax(0, 1fr));
+        border-top: 1px solid var(--hairline-light);
+        border-left: 1px solid var(--hairline-light);
+        list-style: none;
+    }
+
+    .organization-grid li {
+        min-height: 70px;
+        display: grid;
+        place-items: center;
+        padding: 12px;
+        border-right: 1px solid var(--hairline-light);
+        border-bottom: 1px solid var(--hairline-light);
+        color: var(--body-light);
+        font-family: var(--font-display);
+        font-size: .83rem;
+        font-weight: 500;
+        line-height: 1.28;
+        text-align: center;
+    }
+
+    /* company story */
+    .about-copy-stack { display: grid; gap: 16px; margin-top: 22px; }
+
+    .about-copy-stack p {
+        color: var(--body-light);
+        font-size: .98rem;
+        line-height: 1.78;
+    }
+
+    .purpose-statement {
+        margin-top: 24px;
+        padding: 20px 0 0 22px;
+        border-top: 1px solid var(--hairline-light);
+        border-left: 2px solid var(--cream-strong);
+        color: var(--ink);
+        font-family: var(--font-display);
+        font-size: 1.22rem;
+        line-height: 1.45;
+    }
+
+    /* founder background */
+    #leadership { border-top: 1px solid var(--hairline-light); }
+
+    .leadership-copy { display: grid; gap: 16px; margin-top: 22px; }
+
+    .leadership-copy p,
+    .bio-details p {
+        color: var(--body-light);
+        font-size: .95rem;
+        line-height: 1.76;
+    }
+
+    .bio-details {
+        margin-top: 24px;
+        border-top: 1px solid var(--hairline-light);
+        border-bottom: 1px solid var(--hairline-light);
+    }
+
+    .bio-details summary {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        min-height: 54px;
+        color: var(--ink);
+        font-family: var(--font-display);
+        font-size: .9rem;
+        font-weight: 500;
+        cursor: pointer;
+        list-style: none;
+    }
+
+    .bio-details summary::-webkit-details-marker { display: none; }
+
+    .bio-details summary::after {
+        content: "+";
+        color: var(--cream-strong);
+        font-size: 1.2rem;
+        font-weight: 400;
+    }
+
+    .bio-details[open] summary::after { content: "−"; }
+
+    .bio-details-body { display: grid; gap: 16px; padding: 0 0 24px; }
+
+    .credentials {
+        margin-top: 26px;
+        padding: 22px;
+        border: 1px solid var(--hairline-light);
+        background: var(--cream-mist);
+    }
+
+    .credentials h3 {
+        color: var(--ink);
+        font-size: .92rem;
+        font-weight: 500;
+    }
+
+    .credentials-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0 22px;
+        margin-top: 12px;
+        list-style: none;
+    }
+
+    .credentials-list li {
+        position: relative;
+        padding: 11px 0 11px 17px;
+        border-top: 1px solid rgba(23, 22, 20, .1);
+        color: var(--body-light);
+        font-size: .82rem;
+        line-height: 1.5;
+    }
+
+    .credentials-list li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 18px;
+        width: 5px;
+        height: 5px;
+        border-radius: 999px;
+        background: var(--cream-strong);
+    }
+
+    /* expandable services */
+    .service-row { display: block; padding: 0; }
+
+    .service-row[open] { background: var(--dark-elevated); }
+
+    .service-toggle {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 38px minmax(0, 1fr) auto;
+        gap: 18px;
+        align-items: start;
+        padding: 24px;
+        color: inherit;
+        cursor: pointer;
+        list-style: none;
+    }
+
+    .service-toggle::-webkit-details-marker { display: none; }
+
+    .service-side {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .service-chevron {
+        width: 16px;
+        height: 16px;
+        color: var(--cream);
+        transition: transform var(--fast);
+    }
+
+    .service-row[open] .service-chevron { transform: rotate(45deg); }
+
+    .service-detail {
+        margin-left: 80px;
+        padding: 0 24px 24px;
+    }
+
+    .service-detail-inner {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(178, 172, 163, .14);
+    }
+
+    .service-detail-inner.single { grid-template-columns: 1fr; }
+
+    .service-row[open] .service-detail-inner {
+        animation: disclosure-in 180ms ease-out both;
+    }
+
+    @keyframes disclosure-in {
+        from { opacity: 0; transform: translateY(6px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .service-detail h4 {
+        color: var(--cream);
+        font-family: var(--font-display);
+        font-size: .72rem;
+        font-weight: 500;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+    }
+
+    .service-detail p {
+        max-width: 62ch;
+        margin-top: 8px;
+        color: var(--body-dark);
+        font-size: .88rem;
+        line-height: 1.68;
+    }
+
+    .detail-list {
+        display: grid;
+        gap: 8px;
+        margin-top: 12px;
+        list-style: none;
+    }
+
+    .detail-list li {
+        position: relative;
+        padding-left: 15px;
+        color: var(--body-dark);
+        font-size: .84rem;
+        line-height: 1.5;
+    }
+
+    .detail-list li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: .62em;
+        width: 5px;
+        height: 5px;
+        border-radius: 999px;
+        background: var(--cream);
+    }
+
+    .service-jump {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        margin-top: 14px;
+        color: var(--heading-dark);
+        font-family: var(--font-display);
+        font-size: .78rem;
+        font-weight: 500;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+    }
+
+    /* team effectiveness pyramid */
+    .effectiveness-layout {
+        display: grid;
+        grid-template-columns: minmax(0, .86fr) minmax(420px, 1.14fr);
+        gap: 62px;
+        align-items: center;
+    }
+
+    .effectiveness-copy { display: grid; gap: 16px; }
+
+    .effectiveness-copy .section-copy { margin-top: 0; }
+
+    .pyramid-wrap {
+        padding: 30px;
+        border: 1px solid var(--hairline-light);
+        background: var(--cream-mist);
+    }
+
+    .pyramid {
+        min-height: 360px;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        list-style: none;
+    }
+
+    .pyramid li { display: flex; justify-content: center; }
+    .pyramid li:nth-child(1) { width: 100%; }
+    .pyramid li:nth-child(2) { width: 86%; }
+    .pyramid li:nth-child(3) { width: 72%; }
+    .pyramid li:nth-child(4) { width: 58%; }
+    .pyramid li:nth-child(5) { width: 44%; }
+
+    .pyramid-level {
+        width: 100%;
+        min-height: 58px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 9px 16px;
+        border: 1px solid rgba(23, 22, 20, .14);
+        background: var(--paper);
+        color: var(--body-light);
+        font-family: var(--font-display);
+        font-size: .84rem;
+        font-weight: 500;
+        line-height: 1.25;
+        text-align: center;
+        transition: background var(--fast), color var(--fast), transform var(--fast);
+    }
+
+    .pyramid-level:hover { transform: translateY(-2px); }
+
+    .pyramid-level.active,
+    .pyramid-level[aria-current="true"] {
+        background: var(--ink);
+        color: var(--heading-dark);
+        border-color: var(--ink);
+    }
+
+    .pyramid-num {
+        color: var(--cream-strong);
+        font-size: .68rem;
+        font-variant-numeric: tabular-nums;
+    }
+
+    .pyramid-panel {
+        min-height: 132px;
+        margin-top: 16px;
+        padding: 20px;
+        border: 1px solid var(--hairline-light);
+        border-left: 2px solid var(--cream-strong);
+        background: var(--paper);
+    }
+
+    .pyramid-panel span {
+        color: var(--cream-strong);
+        font-family: var(--font-display);
+        font-size: .66rem;
+        font-weight: 500;
+        letter-spacing: .13em;
+        text-transform: uppercase;
+    }
+
+    .pyramid-panel h3 { margin-top: 7px; font-size: 1rem; font-weight: 500; }
+
+    .pyramid-panel p {
+        margin-top: 7px;
+        color: var(--body-light);
+        font-size: .86rem;
+        line-height: 1.62;
+    }
+
+    .workshop-outcome {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 18px;
+        align-items: center;
+        margin-top: 28px;
+        padding: 20px 22px;
+        border: 1px solid var(--hairline-dark);
+        border-left: 2px solid var(--cream);
+        background: var(--dark-surface);
+    }
+
+    .workshop-outcome span {
+        color: var(--cream);
+        font-family: var(--font-display);
+        font-size: .68rem;
+        font-weight: 500;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+    }
+
+    .workshop-outcome strong {
+        color: var(--heading-dark);
+        font-family: var(--font-display);
+        font-size: 1rem;
+        font-weight: 400;
+    }
+
+    /* engagement CTA */
+    #getting-started { padding: 72px 0; }
+
+    .engagement-cta {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 40px;
+        align-items: center;
+        padding: 34px;
+        border: 1px solid var(--hairline-light);
+        border-left: 2px solid var(--cream-strong);
+        background: var(--cream-mist);
+    }
+
+    .engagement-cta h2 { font-size: 2rem; line-height: 1.15; }
+
+    .engagement-cta p {
+        max-width: 720px;
+        margin-top: 12px;
+        color: var(--body-light);
+        line-height: 1.72;
+    }
+
+    /* data-backed coaching */
+    .impact-copy-stack { display: grid; gap: 14px; margin-top: 20px; }
+
+    .impact-copy-stack p {
+        color: var(--body-dark);
+        font-size: .96rem;
+        line-height: 1.76;
+    }
+
+    .metric-card h3 { margin-top: 24px; }
+
+    .impact-caption .stat {
+        color: var(--heading-dark);
+        font-family: var(--font-display);
+        font-size: 2.8rem;
+        font-weight: 400;
+        line-height: 1;
+        font-variant-numeric: tabular-nums;
+    }
+
+    .eq-visual {
+        min-height: 560px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 42px 28px 176px;
+        background: var(--dark-surface);
+    }
+
+    .impact-image.eq-visual::after { display: none; }
+
+    .eq-method {
+        width: min(100%, 360px);
+        display: grid;
+        justify-items: center;
+        gap: 28px;
+    }
+
+    .eq-orbit {
+        position: relative;
+        width: min(72vw, 280px);
+        aspect-ratio: 1;
+        border: 1px solid rgba(178, 172, 163, .2);
+        border-radius: 999px;
+    }
+
+    .eq-orbit::before,
+    .eq-orbit::after {
+        content: "";
+        position: absolute;
+        inset: 18%;
+        border: 1px solid rgba(178, 172, 163, .12);
+        border-radius: 999px;
+    }
+
+    .eq-orbit::after { inset: 36%; }
+
+    .eq-point {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 8px;
+        height: 8px;
+        margin: -4px;
+        border: 1px solid var(--cream);
+        border-radius: 999px;
+        background: var(--dark-surface);
+        transform: rotate(calc(var(--i) * 24deg)) translateY(-140px);
+    }
+
+    .eq-center {
+        position: absolute;
+        z-index: 1;
+        left: 50%;
+        top: 50%;
+        width: 132px;
+        height: 132px;
+        display: grid;
+        place-content: center;
+        gap: 6px;
+        border: 1px solid var(--cream);
+        background: var(--ink);
+        color: var(--heading-dark);
+        text-align: center;
+        transform: translate(-50%, -50%);
+    }
+
+    .eq-center strong {
+        font-family: var(--font-display);
+        font-size: 1.22rem;
+        font-weight: 400;
+    }
+
+    .eq-center span {
+        color: var(--cream);
+        font-family: var(--font-display);
+        font-size: .62rem;
+        font-weight: 500;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+    }
+
+    .eq-types {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1px;
+        border: 1px solid var(--hairline-dark);
+        background: var(--hairline-dark);
+        list-style: none;
+    }
+
+    .eq-types li {
+        min-height: 52px;
+        display: grid;
+        place-items: center;
+        padding: 8px;
+        background: var(--ink);
+        color: var(--body-dark);
+        font-family: var(--font-display);
+        font-size: .7rem;
+        line-height: 1.3;
+        text-align: center;
+    }
+
+    /* floating testimonial carousel */
+    .reviews-shell { position: relative; }
+
+    .testimonial-viewport {
+        overflow-x: auto;
+        overflow-y: visible;
+        padding: 20px 0 28px;
+        scrollbar-width: none;
+        scroll-snap-type: x mandatory;
+        overscroll-behavior-inline: contain;
+    }
+
+    .testimonial-viewport::-webkit-scrollbar { display: none; }
+
+    .testimonial-track {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: calc((100% - 32px) / 3);
+        gap: 16px;
+    }
+
+    .review-card {
+        min-height: 360px;
+        gap: 24px;
+        border: 1px solid var(--hairline-light);
+        scroll-snap-align: start;
+        transition: transform var(--fast), background var(--fast);
+    }
+
+    .review-card.active { transform: translateY(-10px); background: #FFFFFF; }
+
+    .review-mark {
+        color: var(--cream-strong);
+        font-family: var(--font-display);
+        font-size: 2.4rem;
+        line-height: .8;
+    }
+
+    .review-author {
+        display: block;
+        margin-top: auto;
+    }
+
+    .review-author strong {
+        font-size: .84rem;
+        font-weight: 500;
+    }
+
+    .carousel-controls {
+        display: none;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        margin-top: 16px;
+    }
+
+    .carousel-ready .carousel-controls { display: flex; }
+
+    .carousel-buttons { display: flex; gap: 8px; }
+
+    .carousel-button {
+        width: 44px;
+        height: 44px;
+        display: grid;
+        place-items: center;
+        border: 1px solid var(--hairline-light);
+        border-radius: 6px;
+        background: transparent;
+        color: var(--ink);
+        transition: background var(--fast), color var(--fast);
+    }
+
+    .carousel-button:hover { background: var(--ink); color: var(--heading-dark); }
+    .carousel-button:disabled { cursor: not-allowed; opacity: .38; }
+    .carousel-button svg { width: 17px; height: 17px; }
+
+    .carousel-pagination {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 8px;
+    }
+
+    .carousel-dot {
+        width: 28px;
+        height: 28px;
+        display: grid;
+        place-items: center;
+        border: 0;
+        background: transparent;
+    }
+
+    .carousel-dot::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+        border-radius: 999px;
+        border: 1px solid var(--muted-light);
+        background: transparent;
+    }
+
+    .carousel-dot[aria-current="true"]::before {
+        border-color: var(--ink);
+        background: var(--ink);
+    }
+
+    /* why Elevated */
+    #why { border-top: 1px solid var(--hairline-light); }
+
+    #why .why-grid {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 0;
+        border-top: 1px solid var(--hairline-light);
+        border-left: 1px solid var(--hairline-light);
+    }
+
+    #why .why-card {
+        min-height: 260px;
+        padding: 24px 20px;
+        border-right: 1px solid var(--hairline-light);
+        border-bottom: 1px solid var(--hairline-light);
+    }
+
+    #why .why-card h3 { margin-top: 30px; }
+
+    /* honest form state */
+    .form-status {
+        grid-column: 1 / -1;
+        padding: 13px 14px;
+        border: 1px solid rgba(178, 172, 163, .3);
+        color: var(--heading-dark);
+        font-size: .86rem;
+        line-height: 1.5;
+    }
+
+    .form-status[hidden] { display: none; }
+
+    .form-foot .btn-form { margin-left: auto; }
+
+    .footer-col h2 {
+        color: var(--cream);
+        font-family: var(--font-display);
+        font-size: .66rem;
+        font-weight: 500;
+        letter-spacing: .15em;
+        text-transform: uppercase;
+    }
 
     .eyebrow,
     .pill-link,
@@ -1765,7 +2471,63 @@
         .footer-bottom { flex-direction: column; align-items: flex-start; }
     }
 
+    @media (min-width: 1121px) {
+        .hero-h { font-size: 4.35rem; }
+    }
+
+    @media (max-width: 1120px) {
+        .ceo-photo { width: min(100%, 620px); }
+        .effectiveness-layout { grid-template-columns: 1fr; gap: 38px; }
+        .pyramid-wrap { width: min(100%, 760px); }
+        #why .why-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        .testimonial-track { grid-auto-columns: calc((100% - 16px) / 2); }
+    }
+
+    @media (max-width: 880px) {
+        .organization-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+        .credentials-list { grid-template-columns: 1fr; }
+        .engagement-cta { grid-template-columns: 1fr; gap: 24px; }
+        .testimonial-track { grid-auto-columns: calc((100% - 16px) / 2); }
+        #why .why-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 640px) {
+        html { scroll-padding-top: 96px; }
+        main section[id] { scroll-margin-top: 96px; }
+        #organizations { padding: 38px 0; }
+        .organizations-head { align-items: flex-start; }
+        .organization-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .organization-grid li { min-height: 64px; font-size: .78rem; }
+        .purpose-statement { padding-left: 16px; font-size: 1.05rem; }
+        .service-toggle { grid-template-columns: 34px minmax(0, 1fr); gap: 14px; padding: 20px; }
+        .service-toggle .service-icon { width: 34px; height: 34px; }
+        .service-side { grid-column: 2; justify-content: space-between; width: 100%; }
+        .service-detail { margin-left: 0; padding: 0 20px 20px; }
+        .service-detail-inner { grid-template-columns: 1fr; gap: 22px; }
+        .pyramid-wrap { padding: 18px; }
+        .pyramid { min-height: 0; flex-direction: column; gap: 8px; }
+        .pyramid li:nth-child(n) { width: 100%; }
+        .pyramid-level { min-height: 52px; justify-content: flex-start; text-align: left; }
+        .pyramid-level:hover { transform: none; }
+        .workshop-outcome { grid-template-columns: 1fr; gap: 7px; }
+        #getting-started { padding: 56px 0; }
+        .engagement-cta { padding: 24px 20px; }
+        .engagement-cta h2 { font-size: 1.65rem; }
+        .testimonial-track { grid-auto-columns: 100%; gap: 12px; }
+        .review-card { min-height: 0; padding: 26px 22px; }
+        .review-card.active { transform: translateY(-6px); }
+        .carousel-controls { align-items: flex-start; }
+        .carousel-pagination { max-width: 210px; flex-wrap: wrap; gap: 2px; }
+        #why .why-grid { grid-template-columns: 1fr; }
+        #why .why-card { min-height: 0; }
+    }
+
     @media (prefers-reduced-motion: reduce) {
+        .motion-ready .r:not(.on) {
+            opacity: 1;
+            transform: none;
+        }
+
         *, *::before, *::after {
             animation-duration: .01ms !important;
             animation-iteration-count: 1 !important;
@@ -1777,8 +2539,10 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
 <nav id="nav" aria-label="Main navigation">
-    <a href="#hero" class="brand" aria-label="Elevated Group home">
+    <a href="#hero" class="brand" aria-label="Elevated Coaching Group home">
         <span class="brand-badge">
             <img class="brand-logo" src="branding/elevatedlogo.png" alt="" aria-hidden="true">
         </span>
@@ -1786,12 +2550,11 @@
     <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#services">Services</a></li>
+        <li><a href="#impact">Approach</a></li>
+        <li><a href="#leadership">Leadership</a></li>
         <li><a href="#reviews">Reviews</a></li>
-        <li><a href="#process">Process</a></li>
-        <li><a href="#team">Leadership</a></li>
-        <li><a href="#impact">Impact</a></li>
     </ul>
-    <a class="btn-primary nav-cta" href="#contact">Book a Call</a>
+    <a class="btn-primary nav-cta" href="#contact">Work With Us</a>
     <button class="nav-menu" id="ham" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mob-nav">
         <span aria-hidden="true"></span>
     </button>
@@ -1801,46 +2564,46 @@
     <ul class="mob-links">
         <li><a href="#about">About</a></li>
         <li><a href="#services">Services</a></li>
+        <li><a href="#impact">Approach</a></li>
+        <li><a href="#leadership">Leadership</a></li>
         <li><a href="#reviews">Reviews</a></li>
-        <li><a href="#process">Process</a></li>
-        <li><a href="#team">Leadership</a></li>
-        <li><a href="#impact">Impact</a></li>
         <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="mob-footer">
-        <strong>Leadership and HR coaching for ambitious teams.</strong>
-        <a class="btn-primary" href="#contact">Book a Consultation</a>
+        <strong>Leadership that scales businesses. Coaching that transforms leaders.</strong>
+        <a class="btn-primary" href="#contact">Work With Us</a>
     </div>
 </aside>
 
-<main>
+<main id="main-content">
     <section id="hero">
         <div class="hero-wrap">
             <div class="hero-main">
                 <div class="hero-content">
-                    <div class="hero-kicker r on">HR &amp; Leadership Coaching Partner</div>
-                    <h1 class="hero-h r on d1">Build the leaders behind your next stage of <span>growth.</span></h1>
-                    <p class="hero-p r on d2">Elevated Group coaches your managers and people leaders so they can have harder conversations, retain their best people, and grow into the role the business needs &mdash; with confidence.</p>
+                    <div class="hero-kicker r on">Elevated Coaching Group</div>
+                    <h1 class="hero-h r on d1">Leadership That Scales Businesses. <span>Coaching That Transforms Leaders.</span></h1>
+                    <p class="hero-p r on d2">Elevated Coaching Group partners with founders, executives, and growing organizations to build exceptional leaders, strengthen management capability, and create high-performing teams.</p>
+                    <p class="hero-p r on d2">Through executive coaching, leadership development, emotional intelligence, and strategic HR advisory, we help ambitious people and organizations navigate growth with confidence.</p>
                     <div class="hero-actions r on d3">
-                        <a class="btn-primary" href="#contact">Book a Consultation</a>
+                        <a class="btn-primary" href="#contact">Work With Us</a>
                         <a class="btn-secondary" href="#services">
-                            Explore Coaching Programs
+                            Explore Services
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                                 <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                         </a>
                     </div>
                 </div>
-                <div class="hero-visual r on d2" aria-label="Elevated Group leadership system preview">
+                <div class="hero-visual r on d2" aria-label="Elevated Coaching Group leadership capabilities">
                     <div class="visual-glow" aria-hidden="true"></div>
                     <div class="visual-badge badge-a">
-                        <span>Leadership Practice</span>
-                        <strong>Support that shows up in 1:1s, feedback, and decisions</strong>
+                        <span>Growth Partnership</span>
+                        <strong>Support through pivotal periods of growth</strong>
                     </div>
                     <div class="system-card">
                         <div class="system-top">
                             <div class="traffic" aria-hidden="true"><span></span><span></span><span></span></div>
-                            <div class="system-label">Leadership System</div>
+                            <div class="system-label">Leadership Capabilities</div>
                         </div>
                         <div class="system-body">
                             <article class="module-row">
@@ -1848,63 +2611,86 @@
                                     <svg viewBox="0 0 24 24" fill="none"><path d="M4 12h16M13 5l7 7-7 7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                 </div>
                                 <div>
-                                    <h3>Direction</h3>
-                                    <p>Who owns what, and where each leader grows.</p>
+                                    <p class="module-title">Executive Coaching</p>
+                                    <p>Sharper decisions, stronger presence, and the confidence to lead at the next level.</p>
                                 </div>
-                                <div class="module-meter" aria-hidden="true"><span style="--w: 86%"></span></div>
+                                <div class="module-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
                             </article>
                             <article class="module-row">
                                 <div class="module-icon" aria-hidden="true">
                                     <svg viewBox="0 0 24 24" fill="none"><path d="M6 7h12M6 12h9M6 17h6" stroke="currentColor" stroke-linecap="round"/></svg>
                                 </div>
                                 <div>
-                                    <h3>Workflow</h3>
-                                    <p>1:1s and feedback habits managers keep.</p>
+                                    <p class="module-title">Leadership Development</p>
+                                    <p>Build exceptional leaders and strengthen management capability.</p>
                                 </div>
-                                <div class="module-meter" aria-hidden="true"><span style="--w: 74%"></span></div>
+                                <div class="module-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
                             </article>
                             <article class="module-row">
                                 <div class="module-icon" aria-hidden="true">
                                     <svg viewBox="0 0 24 24" fill="none"><path d="M4 19V5M4 19h16M8 15l3-4 3 2 5-7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                 </div>
                                 <div>
-                                    <h3>Insight</h3>
-                                    <p>People data that drives real decisions.</p>
+                                    <p class="module-title">Emotional Intelligence</p>
+                                    <p>Turn self-awareness into a leadership advantage.</p>
                                 </div>
-                                <div class="module-meter" aria-hidden="true"><span style="--w: 91%"></span></div>
+                                <div class="module-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
                             </article>
                             <article class="module-row">
                                 <div class="module-icon" aria-hidden="true">
                                     <svg viewBox="0 0 24 24" fill="none"><path d="M5 6h14v10H8l-3 3V6z" stroke="currentColor" stroke-linejoin="round"/></svg>
                                 </div>
                                 <div>
-                                    <h3>Experience</h3>
-                                    <p>Onboarding to growth paths people stay for.</p>
+                                    <p class="module-title">Fractional CHRO</p>
+                                    <p>Senior HR leadership without the full-time investment.</p>
                                 </div>
-                                <div class="module-meter" aria-hidden="true"><span style="--w: 79%"></span></div>
+                                <div class="module-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
                             </article>
                         </div>
                     </div>
                     <div class="visual-badge badge-b proof-badge">
-                        <span>Outcome Focus</span>
-                        <strong>Retention you can see in the numbers</strong>
+                        <span>Our Purpose</span>
+                        <strong>Helping people unlock their potential so businesses can reach theirs.</strong>
                     </div>
                 </div>
             </div>
 
-            <div class="hero-trust" aria-label="Coaching capabilities">
+            <div class="hero-trust" aria-label="Core capabilities">
                 <div class="trust-row">
-                    <span class="trust-label">Coaching Capabilities</span>
+                    <span class="trust-label">Core Capabilities</span>
                     <div class="trust-tags">
-                        <span>Leadership Coaching</span>
-                        <span>Manager Training</span>
-                        <span>Performance Systems</span>
-                        <span>People Analytics</span>
-                        <span>Team Dynamics</span>
-                        <span>Culture Design</span>
+                        <span>Executive Coaching</span>
+                        <span>Leadership Development</span>
+                        <span>Emotional Intelligence</span>
+                        <span>Fractional CHRO</span>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section id="organizations" aria-labelledby="organizations-title">
+        <div class="shell">
+            <div class="organizations-head r">
+                <h2 class="organizations-title" id="organizations-title">Trusted by Leaders From Organizations Including</h2>
+                <span class="organizations-rule" aria-hidden="true"></span>
+            </div>
+            <ul class="organization-grid r d1">
+                <li>Samsung</li>
+                <li>TD Bank</li>
+                <li>Flipp</li>
+                <li>Heart &amp; Stroke Foundation</li>
+                <li>Relay</li>
+                <li>Achievers</li>
+                <li>Softchoice</li>
+                <li>CONMED</li>
+                <li>ExpensePoint</li>
+                <li>Wajax</li>
+                <li>White Ribbon</li>
+                <li>Shiseido</li>
+                <li>Alzheimer's Society</li>
+                <li>Tundra Technical Solutions</li>
+            </ul>
         </div>
     </section>
 
@@ -1913,37 +2699,68 @@
             <div class="about-layout">
                 <div class="image-stack r">
                     <div class="photo-card photo-main">
-                        <img src="branding/branding3.png" alt="Elevated Group office entrance with glass logo application">
+                        <img src="branding/branding6.png" alt="Elevated Coaching Group monogram on a monochrome exterior sign" width="1122" height="1402" loading="lazy" decoding="async">
                     </div>
                     <div class="photo-card photo-sub">
-                        <img src="branding/branding1.png" alt="Elevated Group branded office detail">
+                        <img src="img/joana.jpg" alt="Joana Oliveira in a bright studio setting" width="3527" height="5290" loading="lazy" decoding="async">
                     </div>
                     <div class="image-note">
-                        <strong>A practical playbook for your next stage of leadership.</strong>
-                        <span>Built around the conversations, habits, and decisions that determine whether your managers thrive.</span>
+                        <strong>Founded in 2019</strong>
+                        <span>Boutique leadership development, executive coaching, and strategic HR advisory.</span>
                     </div>
                 </div>
                 <div>
-                    <span class="eyebrow r d1">About Elevated Group</span>
-                    <h2 class="section-title r d2">Stronger leaders where growth gets hard.</h2>
-                    <p class="section-copy r d2">Elevated Group helps growing companies turn capable people into confident leaders. We coach managers and executives to make sharper decisions, have the conversations they avoid, and keep their best people.</p>
-                    <div class="proof-grid r d3">
-                        <article class="proof-card">
-                            <strong>Confident managers</strong>
-                            <span>Equip people leaders to coach, decide, and have the conversations they used to avoid.</span>
-                        </article>
-                        <article class="proof-card">
-                            <strong>Stronger retention</strong>
-                            <span>Build the habits and culture that keep your best people engaged as the team grows.</span>
-                        </article>
-                        <article class="proof-card">
-                            <strong>Better decisions</strong>
-                            <span>Give leaders the clarity and judgment to make people decisions in real time.</span>
-                        </article>
-                        <article class="proof-card">
-                            <strong>Execution discipline</strong>
-                            <span>Make follow-through visible through operating cadence and clear accountability.</span>
-                        </article>
+                    <span class="eyebrow r d1">About Elevated Coaching Group</span>
+                    <h2 class="section-title r d2">Helping Leaders Grow So Businesses Can Too.</h2>
+                    <div class="about-copy-stack r d2">
+                        <p>Founded in 2019, Elevated Coaching Group is a boutique leadership development, executive coaching, and strategic HR advisory firm.</p>
+                        <p>We partner with organizations at pivotal moments of growth &mdash; developing stronger leaders, more capable managers, and high-performing teams equipped to navigate change, complexity, and rapid business growth.</p>
+                        <p>Our work combines executive coaching, emotional intelligence, leadership development, and strategic HR expertise to help organizations scale their people alongside their business.</p>
+                        <p>Whether coaching one executive or partnering with an entire leadership team, our purpose remains the same:</p>
+                    </div>
+                    <p class="purpose-statement r d3">Helping people unlock their potential so businesses can reach theirs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="leadership">
+        <div class="shell">
+            <div class="team-layout">
+                <div class="ceo-photo r">
+                    <img src="img/joana.jpg" alt="Joana Oliveira, Founder, Executive Coach, and HR Executive at Elevated Coaching Group" width="3527" height="5290" loading="lazy" decoding="async">
+                    <div class="ceo-card">
+                        <strong>Joana Oliveira</strong>
+                        <span>Founder | Executive Coach | HR Executive</span>
+                    </div>
+                </div>
+                <div>
+                    <span class="eyebrow r d1">Leadership &mdash; About Joana</span>
+                    <h2 class="section-title r d2">Meet Joana Oliveira</h2>
+                    <div class="leadership-copy r d2">
+                        <p>Joana Oliveira is the Founder of Elevated Coaching Group and a senior Human Resources executive with more than 15 years of experience helping organizations build exceptional leaders, scale high-performing teams, and navigate transformational growth.</p>
+                        <p>Throughout her career, Joana has partnered with founders, CEOs, executive teams, and boards across technology, SaaS, financial services, healthcare, consumer, and not-for-profit organizations. She has helped organizations evolve from startup to scale-up environments, supporting periods of rapid growth, organizational transformation, executive transitions, and leadership development.</p>
+                    </div>
+                    <details class="bio-details r d2">
+                        <summary>Read Joana's full background</summary>
+                        <div class="bio-details-body">
+                            <p>Having spent her career inside high-growth organizations, Joana understands firsthand that as businesses grow, leadership becomes the competitive advantage.</p>
+                            <p>Her coaching blends executive experience with behavioural science, psychology, neuroscience, emotional intelligence, and strengths-based coaching to help leaders gain clarity, build confidence, improve relationships, and lead with greater impact.</p>
+                            <p>Clients describe her as approachable, authentic, insightful, and highly practical. She creates a trusted space where leaders are challenged to think differently, discover their strengths, and unlock what she calls their “superpowers.”</p>
+                            <p>A lifelong learner with an endless curiosity about people and leadership, Joana is passionate about helping leaders become the best version of themselves while building organizations where people and performance thrive together.</p>
+                        </div>
+                    </details>
+                    <div class="credentials r d3">
+                        <h3>Credentials</h3>
+                        <ul class="credentials-list">
+                            <li>CHRL</li>
+                            <li>Certified Executive Coach</li>
+                            <li>Certified EQ-i 2.0 &amp; EQ 360 Practitioner</li>
+                            <li>Certified Situational Leadership® Facilitator (Ken Blanchard)</li>
+                            <li>Honours BA Psychology, Neuroscience &amp; Behaviour &ndash; McMaster University</li>
+                            <li>Post-Graduate HR Management &ndash; Sheridan College</li>
+                            <li>Executive Coach Training &ndash; Royal Roads University</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -1955,136 +2772,188 @@
             <div class="services-split">
                 <aside class="services-intro">
                     <span class="eyebrow r">Services</span>
-                    <h2 class="section-title r d1">Coaching programs, tailored to your team's stage.</h2>
-                    <p class="section-copy r d2">Each program can stand alone or combine into a complete leadership development system for your managers and teams.</p>
+                    <h2 class="section-title r d1">Coaching Programs Built to Scale Leaders.</h2>
+                    <p class="section-copy r d2">Six ways we build leadership capability &mdash; standalone or combined into a complete leadership system for your organization.</p>
                     <div class="services-photo r d2">
-                        <img src="img/team-meeting-modern-office-med.jpg" alt="Managers and team members in a coaching conversation in a bright modern office">
+                        <img src="img/team-meeting-modern-office-med.jpg" srcset="img/team-meeting-modern-office-sml.jpg 684w, img/team-meeting-modern-office-med.jpg 1026w, img/team-meeting-modern-office-lrg.jpg 1368w" sizes="(max-width: 880px) 100vw, 42vw" alt="Leaders and team members in a collaborative coaching conversation" width="1026" height="1500" loading="lazy" decoding="async">
                     </div>
                 </aside>
                 <div class="service-list">
-                    <article class="service-row r">
-                        <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l2.8 6.2 6.7.7-5 4.5 1.4 6.6L12 17.6 6.1 21l1.4-6.6-5-4.5 6.7-.7L12 3z" stroke="currentColor" stroke-linejoin="round"/></svg></div>
-                        <div class="service-row-body">
-                            <h3>1:1 Leadership Coaching</h3>
-                            <p>One-on-one coaching for managers and executives &mdash; sharper decisions, harder conversations, and the confidence to lead.</p>
+                    <details class="service-row r">
+                        <summary class="service-toggle" id="service-01-toggle" aria-controls="service-01-detail">
+                            <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l2.8 6.2 6.7.7-5 4.5 1.4 6.6L12 17.6 6.1 21l1.4-6.6-5-4.5 6.7-.7L12 3z" stroke="currentColor" stroke-linejoin="round"/></svg></div>
+                            <div class="service-row-body">
+                                <h3>Executive Coaching</h3>
+                                <p>One-on-one coaching for founders, executives, and high-potential leaders &mdash; sharper decisions, stronger presence, and the confidence to lead at the next level.</p>
+                            </div>
+                            <span class="service-side"><span class="service-num">01</span><svg class="service-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-linecap="round"/></svg></span>
+                        </summary>
+                        <div class="service-detail" id="service-01-detail" role="region" aria-labelledby="service-01-toggle">
+                            <div class="service-detail-inner">
+                                <div>
+                                    <h4>Formats</h4>
+                                    <ul class="detail-list">
+                                        <li>Leadership Accelerator (6-month engagement)</li>
+                                        <li>Monthly Executive Growth Partnership</li>
+                                        <li>Bi-weekly Executive Coaching</li>
+                                        <li>Executive Transition Coaching</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4>Coaching Areas</h4>
+                                    <ul class="detail-list">
+                                        <li>Executive Presence</li>
+                                        <li>Leadership Confidence</li>
+                                        <li>Difficult Conversations</li>
+                                        <li>Strategic Thinking</li>
+                                        <li>Executive Influence</li>
+                                        <li>Communication</li>
+                                        <li>Decision-Making</li>
+                                        <li>Career Growth</li>
+                                        <li>Leading Through Change</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
-                        <span class="service-num">01</span>
-                    </article>
-                    <article class="service-row r">
-                        <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 6h14M5 12h10M5 18h6" stroke="currentColor" stroke-linecap="round"/></svg></div>
-                        <div class="service-row-body">
-                            <h3>New-Manager Foundations</h3>
-                            <p>Practical training for first-time and newly promoted managers &mdash; running 1:1s, setting expectations, and giving feedback that lands.</p>
+                    </details>
+                    <details class="service-row r">
+                        <summary class="service-toggle" id="service-02-toggle" aria-controls="service-02-detail">
+                            <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM8.5 12.5l2 2 5-5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                            <div class="service-row-body">
+                                <h3>Emotional Intelligence Coaching</h3>
+                                <p>EQ-i 2.0 and EQ 360 assessments turn self-awareness into a leadership advantage &mdash; measurable growth in resilience, empathy, executive presence, and relationships.</p>
+                            </div>
+                            <span class="service-side"><span class="service-num">02</span><svg class="service-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-linecap="round"/></svg></span>
+                        </summary>
+                        <div class="service-detail" id="service-02-detail" role="region" aria-labelledby="service-02-toggle">
+                            <div class="service-detail-inner single">
+                                <div>
+                                    <h4>Availability</h4>
+                                    <p>Built into every engagement, and available standalone for individuals, teams, and executive groups.</p>
+                                </div>
+                            </div>
                         </div>
-                        <span class="service-num">02</span>
-                    </article>
-                    <article class="service-row r">
-                        <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 19V5M4 19h16M8 15l3-4 3 2 5-7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-                        <div class="service-row-body">
-                            <h3>Performance &amp; Feedback Systems</h3>
-                            <p>Review cadences, feedback habits, and goal systems your managers actually use week to week.</p>
+                    </details>
+                    <details class="service-row r">
+                        <summary class="service-toggle" id="service-03-toggle" aria-controls="service-03-detail">
+                            <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 6h14M5 12h10M5 18h6" stroke="currentColor" stroke-linecap="round"/></svg></div>
+                            <div class="service-row-body">
+                                <h3>Situational Leadership®</h3>
+                                <p>Certified Situational Leadership® training for managers and people leaders &mdash; know when to direct, coach, support, or delegate, and build a team that delivers.</p>
+                            </div>
+                            <span class="service-side"><span class="service-num">03</span><svg class="service-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-linecap="round"/></svg></span>
+                        </summary>
+                        <div class="service-detail" id="service-03-detail" role="region" aria-labelledby="service-03-toggle">
+                            <div class="service-detail-inner single">
+                                <div>
+                                    <h4>Improves</h4>
+                                    <ul class="detail-list">
+                                        <li>Manager effectiveness</li>
+                                        <li>Accountability</li>
+                                        <li>Delegation</li>
+                                        <li>Coaching capability</li>
+                                        <li>Employee engagement</li>
+                                        <li>Performance conversations</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
-                        <span class="service-num">03</span>
-                    </article>
-                    <article class="service-row r">
-                        <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 4v4M12 16v4M4 12h4M16 12h4M7.1 7.1l2.8 2.8M14.1 14.1l2.8 2.8M16.9 7.1l-2.8 2.8M9.9 14.1l-2.8 2.8" stroke="currentColor" stroke-linecap="round"/></svg></div>
-                        <div class="service-row-body">
-                            <h3>Difficult Conversations</h3>
-                            <p>Coach leaders through underperformance, conflict, and team tension before it costs you good people.</p>
+                    </details>
+                    <details class="service-row r">
+                        <summary class="service-toggle" id="service-04-toggle" aria-controls="service-04-detail">
+                            <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 4v4M12 16v4M4 12h4M16 12h4M7.1 7.1l2.8 2.8M14.1 14.1l2.8 2.8M16.9 7.1l-2.8 2.8M9.9 14.1l-2.8 2.8" stroke="currentColor" stroke-linecap="round"/></svg></div>
+                            <div class="service-row-body">
+                                <h3>Self Leadership Coaching</h3>
+                                <p>Leadership starts before the title.</p>
+                            </div>
+                            <span class="service-side"><span class="service-num">04</span><svg class="service-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-linecap="round"/></svg></span>
+                        </summary>
+                        <div class="service-detail" id="service-04-detail" role="region" aria-labelledby="service-04-toggle">
+                            <div class="service-detail-inner single">
+                                <div>
+                                    <h4>Who It Supports</h4>
+                                    <p>Coaching for individual contributors and emerging leaders ready to build confidence, communication, and ownership of their career growth.</p>
+                                </div>
+                            </div>
                         </div>
-                        <span class="service-num">04</span>
-                    </article>
-                    <article class="service-row r">
-                        <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="6" height="6" rx="1" stroke="currentColor"/><rect x="14" y="4" width="6" height="6" rx="1" stroke="currentColor"/><rect x="4" y="14" width="6" height="6" rx="1" stroke="currentColor"/><path d="M15 17h5M17.5 14.5v5" stroke="currentColor" stroke-linecap="round"/></svg></div>
-                        <div class="service-row-body">
-                            <h3>Culture &amp; Values</h3>
-                            <p>Turn stated values into daily behavior &mdash; how teams hire, decide, recognize, and hold each other accountable.</p>
+                    </details>
+                    <details class="service-row r">
+                        <summary class="service-toggle" id="service-05-toggle" aria-controls="service-05-detail">
+                            <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="6" height="6" rx="1" stroke="currentColor"/><rect x="14" y="4" width="6" height="6" rx="1" stroke="currentColor"/><rect x="4" y="14" width="6" height="6" rx="1" stroke="currentColor"/><path d="M15 17h5M17.5 14.5v5" stroke="currentColor" stroke-linecap="round"/></svg></div>
+                            <div class="service-row-body">
+                                <h3>Fractional CHRO &amp; Strategic HR Advisory</h3>
+                                <p>Senior HR leadership without the full-time investment &mdash; full-scope strategic HR support built for startups and scale-ups navigating rapid growth.</p>
+                            </div>
+                            <span class="service-side"><span class="service-num">05</span><svg class="service-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-linecap="round"/></svg></span>
+                        </summary>
+                        <div class="service-detail" id="service-05-detail" role="region" aria-labelledby="service-05-toggle">
+                            <div class="service-detail-inner single">
+                                <div>
+                                    <h4>Full Scope</h4>
+                                    <ul class="detail-list">
+                                        <li>Talent strategy</li>
+                                        <li>Organizational design</li>
+                                        <li>Driving high performance</li>
+                                        <li>Compensation structure</li>
+                                        <li>Engagement surveys &amp; strategy</li>
+                                        <li>Talent development &amp; succession planning</li>
+                                        <li>Restructures &amp; offboarding</li>
+                                        <li>Executive hiring</li>
+                                        <li>Culture</li>
+                                        <li>Change management</li>
+                                        <li>Executive team effectiveness</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
-                        <span class="service-num">05</span>
-                    </article>
-                    <article class="service-row r">
-                        <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16v10H4z" stroke="currentColor" stroke-linejoin="round"/><path d="M8 17v3M16 17v3M8 11h8" stroke="currentColor" stroke-linecap="round"/></svg></div>
-                        <div class="service-row-body">
-                            <h3>People Analytics &amp; Retention</h3>
-                            <p>Make sense of engagement, turnover, and retention signals so you can act before your best people leave.</p>
+                    </details>
+                    <details class="service-row r">
+                        <summary class="service-toggle" id="service-06-toggle" aria-controls="service-06-detail">
+                            <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 19V5M8 17v-5M12 17V8M16 17v-7M20 17V6" stroke="currentColor" stroke-linecap="round"/></svg></div>
+                            <div class="service-row-body">
+                                <h3>Team Effectiveness: The Five Dysfunctions Workshop Series</h3>
+                                <p>Built on Patrick Lencioni's <em>The Five Dysfunctions of a Team</em> model &mdash; five workshops, one for each dysfunction, moving leadership teams from friction to trust and from politics to results.</p>
+                            </div>
+                            <span class="service-side"><span class="service-num">06</span><svg class="service-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-linecap="round"/></svg></span>
+                        </summary>
+                        <div class="service-detail" id="service-06-detail" role="region" aria-labelledby="service-06-toggle">
+                            <div class="service-detail-inner single">
+                                <div>
+                                    <h4>Workshop Series</h4>
+                                    <p>Explore the Five Dysfunctions model and the five workshops for building trust, mastering conflict, achieving commitment, embracing accountability, and focusing on results.</p>
+                                    <a class="service-jump" href="#team-effectiveness">Explore the Workshop Series <span aria-hidden="true">&rarr;</span></a>
+                                </div>
+                            </div>
                         </div>
-                        <span class="service-num">06</span>
-                    </article>
-                    <article class="service-row r">
-                        <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 19V5M8 17v-5M12 17V8M16 17v-7M20 17V6" stroke="currentColor" stroke-linecap="round"/></svg></div>
-                        <div class="service-row-body">
-                            <h3>HR &amp; People Advisory</h3>
-                            <p>On-call guidance for founders and people leaders on org design, leveling, and the decisions that shape growth.</p>
-                        </div>
-                        <span class="service-num">07</span>
-                    </article>
+                    </details>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Reviews: placeholder testimonials. Replace quotes / names / roles / companies with real client stories before launch. -->
-    <section class="section section-soft" id="reviews">
+    <section class="section section-soft" id="team-effectiveness">
         <div class="shell">
-            <div class="section-head">
-                <div>
-                    <span class="eyebrow r">Reviews</span>
-                    <h2 class="section-title r d1">What leaders say after working with us.</h2>
+            <div class="effectiveness-layout">
+                <div class="effectiveness-copy">
+                    <span class="eyebrow r">Team Effectiveness</span>
+                    <h2 class="section-title r d1">Team Effectiveness: The Five Dysfunctions Workshop Series</h2>
+                    <p class="section-copy r d2">Built on Patrick Lencioni's <em>The Five Dysfunctions of a Team</em> model &mdash; five workshops, one for each dysfunction, moving leadership teams from friction to trust and from politics to results.</p>
+                    <p class="section-copy r d2">Select a level to see the corresponding workshop.</p>
                 </div>
-                <p class="section-copy r d2">Placeholder testimonials &mdash; swap in real client quotes, names, titles, and companies before launch.</p>
-            </div>
-            <div class="reviews-grid">
-                <article class="review-card r">
-                    <div class="review-stars" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.6 5.5 6 .5-4.5 4 1.3 5.9L12 16.8 6.6 18.9 7.9 13 3.4 9l6-.5L12 3z"/></svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.6 5.5 6 .5-4.5 4 1.3 5.9L12 16.8 6.6 18.9 7.9 13 3.4 9l6-.5L12 3z"/></svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.6 5.5 6 .5-4.5 4 1.3 5.9L12 16.8 6.6 18.9 7.9 13 3.4 9l6-.5L12 3z"/></svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.6 5.5 6 .5-4.5 4 1.3 5.9L12 16.8 6.6 18.9 7.9 13 3.4 9l6-.5L12 3z"/></svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.6 5.5 6 .5-4.5 4 1.3 5.9L12 16.8 6.6 18.9 7.9 13 3.4 9l6-.5L12 3z"/></svg>
+                <div class="pyramid-wrap r d2">
+                    <ol class="pyramid" aria-label="Five Dysfunctions pyramid, from foundation to peak">
+                        <li><a class="pyramid-level active" href="#workshop-01" aria-controls="pyramid-workshop" aria-current="true"><span class="pyramid-num">01</span>Absence of Trust</a></li>
+                        <li><a class="pyramid-level" href="#workshop-02" aria-controls="pyramid-workshop"><span class="pyramid-num">02</span>Fear of Conflict</a></li>
+                        <li><a class="pyramid-level" href="#workshop-03" aria-controls="pyramid-workshop"><span class="pyramid-num">03</span>Lack of Commitment</a></li>
+                        <li><a class="pyramid-level" href="#workshop-04" aria-controls="pyramid-workshop"><span class="pyramid-num">04</span>Avoidance of Accountability</a></li>
+                        <li><a class="pyramid-level" href="#workshop-05" aria-controls="pyramid-workshop"><span class="pyramid-num">05</span>Inattention to Results</a></li>
+                    </ol>
+                    <div class="pyramid-panel" id="pyramid-workshop" tabindex="-1" aria-live="polite">
+                        <span>Corresponding Workshop</span>
+                        <h3>Workshop 01 &mdash; Building Trust</h3>
+                        <p>Vulnerability-based exercises so the team can be candid, admit mistakes, and ask for help.</p>
                     </div>
-                    <p class="review-quote">&ldquo;Placeholder quote about how coaching helped our new managers have the hard conversations they used to avoid.&rdquo;</p>
-                    <div class="review-author">
-                        <div class="review-avatar" aria-hidden="true">RM</div>
-                        <div>
-                            <strong>Client Name</strong>
-                            <span>VP of People, Company</span>
-                        </div>
-                    </div>
-                </article>
-                <article class="review-card r d1">
-                    <div class="review-stars" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.6 5.5 6 .5-4.5 4 1.3 5.9L12 16.8 6.6 18.9 7.9 13 3.4 9l6-.5L12 3z"/></svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.6 5.5 6 .5-4.5 4 1.3 5.9L12 16.8 6.6 18.9 7.9 13 3.4 9l6-.5L12 3z"/></svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.6 5.5 6 .5-4.5 4 1.3 5.9L12 16.8 6.6 18.9 7.9 13 3.4 9l6-.5L12 3z"/></svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.6 5.5 6 .5-4.5 4 1.3 5.9L12 16.8 6.6 18.9 7.9 13 3.4 9l6-.5L12 3z"/></svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.6 5.5 6 .5-4.5 4 1.3 5.9L12 16.8 6.6 18.9 7.9 13 3.4 9l6-.5L12 3z"/></svg>
-                    </div>
-                    <p class="review-quote">&ldquo;Placeholder quote about retention &mdash; the people we were worried about losing are still here a year later.&rdquo;</p>
-                    <div class="review-author">
-                        <div class="review-avatar" aria-hidden="true">DS</div>
-                        <div>
-                            <strong>Client Name</strong>
-                            <span>Founder &amp; CEO, Company</span>
-                        </div>
-                    </div>
-                </article>
-                <article class="review-card r d2">
-                    <div class="review-stars" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.6 5.5 6 .5-4.5 4 1.3 5.9L12 16.8 6.6 18.9 7.9 13 3.4 9l6-.5L12 3z"/></svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.6 5.5 6 .5-4.5 4 1.3 5.9L12 16.8 6.6 18.9 7.9 13 3.4 9l6-.5L12 3z"/></svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.6 5.5 6 .5-4.5 4 1.3 5.9L12 16.8 6.6 18.9 7.9 13 3.4 9l6-.5L12 3z"/></svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.6 5.5 6 .5-4.5 4 1.3 5.9L12 16.8 6.6 18.9 7.9 13 3.4 9l6-.5L12 3z"/></svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.6 5.5 6 .5-4.5 4 1.3 5.9L12 16.8 6.6 18.9 7.9 13 3.4 9l6-.5L12 3z"/></svg>
-                    </div>
-                    <p class="review-quote">&ldquo;Placeholder quote about manager confidence &mdash; our 1:1s actually mean something now and the team can feel it.&rdquo;</p>
-                    <div class="review-author">
-                        <div class="review-avatar" aria-hidden="true">LC</div>
-                        <div>
-                            <strong>Client Name</strong>
-                            <span>Director of HR, Company</span>
-                        </div>
-                    </div>
-                </article>
+                </div>
             </div>
         </div>
     </section>
@@ -2093,61 +2962,54 @@
         <div class="shell">
             <div class="section-head">
                 <div>
-                    <span class="eyebrow r">Process</span>
-                    <h2 class="section-title r d1">A clear path from insight to execution.</h2>
+                    <span class="eyebrow r">Team Effectiveness</span>
+                    <h2 class="section-title r d1">The Five Workshops</h2>
                 </div>
-                <p class="section-copy r d2">The work moves through five simple stages so leaders can see what is happening, why it matters, and what changes next.</p>
+                <p class="section-copy r d2">Five workshops, one for each dysfunction, moving leadership teams from friction to trust and from politics to results.</p>
             </div>
             <div class="process-strip r d1">
-                <article class="process-step" style="--step-color: var(--cream)">
+                <article class="process-step" id="workshop-01" style="--step-color: var(--cream)">
                     <span class="step-num">01</span>
-                    <h3>Discover</h3>
-                    <p>Understand your team, the pressures each leader faces, and where growth is straining how people lead.</p>
+                    <h3>Building Trust</h3>
+                    <p>Vulnerability-based exercises so the team can be candid, admit mistakes, and ask for help.</p>
                 </article>
-                <article class="process-step" style="--step-color: var(--cream)">
+                <article class="process-step" id="workshop-02" style="--step-color: var(--cream)">
                     <span class="step-num">02</span>
-                    <h3>Diagnose</h3>
-                    <p>Pinpoint the highest-leverage gaps in management, communication, and team dynamics.</p>
+                    <h3>Mastering Conflict</h3>
+                    <p>Normalize productive, unfiltered debate around ideas without damaging relationships.</p>
                 </article>
-                <article class="process-step" style="--step-color: var(--cream)">
+                <article class="process-step" id="workshop-03" style="--step-color: var(--cream)">
                     <span class="step-num">03</span>
-                    <h3>Design</h3>
-                    <p>Build a practical coaching plan with clear goals, focus areas, and the habits each leader will build.</p>
+                    <h3>Achieving Commitment</h3>
+                    <p>Build clarity and buy-in so the team commits fully to decisions, even amid disagreement.</p>
                 </article>
-                <article class="process-step" style="--step-color: var(--cream)">
+                <article class="process-step" id="workshop-04" style="--step-color: var(--cream)">
                     <span class="step-num">04</span>
-                    <h3>Execute</h3>
-                    <p>Coach through real situations &mdash; 1:1s, feedback, hard conversations &mdash; in regular working sessions.</p>
+                    <h3>Embracing Accountability</h3>
+                    <p>Build peer-to-peer accountability so the team holds itself to shared standards.</p>
                 </article>
-                <article class="process-step" style="--step-color: var(--cream)">
+                <article class="process-step" id="workshop-05" style="--step-color: var(--cream)">
                     <span class="step-num">05</span>
-                    <h3>Optimize</h3>
-                    <p>Refine with feedback, retention signals, and how leaders are actually showing up day to day.</p>
+                    <h3>Focusing on Results</h3>
+                    <p>Align the team around collective outcomes over individual agendas or status.</p>
                 </article>
+            </div>
+            <div class="workshop-outcome r d2">
+                <span>Outcome</span>
+                <strong>Cultural transformation &mdash; leadership teams with high trust who can lead.</strong>
             </div>
         </div>
     </section>
 
-    <section class="section" id="team">
+    <section id="getting-started">
         <div class="shell">
-            <div class="team-layout">
-                <div class="ceo-photo r">
-                    <img src="img/joana.jpg" alt="Joana Oliveira, Chief Executive Officer of Elevated Group">
-                    <div class="ceo-card">
-                        <strong>Joana Oliveira</strong>
-                        <span>Chief Executive Officer</span>
-                    </div>
-                </div>
+            <div class="engagement-cta r">
                 <div>
-                    <span class="eyebrow r d1">Executive Leadership</span>
-                    <h2 class="section-title r d2">Founder-led strategy with a modern operating standard.</h2>
-                    <p class="section-copy r d2">Joana leads Elevated Group's approach across strategy, operations, growth systems, and client experience. Each engagement is kept focused, measurable, and built around practical change.</p>
-                    <div class="team-pill-grid r d3">
-                        <div class="team-pill"><span>Focus</span><strong>Strategy and scalable operations</strong></div>
-                        <div class="team-pill"><span>Standard</span><strong>Premium client partnership</strong></div>
-                        <div class="team-pill"><span>Model</span><strong>Founder-led, specialist-supported</strong></div>
-                    </div>
+                    <span class="eyebrow">Getting Started</span>
+                    <h2>Pricing Built Around Your Engagement</h2>
+                    <p>Pricing varies based on scope and format &mdash; individual, team, department, or company-wide coaching. Book a free consultation to find the right fit for your goals.</p>
                 </div>
+                <a class="btn-primary" href="#contact">Book a Free Consultation</a>
             </div>
         </div>
     </section>
@@ -2156,39 +3018,149 @@
         <div class="shell">
             <div class="impact-layout">
                 <div>
-                    <span class="eyebrow r">Impact</span>
-                    <h2 class="section-title r d1">Stronger managers. Better conversations. People who stay.</h2>
-                    <p class="section-copy r d2">The goal isn't a binder of advice. It's leaders who handle the hard moments well &mdash; and a team that feels it.</p>
+                    <span class="eyebrow r">What Makes Us Different</span>
+                    <h2 class="section-title r d1">Coaching Backed by Data.</h2>
+                    <div class="impact-copy-stack r d2">
+                        <p>Most executive coaches rely on conversation alone. At Elevated Coaching Group, coaching starts with insight.</p>
+                        <p>Emotional Intelligence (EQ-i 2.0®) is the foundation of our methodology &mdash; giving leaders measurable, evidence-based insight into how they lead, communicate, influence, decide, and build relationships. Unlike IQ, emotional intelligence isn't fixed. It can be intentionally developed through coaching, practice, and feedback.</p>
+                    </div>
                     <div class="impact-grid r d3">
                         <article class="metric-card">
-                            <span>Retention</span>
-                            <h3>Retention you can see in the numbers</h3>
-                            <p>People stay longer when managers handle friction early, coach clearly, and create less avoidable turnover.</p>
+                            <span>Assessment 01</span>
+                            <h3>EQ-i 2.0 Individual Assessment</h3>
+                            <p>Measures 15 emotional intelligence competencies to identify leadership strengths and development opportunities.</p>
                         </article>
                         <article class="metric-card">
-                            <span>Managers</span>
-                            <h3>Managers who lead, not just manage</h3>
-                            <p>New and newly promoted leaders build judgment, ownership, and the confidence to lead with consistency.</p>
+                            <span>Assessment 02</span>
+                            <h3>EQ 360 Assessment</h3>
+                            <p>Compares self-perception with confidential feedback from managers, peers, and direct reports to uncover blind spots and accelerate growth.</p>
                         </article>
                         <article class="metric-card">
-                            <span>Conversations</span>
-                            <h3>Performance conversations that actually happen</h3>
-                            <p>Feedback, accountability, and hard moments stop getting delayed and start becoming part of the team's normal rhythm.</p>
+                            <span>Assessment 03</span>
+                            <h3>Team Emotional Intelligence</h3>
+                            <p>Reveals a leadership team's collective strengths and gaps to improve trust, collaboration, and effectiveness.</p>
                         </article>
                         <article class="metric-card">
-                            <span>Coaching</span>
-                            <h3>Practical, not theoretical</h3>
-                            <p>Work leaders can put to use in their very next 1:1 or difficult conversation.</p>
+                            <span>Included</span>
+                            <h3>Personalized Debrief, Development Plan &amp; Coaching Integration</h3>
+                            <p>Every assessment includes a personalized debrief, development plan, and coaching integration.</p>
                         </article>
                     </div>
                 </div>
-                <div class="impact-image r d2">
-                    <img src="branding/branding4.png" alt="Elevated Group brand materials in a polished office setting">
+                <div class="impact-image eq-visual r d2">
+                    <div class="eq-method" aria-hidden="true">
+                        <div class="eq-orbit">
+                            <span class="eq-point" style="--i: 0"></span><span class="eq-point" style="--i: 1"></span><span class="eq-point" style="--i: 2"></span><span class="eq-point" style="--i: 3"></span><span class="eq-point" style="--i: 4"></span>
+                            <span class="eq-point" style="--i: 5"></span><span class="eq-point" style="--i: 6"></span><span class="eq-point" style="--i: 7"></span><span class="eq-point" style="--i: 8"></span><span class="eq-point" style="--i: 9"></span>
+                            <span class="eq-point" style="--i: 10"></span><span class="eq-point" style="--i: 11"></span><span class="eq-point" style="--i: 12"></span><span class="eq-point" style="--i: 13"></span><span class="eq-point" style="--i: 14"></span>
+                            <div class="eq-center"><strong>EQ-i 2.0</strong><span>15 Competencies</span></div>
+                        </div>
+                        <ul class="eq-types">
+                            <li>Individual</li>
+                            <li>EQ 360</li>
+                            <li>Team</li>
+                        </ul>
+                    </div>
+                    <!-- TODO: Add an approved supporting source for the client-provided 15–20% claim before publication. -->
                     <div class="impact-caption">
-                        <strong>Built for leaders, not binders.</strong>
-                        <span>Coaching should feel practical, direct, and easy to put to work on Monday.</span>
+                        <strong class="stat">15&ndash;20%</strong>
+                        <span>Average growth in emotional intelligence competency scores over one year of coaching &mdash; stronger leadership effectiveness, sharper decision-making, and more confident leaders.</span>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-soft" id="reviews">
+        <div class="shell reviews-shell">
+            <div class="section-head">
+                <div>
+                    <span class="eyebrow r">Reviews</span>
+                    <h2 class="section-title r d1">What Leaders Say After Working With Joana.</h2>
+                </div>
+            </div>
+            <div class="testimonial-viewport r d1" id="testimonial-viewport" tabindex="0" aria-label="Client testimonials">
+                <div class="testimonial-track" id="testimonial-track">
+                    <article class="review-card" aria-label="Testimonial 1 of 6">
+                        <span class="review-mark" aria-hidden="true">&ldquo;</span>
+                        <p class="review-quote">Working with Joana transformed the way I lead. Her coaching strengthened my executive presence, improved my confidence, and gave me practical tools I continue to use every day.</p>
+                        <div class="review-author"><strong>Chief Executive Officer &mdash; Technology</strong></div>
+                    </article>
+                    <article class="review-card" aria-label="Testimonial 2 of 6">
+                        <span class="review-mark" aria-hidden="true">&ldquo;</span>
+                        <p class="review-quote">The EQ coaching fundamentally changed how I communicate, make decisions, and lead my team. It has been one of the best leadership investments I've made.</p>
+                        <div class="review-author"><strong>VP, Product &mdash; SaaS</strong></div>
+                    </article>
+                    <article class="review-card" aria-label="Testimonial 3 of 6">
+                        <span class="review-mark" aria-hidden="true">&ldquo;</span>
+                        <p class="review-quote">Joana combines emotional intelligence with real executive experience. She challenged my thinking, helped me identify blind spots, and became a trusted advisor throughout my leadership journey.</p>
+                        <div class="review-author"><strong>Chief People Officer</strong></div>
+                    </article>
+                    <article class="review-card" aria-label="Testimonial 4 of 6">
+                        <span class="review-mark" aria-hidden="true">&ldquo;</span>
+                        <p class="review-quote">Her strategic HR guidance helped us navigate rapid growth while strengthening our leadership team. Joana quickly became an extension of our executive team.</p>
+                        <div class="review-author"><strong>Founder &amp; CEO &mdash; High-Growth Technology</strong></div>
+                    </article>
+                    <article class="review-card" aria-label="Testimonial 5 of 6">
+                        <span class="review-mark" aria-hidden="true">&ldquo;</span>
+                        <p class="review-quote">Joana has a remarkable ability to ask the right questions, helping me gain clarity and confidence while discovering solutions that felt authentic to me. Her coaching has positively impacted both my professional and personal life.</p>
+                        <div class="review-author"><strong>Chief Executive Officer</strong></div>
+                    </article>
+                    <article class="review-card" aria-label="Testimonial 6 of 6">
+                        <span class="review-mark" aria-hidden="true">&ldquo;</span>
+                        <p class="review-quote">Working with Joana helped me become a more self-aware and intentional leader. She creates a space where you feel challenged, supported, and empowered to grow.</p>
+                        <div class="review-author"><strong>Vice President &mdash; Technology</strong></div>
+                    </article>
+                </div>
+            </div>
+            <div class="carousel-controls" aria-label="Testimonial carousel controls">
+                <div class="carousel-buttons">
+                    <button class="carousel-button" id="testimonial-prev" type="button" aria-label="Previous testimonials">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <button class="carousel-button" id="testimonial-next" type="button" aria-label="Next testimonials">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                </div>
+                <div class="carousel-pagination" id="testimonial-pagination" aria-label="Choose a testimonial group"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="why">
+        <div class="shell">
+            <div class="section-head">
+                <div>
+                    <span class="eyebrow r">Why Elevated Coaching Group</span>
+                    <h2 class="section-title r d1">The Impact of Coaching, Backed by Experience.</h2>
+                </div>
+            </div>
+            <div class="why-grid r d1">
+                <article class="why-card">
+                    <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 20V10m5 10V4m6 16v-7m5 7V7" stroke="currentColor" stroke-linecap="round"/></svg></div>
+                    <h3>Executive Experience</h3>
+                    <p>15+ years leading talent strategy inside high-growth organizations.</p>
+                </article>
+                <article class="why-card">
+                    <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 18l5-5 4 3 7-9M16 7h4v4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                    <h3>Coaching Backed by Data</h3>
+                    <p>Evidence-based coaching powered by EQ-i 2.0 assessments, behavioural science, psychology, and neuroscience.</p>
+                </article>
+                <article class="why-card">
+                    <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4L19 6.5M4 4h16v16H4z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                    <h3>Practical &amp; Actionable</h3>
+                    <p>Real-world strategies leaders can immediately apply &mdash; not theory.</p>
+                </article>
+                <article class="why-card">
+                    <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M8 12l3 3 5-6M12 3l7 3v5c0 4.5-2.8 8-7 10-4.2-2-7-5.5-7-10V6l7-3z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                    <h3>Trusted Strategic Partner</h3>
+                    <p>Supporting founders, executives, leadership teams, and organizations through growth, transformation, and change.</p>
+                </article>
+                <article class="why-card">
+                    <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 20s-7-4.1-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.9-7 10-7 10z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                    <h3>Human-Centred</h3>
+                    <p>Authentic coaching built on curiosity, trust, accountability, and meaningful relationships.</p>
+                </article>
             </div>
         </div>
     </section>
@@ -2199,29 +3171,16 @@
                 <div class="contact-info r">
                     <div>
                         <span class="eyebrow light">Start the Conversation</span>
-                        <h2>Ready to build the leaders behind your growth?</h2>
-                        <p>Tell us where leadership feels stretched or people are slipping. We'll follow up with a clear next step.</p>
-                    </div>
-                    <div class="contact-details">
-                        <div class="contact-detail">
-                            <span>Email</span>
-                            <a href="mailto:hello@elevatedgroup.co">hello@elevatedgroup.co</a>
-                        </div>
-                        <div class="contact-detail">
-                            <span>Base</span>
-                            <strong>Toronto, Canada</strong>
-                        </div>
-                        <div class="contact-detail">
-                            <span>Engagements</span>
-                            <strong>Coaching, manager training, and people systems</strong>
-                        </div>
+                        <h2>Ready to Elevate Your Leadership?</h2>
+                        <p>Partner with Elevated Coaching Group to build the leaders your next stage of growth needs.</p>
                     </div>
                     <div class="contact-image">
-                        <img src="branding/branding6.png" alt="Elevated Group office signage">
+                        <img src="img/hero.png" alt="Leadership team collaborating around a table" width="1536" height="1024" loading="lazy" decoding="async">
                     </div>
                 </div>
 
-                <form class="contact-form r d2" id="cform" onsubmit="sendForm(event)">
+                <!-- TODO: Connect this form and consultation CTA after the client confirms a contact destination or submission endpoint. -->
+                <form class="contact-form r d2" id="cform" onsubmit="handleContactSubmit(event)">
                     <div class="field">
                         <label for="f-name">Full Name *</label>
                         <input type="text" id="f-name" name="name" placeholder="Your name" required autocomplete="name">
@@ -2242,25 +3201,22 @@
                         <label for="f-int">Area of Interest</label>
                         <select id="f-int" name="interest">
                             <option value="" disabled selected>Select a program area</option>
-                            <option>1:1 Leadership Coaching</option>
-                            <option>New-Manager Foundations</option>
-                            <option>Performance &amp; Feedback Systems</option>
-                            <option>Difficult Conversations</option>
-                            <option>Culture &amp; Values</option>
-                            <option>People Analytics &amp; Retention</option>
-                            <option>HR &amp; People Advisory</option>
-                            <option>Other</option>
+                            <option>Executive Coaching</option>
+                            <option>Emotional Intelligence Coaching</option>
+                            <option>Situational Leadership®</option>
+                            <option>Self Leadership Coaching</option>
+                            <option>Fractional CHRO &amp; Strategic HR Advisory</option>
+                            <option>Team Effectiveness: The Five Dysfunctions Workshop Series</option>
                         </select>
                     </div>
                     <div class="field full">
                         <label for="f-msg">Message</label>
                         <textarea id="f-msg" name="message" placeholder="Briefly describe the business challenge or growth opportunity."></textarea>
                     </div>
-                    <div class="form-ok" id="form-ok" role="status" aria-live="polite">Thank you. Your inquiry has been received and a member of our team will follow up shortly.</div>
+                    <div class="form-status" id="form-status" role="alert" hidden>Online submission is not available at this time.</div>
                     <div class="form-foot">
-                        <span class="form-note">Every inquiry is confidential. We'll reply within two business days.</span>
-                        <button type="submit" class="btn-form" id="f-btn">
-                            Book a Consultation
+                        <button type="submit" class="btn-form" id="f-btn" aria-describedby="form-status">
+                            Work With Us
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                                 <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
@@ -2276,43 +3232,39 @@
     <div class="shell">
         <div class="footer-grid">
             <div>
-                <span class="footer-brand">Elevated Group</span>
-                <p class="footer-copy">Leadership and HR coaching for growing teams building their next stage.</p>
+                <span class="footer-brand">Elevated Coaching Group</span>
+                <p class="footer-copy">Boutique leadership development, executive coaching, and strategic HR advisory.</p>
             </div>
             <div class="footer-col">
-                <h4>Navigation</h4>
+                <h2>Navigation</h2>
                 <ul class="footer-links">
                     <li><a href="#about">About</a></li>
                     <li><a href="#services">Services</a></li>
+                    <li><a href="#impact">Approach</a></li>
                     <li><a href="#reviews">Reviews</a></li>
-                    <li><a href="#process">Process</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h4>Programs</h4>
+                <h2>Services</h2>
                 <ul class="footer-links">
-                    <li><a href="#services">1:1 Leadership Coaching</a></li>
-                    <li><a href="#services">New-Manager Foundations</a></li>
-                    <li><a href="#services">Performance &amp; Feedback</a></li>
-                    <li><a href="#services">HR &amp; People Advisory</a></li>
+                    <li><a href="#services">Executive Coaching</a></li>
+                    <li><a href="#services">Emotional Intelligence Coaching</a></li>
+                    <li><a href="#services">Fractional CHRO</a></li>
+                    <li><a href="#team-effectiveness">Team Effectiveness</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h4>Contact</h4>
+                <h2>Explore</h2>
                 <ul class="footer-links">
-                    <li><a href="mailto:hello@elevatedgroup.co">hello@elevatedgroup.co</a></li>
-                    <li><a href="#contact">Book a Consultation</a></li>
-                    <li><a href="https://www.linkedin.com/in/joanao/" target="_blank" rel="noopener">LinkedIn</a></li>
-                    <li><a href="#contact">Toronto, Canada</a></li>
+                    <li><a href="#leadership">Meet Joana</a></li>
+                    <li><a href="#process">The Five Workshops</a></li>
+                    <li><a href="#why">Why Elevated</a></li>
+                    <li><a href="#contact">Work With Us</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <span>&copy; 2026 Elevated Group. All rights reserved.</span>
-            <div class="footer-legal">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Use</a>
-            </div>
+            <span>&copy; 2026 Elevated Coaching Group. All rights reserved.</span>
         </div>
     </div>
 </footer>
@@ -2323,81 +3275,240 @@ requestAnimationFrame(() => document.documentElement.classList.add('motion-ready
 const nav = document.getElementById('nav');
 const menuButton = document.getElementById('ham');
 const mobileNav = document.getElementById('mob-nav');
+const pageMain = document.getElementById('main-content');
+const pageFooter = document.getElementById('footer');
+const skipLink = document.querySelector('.skip-link');
 const navAnchors = [...document.querySelectorAll('.nav-links a')];
-const sectionMap = navAnchors.map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+const navEntries = navAnchors.map(link => ({
+    link,
+    section: document.querySelector(link.getAttribute('href'))
+})).filter(entry => entry.section);
 
-function setMenu(open) {
+function setMenu(open, restoreFocus = true) {
     mobileNav.classList.toggle('open', open);
     mobileNav.setAttribute('aria-hidden', String(!open));
     mobileNav.inert = !open;
+    pageMain.inert = open;
+    pageFooter.inert = open;
+    skipLink.inert = open;
     menuButton.classList.toggle('open', open);
     menuButton.setAttribute('aria-expanded', String(open));
     menuButton.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     document.body.classList.toggle('menu-open', open);
+
+    if (open) {
+        requestAnimationFrame(() => mobileNav.querySelector('a')?.focus());
+    } else if (restoreFocus) {
+        menuButton.focus();
+    }
 }
 
 menuButton.addEventListener('click', () => setMenu(!mobileNav.classList.contains('open')));
 
 mobileNav.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => setMenu(false));
+    link.addEventListener('click', () => {
+        const target = document.querySelector(link.getAttribute('href'));
+        setMenu(false, false);
+        if (!target) return;
+        target.setAttribute('tabindex', '-1');
+        target.focus({ preventScroll: true });
+        target.addEventListener('blur', () => target.removeAttribute('tabindex'), { once: true });
+    });
 });
 
 window.addEventListener('keydown', event => {
-    if (event.key === 'Escape') setMenu(false);
+    if (event.key === 'Escape' && mobileNav.classList.contains('open')) setMenu(false);
 });
-
-window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 36);
-}, { passive: true });
 
 function updateNav() {
     const marker = window.scrollY + window.innerHeight * .32;
-    let current = sectionMap[0];
-    sectionMap.forEach(section => {
-        if (section.offsetTop <= marker) current = section;
+    let current = null;
+
+    navEntries.forEach(entry => {
+        if (entry.section.offsetTop > marker) return;
+        if (!current || entry.section.offsetTop > current.section.offsetTop) current = entry;
     });
-    navAnchors.forEach(link => {
-        link.classList.toggle('active', current && link.getAttribute('href') === `#${current.id}`);
+
+    navEntries.forEach(entry => {
+        entry.link.classList.toggle('active', current?.link === entry.link);
     });
 }
 
-window.addEventListener('scroll', updateNav, { passive: true });
-window.addEventListener('load', updateNav);
-
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('on');
-        observer.unobserve(entry.target);
+let navFrame = 0;
+function scheduleNavUpdate() {
+    if (navFrame) return;
+    navFrame = requestAnimationFrame(() => {
+        nav.classList.toggle('scrolled', window.scrollY > 36);
+        updateNav();
+        navFrame = 0;
     });
-}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+}
 
-document.querySelectorAll('.r:not(.on)').forEach(element => observer.observe(element));
+window.addEventListener('scroll', scheduleNavUpdate, { passive: true });
+window.addEventListener('resize', scheduleNavUpdate, { passive: true });
+window.addEventListener('load', scheduleNavUpdate);
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 880 && mobileNav.classList.contains('open')) setMenu(false, false);
+}, { passive: true });
 
-function sendForm(event) {
+if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('on');
+            observer.unobserve(entry.target);
+        });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.r:not(.on)').forEach(element => observer.observe(element));
+} else {
+    document.querySelectorAll('.r').forEach(element => element.classList.add('on'));
+}
+
+/* Native service disclosures remain usable without JavaScript; enhancement keeps one open. */
+const serviceRows = [...document.querySelectorAll('.service-row')];
+serviceRows.forEach(row => {
+    const summary = row.querySelector('summary');
+    const syncState = () => summary.setAttribute('aria-expanded', String(row.open));
+    syncState();
+    row.addEventListener('toggle', () => {
+        if (row.open) {
+            serviceRows.forEach(other => {
+                if (other !== row) other.open = false;
+            });
+        }
+        syncState();
+    });
+});
+
+/* Pyramid links still reach the full workshop content when JavaScript is unavailable. */
+const pyramidLinks = [...document.querySelectorAll('.pyramid-level')];
+const pyramidPanel = document.getElementById('pyramid-workshop');
+pyramidLinks.forEach(link => {
+    link.addEventListener('click', event => {
+        const workshop = document.querySelector(link.getAttribute('href'));
+        if (!workshop || !pyramidPanel) return;
+        event.preventDefault();
+
+        pyramidLinks.forEach(item => {
+            item.classList.remove('active');
+            item.removeAttribute('aria-current');
+        });
+        link.classList.add('active');
+        link.setAttribute('aria-current', 'true');
+
+        const number = workshop.querySelector('.step-num')?.textContent.trim();
+        const title = workshop.querySelector('h3')?.textContent.trim();
+        const description = workshop.querySelector('p')?.textContent.trim();
+        pyramidPanel.querySelector('h3').textContent = `Workshop ${number} — ${title}`;
+        pyramidPanel.querySelector('p').textContent = description;
+    });
+});
+
+/* Accessible, manual testimonial carousel with responsive page sizing. */
+const testimonialViewport = document.getElementById('testimonial-viewport');
+const testimonialTrack = document.getElementById('testimonial-track');
+const testimonialCards = [...document.querySelectorAll('.review-card')];
+const testimonialPrevious = document.getElementById('testimonial-prev');
+const testimonialNext = document.getElementById('testimonial-next');
+const testimonialPagination = document.getElementById('testimonial-pagination');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+let testimonialPage = 0;
+let testimonialsVisible = 1;
+let testimonialScrollTimer;
+
+function testimonialMetrics() {
+    if (!testimonialCards.length) return { step: 1, maxPage: 0 };
+    const gap = Number.parseFloat(getComputedStyle(testimonialTrack).columnGap) || 0;
+    const cardWidth = testimonialCards[0].getBoundingClientRect().width;
+    testimonialsVisible = Math.max(1, Math.min(testimonialCards.length, Math.round((testimonialViewport.clientWidth + gap) / (cardWidth + gap))));
+    return { step: cardWidth + gap, maxPage: Math.max(0, testimonialCards.length - testimonialsVisible) };
+}
+
+function updateTestimonialState() {
+    const { maxPage } = testimonialMetrics();
+    testimonialPage = Math.max(0, Math.min(testimonialPage, maxPage));
+    const activeIndex = Math.min(testimonialCards.length - 1, testimonialPage + Math.floor(testimonialsVisible / 2));
+
+    testimonialCards.forEach((card, index) => card.classList.toggle('active', index === activeIndex));
+    testimonialPrevious.disabled = testimonialPage === 0;
+    testimonialNext.disabled = testimonialPage === maxPage;
+    [...testimonialPagination.children].forEach((dot, index) => {
+        if (index === testimonialPage) dot.setAttribute('aria-current', 'true');
+        else dot.removeAttribute('aria-current');
+    });
+}
+
+function buildTestimonialPagination() {
+    const { maxPage } = testimonialMetrics();
+    testimonialPage = Math.min(testimonialPage, maxPage);
+    testimonialPagination.replaceChildren();
+
+    for (let page = 0; page <= maxPage; page += 1) {
+        const dot = document.createElement('button');
+        const last = Math.min(testimonialCards.length, page + testimonialsVisible);
+        dot.type = 'button';
+        dot.className = 'carousel-dot';
+        dot.setAttribute('aria-label', testimonialsVisible === 1
+            ? `Show testimonial ${page + 1}`
+            : `Show testimonials ${page + 1} through ${last}`);
+        dot.addEventListener('click', () => goToTestimonialPage(page));
+        testimonialPagination.append(dot);
+    }
+
+    updateTestimonialState();
+}
+
+function goToTestimonialPage(page, behavior = reduceMotion.matches ? 'auto' : 'smooth') {
+    const { step, maxPage } = testimonialMetrics();
+    testimonialPage = Math.max(0, Math.min(page, maxPage));
+    testimonialViewport.scrollTo({ left: testimonialPage * step, behavior });
+    updateTestimonialState();
+}
+
+testimonialPrevious.addEventListener('click', () => goToTestimonialPage(testimonialPage - 1));
+testimonialNext.addEventListener('click', () => goToTestimonialPage(testimonialPage + 1));
+testimonialViewport.addEventListener('keydown', event => {
+    if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        goToTestimonialPage(testimonialPage - 1);
+    }
+    if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        goToTestimonialPage(testimonialPage + 1);
+    }
+});
+testimonialViewport.addEventListener('scroll', () => {
+    window.clearTimeout(testimonialScrollTimer);
+    testimonialScrollTimer = window.setTimeout(() => {
+        const { step, maxPage } = testimonialMetrics();
+        testimonialPage = Math.max(0, Math.min(Math.round(testimonialViewport.scrollLeft / step), maxPage));
+        updateTestimonialState();
+    }, 120);
+}, { passive: true });
+
+if ('ResizeObserver' in window) {
+    new ResizeObserver(() => {
+        buildTestimonialPagination();
+        goToTestimonialPage(testimonialPage, 'auto');
+    }).observe(testimonialViewport);
+} else {
+    window.addEventListener('resize', buildTestimonialPagination, { passive: true });
+}
+buildTestimonialPagination();
+document.getElementById('reviews').classList.add('carousel-ready');
+
+function handleContactSubmit(event) {
     event.preventDefault();
-    const button = document.getElementById('f-btn');
-    const form = document.getElementById('cform');
-    const foot = form.querySelector('.form-foot');
-    const success = document.getElementById('form-ok');
-    const original = button.innerHTML;
-
-    button.textContent = 'Sending...';
-    button.disabled = true;
-
-    setTimeout(() => {
-        foot.style.display = 'none';
-        success.style.display = 'block';
-        form.reset();
-
-        setTimeout(() => {
-            success.style.display = 'none';
-            foot.style.display = 'flex';
-            button.innerHTML = original;
-            button.disabled = false;
-        }, 6000);
-    }, 800);
+    const form = event.currentTarget;
+    if (!form.reportValidity()) return;
+    document.getElementById('form-status').hidden = false;
 }
+
+document.getElementById('cform').addEventListener('input', () => {
+    document.getElementById('form-status').hidden = true;
+});
 </script>
 </body>
 </html>

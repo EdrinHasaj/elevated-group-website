@@ -92,7 +92,7 @@
     .section { position: relative; padding: 104px 0; }
 
     /* section register backgrounds */
-    .section-soft, #about, #organizations, #leadership,
+    .section-soft, #about, #leadership,
     #team-effectiveness, #getting-started, #reviews, #why { background: var(--paper); }
     #services                 { background: var(--ink); padding: 92px 0; }
     #operating-layers         { background: var(--paper); overflow: hidden; }
@@ -1009,62 +1009,154 @@
         line-height: 1.68;
     }
 
-    /* ===== PROCESS ===== */
-    .process-strip {
+    /* ===== TEAM EFFECTIVENESS ===== */
+    .effectiveness-head {
         display: grid;
-        grid-template-columns: repeat(5, minmax(0, 1fr));
-        gap: 0;
-        border: 1px solid var(--hairline-dark);
-        background: var(--hairline-dark);
-        overflow: hidden;
+        grid-template-columns: minmax(0, 1fr) minmax(280px, .42fr);
+        gap: 56px;
+        align-items: end;
+        margin-bottom: 48px;
     }
 
-    .process-step {
+    .effectiveness-head .section-copy { max-width: 720px; }
+
+    .effectiveness-outcome {
+        padding: 22px;
+        border-left: 2px solid var(--cream-strong);
+        background: var(--ink);
+    }
+
+    .effectiveness-outcome span {
+        display: block;
+        color: var(--cream);
+        font-family: var(--font-display);
+        font-size: .68rem;
+        font-weight: 500;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+    }
+
+    .effectiveness-outcome strong {
+        display: block;
+        margin-top: 10px;
+        color: var(--heading-dark);
+        font-family: var(--font-display);
+        font-size: 1.05rem;
+        font-weight: 400;
+        line-height: 1.45;
+    }
+
+    .model-axis {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        gap: 16px;
+        align-items: center;
+        margin-bottom: 16px;
+        color: var(--muted-light);
+        font-family: var(--font-display);
+        font-size: .66rem;
+        font-weight: 500;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+    }
+
+    .model-axis-line {
         position: relative;
-        min-height: 280px;
-        padding: 32px 24px 28px;
-        border-right: 1px solid var(--hairline-dark);
-        background: var(--dark-surface);
-        transition: background var(--fast);
+        height: 1px;
+        background: var(--hairline-light);
     }
 
-    .process-step:hover { background: var(--dark-elevated); }
-    .process-step:last-child { border-right: 0; }
-
-    .process-step::before {
+    .model-axis-line::after {
         content: "";
         position: absolute;
-        left: 0; right: 0; top: 0;
-        height: 2px;
-        background: var(--step-color, var(--hairline-light));
+        right: 0;
+        top: -3px;
+        width: 7px;
+        height: 7px;
+        border-top: 1px solid var(--muted-light);
+        border-right: 1px solid var(--muted-light);
+        transform: rotate(45deg);
     }
 
-    .step-num {
-        display: inline-grid;
-        place-items: center;
-        width: 34px;
-        height: 34px;
-        border: 1px solid var(--step-color, var(--hairline-light));
-        color: var(--step-color, var(--muted-light));
-        font-family: "Inter", sans-serif;
-        font-size: .74rem;
+    .workshop-stages {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 10px;
+        align-items: end;
+        list-style: none;
+    }
+
+    .workshop-stage {
+        position: relative;
+        min-height: calc(340px + var(--rise));
+        display: flex;
+        flex-direction: column;
+        padding: 24px 20px;
+        border: 1px solid var(--hairline-light);
+        background: var(--cream-mist);
+    }
+
+    .workshop-stage::before {
+        content: "";
+        position: absolute;
+        left: -1px;
+        right: -1px;
+        top: -1px;
+        height: 3px;
+        background: var(--cream-strong);
+    }
+
+    .workshop-num {
+        color: var(--cream-strong);
+        font-family: var(--font-display);
+        font-size: .72rem;
         font-weight: 500;
         font-variant-numeric: tabular-nums;
-        background: rgba(178, 172, 163, 0.06);
     }
 
-    .process-step h3 {
-        margin-top: 64px;
-        font-size: 1.08rem;
+    .workshop-barrier {
+        min-height: 78px;
+        margin-top: 24px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid var(--hairline-light);
+    }
+
+    .workshop-barrier span,
+    .workshop-label {
+        display: block;
+        color: var(--muted-light);
+        font-family: var(--font-display);
+        font-size: .64rem;
+        font-weight: 500;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+    }
+
+    .workshop-barrier strong {
+        display: block;
+        margin-top: 7px;
+        color: var(--body-light);
+        font-family: var(--font-display);
+        font-size: .86rem;
+        font-weight: 500;
+        line-height: 1.35;
+    }
+
+    .workshop-label { margin-top: 20px; color: var(--cream-strong); }
+
+    .workshop-stage h3 {
+        margin-top: 8px;
+        color: var(--ink);
+        font-size: 1.12rem;
         font-weight: 400;
-        color: var(--heading-dark);
+        line-height: 1.25;
     }
 
-    .process-step p {
-        margin-top: 10px;
-        color: var(--body-dark);
-        font-size: .88rem;
-        line-height: 1.66;
+    .workshop-stage p {
+        margin-top: 12px;
+        color: var(--body-light);
+        font-size: .84rem;
+        line-height: 1.62;
     }
 
     /* ===== WHY ===== */
@@ -1313,34 +1405,6 @@
         background: linear-gradient(180deg, transparent 50%, rgba(22,19,15,.7));
     }
 
-    .impact-caption {
-        position: absolute;
-        z-index: 1;
-        left: 20px;
-        right: 20px;
-        bottom: 20px;
-        padding: 16px 18px;
-        border: 1px solid rgba(178, 172, 163, 0.18);
-        border-left: 2px solid var(--cream);
-        background: rgba(26, 23, 19, 0.94);
-    }
-
-    .impact-caption strong {
-        display: block;
-        color: var(--heading-dark);
-        font-family: var(--font-display);
-        font-size: .96rem;
-        font-weight: 400;
-    }
-
-    .impact-caption span {
-        display: block;
-        margin-top: 5px;
-        color: var(--body-dark);
-        font-size: .86rem;
-        line-height: 1.5;
-    }
-
     /* ===== CONTACT (dark) ===== */
     #contact { overflow: hidden; }
 
@@ -1417,7 +1481,7 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        object-position: center 34%;
+        object-position: center;
         filter: grayscale(100%) sepia(12%);
     }
 
@@ -1624,55 +1688,91 @@
 
     /* trusted organizations */
     #organizations {
-        padding: 46px 0;
-        border-bottom: 1px solid var(--hairline-light);
+        overflow: hidden;
+        padding: 34px 0;
+        border-top: 1px solid var(--hairline-dark);
+        border-bottom: 1px solid var(--hairline-dark);
+        background: var(--dark-surface);
     }
 
-    .organizations-head {
-        display: flex;
+    .organizations-layout {
+        display: grid;
+        grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
         align-items: center;
-        justify-content: space-between;
-        gap: 24px;
-        margin-bottom: 24px;
+        gap: 40px;
     }
 
     .organizations-title {
-        color: var(--muted-light);
+        max-width: 230px;
+        color: var(--cream);
         font-family: var(--font-display);
-        font-size: .72rem;
+        font-size: .76rem;
         font-weight: 500;
         letter-spacing: .15em;
-        line-height: 1.35;
+        line-height: 1.55;
         text-transform: uppercase;
     }
 
-    .organizations-rule {
+    .organizations-title::before {
+        content: "";
+        display: block;
+        width: 28px;
         height: 1px;
-        flex: 1;
-        background: var(--hairline-light);
+        margin-bottom: 14px;
+        background: var(--cream-strong);
     }
 
-    .organization-grid {
-        display: grid;
-        grid-template-columns: repeat(7, minmax(0, 1fr));
-        border-top: 1px solid var(--hairline-light);
-        border-left: 1px solid var(--hairline-light);
+    .organizations-viewport {
+        min-width: 0;
+        overflow: hidden;
+        padding: 24px 0 24px 36px;
+        border-left: 1px solid var(--hairline-dark);
+    }
+
+    .organization-track {
+        display: flex;
+        width: max-content;
+        animation: organization-scroll 42s linear infinite;
+    }
+
+    .organization-run {
+        display: flex;
+        flex: 0 0 auto;
+        align-items: center;
+        gap: 32px;
+        padding-right: 32px;
         list-style: none;
     }
 
-    .organization-grid li {
-        min-height: 70px;
-        display: grid;
-        place-items: center;
-        padding: 12px;
-        border-right: 1px solid var(--hairline-light);
-        border-bottom: 1px solid var(--hairline-light);
-        color: var(--body-light);
+    .organization-run li {
+        display: flex;
+        flex: 0 0 auto;
+        align-items: center;
+        gap: 32px;
+        color: var(--paper);
         font-family: var(--font-display);
-        font-size: .83rem;
+        font-size: 1rem;
         font-weight: 500;
-        line-height: 1.28;
-        text-align: center;
+        line-height: 1.3;
+        white-space: nowrap;
+    }
+
+    .organization-run li::after {
+        content: "";
+        width: 4px;
+        height: 4px;
+        flex: 0 0 auto;
+        border-radius: 50%;
+        background: var(--cream-strong);
+    }
+
+    #organizations:hover .organization-track,
+    #organizations.is-offscreen .organization-track {
+        animation-play-state: paused;
+    }
+
+    @keyframes organization-scroll {
+        to { transform: translateX(-50%); }
     }
 
     /* company story */
@@ -1895,153 +1995,6 @@
         text-transform: uppercase;
     }
 
-    /* team effectiveness pyramid */
-    .effectiveness-layout {
-        display: grid;
-        grid-template-columns: minmax(0, .86fr) minmax(420px, 1.14fr);
-        gap: 62px;
-        align-items: center;
-    }
-
-    .effectiveness-copy { display: grid; gap: 16px; }
-
-    .effectiveness-copy .section-copy { margin-top: 0; }
-
-    .pyramid-wrap {
-        padding: 30px;
-        border: 1px solid var(--hairline-light);
-        background: var(--cream-mist);
-    }
-
-    .pyramid {
-        min-height: 360px;
-        display: flex;
-        flex-direction: column-reverse;
-        align-items: center;
-        justify-content: center;
-        gap: 6px;
-        list-style: none;
-    }
-
-    .pyramid li { display: flex; justify-content: center; }
-    .pyramid li:nth-child(1) { width: 100%; }
-    .pyramid li:nth-child(2) { width: 86%; }
-    .pyramid li:nth-child(3) { width: 72%; }
-    .pyramid li:nth-child(4) { width: 58%; }
-    .pyramid li:nth-child(5) { width: 44%; }
-
-    .pyramid-level {
-        width: 100%;
-        min-height: 58px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        padding: 9px 16px;
-        border: 1px solid rgba(23, 22, 20, .14);
-        background: var(--paper);
-        color: var(--body-light);
-        font-family: var(--font-display);
-        font-size: .84rem;
-        font-weight: 500;
-        line-height: 1.25;
-        text-align: center;
-        transition: background var(--fast), color var(--fast), transform var(--fast);
-    }
-
-    .pyramid-level:hover { transform: translateY(-2px); }
-
-    .pyramid-level.active,
-    .pyramid-level[aria-current="true"] {
-        background: var(--ink);
-        color: var(--heading-dark);
-        border-color: var(--ink);
-    }
-
-    .pyramid-num {
-        color: var(--cream-strong);
-        font-size: .68rem;
-        font-variant-numeric: tabular-nums;
-    }
-
-    .pyramid-panel {
-        min-height: 132px;
-        margin-top: 16px;
-        padding: 20px;
-        border: 1px solid var(--hairline-light);
-        border-left: 2px solid var(--cream-strong);
-        background: var(--paper);
-    }
-
-    .pyramid-panel span {
-        color: var(--cream-strong);
-        font-family: var(--font-display);
-        font-size: .66rem;
-        font-weight: 500;
-        letter-spacing: .13em;
-        text-transform: uppercase;
-    }
-
-    .pyramid-panel h3 { margin-top: 7px; font-size: 1rem; font-weight: 500; }
-
-    .pyramid-panel p {
-        margin-top: 7px;
-        color: var(--body-light);
-        font-size: .86rem;
-        line-height: 1.62;
-    }
-
-    .workshop-outcome {
-        display: grid;
-        grid-template-columns: auto 1fr;
-        gap: 18px;
-        align-items: center;
-        margin-top: 28px;
-        padding: 20px 22px;
-        border: 1px solid var(--hairline-dark);
-        border-left: 2px solid var(--cream);
-        background: var(--dark-surface);
-    }
-
-    .workshop-outcome span {
-        color: var(--cream);
-        font-family: var(--font-display);
-        font-size: .68rem;
-        font-weight: 500;
-        letter-spacing: .14em;
-        text-transform: uppercase;
-    }
-
-    .workshop-outcome strong {
-        color: var(--heading-dark);
-        font-family: var(--font-display);
-        font-size: 1rem;
-        font-weight: 400;
-    }
-
-    /* engagement CTA */
-    #getting-started { padding: 72px 0; }
-
-    .engagement-cta {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) auto;
-        gap: 40px;
-        align-items: center;
-        padding: 34px;
-        border: 1px solid var(--hairline-light);
-        border-left: 2px solid var(--cream-strong);
-        background: var(--cream-mist);
-    }
-
-    .engagement-cta h2 { font-size: 2rem; line-height: 1.15; }
-
-    .engagement-cta p {
-        max-width: 720px;
-        margin-top: 12px;
-        color: var(--body-light);
-        line-height: 1.72;
-    }
-
     /* data-backed coaching */
     .impact-copy-stack { display: grid; gap: 14px; margin-top: 20px; }
 
@@ -2053,119 +2006,245 @@
 
     .metric-card h3 { margin-top: 24px; }
 
-    .impact-caption .stat {
-        color: var(--heading-dark);
-        font-family: var(--font-display);
-        font-size: 2.8rem;
-        font-weight: 400;
-        line-height: 1;
-        font-variant-numeric: tabular-nums;
-    }
-
     .eq-visual {
-        min-height: 560px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 42px 28px 176px;
-        background: var(--dark-surface);
+        min-height: 640px;
+        display: block;
+        padding: 24px;
+        border: 0;
+        overflow: visible;
+        background: transparent;
     }
 
     .impact-image.eq-visual::after { display: none; }
 
-    .eq-method {
-        width: min(100%, 360px);
+    .assessment-graphic {
+        height: 100%;
+        min-height: 590px;
         display: grid;
-        justify-items: center;
-        gap: 28px;
+        grid-template-rows: auto minmax(360px, 1fr) auto;
+        gap: 18px;
     }
 
-    .eq-orbit {
+    .assessment-graphic-head {
+        display: grid;
+        justify-items: start;
+        gap: 6px;
+    }
+
+    .assessment-graphic-head span {
+        color: var(--cream);
+        font-family: var(--font-display);
+        font-size: .64rem;
+        font-weight: 500;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+    }
+
+    .assessment-graphic-head strong {
+        color: var(--heading-dark);
+        font-family: var(--font-display);
+        font-size: .88rem;
+        font-weight: 400;
+        text-align: left;
+    }
+
+    .assessment-map {
         position: relative;
-        width: min(72vw, 280px);
+        width: min(100%, 390px);
         aspect-ratio: 1;
-        border: 1px solid rgba(178, 172, 163, .2);
-        border-radius: 999px;
+        margin: auto;
     }
 
-    .eq-orbit::before,
-    .eq-orbit::after {
-        content: "";
+    .assessment-map-lines {
         position: absolute;
-        inset: 18%;
-        border: 1px solid rgba(178, 172, 163, .12);
-        border-radius: 999px;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        overflow: visible;
     }
 
-    .eq-orbit::after { inset: 36%; }
+    .assessment-map-lines .outer-ring {
+        fill: none;
+        stroke: rgba(178, 172, 163, .35);
+        stroke-width: 1;
+    }
 
-    .eq-point {
+    .assessment-map-lines .inner-ring {
+        fill: none;
+        stroke: rgba(178, 172, 163, .2);
+        stroke-width: 1;
+        stroke-dasharray: 2 6;
+    }
+
+    .assessment-map-lines .connection {
+        fill: none;
+        stroke: rgba(178, 172, 163, .24);
+        stroke-width: 1;
+    }
+
+    .assessment-map-lines .competency-dot {
+        fill: var(--ink);
+        stroke: var(--muted-dark);
+        stroke-width: 1;
+    }
+
+    .assessment-core {
         position: absolute;
         left: 50%;
         top: 50%;
-        width: 8px;
-        height: 8px;
-        margin: -4px;
-        border: 1px solid var(--cream);
-        border-radius: 999px;
-        background: var(--dark-surface);
-        transform: rotate(calc(var(--i) * 24deg)) translateY(-140px);
-    }
-
-    .eq-center {
-        position: absolute;
         z-index: 1;
-        left: 50%;
-        top: 50%;
-        width: 132px;
-        height: 132px;
+        width: 168px;
         display: grid;
         place-content: center;
-        gap: 6px;
-        border: 1px solid var(--cream);
-        background: var(--ink);
-        color: var(--heading-dark);
+        gap: 7px;
+        padding: 0;
+        border: 0;
+        background: transparent;
         text-align: center;
         transform: translate(-50%, -50%);
     }
 
-    .eq-center strong {
+    .assessment-core span {
+        color: var(--muted-dark);
         font-family: var(--font-display);
-        font-size: 1.22rem;
-        font-weight: 400;
-    }
-
-    .eq-center span {
-        color: var(--cream);
-        font-family: var(--font-display);
-        font-size: .62rem;
+        font-size: .58rem;
         font-weight: 500;
         letter-spacing: .12em;
         text-transform: uppercase;
     }
 
-    .eq-types {
-        width: 100%;
+    .assessment-core strong {
+        color: var(--heading-dark);
+        font-family: var(--font-display);
+        font-size: 1.5rem;
+        font-weight: 400;
+        line-height: 1.1;
+    }
+
+    .assessment-core em {
+        color: var(--body-dark);
+        font-family: var(--font-display);
+        font-size: .62rem;
+        font-weight: 500;
+        font-style: normal;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+    }
+
+    .assessment-node {
+        position: absolute;
+        z-index: 1;
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 1px;
-        border: 1px solid var(--hairline-dark);
-        background: var(--hairline-dark);
+        justify-items: center;
+        width: 118px;
+        color: var(--body-dark);
+        text-align: center;
+    }
+
+    .assessment-node-individual { left: 50%; top: 1px; transform: translateX(-50%); }
+    .assessment-node-360 { left: 0; bottom: 0; }
+    .assessment-node-team { right: 0; bottom: 0; }
+
+    .assessment-node-icon {
+        width: 48px;
+        height: 48px;
+        display: grid;
+        place-items: center;
+        border: 1px solid rgba(166, 159, 149, .5);
+        border-radius: 999px;
+        background: var(--ink);
+        color: var(--muted-dark);
+    }
+
+    .assessment-node-icon svg {
+        width: 22px;
+        height: 22px;
+        stroke-width: 1.35;
+    }
+
+    .assessment-node strong {
+        margin-top: 8px;
+        color: var(--body-dark);
+        font-family: var(--font-display);
+        font-size: .72rem;
+        font-weight: 500;
+        letter-spacing: .1em;
+        line-height: 1.2;
+        text-transform: uppercase;
+    }
+
+    .assessment-node-detail {
+        margin-top: 4px;
+        color: var(--muted-dark);
+        font-size: .64rem;
+        line-height: 1.35;
+    }
+
+    .assessment-node.is-active .assessment-node-icon {
+        border-color: var(--cream);
+        background: var(--dark-elevated);
+        color: var(--cream);
+    }
+
+    .assessment-node.is-active strong { color: var(--cream); }
+
+    .coaching-flow {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 22px;
+        border: 0;
+        background: transparent;
         list-style: none;
     }
 
-    .eq-types li {
-        min-height: 52px;
+    .coaching-flow li {
+        position: relative;
+        min-height: 106px;
         display: grid;
-        place-items: center;
-        padding: 8px;
-        background: var(--ink);
-        color: var(--body-dark);
+        align-content: center;
+        gap: 5px;
+        padding: 13px 0;
+        border-top: 1px solid var(--hairline-dark);
+        background: transparent;
+    }
+
+    .flow-num {
+        color: var(--muted-dark);
         font-family: var(--font-display);
-        font-size: .7rem;
-        line-height: 1.3;
-        text-align: center;
+        font-size: .6rem;
+        font-variant-numeric: tabular-nums;
+    }
+
+    .coaching-flow strong {
+        color: var(--heading-dark);
+        font-family: var(--font-display);
+        font-size: .78rem;
+        font-weight: 400;
+    }
+
+    .coaching-flow small {
+        color: var(--muted-dark);
+        font-size: .62rem;
+        line-height: 1.35;
+    }
+
+    .flow-arrow {
+        position: absolute;
+        z-index: 1;
+        right: -20px;
+        top: 50%;
+        width: 18px;
+        height: 12px;
+        color: var(--muted-dark);
+        transform: translateY(-50%);
+    }
+
+    .flow-arrow path {
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1;
+        stroke-linecap: square;
+        stroke-linejoin: miter;
     }
 
     /* floating testimonial carousel */
@@ -2341,7 +2420,6 @@
     .team-pill span,
     .team-pill strong,
     .metric-card span,
-    .impact-caption strong,
     .contact-detail span,
     .field label,
     .footer-brand,
@@ -2410,12 +2488,6 @@
         .trust-row { display: grid; align-items: start; }
         .trust-tags { justify-content: flex-start; }
 
-        .process-strip { grid-template-columns: 1fr; }
-        .process-step { min-height: auto; border-right: 0; border-bottom: 1px solid var(--hairline-light); }
-        #process .process-step { border-bottom-color: var(--hairline-dark); }
-        .process-step:last-child { border-bottom: 0; }
-        .process-step h3 { margin-top: 28px; }
-
         .services-split { grid-template-columns: 1fr; gap: 32px; }
         .services-intro { position: static; }
         .services-photo { aspect-ratio: 16 / 10; }
@@ -2465,7 +2537,7 @@
         .layer-map { display: none; }
         .layer-item { padding: 16px; }
 
-        .ceo-card, .impact-caption { left: 12px; right: 12px; bottom: 12px; }
+        .ceo-card { left: 12px; right: 12px; bottom: 12px; }
         .contact-info { padding: 22px; }
         .contact-form { gap: 12px; padding: 16px; }
         .footer-bottom { flex-direction: column; align-items: flex-start; }
@@ -2477,16 +2549,19 @@
 
     @media (max-width: 1120px) {
         .ceo-photo { width: min(100%, 620px); }
-        .effectiveness-layout { grid-template-columns: 1fr; gap: 38px; }
-        .pyramid-wrap { width: min(100%, 760px); }
+        .effectiveness-head { grid-template-columns: 1fr; gap: 24px; }
+        .effectiveness-outcome { max-width: 620px; }
+        .model-axis { display: none; }
+        .workshop-stages { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: stretch; }
+        .workshop-stage { min-height: 0; }
+        .workshop-stage:last-child { grid-column: 1 / -1; }
         #why .why-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
         .testimonial-track { grid-auto-columns: calc((100% - 16px) / 2); }
     }
 
     @media (max-width: 880px) {
-        .organization-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+        .organizations-layout { grid-template-columns: minmax(190px, 230px) minmax(0, 1fr); gap: 24px; }
         .credentials-list { grid-template-columns: 1fr; }
-        .engagement-cta { grid-template-columns: 1fr; gap: 24px; }
         .testimonial-track { grid-auto-columns: calc((100% - 16px) / 2); }
         #why .why-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
@@ -2494,25 +2569,35 @@
     @media (max-width: 640px) {
         html { scroll-padding-top: 96px; }
         main section[id] { scroll-margin-top: 96px; }
-        #organizations { padding: 38px 0; }
-        .organizations-head { align-items: flex-start; }
-        .organization-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-        .organization-grid li { min-height: 64px; font-size: .78rem; }
+        #organizations { padding: 28px 0; }
+        .organizations-layout { grid-template-columns: 1fr; gap: 18px; }
+        .organizations-title { max-width: 250px; }
+        .organizations-viewport { margin: 0 calc(var(--px) * -1); padding: 18px var(--px); border-top: 1px solid var(--hairline-dark); border-left: 0; }
+        .organization-run { gap: 24px; padding-right: 24px; }
+        .organization-run li { gap: 24px; font-size: .9rem; }
         .purpose-statement { padding-left: 16px; font-size: 1.05rem; }
         .service-toggle { grid-template-columns: 34px minmax(0, 1fr); gap: 14px; padding: 20px; }
         .service-toggle .service-icon { width: 34px; height: 34px; }
         .service-side { grid-column: 2; justify-content: space-between; width: 100%; }
         .service-detail { margin-left: 0; padding: 0 20px 20px; }
         .service-detail-inner { grid-template-columns: 1fr; gap: 22px; }
-        .pyramid-wrap { padding: 18px; }
-        .pyramid { min-height: 0; flex-direction: column; gap: 8px; }
-        .pyramid li:nth-child(n) { width: 100%; }
-        .pyramid-level { min-height: 52px; justify-content: flex-start; text-align: left; }
-        .pyramid-level:hover { transform: none; }
-        .workshop-outcome { grid-template-columns: 1fr; gap: 7px; }
-        #getting-started { padding: 56px 0; }
-        .engagement-cta { padding: 24px 20px; }
-        .engagement-cta h2 { font-size: 1.65rem; }
+        .eq-visual { min-height: 690px; padding: 16px; }
+        .assessment-graphic { min-height: 656px; grid-template-rows: auto minmax(330px, 1fr) auto; gap: 14px; }
+        .assessment-graphic-head { gap: 5px; padding-bottom: 12px; }
+        .assessment-graphic-head strong { text-align: left; }
+        .assessment-map { width: min(100%, 330px); }
+        .assessment-core { width: 144px; min-height: 0; padding: 0; }
+        .assessment-core strong { font-size: 1.25rem; }
+        .assessment-node { width: 102px; }
+        .assessment-node-icon { width: 42px; height: 42px; }
+        .assessment-node strong { font-size: .66rem; }
+        .assessment-node-detail { font-size: .58rem; }
+        .coaching-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .coaching-flow li { min-height: 84px; padding: 11px 12px; }
+        .flow-arrow { display: none; }
+        .workshop-stages { grid-template-columns: 1fr; }
+        .workshop-stage:last-child { grid-column: auto; }
+        .workshop-barrier { min-height: 0; }
         .testimonial-track { grid-auto-columns: 100%; gap: 12px; }
         .review-card { min-height: 0; padding: 26px 22px; }
         .review-card.active { transform: translateY(-6px); }
@@ -2523,6 +2608,11 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
+        .organizations-viewport { overflow: visible; }
+        .organization-track { width: 100%; animation: none; }
+        .organization-run { width: 100%; flex-wrap: wrap; row-gap: 14px; }
+        .organization-run[aria-hidden="true"] { display: none; }
+
         .motion-ready .r:not(.on) {
             opacity: 1;
             transform: none;
@@ -2550,8 +2640,8 @@
     <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#services">Services</a></li>
+        <li><a href="#team-effectiveness">Team Workshops</a></li>
         <li><a href="#impact">Approach</a></li>
-        <li><a href="#leadership">Leadership</a></li>
         <li><a href="#reviews">Reviews</a></li>
     </ul>
     <a class="btn-primary nav-cta" href="#contact">Work With Us</a>
@@ -2564,8 +2654,8 @@
     <ul class="mob-links">
         <li><a href="#about">About</a></li>
         <li><a href="#services">Services</a></li>
+        <li><a href="#team-effectiveness">Team Workshops</a></li>
         <li><a href="#impact">Approach</a></li>
-        <li><a href="#leadership">Leadership</a></li>
         <li><a href="#reviews">Reviews</a></li>
         <li><a href="#contact">Contact</a></li>
     </ul>
@@ -2582,8 +2672,7 @@
                 <div class="hero-content">
                     <div class="hero-kicker r on">Elevated Coaching Group</div>
                     <h1 class="hero-h r on d1">Leadership That Scales Businesses. <span>Coaching That Transforms Leaders.</span></h1>
-                    <p class="hero-p r on d2">Elevated Coaching Group partners with founders, executives, and growing organizations to build exceptional leaders, strengthen management capability, and create high-performing teams.</p>
-                    <p class="hero-p r on d2">Through executive coaching, leadership development, emotional intelligence, and strategic HR advisory, we help ambitious people and organizations navigate growth with confidence.</p>
+                    <p class="hero-p r on d2">Executive coaching, leadership development, and strategic HR advisory for founders, executives, and growing organizations navigating their next stage of growth.</p>
                     <div class="hero-actions r on d3">
                         <a class="btn-primary" href="#contact">Work With Us</a>
                         <a class="btn-secondary" href="#services">
@@ -2671,60 +2760,51 @@
 
     <section id="organizations" aria-labelledby="organizations-title">
         <div class="shell">
-            <div class="organizations-head r">
-                <h2 class="organizations-title" id="organizations-title">Trusted by Leaders From Organizations Including</h2>
-                <span class="organizations-rule" aria-hidden="true"></span>
+            <div class="organizations-layout r">
+                <div class="organizations-head">
+                    <h2 class="organizations-title" id="organizations-title">Trusted by Leaders From Organizations Including</h2>
+                </div>
+                <div class="organizations-viewport">
+                    <div class="organization-track">
+                        <ul class="organization-run">
+                            <li>Samsung</li>
+                            <li>TD Bank</li>
+                            <li>Flipp</li>
+                            <li>Heart &amp; Stroke Foundation</li>
+                            <li>Relay</li>
+                            <li>Achievers</li>
+                            <li>Softchoice</li>
+                            <li>CONMED</li>
+                            <li>ExpensePoint</li>
+                            <li>Wajax</li>
+                            <li>White Ribbon</li>
+                            <li>Shiseido</li>
+                            <li>Alzheimer's Society</li>
+                            <li>Tundra Technical Solutions</li>
+                        </ul>
+                        <ul class="organization-run" aria-hidden="true">
+                            <li>Samsung</li>
+                            <li>TD Bank</li>
+                            <li>Flipp</li>
+                            <li>Heart &amp; Stroke Foundation</li>
+                            <li>Relay</li>
+                            <li>Achievers</li>
+                            <li>Softchoice</li>
+                            <li>CONMED</li>
+                            <li>ExpensePoint</li>
+                            <li>Wajax</li>
+                            <li>White Ribbon</li>
+                            <li>Shiseido</li>
+                            <li>Alzheimer's Society</li>
+                            <li>Tundra Technical Solutions</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <ul class="organization-grid r d1">
-                <li>Samsung</li>
-                <li>TD Bank</li>
-                <li>Flipp</li>
-                <li>Heart &amp; Stroke Foundation</li>
-                <li>Relay</li>
-                <li>Achievers</li>
-                <li>Softchoice</li>
-                <li>CONMED</li>
-                <li>ExpensePoint</li>
-                <li>Wajax</li>
-                <li>White Ribbon</li>
-                <li>Shiseido</li>
-                <li>Alzheimer's Society</li>
-                <li>Tundra Technical Solutions</li>
-            </ul>
         </div>
     </section>
 
     <section class="section section-soft" id="about">
-        <div class="shell">
-            <div class="about-layout">
-                <div class="image-stack r">
-                    <div class="photo-card photo-main">
-                        <img src="branding/branding6.png" alt="Elevated Coaching Group monogram on a monochrome exterior sign" width="1122" height="1402" loading="lazy" decoding="async">
-                    </div>
-                    <div class="photo-card photo-sub">
-                        <img src="img/joana.jpg" alt="Joana Oliveira in a bright studio setting" width="3527" height="5290" loading="lazy" decoding="async">
-                    </div>
-                    <div class="image-note">
-                        <strong>Founded in 2019</strong>
-                        <span>Boutique leadership development, executive coaching, and strategic HR advisory.</span>
-                    </div>
-                </div>
-                <div>
-                    <span class="eyebrow r d1">About Elevated Coaching Group</span>
-                    <h2 class="section-title r d2">Helping Leaders Grow So Businesses Can Too.</h2>
-                    <div class="about-copy-stack r d2">
-                        <p>Founded in 2019, Elevated Coaching Group is a boutique leadership development, executive coaching, and strategic HR advisory firm.</p>
-                        <p>We partner with organizations at pivotal moments of growth &mdash; developing stronger leaders, more capable managers, and high-performing teams equipped to navigate change, complexity, and rapid business growth.</p>
-                        <p>Our work combines executive coaching, emotional intelligence, leadership development, and strategic HR expertise to help organizations scale their people alongside their business.</p>
-                        <p>Whether coaching one executive or partnering with an entire leadership team, our purpose remains the same:</p>
-                    </div>
-                    <p class="purpose-statement r d3">Helping people unlock their potential so businesses can reach theirs.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" id="leadership">
         <div class="shell">
             <div class="team-layout">
                 <div class="ceo-photo r">
@@ -2735,33 +2815,26 @@
                     </div>
                 </div>
                 <div>
-                    <span class="eyebrow r d1">Leadership &mdash; About Joana</span>
-                    <h2 class="section-title r d2">Meet Joana Oliveira</h2>
+                    <span class="eyebrow r d1">About Elevated Coaching Group</span>
+                    <h2 class="section-title r d2">Leadership Development Grounded in Real Operating Experience.</h2>
                     <div class="leadership-copy r d2">
-                        <p>Joana Oliveira is the Founder of Elevated Coaching Group and a senior Human Resources executive with more than 15 years of experience helping organizations build exceptional leaders, scale high-performing teams, and navigate transformational growth.</p>
-                        <p>Throughout her career, Joana has partnered with founders, CEOs, executive teams, and boards across technology, SaaS, financial services, healthcare, consumer, and not-for-profit organizations. She has helped organizations evolve from startup to scale-up environments, supporting periods of rapid growth, organizational transformation, executive transitions, and leadership development.</p>
+                        <p>Founded in 2019 by Joana Oliveira, Elevated Coaching Group is a boutique executive coaching, leadership development, and strategic HR advisory firm.</p>
+                        <p>Joana brings more than 15 years of senior HR experience inside high-growth organizations. She partners with founders, executives, and leadership teams to navigate growth, change, and the people challenges that come with both.</p>
                     </div>
                     <details class="bio-details r d2">
-                        <summary>Read Joana's full background</summary>
+                        <summary>Joana's approach and credentials</summary>
                         <div class="bio-details-body">
-                            <p>Having spent her career inside high-growth organizations, Joana understands firsthand that as businesses grow, leadership becomes the competitive advantage.</p>
-                            <p>Her coaching blends executive experience with behavioural science, psychology, neuroscience, emotional intelligence, and strengths-based coaching to help leaders gain clarity, build confidence, improve relationships, and lead with greater impact.</p>
-                            <p>Clients describe her as approachable, authentic, insightful, and highly practical. She creates a trusted space where leaders are challenged to think differently, discover their strengths, and unlock what she calls their “superpowers.”</p>
-                            <p>A lifelong learner with an endless curiosity about people and leadership, Joana is passionate about helping leaders become the best version of themselves while building organizations where people and performance thrive together.</p>
+                            <p>Her coaching blends executive experience with behavioural science, psychology, neuroscience, emotional intelligence, and strengths-based coaching. The result is practical development leaders can apply immediately.</p>
+                            <ul class="credentials-list">
+                                <li>CHRL</li>
+                                <li>Certified Executive Coach</li>
+                                <li>Certified EQ-i 2.0 &amp; EQ 360 Practitioner</li>
+                                <li>Certified Situational Leadership&reg; Facilitator</li>
+                                <li>Training from McMaster University, Sheridan College, and Royal Roads University</li>
+                            </ul>
                         </div>
                     </details>
-                    <div class="credentials r d3">
-                        <h3>Credentials</h3>
-                        <ul class="credentials-list">
-                            <li>CHRL</li>
-                            <li>Certified Executive Coach</li>
-                            <li>Certified EQ-i 2.0 &amp; EQ 360 Practitioner</li>
-                            <li>Certified Situational Leadership® Facilitator (Ken Blanchard)</li>
-                            <li>Honours BA Psychology, Neuroscience &amp; Behaviour &ndash; McMaster University</li>
-                            <li>Post-Graduate HR Management &ndash; Sheridan College</li>
-                            <li>Executive Coach Training &ndash; Royal Roads University</li>
-                        </ul>
-                    </div>
+                    <p class="purpose-statement r d3">Helping people unlock their potential so businesses can reach theirs.</p>
                 </div>
             </div>
         </div>
@@ -2920,8 +2993,8 @@
                             <div class="service-detail-inner single">
                                 <div>
                                     <h4>Workshop Series</h4>
-                                    <p>Explore the Five Dysfunctions model and the five workshops for building trust, mastering conflict, achieving commitment, embracing accountability, and focusing on results.</p>
-                                    <a class="service-jump" href="#team-effectiveness">Explore the Workshop Series <span aria-hidden="true">&rarr;</span></a>
+                                    <p>Five focused workshops move leadership teams from friction to trust and from politics to results.</p>
+                                    <a class="service-jump" href="#team-effectiveness">View the five-workshop model <span aria-hidden="true">&rarr;</span></a>
                                 </div>
                             </div>
                         </div>
@@ -2931,86 +3004,78 @@
         </div>
     </section>
 
-    <section class="section section-soft" id="team-effectiveness">
+    <section class="section section-soft" id="team-effectiveness" aria-labelledby="team-effectiveness-title">
         <div class="shell">
-            <div class="effectiveness-layout">
-                <div class="effectiveness-copy">
-                    <span class="eyebrow r">Team Effectiveness</span>
-                    <h2 class="section-title r d1">Team Effectiveness: The Five Dysfunctions Workshop Series</h2>
-                    <p class="section-copy r d2">Built on Patrick Lencioni's <em>The Five Dysfunctions of a Team</em> model &mdash; five workshops, one for each dysfunction, moving leadership teams from friction to trust and from politics to results.</p>
-                    <p class="section-copy r d2">Select a level to see the corresponding workshop.</p>
-                </div>
-                <div class="pyramid-wrap r d2">
-                    <ol class="pyramid" aria-label="Five Dysfunctions pyramid, from foundation to peak">
-                        <li><a class="pyramid-level active" href="#workshop-01" aria-controls="pyramid-workshop" aria-current="true"><span class="pyramid-num">01</span>Absence of Trust</a></li>
-                        <li><a class="pyramid-level" href="#workshop-02" aria-controls="pyramid-workshop"><span class="pyramid-num">02</span>Fear of Conflict</a></li>
-                        <li><a class="pyramid-level" href="#workshop-03" aria-controls="pyramid-workshop"><span class="pyramid-num">03</span>Lack of Commitment</a></li>
-                        <li><a class="pyramid-level" href="#workshop-04" aria-controls="pyramid-workshop"><span class="pyramid-num">04</span>Avoidance of Accountability</a></li>
-                        <li><a class="pyramid-level" href="#workshop-05" aria-controls="pyramid-workshop"><span class="pyramid-num">05</span>Inattention to Results</a></li>
-                    </ol>
-                    <div class="pyramid-panel" id="pyramid-workshop" tabindex="-1" aria-live="polite">
-                        <span>Corresponding Workshop</span>
-                        <h3>Workshop 01 &mdash; Building Trust</h3>
-                        <p>Vulnerability-based exercises so the team can be candid, admit mistakes, and ask for help.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" id="process">
-        <div class="shell">
-            <div class="section-head">
+            <div class="effectiveness-head">
                 <div>
-                    <span class="eyebrow r">Team Effectiveness</span>
-                    <h2 class="section-title r d1">The Five Workshops</h2>
+                    <span class="eyebrow">Team Effectiveness</span>
+                    <h2 class="section-title" id="team-effectiveness-title">From Trust to Results: Five Workshops for Stronger Teams.</h2>
+                    <p class="section-copy">Built on Patrick Lencioni's <em>The Five Dysfunctions of a Team</em> model, the series addresses one barrier at a time so leadership teams can build trust, debate productively, commit, hold one another accountable, and focus on shared results.</p>
                 </div>
-                <p class="section-copy r d2">Five workshops, one for each dysfunction, moving leadership teams from friction to trust and from politics to results.</p>
+                <aside class="effectiveness-outcome" aria-label="Workshop series outcome">
+                    <span>Series Outcome</span>
+                    <strong>A high-trust leadership team equipped to lead through growth, change, and complexity.</strong>
+                </aside>
             </div>
-            <div class="process-strip r d1">
-                <article class="process-step" id="workshop-01" style="--step-color: var(--cream)">
-                    <span class="step-num">01</span>
+
+            <div class="model-axis" aria-hidden="true">
+                <span>Foundation: Trust</span>
+                <span class="model-axis-line"></span>
+                <span>Collective Results</span>
+            </div>
+
+            <ol class="workshop-stages" aria-label="Five-part team effectiveness workshop series">
+                <li class="workshop-stage" style="--rise: 0px">
+                    <span class="workshop-num">01</span>
+                    <div class="workshop-barrier">
+                        <span>Barrier</span>
+                        <strong>Absence of Trust</strong>
+                    </div>
+                    <span class="workshop-label">Workshop</span>
                     <h3>Building Trust</h3>
-                    <p>Vulnerability-based exercises so the team can be candid, admit mistakes, and ask for help.</p>
-                </article>
-                <article class="process-step" id="workshop-02" style="--step-color: var(--cream)">
-                    <span class="step-num">02</span>
+                    <p>Vulnerability-based exercises help the team speak candidly, admit mistakes, and ask for help.</p>
+                </li>
+                <li class="workshop-stage" style="--rise: 20px">
+                    <span class="workshop-num">02</span>
+                    <div class="workshop-barrier">
+                        <span>Barrier</span>
+                        <strong>Fear of Conflict</strong>
+                    </div>
+                    <span class="workshop-label">Workshop</span>
                     <h3>Mastering Conflict</h3>
                     <p>Normalize productive, unfiltered debate around ideas without damaging relationships.</p>
-                </article>
-                <article class="process-step" id="workshop-03" style="--step-color: var(--cream)">
-                    <span class="step-num">03</span>
+                </li>
+                <li class="workshop-stage" style="--rise: 40px">
+                    <span class="workshop-num">03</span>
+                    <div class="workshop-barrier">
+                        <span>Barrier</span>
+                        <strong>Lack of Commitment</strong>
+                    </div>
+                    <span class="workshop-label">Workshop</span>
                     <h3>Achieving Commitment</h3>
                     <p>Build clarity and buy-in so the team commits fully to decisions, even amid disagreement.</p>
-                </article>
-                <article class="process-step" id="workshop-04" style="--step-color: var(--cream)">
-                    <span class="step-num">04</span>
+                </li>
+                <li class="workshop-stage" style="--rise: 60px">
+                    <span class="workshop-num">04</span>
+                    <div class="workshop-barrier">
+                        <span>Barrier</span>
+                        <strong>Avoidance of Accountability</strong>
+                    </div>
+                    <span class="workshop-label">Workshop</span>
                     <h3>Embracing Accountability</h3>
                     <p>Build peer-to-peer accountability so the team holds itself to shared standards.</p>
-                </article>
-                <article class="process-step" id="workshop-05" style="--step-color: var(--cream)">
-                    <span class="step-num">05</span>
+                </li>
+                <li class="workshop-stage" style="--rise: 80px">
+                    <span class="workshop-num">05</span>
+                    <div class="workshop-barrier">
+                        <span>Barrier</span>
+                        <strong>Inattention to Results</strong>
+                    </div>
+                    <span class="workshop-label">Workshop</span>
                     <h3>Focusing on Results</h3>
                     <p>Align the team around collective outcomes over individual agendas or status.</p>
-                </article>
-            </div>
-            <div class="workshop-outcome r d2">
-                <span>Outcome</span>
-                <strong>Cultural transformation &mdash; leadership teams with high trust who can lead.</strong>
-            </div>
-        </div>
-    </section>
-
-    <section id="getting-started">
-        <div class="shell">
-            <div class="engagement-cta r">
-                <div>
-                    <span class="eyebrow">Getting Started</span>
-                    <h2>Pricing Built Around Your Engagement</h2>
-                    <p>Pricing varies based on scope and format &mdash; individual, team, department, or company-wide coaching. Book a free consultation to find the right fit for your goals.</p>
-                </div>
-                <a class="btn-primary" href="#contact">Book a Free Consultation</a>
-            </div>
+                </li>
+            </ol>
         </div>
     </section>
 
@@ -3018,53 +3083,94 @@
         <div class="shell">
             <div class="impact-layout">
                 <div>
-                    <span class="eyebrow r">What Makes Us Different</span>
-                    <h2 class="section-title r d1">Coaching Backed by Data.</h2>
+                    <span class="eyebrow r">Why Elevated</span>
+                    <h2 class="section-title r d1">Real-World Experience. Evidence-Led Coaching.</h2>
                     <div class="impact-copy-stack r d2">
-                        <p>Most executive coaches rely on conversation alone. At Elevated Coaching Group, coaching starts with insight.</p>
-                        <p>Emotional Intelligence (EQ-i 2.0®) is the foundation of our methodology &mdash; giving leaders measurable, evidence-based insight into how they lead, communicate, influence, decide, and build relationships. Unlike IQ, emotional intelligence isn't fixed. It can be intentionally developed through coaching, practice, and feedback.</p>
+                        <p>Joana combines senior executive experience with behavioural science, emotional intelligence assessments, and practical coaching.</p>
+                        <p>Leaders gain clear insight into how they lead, then turn that insight into decisions, conversations, and habits that improve performance.</p>
                     </div>
                     <div class="impact-grid r d3">
                         <article class="metric-card">
-                            <span>Assessment 01</span>
-                            <h3>EQ-i 2.0 Individual Assessment</h3>
-                            <p>Measures 15 emotional intelligence competencies to identify leadership strengths and development opportunities.</p>
+                            <span>Experience</span>
+                            <h3>Operator Perspective</h3>
+                            <p>15+ years leading talent strategy inside high-growth organizations.</p>
                         </article>
                         <article class="metric-card">
-                            <span>Assessment 02</span>
-                            <h3>EQ 360 Assessment</h3>
-                            <p>Compares self-perception with confidential feedback from managers, peers, and direct reports to uncover blind spots and accelerate growth.</p>
+                            <span>Insight</span>
+                            <h3>Data-Backed Development</h3>
+                            <p>EQ-i 2.0, EQ 360, and team assessments reveal strengths and blind spots.</p>
                         </article>
                         <article class="metric-card">
-                            <span>Assessment 03</span>
-                            <h3>Team Emotional Intelligence</h3>
-                            <p>Reveals a leadership team's collective strengths and gaps to improve trust, collaboration, and effectiveness.</p>
+                            <span>Application</span>
+                            <h3>Practical and Actionable</h3>
+                            <p>Real-world strategies leaders can apply immediately, not theory alone.</p>
                         </article>
                         <article class="metric-card">
-                            <span>Included</span>
-                            <h3>Personalized Debrief, Development Plan &amp; Coaching Integration</h3>
-                            <p>Every assessment includes a personalized debrief, development plan, and coaching integration.</p>
+                            <span>Partnership</span>
+                            <h3>Human-Centred</h3>
+                            <p>Direct, trusted coaching built on curiosity, accountability, and meaningful relationships.</p>
                         </article>
                     </div>
                 </div>
                 <div class="impact-image eq-visual r d2">
-                    <div class="eq-method" aria-hidden="true">
-                        <div class="eq-orbit">
-                            <span class="eq-point" style="--i: 0"></span><span class="eq-point" style="--i: 1"></span><span class="eq-point" style="--i: 2"></span><span class="eq-point" style="--i: 3"></span><span class="eq-point" style="--i: 4"></span>
-                            <span class="eq-point" style="--i: 5"></span><span class="eq-point" style="--i: 6"></span><span class="eq-point" style="--i: 7"></span><span class="eq-point" style="--i: 8"></span><span class="eq-point" style="--i: 9"></span>
-                            <span class="eq-point" style="--i: 10"></span><span class="eq-point" style="--i: 11"></span><span class="eq-point" style="--i: 12"></span><span class="eq-point" style="--i: 13"></span><span class="eq-point" style="--i: 14"></span>
-                            <div class="eq-center"><strong>EQ-i 2.0</strong><span>15 Competencies</span></div>
+                    <div class="assessment-graphic" role="img" aria-label="EQ-i 2.0 assessment system: individual, EQ 360, and team insights move through assess, debrief, develop, and coach stages.">
+                        <div class="assessment-graphic-head" aria-hidden="true">
+                            <span>Assessment-Led Coaching</span>
+                            <strong>Insight Before Intervention</strong>
                         </div>
-                        <ul class="eq-types">
-                            <li>Individual</li>
-                            <li>EQ 360</li>
-                            <li>Team</li>
-                        </ul>
-                    </div>
-                    <!-- TODO: Add an approved supporting source for the client-provided 15–20% claim before publication. -->
-                    <div class="impact-caption">
-                        <strong class="stat">15&ndash;20%</strong>
-                        <span>Average growth in emotional intelligence competency scores over one year of coaching &mdash; stronger leadership effectiveness, sharper decision-making, and more confident leaders.</span>
+
+                        <div class="assessment-map" aria-hidden="true">
+                            <svg class="assessment-map-lines" viewBox="0 0 400 400">
+                                <circle class="outer-ring" cx="200" cy="200" r="155"/>
+                                <circle class="inner-ring" cx="200" cy="200" r="105"/>
+                                <path class="connection" d="M200 62L74 320H326L200 62ZM200 62V200M74 320L200 200L326 320"/>
+                                <circle class="competency-dot" cx="200" cy="45" r="5"/><circle class="competency-dot" cx="263" cy="58" r="5"/>
+                                <circle class="competency-dot" cx="315" cy="96" r="5"/><circle class="competency-dot" cx="347" cy="152" r="5"/>
+                                <circle class="competency-dot" cx="354" cy="216" r="5"/><circle class="competency-dot" cx="334" cy="278" r="5"/>
+                                <circle class="competency-dot" cx="291" cy="325" r="5"/><circle class="competency-dot" cx="232" cy="352" r="5"/>
+                                <circle class="competency-dot" cx="168" cy="352" r="5"/><circle class="competency-dot" cx="109" cy="325" r="5"/>
+                                <circle class="competency-dot" cx="66" cy="278" r="5"/><circle class="competency-dot" cx="46" cy="216" r="5"/>
+                                <circle class="competency-dot" cx="53" cy="152" r="5"/><circle class="competency-dot" cx="85" cy="96" r="5"/>
+                                <circle class="competency-dot" cx="137" cy="58" r="5"/>
+                            </svg>
+
+                            <div class="assessment-core">
+                                <span>Leadership Signal</span>
+                                <strong>EQ-i 2.0</strong>
+                                <em>15 Competencies</em>
+                            </div>
+
+                            <div class="assessment-node assessment-node-individual is-active">
+                                <span class="assessment-node-icon">
+                                    <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="7" r="3.5" stroke="currentColor"/><path d="M6 20v-3.5a6 6 0 0 1 12 0V20" stroke="currentColor" stroke-linecap="round"/></svg>
+                                </span>
+                                <strong>Individual</strong>
+                                <span class="assessment-node-detail">1:1 assessment</span>
+                            </div>
+
+                            <div class="assessment-node assessment-node-360">
+                                <span class="assessment-node-icon">
+                                    <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="7" r="3" stroke="currentColor"/><circle cx="5" cy="9" r="2.2" stroke="currentColor"/><circle cx="19" cy="9" r="2.2" stroke="currentColor"/><path d="M7 20v-3a5 5 0 0 1 10 0v3M2 19v-2a3 3 0 0 1 4-2.8M22 19v-2a3 3 0 0 0-4-2.8" stroke="currentColor" stroke-linecap="round"/></svg>
+                                </span>
+                                <strong>EQ 360</strong>
+                                <span class="assessment-node-detail">Multi-rater feedback</span>
+                            </div>
+
+                            <div class="assessment-node assessment-node-team">
+                                <span class="assessment-node-icon">
+                                    <svg viewBox="0 0 24 24" fill="none"><rect x="9" y="3" width="6" height="5" stroke="currentColor"/><rect x="2" y="16" width="6" height="5" stroke="currentColor"/><rect x="16" y="16" width="6" height="5" stroke="currentColor"/><path d="M12 8v4M5 16v-4h14v4" stroke="currentColor" stroke-linecap="round"/></svg>
+                                </span>
+                                <strong>Team</strong>
+                                <span class="assessment-node-detail">Collective effectiveness</span>
+                            </div>
+                        </div>
+
+                        <ol class="coaching-flow" aria-hidden="true">
+                            <li><span class="flow-num">01</span><strong>Assess</strong><small>Measure what matters.</small><svg class="flow-arrow" viewBox="0 0 18 12"><path d="M1 6h15M11 1l5 5-5 5"/></svg></li>
+                            <li><span class="flow-num">02</span><strong>Debrief</strong><small>Reveal insight and blind spots.</small><svg class="flow-arrow" viewBox="0 0 18 12"><path d="M1 6h15M11 1l5 5-5 5"/></svg></li>
+                            <li><span class="flow-num">03</span><strong>Develop</strong><small>Build a focused plan.</small><svg class="flow-arrow" viewBox="0 0 18 12"><path d="M1 6h15M11 1l5 5-5 5"/></svg></li>
+                            <li><span class="flow-num">04</span><strong>Coach</strong><small>Turn insight into practice.</small></li>
+                        </ol>
                     </div>
                 </div>
             </div>
@@ -3127,44 +3233,6 @@
         </div>
     </section>
 
-    <section class="section" id="why">
-        <div class="shell">
-            <div class="section-head">
-                <div>
-                    <span class="eyebrow r">Why Elevated Coaching Group</span>
-                    <h2 class="section-title r d1">The Impact of Coaching, Backed by Experience.</h2>
-                </div>
-            </div>
-            <div class="why-grid r d1">
-                <article class="why-card">
-                    <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 20V10m5 10V4m6 16v-7m5 7V7" stroke="currentColor" stroke-linecap="round"/></svg></div>
-                    <h3>Executive Experience</h3>
-                    <p>15+ years leading talent strategy inside high-growth organizations.</p>
-                </article>
-                <article class="why-card">
-                    <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 18l5-5 4 3 7-9M16 7h4v4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-                    <h3>Coaching Backed by Data</h3>
-                    <p>Evidence-based coaching powered by EQ-i 2.0 assessments, behavioural science, psychology, and neuroscience.</p>
-                </article>
-                <article class="why-card">
-                    <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4L19 6.5M4 4h16v16H4z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-                    <h3>Practical &amp; Actionable</h3>
-                    <p>Real-world strategies leaders can immediately apply &mdash; not theory.</p>
-                </article>
-                <article class="why-card">
-                    <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M8 12l3 3 5-6M12 3l7 3v5c0 4.5-2.8 8-7 10-4.2-2-7-5.5-7-10V6l7-3z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-                    <h3>Trusted Strategic Partner</h3>
-                    <p>Supporting founders, executives, leadership teams, and organizations through growth, transformation, and change.</p>
-                </article>
-                <article class="why-card">
-                    <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 20s-7-4.1-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.9-7 10-7 10z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-                    <h3>Human-Centred</h3>
-                    <p>Authentic coaching built on curiosity, trust, accountability, and meaningful relationships.</p>
-                </article>
-            </div>
-        </div>
-    </section>
-
     <section class="section" id="contact">
         <div class="shell">
             <div class="contact-panel">
@@ -3172,10 +3240,10 @@
                     <div>
                         <span class="eyebrow light">Start the Conversation</span>
                         <h2>Ready to Elevate Your Leadership?</h2>
-                        <p>Partner with Elevated Coaching Group to build the leaders your next stage of growth needs.</p>
+                        <p>Partner with Elevated Coaching Group to build the leaders your next stage of growth needs. Engagements are scoped around your goals, audience, and format.</p>
                     </div>
                     <div class="contact-image">
-                        <img src="img/hero.png" alt="Leadership team collaborating around a table" width="1536" height="1024" loading="lazy" decoding="async">
+                        <img src="branding/branding3wide.png" alt="Elevated Coaching Group office entrance" width="1983" height="793" loading="lazy" decoding="async">
                     </div>
                 </div>
 
@@ -3240,6 +3308,7 @@
                 <ul class="footer-links">
                     <li><a href="#about">About</a></li>
                     <li><a href="#services">Services</a></li>
+                    <li><a href="#team-effectiveness">Team Workshops</a></li>
                     <li><a href="#impact">Approach</a></li>
                     <li><a href="#reviews">Reviews</a></li>
                 </ul>
@@ -3256,9 +3325,9 @@
             <div class="footer-col">
                 <h2>Explore</h2>
                 <ul class="footer-links">
-                    <li><a href="#leadership">Meet Joana</a></li>
-                    <li><a href="#process">The Five Workshops</a></li>
-                    <li><a href="#why">Why Elevated</a></li>
+                    <li><a href="#about">Meet Joana</a></li>
+                    <li><a href="#impact">Why Elevated</a></li>
+                    <li><a href="#reviews">Client Reviews</a></li>
                     <li><a href="#contact">Work With Us</a></li>
                 </ul>
             </div>
@@ -3365,6 +3434,16 @@ if ('IntersectionObserver' in window) {
     document.querySelectorAll('.r').forEach(element => element.classList.add('on'));
 }
 
+const organizationsSection = document.getElementById('organizations');
+
+if (organizationsSection && 'IntersectionObserver' in window) {
+    const organizationsObserver = new IntersectionObserver(([entry]) => {
+        organizationsSection.classList.toggle('is-offscreen', !entry.isIntersecting);
+    }, { threshold: 0 });
+
+    organizationsObserver.observe(organizationsSection);
+}
+
 /* Native service disclosures remain usable without JavaScript; enhancement keeps one open. */
 const serviceRows = [...document.querySelectorAll('.service-row')];
 serviceRows.forEach(row => {
@@ -3378,30 +3457,6 @@ serviceRows.forEach(row => {
             });
         }
         syncState();
-    });
-});
-
-/* Pyramid links still reach the full workshop content when JavaScript is unavailable. */
-const pyramidLinks = [...document.querySelectorAll('.pyramid-level')];
-const pyramidPanel = document.getElementById('pyramid-workshop');
-pyramidLinks.forEach(link => {
-    link.addEventListener('click', event => {
-        const workshop = document.querySelector(link.getAttribute('href'));
-        if (!workshop || !pyramidPanel) return;
-        event.preventDefault();
-
-        pyramidLinks.forEach(item => {
-            item.classList.remove('active');
-            item.removeAttribute('aria-current');
-        });
-        link.classList.add('active');
-        link.setAttribute('aria-current', 'true');
-
-        const number = workshop.querySelector('.step-num')?.textContent.trim();
-        const title = workshop.querySelector('h3')?.textContent.trim();
-        const description = workshop.querySelector('p')?.textContent.trim();
-        pyramidPanel.querySelector('h3').textContent = `Workshop ${number} — ${title}`;
-        pyramidPanel.querySelector('p').textContent = description;
     });
 });
 

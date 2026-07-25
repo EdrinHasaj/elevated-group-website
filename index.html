@@ -2307,6 +2307,11 @@
 
     .carousel-ready .carousel-controls { display: flex; }
 
+    /* The workshop carousel runs below the full five-across grid; hide its controls only on desktop. */
+    @media (min-width: 1121px) {
+        .carousel-ready .workshop-controls { display: none; }
+    }
+
     .carousel-buttons { display: flex; gap: 8px; }
 
     .carousel-button {
@@ -2518,7 +2523,13 @@
         .btn-primary, .btn-secondary, .btn-form { width: 100%; }
 
         .proof-grid,
-        .impact-grid, .contact-form, .footer-grid { grid-template-columns: 1fr; }
+        .contact-form, .footer-grid { grid-template-columns: 1fr; }
+
+        /* Keep the metric cards a 2x2 grid on phones; shrink the type so they stay legible. */
+        .metric-card { min-height: 0; padding: 16px; }
+        .metric-card span { font-size: .62rem; letter-spacing: .1em; }
+        .metric-card h3 { margin-top: 16px; font-size: 1.02rem; }
+        .metric-card p { margin-top: 8px; font-size: .82rem; line-height: 1.55; }
 
         .service-row { padding: 20px; }
 
@@ -2545,6 +2556,14 @@
         .footer-bottom { flex-direction: column; align-items: flex-start; }
     }
 
+    /* Only below 320px is there too little room for two columns. */
+    @media (max-width: 319.98px) {
+        .impact-grid { grid-template-columns: 1fr; }
+        .metric-card { min-height: 0; }
+        .coaching-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .flow-arrow { display: none; }
+    }
+
     @media (min-width: 1121px) {
         .hero-h { font-size: 4.35rem; }
     }
@@ -2554,9 +2573,26 @@
         .effectiveness-head { grid-template-columns: 1fr; gap: 24px; }
         .effectiveness-outcome { max-width: 620px; }
         .model-axis { display: none; }
-        .workshop-stages { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: stretch; }
-        .workshop-stage { min-height: 0; }
-        .workshop-stage:last-child { grid-column: 1 / -1; }
+        /* Below the five-across grid the workshops become a windowed carousel: cards keep their
+           desktop width and ascending heights, and you navigate the row instead of reflowing it. */
+        .workshop-stages {
+            grid-template-columns: none;
+            grid-auto-flow: column;
+            grid-auto-columns: 240px;
+            align-items: end;
+            gap: 12px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            overscroll-behavior-inline: contain;
+            scrollbar-width: none;
+        }
+        .workshop-stages::-webkit-scrollbar { display: none; }
+        .workshop-stage {
+            min-height: calc(300px + var(--rise));
+            scroll-snap-align: start;
+        }
+        .workshop-stage:last-child { grid-column: auto; }
+        .workshop-barrier { min-height: 0; }
         #why .why-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
         .testimonial-track { grid-auto-columns: calc((100% - 16px) / 2); }
     }
@@ -2583,8 +2619,10 @@
         .service-side { grid-column: 2; justify-content: space-between; width: 100%; }
         .service-detail { margin-left: 0; padding: 0 20px 20px; }
         .service-detail-inner { grid-template-columns: 1fr; gap: 22px; }
-        .eq-visual { min-height: 690px; padding: 16px; }
-        .assessment-graphic { min-height: 656px; grid-template-rows: auto minmax(330px, 1fr) auto; gap: 14px; }
+        /* Stacked on mobile there's no tall neighbour to match, so let the graphic hug its content
+           instead of stretching the middle row and padding the circle with empty space. */
+        .eq-visual { min-height: 0; padding: 16px; }
+        .assessment-graphic { min-height: 0; grid-template-rows: auto auto auto; gap: 20px; }
         .assessment-graphic-head { gap: 5px; padding-bottom: 12px; }
         .assessment-graphic-head strong { text-align: left; }
         .assessment-map { width: min(100%, 330px); }
@@ -2594,12 +2632,15 @@
         .assessment-node-icon { width: 42px; height: 42px; }
         .assessment-node strong { font-size: .66rem; }
         .assessment-node-detail { font-size: .58rem; }
-        .coaching-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-        .coaching-flow li { min-height: 84px; padding: 11px 12px; }
-        .flow-arrow { display: none; }
-        .workshop-stages { grid-template-columns: 1fr; }
-        .workshop-stage:last-child { grid-column: auto; }
-        .workshop-barrier { min-height: 0; }
+        /* Keep the four-step flow with its connecting arrows on phones; tighten spacing and type to fit. */
+        .coaching-flow { gap: 14px; }
+        .coaching-flow li { min-height: 84px; padding: 11px 0; }
+        .coaching-flow strong { font-size: .72rem; }
+        .coaching-flow small { font-size: .56rem; line-height: 1.3; }
+        .flow-num { font-size: .55rem; }
+        .flow-arrow { right: -13px; width: 12px; height: 9px; }
+        /* Phone: narrow to one workshop at a time; the carousel mechanics carry over from ≤1120px. */
+        .workshop-stages { grid-auto-columns: 100%; gap: 0; }
         .testimonial-track { grid-auto-columns: 100%; gap: 12px; }
         .review-card { min-height: 0; padding: 26px 22px; }
         .review-card.active { transform: translateY(-6px); }
@@ -3026,7 +3067,7 @@
                 <span>Collective Results</span>
             </div>
 
-            <ol class="workshop-stages" aria-label="Five-part team effectiveness workshop series">
+            <ol class="workshop-stages" id="workshop-track" tabindex="0" aria-label="Five-part team effectiveness workshop series">
                 <li class="workshop-stage" style="--rise: 0px">
                     <span class="workshop-num">01</span>
                     <div class="workshop-barrier">
@@ -3078,6 +3119,18 @@
                     <p>Align the team around collective outcomes over individual agendas or status.</p>
                 </li>
             </ol>
+
+            <div class="carousel-controls workshop-controls" aria-label="Workshop series controls">
+                <div class="carousel-buttons">
+                    <button class="carousel-button" id="workshop-prev" type="button" aria-label="Previous workshop">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <button class="carousel-button" id="workshop-next" type="button" aria-label="Next workshop">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                </div>
+                <div class="carousel-pagination" id="workshop-pagination" aria-label="Choose a workshop"></div>
+            </div>
         </div>
     </section>
 
@@ -3555,6 +3608,96 @@ if ('ResizeObserver' in window) {
 }
 buildTestimonialPagination();
 document.getElementById('reviews').classList.add('carousel-ready');
+
+/* Workshop series becomes a windowed carousel below the full grid: several cards on a tablet,
+   one at a time on a phone. The visible count is derived from the card width, like the reviews. */
+const workshopTrack = document.getElementById('workshop-track');
+const workshopStages = [...document.querySelectorAll('.workshop-stage')];
+const workshopPrevious = document.getElementById('workshop-prev');
+const workshopNext = document.getElementById('workshop-next');
+const workshopPagination = document.getElementById('workshop-pagination');
+
+let workshopPage = 0;
+let workshopsVisible = 1;
+let workshopScrollTimer;
+
+function workshopMetrics() {
+    if (!workshopStages.length) return { step: 1, maxPage: 0 };
+    const gap = Number.parseFloat(getComputedStyle(workshopTrack).columnGap) || 0;
+    const cardWidth = workshopStages[0].getBoundingClientRect().width;
+    workshopsVisible = Math.max(1, Math.min(workshopStages.length, Math.round((workshopTrack.clientWidth + gap) / (cardWidth + gap))));
+    return { step: cardWidth + gap, maxPage: Math.max(0, workshopStages.length - workshopsVisible) };
+}
+
+function updateWorkshopState() {
+    const { maxPage } = workshopMetrics();
+    workshopPage = Math.max(0, Math.min(workshopPage, maxPage));
+    workshopPrevious.disabled = workshopPage === 0;
+    workshopNext.disabled = workshopPage === maxPage;
+    [...workshopPagination.children].forEach((dot, index) => {
+        if (index === workshopPage) dot.setAttribute('aria-current', 'true');
+        else dot.removeAttribute('aria-current');
+    });
+}
+
+function buildWorkshopPagination() {
+    const { maxPage } = workshopMetrics();
+    workshopPage = Math.min(workshopPage, maxPage);
+    workshopPagination.replaceChildren();
+
+    for (let page = 0; page <= maxPage; page += 1) {
+        const dot = document.createElement('button');
+        const last = Math.min(workshopStages.length, page + workshopsVisible);
+        dot.type = 'button';
+        dot.className = 'carousel-dot';
+        dot.setAttribute('aria-label', workshopsVisible === 1
+            ? `Show workshop ${page + 1}`
+            : `Show workshops ${page + 1} through ${last}`);
+        dot.addEventListener('click', () => goToWorkshopPage(page));
+        workshopPagination.append(dot);
+    }
+
+    updateWorkshopState();
+}
+
+function goToWorkshopPage(page, behavior = reduceMotion.matches ? 'auto' : 'smooth') {
+    const { step, maxPage } = workshopMetrics();
+    workshopPage = Math.max(0, Math.min(page, maxPage));
+    workshopTrack.scrollTo({ left: workshopPage * step, behavior });
+    updateWorkshopState();
+}
+
+workshopPrevious.addEventListener('click', () => goToWorkshopPage(workshopPage - 1));
+workshopNext.addEventListener('click', () => goToWorkshopPage(workshopPage + 1));
+workshopTrack.addEventListener('keydown', event => {
+    if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        goToWorkshopPage(workshopPage - 1);
+    }
+    if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        goToWorkshopPage(workshopPage + 1);
+    }
+});
+workshopTrack.addEventListener('scroll', () => {
+    window.clearTimeout(workshopScrollTimer);
+    workshopScrollTimer = window.setTimeout(() => {
+        const { step, maxPage } = workshopMetrics();
+        workshopPage = Math.max(0, Math.min(Math.round(workshopTrack.scrollLeft / step), maxPage));
+        updateWorkshopState();
+    }, 120);
+}, { passive: true });
+
+if ('ResizeObserver' in window) {
+    new ResizeObserver(() => {
+        buildWorkshopPagination();
+        goToWorkshopPage(workshopPage, 'auto');
+    }).observe(workshopTrack);
+} else {
+    window.addEventListener('resize', buildWorkshopPagination, { passive: true });
+}
+buildWorkshopPagination();
+document.getElementById('team-effectiveness').classList.add('carousel-ready');
 
 function handleContactSubmit(event) {
     event.preventDefault();

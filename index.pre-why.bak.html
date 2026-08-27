@@ -108,10 +108,9 @@
             var(--ink);
     }
     #impact {
-        --impact-panel: var(--dark-elevated);
-        --impact-metric: #302B25;
-        --impact-signal: #AEB5A7;
-        background: var(--ink);
+        background:
+            radial-gradient(90% 75% at 92% 14%, rgba(178, 172, 163, 0.10), transparent 62%),
+            var(--ink);
     }
 
     /* ===== TYPOGRAPHY ===== */
@@ -1781,14 +1780,10 @@
     }
 
     /* ===== IMPACT (dark) ===== */
-    .impact-head {
-        max-width: 800px;
-        padding-bottom: 38px;
-        border-bottom: 1px solid var(--hairline-dark);
-    }
+    .impact-head { max-width: 780px; }
 
     .impact-lede {
-        margin-top: 24px;
+        margin-top: 20px;
         max-width: 640px;
         color: var(--heading-dark);
         font-family: var(--font-display);
@@ -1798,23 +1793,24 @@
         letter-spacing: -0.012em;
     }
 
+    /* The one hard number on the page carries the section, so it gets its own band rather
+       than being filed into the grid with the qualitative points. */
     .impact-stat {
         display: grid;
-        grid-template-columns: 1fr;
-        gap: 16px;
-        align-items: start;
-        margin-top: 38px;
-        padding: 30px 32px 32px;
-        border: 0;
-        border-left: 2px solid var(--impact-signal);
-        background: var(--impact-metric);
+        grid-template-columns: auto minmax(0, 1fr);
+        gap: 40px;
+        align-items: center;
+        margin-top: 44px;
+        padding: 32px 36px;
+        border: 1px solid var(--hairline-dark);
+        border-left: 3px solid var(--cream);
+        background: var(--dark-surface);
     }
 
     .impact-stat-figure {
-        margin: 0;
         color: var(--heading-dark);
         font-family: var(--font-display);
-        font-size: 4.4rem;
+        font-size: 4.1rem;
         font-weight: 400;
         line-height: 1;
         letter-spacing: -0.04em;
@@ -1828,79 +1824,51 @@
         vertical-align: super;
     }
 
-    .impact-stat-label {
-        display: block;
-        margin-bottom: 10px;
-        color: var(--impact-signal);
-        font-family: var(--font-display);
-        font-size: .62rem;
-        font-weight: 500;
-        letter-spacing: .12em;
-        line-height: 1.3;
-        text-transform: uppercase;
-    }
-
     .impact-stat-body p {
         color: var(--body-dark);
         font-size: .98rem;
         line-height: 1.7;
     }
 
-    .impact-stat-outcome {
-        display: block;
-        margin-top: 10px;
-        color: var(--heading-dark);
-        font-family: var(--font-display);
-        font-size: 1.08rem;
-        font-weight: 400;
-        line-height: 1.35;
-        text-wrap: balance;
+    .impact-stat-note {
+        margin-top: 12px;
+        padding-top: 12px;
+        border-top: 1px solid var(--hairline-dark);
+        color: var(--muted-dark);
+        font-size: .78rem;
+        line-height: 1.6;
     }
 
     .impact-layout {
         display: grid;
-        grid-template-columns: minmax(0, .82fr) minmax(0, 1.04fr);
-        gap: 40px;
-        align-items: stretch;
-        margin-top: 54px;
+        grid-template-columns: 1fr .78fr;
+        gap: 52px;
+        align-items: start;
+        margin-top: 52px;
     }
 
-    .impact-col {
-        min-width: 0;
-        position: relative;
-    }
-
-    /* Hairline rules make the differentiators read as one considered argument, not tiles. */
+    /* Hairline rules rather than boxes: five points read as one considered list instead of
+       five floating tiles, and an odd count no longer leaves a hole in a grid. */
     .impact-points { list-style: none; }
 
     .impact-point {
         display: grid;
-        grid-template-columns: 38px minmax(0, 1fr);
-        gap: 20px;
-        padding: 34px 0;
+        grid-template-columns: 44px minmax(0, 1fr);
+        gap: 18px;
+        padding: 22px 0;
         border-top: 1px solid var(--hairline-dark);
     }
 
     .impact-point:last-child { border-bottom: 1px solid var(--hairline-dark); }
 
     .impact-point-num {
-        color: var(--impact-signal);
+        color: var(--cream);
         font-family: var(--font-display);
         font-size: .74rem;
         font-weight: 500;
         letter-spacing: .1em;
         font-variant-numeric: tabular-nums;
         padding-top: 4px;
-    }
-
-    .impact-point-num::after {
-        content: "";
-        display: block;
-        width: 20px;
-        height: 1px;
-        margin-top: 10px;
-        background: currentColor;
-        opacity: .72;
     }
 
     .impact-point h3 {
@@ -2442,10 +2410,9 @@
 
 
     .eq-visual {
-        min-height: 0;
+        min-height: 640px;
         display: block;
-        position: relative;
-        padding: 12px 0;
+        padding: 24px;
         border: 0;
         overflow: visible;
         background: transparent;
@@ -2455,18 +2422,40 @@
 
     .assessment-graphic {
         height: 100%;
-        min-height: 570px;
+        min-height: 590px;
         display: grid;
-        grid-template-rows: minmax(400px, 1fr) auto;
-        gap: 30px;
+        grid-template-rows: auto minmax(360px, 1fr) auto;
+        gap: 18px;
+    }
+
+    .assessment-graphic-head {
+        display: grid;
+        justify-items: start;
+        gap: 6px;
+    }
+
+    .assessment-graphic-head span {
+        color: var(--cream);
+        font-family: var(--font-display);
+        font-size: .64rem;
+        font-weight: 500;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+    }
+
+    .assessment-graphic-head strong {
+        color: var(--heading-dark);
+        font-family: var(--font-display);
+        font-size: .88rem;
+        font-weight: 400;
+        text-align: left;
     }
 
     .assessment-map {
         position: relative;
-        width: min(100%, 460px);
+        width: min(100%, 390px);
         aspect-ratio: 1;
         margin: auto;
-        background: radial-gradient(circle at center, rgba(174, 181, 167, .10) 0%, rgba(174, 181, 167, .035) 30%, transparent 68%);
     }
 
     .assessment-map-lines {
@@ -2479,26 +2468,26 @@
 
     .assessment-map-lines .outer-ring {
         fill: none;
-        stroke: rgba(178, 172, 163, .30);
+        stroke: rgba(178, 172, 163, .35);
         stroke-width: 1;
     }
 
     .assessment-map-lines .inner-ring {
         fill: none;
-        stroke: rgba(178, 172, 163, .16);
+        stroke: rgba(178, 172, 163, .2);
         stroke-width: 1;
         stroke-dasharray: 2 6;
     }
 
     .assessment-map-lines .connection {
         fill: none;
-        stroke: rgba(174, 181, 167, .52);
-        stroke-width: 1.3;
+        stroke: rgba(178, 172, 163, .24);
+        stroke-width: 1;
     }
 
     .assessment-map-lines .competency-dot {
-        fill: var(--impact-panel);
-        stroke: rgba(166, 159, 149, .62);
+        fill: var(--ink);
+        stroke: var(--muted-dark);
         stroke-width: 1;
     }
 
@@ -2507,7 +2496,7 @@
         left: 50%;
         top: 50%;
         z-index: 1;
-        width: 190px;
+        width: 168px;
         display: grid;
         place-content: center;
         gap: 7px;
@@ -2519,7 +2508,7 @@
     }
 
     .assessment-core span {
-        color: var(--impact-signal);
+        color: var(--muted-dark);
         font-family: var(--font-display);
         font-size: .58rem;
         font-weight: 500;
@@ -2530,8 +2519,8 @@
     .assessment-core strong {
         color: var(--heading-dark);
         font-family: var(--font-display);
-        font-size: 1.9rem;
-        font-weight: 500;
+        font-size: 1.5rem;
+        font-weight: 400;
         line-height: 1.1;
     }
 
@@ -2564,10 +2553,10 @@
         height: 48px;
         display: grid;
         place-items: center;
-        border: 1px solid rgba(247, 244, 238, .62);
+        border: 1px solid rgba(166, 159, 149, .5);
         border-radius: 999px;
-        background: rgba(23, 22, 20, .45);
-        color: var(--heading-dark);
+        background: var(--ink);
+        color: var(--muted-dark);
     }
 
     .assessment-node-icon svg {
@@ -2578,7 +2567,7 @@
 
     .assessment-node strong {
         margin-top: 8px;
-        color: var(--heading-dark);
+        color: var(--body-dark);
         font-family: var(--font-display);
         font-size: .72rem;
         font-weight: 500;
@@ -2589,14 +2578,14 @@
 
     .assessment-node-detail {
         margin-top: 4px;
-        color: var(--body-dark);
+        color: var(--muted-dark);
         font-size: .64rem;
         line-height: 1.35;
     }
 
     .assessment-node.is-active .assessment-node-icon {
-        border-color: var(--impact-signal);
-        background: rgba(23, 22, 20, .58);
+        border-color: var(--heading-dark);
+        background: var(--dark-elevated);
         color: var(--heading-dark);
     }
 
@@ -2605,7 +2594,7 @@
     .coaching-flow {
         display: grid;
         grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 20px;
+        gap: 22px;
         border: 0;
         background: transparent;
         list-style: none;
@@ -2613,11 +2602,11 @@
 
     .coaching-flow li {
         position: relative;
-        min-height: 118px;
+        min-height: 106px;
         display: grid;
         align-content: center;
         gap: 5px;
-        padding: 16px 0;
+        padding: 13px 0;
         border-top: 1px solid var(--hairline-dark);
         background: transparent;
     }
@@ -2625,20 +2614,20 @@
     .flow-num {
         color: var(--muted-dark);
         font-family: var(--font-display);
-        font-size: .68rem;
+        font-size: .6rem;
         font-variant-numeric: tabular-nums;
     }
 
     .coaching-flow strong {
         color: var(--heading-dark);
         font-family: var(--font-display);
-        font-size: .9rem;
+        font-size: .78rem;
         font-weight: 400;
     }
 
     .coaching-flow small {
         color: var(--muted-dark);
-        font-size: .74rem;
+        font-size: .62rem;
         line-height: 1.35;
     }
 
@@ -2720,81 +2709,62 @@
     .review-card {
         position: relative;
         overflow: hidden;
-        gap: 18px;
-        border-color: rgba(23, 22, 20, .065);
+        gap: 14px;
+        border-color: rgba(23, 22, 20, .08);
         border-radius: 10px;
         background: #FFFFFF;
-        box-shadow: 0 1px 2px rgba(23, 22, 20, .025), 0 12px 28px -24px rgba(23, 22, 20, .24);
-        transition: transform var(--fast), background var(--fast), box-shadow var(--fast), border-color var(--fast);
+        box-shadow: 0 1px 2px rgba(23, 22, 20, .04), 0 14px 26px -20px rgba(23, 22, 20, .3);
+        transition: transform var(--fast), box-shadow var(--fast), border-color var(--fast);
     }
 
     /* The quote glyph opens the card at top left; the tight line-height keeps its box from
        adding dead space above the quote it belongs to. */
     .review-mark {
         display: block;
-        color: rgba(178, 172, 163, .34);
+        color: var(--cream-strong);
         font-family: var(--font-display);
-        font-size: 10rem;
+        font-size: 3.2rem;
         font-weight: 500;
-        line-height: .48;
-        transform: translateY(18px);
+        line-height: .6;
     }
 
     /* Attribution sits under the hairline, pushed to the card foot. */
     .review-author {
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
-        gap: 3px;
+        gap: 12px;
         margin-top: auto;
-        padding-top: 18px;
-        border-top: 1px solid rgba(23, 22, 20, .08);
-        text-align: left;
     }
 
-    .review-author strong {
-        color: var(--ink);
-        font-family: var(--font-display);
-        font-size: .84rem;
-        font-weight: 500;
-        line-height: 1.3;
-    }
-
-    .review-author span {
-        color: var(--muted-light);
-        font-size: .72rem;
-        line-height: 1.3;
-    }
-
-    /* A quiet ink rule marks the selected testimonial without adding a heavy shadow. */
+    /* An ink rule wipes across the top of the card that is in focus. */
     .review-card::after {
         content: "";
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
-        height: 3px;
-        background: var(--ink);
+        height: 2px;
+        background: linear-gradient(90deg, var(--ink), rgba(23, 22, 20, 0));
         transform: scaleX(0);
         transform-origin: left;
-        transition: transform var(--fast);
+        transition: transform 460ms cubic-bezier(.22, .61, .36, 1);
     }
 
     .review-card:hover {
-        transform: translateY(-4px);
-        border-color: rgba(23, 22, 20, .09);
-        box-shadow: 0 2px 4px rgba(23, 22, 20, .04), 0 18px 34px -26px rgba(23, 22, 20, .34);
+        transform: translateY(-6px);
+        border-color: rgba(23, 22, 20, .14);
+        box-shadow: 0 2px 4px rgba(23, 22, 20, .05), 0 22px 38px -24px rgba(23, 22, 20, .4);
     }
 
     .review-card.active {
-        transform: translateY(-8px);
-        border-color: rgba(23, 22, 20, .10);
-        background: #FFFFFF;
-        box-shadow: 0 3px 7px rgba(23, 22, 20, .045), 0 24px 46px -28px rgba(23, 22, 20, .42);
+        transform: translateY(-10px);
+        border-color: rgba(23, 22, 20, .14);
+        box-shadow: 0 2px 4px rgba(23, 22, 20, .05), 0 24px 40px -24px rgba(23, 22, 20, .42);
     }
 
-    .review-card.active:hover { transform: translateY(-10px); }
+    .review-card.active:hover { transform: translateY(-14px); }
 
+    .review-card:hover::after,
     .review-card.active::after { transform: scaleX(1); }
 
 
@@ -3104,7 +3074,7 @@
 
         /* Stat band stacks so the figure keeps its scale on a phone. */
         .impact-lede { font-size: 1.08rem; }
-        .impact-stat { gap: 20px; padding: 24px 20px; }
+        .impact-stat { grid-template-columns: 1fr; gap: 18px; padding: 24px 20px; }
         .impact-stat-figure { font-size: 3.2rem; }
         .impact-point { grid-template-columns: 34px minmax(0, 1fr); gap: 12px; padding: 18px 0; }
         .impact-point h3 { font-size: 1.02rem; }
@@ -3186,9 +3156,6 @@
     @media (max-width: 640px) {
         html { scroll-padding-top: 96px; }
         main section[id] { scroll-margin-top: 96px; }
-        .impact-head { padding-bottom: 26px; }
-        .impact-layout { margin-top: 32px; gap: 36px; }
-        .impact-stat { grid-template-columns: 1fr; }
         #organizations { padding: 28px 0; }
         .organizations-layout { grid-template-columns: 1fr; gap: 18px; }
         .organizations-title { max-width: 250px; }
@@ -3198,8 +3165,10 @@
         .purpose-statement { padding-left: 16px; font-size: 1.05rem; }
         /* Stacked on mobile there's no tall neighbour to match, so let the graphic hug its content
            instead of stretching the middle row and padding the circle with empty space. */
-        .eq-visual { min-height: 0; padding: 0; }
-        .assessment-graphic { min-height: 0; grid-template-rows: auto auto; gap: 24px; }
+        .eq-visual { min-height: 0; padding: 16px; }
+        .assessment-graphic { min-height: 0; grid-template-rows: auto auto auto; gap: 20px; }
+        .assessment-graphic-head { gap: 5px; padding-bottom: 12px; }
+        .assessment-graphic-head strong { text-align: left; }
         .assessment-map { width: min(100%, 330px); }
         .assessment-core { width: 144px; min-height: 0; padding: 0; }
         .assessment-core strong { font-size: 1.25rem; }
@@ -3207,15 +3176,16 @@
         .assessment-node-icon { width: 42px; height: 42px; }
         .assessment-node strong { font-size: .66rem; }
         .assessment-node-detail { font-size: .58rem; }
-        .coaching-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 20px; }
-        .coaching-flow li { min-height: 102px; padding: 14px 0; }
-        .coaching-flow strong { font-size: .82rem; }
-        .coaching-flow small { font-size: .7rem; line-height: 1.4; }
-        .flow-num { font-size: .62rem; }
-        .flow-arrow { display: none; }
+        /* Keep the four-step flow with its connecting arrows on phones; tighten spacing and type to fit. */
+        .coaching-flow { gap: 14px; }
+        .coaching-flow li { min-height: 84px; padding: 11px 0; }
+        .coaching-flow strong { font-size: .72rem; }
+        .coaching-flow small { font-size: .56rem; line-height: 1.3; }
+        .flow-num { font-size: .55rem; }
+        .flow-arrow { right: -13px; width: 12px; height: 9px; }
         .testimonial-track { grid-auto-columns: 100%; gap: 12px; }
         .review-card { min-height: 0; padding: 26px 22px; }
-        .review-mark { font-size: 7rem; transform: translateY(14px); }
+        .review-mark { font-size: 3rem; }
         .review-card.active { transform: translateY(-6px); }
         .carousel-controls { align-items: flex-start; }
         .carousel-pagination { max-width: 210px; flex-wrap: wrap; gap: 2px; }
@@ -3711,51 +3681,64 @@
             <div class="impact-head">
                 <span class="eyebrow r">Why Elevated</span>
                 <h2 class="section-title r d1">The Impact of Coaching, Backed by Experience.</h2>
-                <p class="impact-lede r d2">Most executive coaches rely on conversation alone. Elevated starts with insight.</p>
+                <p class="impact-lede r d2">Most executive coaches rely on conversation alone. At Elevated Coaching Group, coaching starts with insight.</p>
             </div>
 
+            <!-- TODO: Confirm the source and basis of the 15-20% figure with the client before launch;
+                 a performance claim like this usually needs an attributable reference. -->
+            <aside class="impact-stat r d2" aria-label="Coaching outcome">
+                <p class="impact-stat-figure">15&ndash;20<span>%</span></p>
+                <div class="impact-stat-body">
+                    <p>Average growth in emotional intelligence competency scores over one year of coaching &mdash; stronger leadership effectiveness, sharper decision-making, and more confident leaders.</p>
+                    <p class="impact-stat-note">Emotional intelligence is one of the strongest predictors of leadership effectiveness and workplace performance.</p>
+                </div>
+            </aside>
 
             <div class="impact-layout">
-                <div class="impact-col">
                 <ol class="impact-points r d3">
                     <li class="impact-point">
                         <span class="impact-point-num">01</span>
                         <div>
                             <h3>Executive Experience</h3>
-                            <p>15+ years leading talent strategy inside high-growth organizations &mdash; held the seat, not just advised it.</p>
+                            <p>15+ years leading talent strategy inside high-growth organizations.</p>
                         </div>
                     </li>
                     <li class="impact-point">
                         <span class="impact-point-num">02</span>
                         <div>
-                            <h3>Assessment-Led Method</h3>
-                            <p>Every engagement opens with EQ-i 2.0 or EQ 360 data.</p>
+                            <h3>Coaching Backed by Data</h3>
+                            <p>Evidence-based coaching powered by EQ-i 2.0 assessments, behavioural science, psychology, and neuroscience.</p>
                         </div>
                     </li>
                     <li class="impact-point">
                         <span class="impact-point-num">03</span>
                         <div>
-                            <h3>Individual to Organization</h3>
-                            <p>Executive coaching, team workshops, and fractional CHRO advisory in one practice.</p>
+                            <h3>Practical &amp; Actionable</h3>
+                            <p>Real-world strategies leaders can immediately apply &mdash; not theory.</p>
+                        </div>
+                    </li>
+                    <li class="impact-point">
+                        <span class="impact-point-num">04</span>
+                        <div>
+                            <h3>Trusted Strategic Partner</h3>
+                            <p>Supporting founders, executives, leadership teams, and organizations through growth, transformation, and change.</p>
+                        </div>
+                    </li>
+                    <li class="impact-point">
+                        <span class="impact-point-num">05</span>
+                        <div>
+                            <h3>Human-Centred</h3>
+                            <p>Authentic coaching built on curiosity, trust, accountability, and meaningful relationships.</p>
                         </div>
                     </li>
                 </ol>
-
-                <!-- TODO: Confirm the source and basis of the 15-20% figure with the client before launch;
-                     a performance claim like this usually needs an attributable reference. -->
-                <aside class="impact-stat r d3" aria-label="Coaching outcome">
-                    <div>
-                        <span class="impact-stat-label">Measured leadership growth</span>
-                        <p class="impact-stat-figure">15&ndash;20<span>%</span></p>
-                    </div>
-                    <div class="impact-stat-body">
-                        <p>A year of coaching lifts emotional-intelligence scores 15&ndash;20%. <span class="impact-stat-outcome">Turning insight into stronger leadership.</span></p>
-                    </div>
-                </aside>
-                </div>
-
                 <div class="impact-image eq-visual r d2">
                     <div class="assessment-graphic r sequence-reveal assessment-sequence" role="img" aria-label="EQ-i 2.0 assessment system: individual, EQ 360, and team insights move through assess, debrief, develop, and coach stages.">
+                        <div class="assessment-graphic-head" aria-hidden="true">
+                            <span>Assessment-Led Coaching</span>
+                            <strong>Insight Before Intervention</strong>
+                        </div>
+
                         <div class="assessment-map" aria-hidden="true">
                             <svg class="assessment-map-lines" viewBox="0 0 400 400">
                                 <circle class="outer-ring" cx="200" cy="200" r="155"/>
@@ -3829,8 +3812,7 @@
                         <p class="review-pull">Working with Joana transformed the way I lead.</p>
                         <p class="review-quote">Her coaching strengthened my executive presence, improved my confidence, and gave me practical tools I continue to use every day.</p>
                         <div class="review-author">
-                            <strong>Chief Executive Officer</strong>
-                            <span>Technology</span>
+                            <strong>Chief Executive Officer &mdash; Technology</strong>
                         </div>
                     </article>
                     <article class="review-card" aria-label="Testimonial 2 of 6">
@@ -3838,8 +3820,7 @@
                         <p class="review-pull">The EQ coaching fundamentally changed how I communicate, make decisions, and lead my team.</p>
                         <p class="review-quote">It has been one of the best leadership investments I've made.</p>
                         <div class="review-author">
-                            <strong>VP, Product</strong>
-                            <span>SaaS</span>
+                            <strong>VP, Product &mdash; SaaS</strong>
                         </div>
                     </article>
                     <article class="review-card" aria-label="Testimonial 3 of 6">
@@ -3855,8 +3836,7 @@
                         <p class="review-pull">Her strategic HR guidance helped us navigate rapid growth while strengthening our leadership team.</p>
                         <p class="review-quote">Joana quickly became an extension of our executive team.</p>
                         <div class="review-author">
-                            <strong>Founder &amp; CEO</strong>
-                            <span>High-Growth Technology</span>
+                            <strong>Founder &amp; CEO &mdash; High-Growth Technology</strong>
                         </div>
                     </article>
                     <article class="review-card" aria-label="Testimonial 5 of 6">
@@ -3872,8 +3852,7 @@
                         <p class="review-pull">Working with Joana helped me become a more self-aware and intentional leader.</p>
                         <p class="review-quote">She creates a space where you feel challenged, supported, and empowered to grow.</p>
                         <div class="review-author">
-                            <strong>Vice President</strong>
-                            <span>Technology</span>
+                            <strong>Vice President &mdash; Technology</strong>
                         </div>
                     </article>
                 </div>

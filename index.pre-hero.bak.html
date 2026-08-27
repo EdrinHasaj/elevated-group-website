@@ -108,10 +108,9 @@
             var(--ink);
     }
     #impact {
-        --impact-panel: var(--dark-elevated);
-        --impact-metric: #302B25;
-        --impact-signal: #AEB5A7;
-        background: var(--ink);
+        background:
+            radial-gradient(90% 75% at 92% 14%, rgba(178, 172, 163, 0.10), transparent 62%),
+            var(--ink);
     }
 
     /* ===== TYPOGRAPHY ===== */
@@ -446,24 +445,10 @@
         overflow: hidden;
         background-color: var(--ink);
         background-image:
-            /* Corner scrim: the only thing protecting the white client logos once the right
-               side opens up, so it is scoped to just that corner. */
-            radial-gradient(130% 62% at 100% 100%,
-                rgba(23, 22, 20, 0.66) 0%,
-                rgba(23, 22, 20, 0.34) 42%,
-                rgba(23, 22, 20, 0) 74%),
-            /* Left stays near-solid ink for headline contrast; right runs out to clear. */
-            linear-gradient(90deg,
-                rgba(23, 22, 20, 0.97) 0%,
-                rgba(23, 22, 20, 0.95) 22%,
-                rgba(23, 22, 20, 0.78) 42%,
-                rgba(23, 22, 20, 0.44) 60%,
-                rgba(23, 22, 20, 0.16) 79%,
-                rgba(23, 22, 20, 0.02) 93%,
-                rgba(23, 22, 20, 0) 100%),
-            linear-gradient(180deg, rgba(23, 22, 20, 0.40) 0%, rgba(23, 22, 20, 0.10) 42%, rgba(23, 22, 20, 0.22) 78%, rgba(23, 22, 20, 0.50) 100%),
+            linear-gradient(90deg, rgba(23, 22, 20, 0.66) 0%, rgba(23, 22, 20, 0.56) 42%, rgba(23, 22, 20, 0.5) 100%),
+            linear-gradient(180deg, rgba(23, 22, 20, 0.44) 0%, rgba(23, 22, 20, 0.62) 100%),
             url("img/hero.png");
-        background-position: 44% center;
+        background-position: 38% center;
         background-repeat: no-repeat;
         background-size: cover;
     }
@@ -476,9 +461,7 @@
             linear-gradient(rgba(178, 172, 163, 0.05) 1px, transparent 1px),
             linear-gradient(90deg, rgba(178, 172, 163, 0.05) 1px, transparent 1px);
         background-size: 44px 44px;
-        /* Grid texture stays in the muted left zone so it never sits over the vibrant photo. */
-        -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,.6) 0%, rgba(0,0,0,.28) 38%, transparent 62%);
-        mask-image: linear-gradient(to right, rgba(0,0,0,.6) 0%, rgba(0,0,0,.28) 38%, transparent 62%);
+        mask-image: linear-gradient(to bottom, rgba(0,0,0,.55), transparent 72%);
         pointer-events: none;
     }
 
@@ -490,75 +473,28 @@
         padding: 0 var(--px);
     }
 
-    /* Single column: the headline takes the full width the visual used to occupy, and the
-       brand carousel sits in the bottom right to balance the weight. */
     .hero-main {
         position: relative;
         isolation: isolate;
         display: grid;
-        grid-template-columns: minmax(0, 1fr);
-        align-content: space-between;
-        min-height: min(54svh, 540px);
-        gap: 22px;
+        grid-template-columns: minmax(0, 1.02fr) minmax(430px, .88fr);
+        gap: 62px;
+        align-items: center;
     }
 
-    .hero-content { position: relative; z-index: 1; min-width: 0; }
+    .hero-content, .hero-visual, .system-card, .module-row { min-width: 0; }
 
-    /* Fixed width gives the marquee runway to scroll inside while staying right-aligned. */
-    .hero-brands {
+    .hero-content,
+    .hero-visual {
         position: relative;
         z-index: 1;
-        justify-self: end;
-        display: grid;
-        justify-items: end;
-        gap: 18px;
-        width: min(100%, 620px);
     }
-
-    .hero-brands-label {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        color: rgba(247, 244, 238, 0.7);
-        font-family: "Inter", sans-serif;
-        font-size: .66rem;
-        font-weight: 500;
-        letter-spacing: .18em;
-        text-transform: uppercase;
-        white-space: nowrap;
-    }
-
-    .hero-brands-label::after {
-        content: "";
-        width: 32px;
-        height: 1px;
-        flex: 0 0 auto;
-        background: var(--cream-strong);
-    }
-
-    /* The left edge dissolves into the hero rather than cutting mid-logo. */
-    .hero-brand-marquee {
-        width: 100%;
-        min-width: 0;
-        overflow: hidden;
-        -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 14%, #000 95%, transparent 100%);
-        mask-image: linear-gradient(90deg, transparent 0%, #000 14%, #000 95%, transparent 100%);
-    }
-
-    .hero-brand-marquee .organization-logo {
-        max-width: 132px;
-        max-height: 28px;
-        opacity: .9;
-    }
-
-    .hero-brand-marquee.is-paused .organization-track { animation-play-state: paused; }
-    .hero-brand-marquee:hover .organization-track { animation-play-state: paused; }
 
     .hero-kicker {
         display: inline-flex;
         align-items: center;
         gap: 10px;
-        min-height: 38px;
+        min-height: 34px;
         padding: 0 14px;
         border: 1px solid rgba(247, 244, 238, 0.18);
         border-radius: 6px;
@@ -580,31 +516,25 @@
     }
 
     .hero-h {
-        max-width: 740px;
-        margin-top: 32px;
+        max-width: 760px;
+        margin-top: 24px;
         font-size: 4.9rem;
-        line-height: .92;
+        line-height: .98;
         color: var(--heading-dark);
         font-weight: 400;
     }
 
-    /* Same scale as the rest of the headline, a shade smaller; the weight alone carries the
-       emphasis. Block display keeps it on its own line so the size shift never lands
-       mid-row against the lighter text. */
     .hero-h span {
-        display: block;
         color: #FFFFFF;
-        font-size: .92em;
         font-style: normal;
-        font-weight: 700;
-        line-height: .92;
+        font-weight: 500;
     }
 
     .hero-p {
-        max-width: 520px;
-        margin-top: 30px;
+        max-width: 610px;
+        margin-top: 24px;
         color: rgba(247, 244, 238, 0.82);
-        font-size: 1.14rem;
+        font-size: 1.08rem;
         line-height: 1.82;
     }
 
@@ -612,7 +542,7 @@
         display: flex;
         flex-wrap: wrap;
         gap: 12px;
-        margin-top: 46px;
+        margin-top: 34px;
     }
 
     /* hero visual */
@@ -924,33 +854,24 @@
     }
 
     /* ===== SERVICES ===== */
-    /* Two rails: the intro and its portrait photo hold the left while the tiered offer
-       list runs beside them, so the image stays the focal point for the whole section. */
     .services-split {
         display: grid;
-        grid-template-columns: minmax(0, .8fr) minmax(0, 1fr);
-        gap: 56px;
-        align-items: stretch;
+        grid-template-columns: minmax(0, .82fr) minmax(0, 1fr);
+        gap: 52px;
+        align-items: start;
     }
 
-    #services .section-title { font-size: 2.9rem; }
-    #services .section-copy { max-width: 44ch; }
-
-    /* No fixed ratio: the photo runs at its own dimensions so a swapped-in shot is never
-       cropped. It is the taller rail, so it sets the section height and the tier list
-       ends above it. */
     .services-intro {
-        display: flex;
-        flex-direction: column;
+        position: sticky;
+        top: 110px;
+        align-self: start;
     }
 
     .services-photo {
-        position: relative;
-        flex: 1;
-        min-height: 420px;
-        margin-top: 34px;
+        margin-top: 32px;
         overflow: hidden;
         border: 1px solid var(--hairline-dark);
+        aspect-ratio: 3 / 4;
         background: var(--dark-surface);
     }
 
@@ -959,260 +880,50 @@
         height: 100%;
         object-fit: cover;
         object-position: center 30%;
+        filter: none;
     }
 
-    /* Three tiers instead of one run of six: the offer reads as a progression from the
-       individual to the whole organization rather than as a menu. */
-    /* Both grids pack to the top: left to itself, a grid row absorbs the rail's spare
-       height into every card, which makes each one a different, arbitrary size. */
-    .service-tiers {
+    .service-list {
         display: grid;
-        align-content: start;
-        gap: 30px;
+        gap: 1px;
+        background: var(--hairline-dark);
+        border: 1px solid var(--hairline-dark);
     }
 
-    .service-tier {
+    .service-row {
         display: grid;
-        align-content: start;
-        gap: 10px;
-    }
-
-    .tier-rule {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-        margin-bottom: 2px;
-    }
-
-    .tier-rule span {
-        flex: 0 0 auto;
-        color: var(--tier-accent, var(--cream));
-        font-family: var(--font-display);
-        font-size: .68rem;
-        font-weight: 500;
-        letter-spacing: .2em;
-        text-transform: uppercase;
-    }
-
-    .tier-rule::after {
-        content: "";
-        flex: 1;
-        height: 1px;
-        background: linear-gradient(to right, var(--tier-accent, var(--cream)), rgba(178, 172, 163, .06) 60%);
-        opacity: .55;
-    }
-
-    /* Warm lifts from the ground rather than blocks sitting on it: each fill is a small
-       luminance rise off #131210 (L* ~17 / 14 / 12 against the ground's 8), with the warmth
-       carried by the R-B spread -- 10 points at the top of the ramp, narrowing to 5 at the
-       bottom. Strongest lift on the individual leader, receding toward the organization.
-       Hook tone is split from the label tone on the last tier only: the label sits on the
-       ground (4.6:1) but the same value inside the darkest card lands at 4.27:1. */
-    #services {
-        background: #131210;
-    }
-
-    .tier-individual {
-        --tier-fill: #2B2721;
-        --tier-edge: #3A342B;
-        --tier-crest: #453D33;
-        --tier-hover: #332E26;
-        --tier-accent: #C9A87A;
-        --tier-hook: #C9A87A;
-        --tier-chip: #2F2A23;
-        --tier-plate: #332E26;
-    }
-
-    .tier-team {
-        --tier-fill: #221F1A;
-        --tier-edge: #302B24;
-        --tier-crest: #39332B;
-        --tier-hover: #292520;
-        --tier-accent: #A08D70;
-        --tier-hook: #A08D70;
-        --tier-chip: #272220;
-        --tier-plate: #2A2620;
-    }
-
-    .tier-org {
-        --tier-fill: #1C1A17;
-        --tier-edge: #28241F;
-        --tier-crest: #2F2A24;
-        --tier-hover: #22201C;
-        --tier-accent: #8A7C68;
-        --tier-hook: #968A74;
-        --tier-chip: #211E1A;
-        --tier-plate: #232019;
-    }
-
-    .offer {
-        border: 1px solid var(--tier-edge);
-        border-top-color: var(--tier-crest);
-        background: var(--tier-fill);
-        transition: background var(--fast), border-color var(--fast);
-    }
-
-    /* The flagship sits one step above the rest of its tier. */
-    .offer-feature {
-        --tier-fill: #332E26;
-        --tier-edge: #443C31;
-        --tier-hover: #3B352C;
-    }
-
-    .offer:hover { background: var(--tier-hover); }
-    .offer[open] { background: var(--tier-hover); }
-
-    /* One line per offer: icon, copy, then the index and the disclosure affordance. */
-    .offer-face {
-        display: grid;
-        grid-template-columns: auto minmax(0, 1fr) auto;
+        grid-template-columns: 38px 1fr auto;
         gap: 18px;
         align-items: start;
-        padding: 16px 22px;
-        cursor: pointer;
-        list-style: none;
+        padding: 24px;
+        background: var(--dark-surface);
+        transition: background var(--fast);
     }
 
-    /* Ivory, not white: the glyph and its rule sit a step below the name. */
-    .offer-icon {
-        display: grid;
-        place-items: center;
-        width: 36px;
-        height: 36px;
-        border: 1px solid rgba(247, 244, 238, .42);
-        background: var(--tier-plate);
-        color: var(--body-dark);
-        transition: border-color var(--fast), color var(--fast);
+    .service-row:hover { background: var(--dark-elevated); }
+
+    .service-num {
+        color: #FFFFFF;
+        font-family: "Inter", sans-serif;
+        font-size: .68rem;
+        font-weight: 500;
+        letter-spacing: 0.12em;
     }
 
-    .offer-icon svg { width: 16px; height: 16px; stroke-width: 1.5; }
-
-    .offer-face:hover .offer-icon,
-    .offer[open] .offer-icon {
-        border-color: rgba(247, 244, 238, .75);
+    .service-row-body h3 {
+        font-size: 1.12rem;
+        line-height: 1.25;
+        font-weight: 400;
         color: var(--heading-dark);
     }
 
-    .offer-feature .offer-icon { width: 42px; height: 42px; }
-    .offer-feature .offer-icon svg { width: 18px; height: 18px; }
-
-    .offer-face::-webkit-details-marker { display: none; }
-
-    /* Name leads, hook carries the promise beneath it. The tier accent moves onto the hook
-       so it reads as a tagline rather than as a description. */
-    .offer-name {
-        display: block;
-        color: #FFFFFF;
-        font-family: var(--font-display);
-        font-size: 1.15rem;
-        font-weight: 400;
-        line-height: 1.2;
-        letter-spacing: -0.018em;
+    .service-row-body p {
+        margin-top: 8px;
+        max-width: 48ch;
+        color: var(--body-dark);
+        font-size: .9rem;
+        line-height: 1.58;
     }
-
-    /* Name leads, hook carries the promise beneath it. */
-    .offer-hook {
-        margin-top: 6px;
-        color: #FFFFFF;
-        font-family: var(--font-display);
-        font-size: .92rem;
-        font-weight: 400;
-        line-height: 1.4;
-        letter-spacing: -0.008em;
-        text-wrap: pretty;
-    }
-
-    .offer-feature .offer-name { font-size: 1.34rem; letter-spacing: -0.022em; }
-    .offer-feature .offer-hook { margin-top: 8px; font-size: 1rem; line-height: 1.36; }
-    .offer-feature .offer-face { padding: 20px 22px; }
-
-    .offer-detail-lede {
-        margin-bottom: 20px;
-        color: #F2EFE9;
-        font-size: .92rem;
-        line-height: 1.66;
-        max-width: 62ch;
-    }
-
-    .offer-side {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding-top: 2px;
-    }
-
-    .offer-num {
-        color: rgba(242, 239, 233, .62);
-        font-family: "Inter", sans-serif;
-        font-size: .68rem;
-        font-weight: 500;
-        letter-spacing: .12em;
-        transition: color var(--fast);
-    }
-
-    .offer-plus {
-        width: 15px;
-        height: 15px;
-        color: rgba(242, 239, 233, .62);
-        transition: transform var(--fast), color var(--fast);
-    }
-
-    .offer-face:hover .offer-num,
-    .offer-face:hover .offer-plus,
-    .offer[open] .offer-num,
-    .offer[open] .offer-plus { color: #FFFFFF; }
-
-    .offer[open] .offer-plus { transform: rotate(45deg); }
-
-    /* The hairline lands inside the card, aligned to the face padding. */
-    .offer-detail {
-        margin: 0 24px;
-        padding: 18px 0 24px;
-        border-top: 1px solid rgba(178, 172, 163, .14);
-    }
-
-    .offer-feature .offer-detail { margin: 0 26px; padding-bottom: 26px; }
-
-    .offer-detail-label {
-        margin: 18px 0 10px;
-        color: var(--muted-dark);
-        font-family: "Inter", sans-serif;
-        font-size: .62rem;
-        font-weight: 500;
-        letter-spacing: .18em;
-        text-transform: uppercase;
-    }
-
-    .offer-detail-label:first-child { margin-top: 0; }
-
-    .chips {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px;
-        list-style: none;
-    }
-
-    .chip {
-        padding: 7px 13px;
-        border: 1px solid var(--tier-edge);
-        background: var(--tier-chip);
-        color: #F2EFE9;
-        font-size: .76rem;
-        line-height: 1.3;
-    }
-
-    .chip-lead {
-        border-color: var(--tier-accent);
-        color: #FFFFFF;
-    }
-
-    .offer-detail-note {
-        margin-top: 14px;
-        color: rgba(242, 239, 233, .68);
-        font-size: .8rem;
-        line-height: 1.6;
-    }
-
 
     /* ===== OPERATING LAYERS ===== */
     .layers-board {
@@ -1353,246 +1064,118 @@
         line-height: 1.45;
     }
 
-    /* Literal pyramid: the five trapezoids share one continuous diagonal edge, each tier
-       stepping 7.4% narrower than the one below it. Tone is heaviest at the base and
-       lightens toward the apex, so the foundation reads as the thing everything rests on. */
-    .effectiveness-body {
+    .model-axis {
         display: grid;
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-        gap: 56px;
-        align-items: stretch;
-    }
-
-    .pyramid-col { display: flex; gap: 20px; }
-
-    .pyramid-axis {
-        flex: 0 0 auto;
-        display: flex;
-        flex-direction: column;
+        grid-template-columns: auto 1fr auto;
+        gap: 16px;
         align-items: center;
-        justify-content: space-between;
-        padding: 4px 0;
-    }
-
-    .pyramid-axis-cap {
+        margin-bottom: 16px;
         color: var(--muted-light);
         font-family: var(--font-display);
-        font-size: .62rem;
+        font-size: .66rem;
         font-weight: 500;
-        letter-spacing: .16em;
-        text-transform: uppercase;
-        white-space: nowrap;
-        writing-mode: vertical-rl;
-        transform: rotate(180deg);
-    }
-
-    .pyramid-axis-line {
-        flex: 1;
-        width: 1px;
-        margin: 12px 0;
-        background: linear-gradient(to bottom, var(--hairline-light), rgba(221, 216, 207, .3));
-    }
-
-    .pyramid-stack { flex: 1; min-width: 0; }
-
-    .pyramid {
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-    }
-
-    .tier {
-        position: relative;
-        display: block;
-        width: 100%;
-        height: 82px;
-        padding: 0;
-        border: 0;
-        background: transparent;
-        font-family: inherit;
-    }
-
-    .tier-shape {
-        position: absolute;
-        inset: 0;
-        background: var(--tier-fill);
-        transition: background var(--fast), transform var(--fast);
-    }
-
-    /* One shared diagonal: each tier's top edge matches the tier above it's bottom edge. */
-    .tier-5 { --tier-fill: #DCD5C8; }
-    .tier-4 { --tier-fill: #D3CBBB; }
-    .tier-3 { --tier-fill: #C9C0AD; }
-    .tier-2 { --tier-fill: #BFB49E; }
-    .tier-1 { --tier-fill: #B5A88F; }
-
-    .tier-5 .tier-shape { clip-path: polygon(37.0% 0, 63.0% 0, 70.4% 100%, 29.6% 100%); }
-    .tier-4 .tier-shape { clip-path: polygon(29.6% 0, 70.4% 0, 77.8% 100%, 22.2% 100%); }
-    .tier-3 .tier-shape { clip-path: polygon(22.2% 0, 77.8% 0, 85.2% 100%, 14.8% 100%); }
-    .tier-2 .tier-shape { clip-path: polygon(14.8% 0, 85.2% 0, 92.6% 100%,  7.4% 100%); }
-    .tier-1 .tier-shape { clip-path: polygon( 7.4% 0, 92.6% 0,  100% 100%,    0% 100%); }
-
-    .tier-inner {
-        position: relative;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 5px;
-        padding: 0 14px;
-        text-align: center;
-    }
-
-    .tier-num {
-        /* Ink at partial alpha rather than --muted-light: stays visually quiet on the pale
-           upper tiers but keeps 4.6:1 on the dark base, which --muted-light could not. */
-        color: rgba(23, 22, 20, .75);
-        font-family: var(--font-display);
-        font-size: .62rem;
-        font-weight: 500;
-        letter-spacing: .14em;
-        font-variant-numeric: tabular-nums;
-        transition: color var(--fast);
-    }
-
-    .tier-name {
-        color: var(--ink);
-        font-family: var(--font-display);
-        font-size: .86rem;
-        font-weight: 500;
-        line-height: 1.2;
-        transition: color var(--fast);
-    }
-
-    /* The apex is only a quarter of the base width, so its label needs a tighter setting. */
-    .tier-5 .tier-name { max-width: 150px; font-size: .74rem; }
-    .tier-4 .tier-name { max-width: 210px; font-size: .8rem; }
-
-    .tier:hover .tier-shape { transform: translateY(-1px); }
-    .tier.is-active .tier-shape { background: var(--ink); }
-    .tier.is-active .tier-name { color: var(--heading-dark); }
-    .tier.is-active .tier-num { color: rgba(247, 244, 238, .55); }
-
-    .pyramid-foot {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        margin-top: 14px;
-        color: var(--muted-light);
-        font-family: var(--font-display);
-        font-size: .62rem;
-        font-weight: 500;
-        letter-spacing: .16em;
+        letter-spacing: .12em;
         text-transform: uppercase;
     }
 
-    .pyramid-foot::before,
-    .pyramid-foot::after {
-        content: "";
-        flex: 1;
+    .model-axis-line {
+        position: relative;
         height: 1px;
         background: var(--hairline-light);
     }
 
-    /* Detail panel */
-    .workshop-detail { min-width: 0; }
+    .model-axis-line::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: -3px;
+        width: 7px;
+        height: 7px;
+        border-top: 1px solid var(--muted-light);
+        border-right: 1px solid var(--muted-light);
+        transform: rotate(45deg);
+    }
 
-    /* Without JavaScript every panel stays visible, so the content is never trapped
-       behind the tab interaction. */
-    .js .workshop-panel[hidden] { display: none; }
-    .workshop-panel[hidden] { display: block; }
+    .workshop-stages {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 10px;
+        align-items: end;
+        list-style: none;
+    }
 
-    .workshop-panel {
+    .workshop-stage {
+        position: relative;
+        min-height: calc(340px + var(--rise));
         display: flex;
         flex-direction: column;
-        height: 100%;
-        padding-top: 26px;
-        border-top: 2px solid var(--ink);
+        padding: 24px 20px;
+        border: 1px solid var(--hairline-light);
+        background: #FFFFFF;
     }
 
-    /* Panel parts arrive in reading order, unhurried: a long settle on a gentle curve so
-       the sequence reads as composed rather than as content racing to catch up. */
-    .js .workshop-panel.is-active > * {
-        animation: panel-swap 640ms cubic-bezier(.16, .84, .32, 1) both;
+    .workshop-stage::before {
+        content: "";
+        position: absolute;
+        left: -1px;
+        right: -1px;
+        top: -1px;
+        height: 3px;
+        background: var(--cream-strong);
     }
 
-    .js .workshop-panel.is-active > *:nth-child(2) { animation-delay: 90ms; }
-    .js .workshop-panel.is-active > *:nth-child(3) { animation-delay: 155ms; }
-    .js .workshop-panel.is-active > *:nth-child(4) { animation-delay: 215ms; }
-    .js .workshop-panel.is-active > *:nth-child(5) { animation-delay: 310ms; }
-    .js .workshop-panel.is-active > *:nth-child(6) { animation-delay: 400ms; }
-
-    @keyframes panel-swap {
-        from { opacity: 0; transform: translateY(11px); }
-        to { opacity: 1; transform: none; }
-    }
-
-    .panel-index {
-        margin-bottom: 26px;
-        color: var(--muted-light);
+    .workshop-num {
+        color: var(--cream-strong);
         font-family: var(--font-display);
         font-size: .72rem;
         font-weight: 500;
-        letter-spacing: .14em;
         font-variant-numeric: tabular-nums;
     }
 
-    .panel-field { margin-bottom: 24px; }
+    .workshop-barrier {
+        min-height: 78px;
+        margin-top: 24px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid var(--hairline-light);
+    }
 
-    .panel-label {
+    .workshop-barrier span,
+    .workshop-label {
         display: block;
-        margin-bottom: 8px;
         color: var(--muted-light);
         font-family: var(--font-display);
         font-size: .64rem;
         font-weight: 500;
-        letter-spacing: .18em;
+        letter-spacing: .12em;
         text-transform: uppercase;
     }
 
-    .panel-barrier {
-        color: var(--ink);
-        font-size: 1.06rem;
-        font-weight: 500;
-        line-height: 1.3;
-    }
-
-    .panel-workshop {
-        color: var(--ink);
-        font-family: var(--font-display);
-        font-size: 1.7rem;
-        font-weight: 400;
-        line-height: 1.14;
-        letter-spacing: -0.018em;
-    }
-
-    .panel-rule {
-        height: 1px;
-        margin-bottom: 24px;
-        background: var(--hairline-light);
-    }
-
-    .panel-body {
-        margin-bottom: 26px;
+    .workshop-barrier strong {
+        display: block;
+        margin-top: 7px;
         color: var(--body-light);
-        font-size: .96rem;
-        line-height: 1.64;
-    }
-
-    .panel-shift {
-        margin-top: auto;
-        padding: 2px 0 2px 16px;
-        border-left: 2px solid var(--ink);
-    }
-
-    .panel-shift p {
-        color: var(--ink);
-        font-size: .9rem;
+        font-family: var(--font-display);
+        font-size: .86rem;
         font-weight: 500;
-        line-height: 1.5;
+        line-height: 1.35;
     }
 
+    .workshop-label { margin-top: 20px; color: var(--cream-strong); }
+
+    .workshop-stage h3 {
+        margin-top: 8px;
+        color: var(--ink);
+        font-size: 1.12rem;
+        font-weight: 400;
+        line-height: 1.25;
+    }
+
+    .workshop-stage p {
+        margin-top: 12px;
+        color: var(--body-light);
+        font-size: .84rem;
+        line-height: 1.62;
+    }
 
     /* ===== WHY ===== */
     .why-grid {
@@ -1645,23 +1228,13 @@
         background: var(--paper);
     }
 
-    /* The pull phrase is the eyecatcher: the quote's own opening sentence, verbatim, set
-       large. The remainder follows as supporting text so nothing is repeated. */
-    .review-pull {
-        color: var(--ink);
-        font-family: var(--font-display);
-        font-size: 1.22rem;
-        font-weight: 500;
-        line-height: 1.3;
-        letter-spacing: -0.015em;
-        text-wrap: pretty;
-    }
-
     .review-quote {
-        color: var(--muted-light);
-        font-size: .88rem;
+        color: var(--body-light);
+        font-family: var(--font-display);
+        font-size: 1.04rem;
         font-weight: 400;
-        line-height: 1.68;
+        line-height: 1.5;
+        letter-spacing: -0.01em;
     }
 
     .review-author {
@@ -1781,140 +1354,50 @@
     }
 
     /* ===== IMPACT (dark) ===== */
-    .impact-head {
-        max-width: 800px;
-        padding-bottom: 38px;
-        border-bottom: 1px solid var(--hairline-dark);
-    }
-
-    .impact-lede {
-        margin-top: 24px;
-        max-width: 640px;
-        color: var(--heading-dark);
-        font-family: var(--font-display);
-        font-size: 1.24rem;
-        font-weight: 400;
-        line-height: 1.45;
-        letter-spacing: -0.012em;
-    }
-
-    .impact-stat {
+    .impact-layout {
         display: grid;
-        grid-template-columns: 1fr;
-        gap: 16px;
-        align-items: start;
-        margin-top: 38px;
-        padding: 30px 32px 32px;
-        border: 0;
-        border-left: 2px solid var(--impact-signal);
-        background: var(--impact-metric);
+        grid-template-columns: 1fr .78fr;
+        gap: 52px;
+        align-items: stretch;
     }
 
-    .impact-stat-figure {
-        margin: 0;
+    .impact-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1px;
+        margin-top: 32px;
+        background: var(--hairline-dark);
+        border: 1px solid var(--hairline-dark);
+    }
+
+    .metric-card {
+        min-height: 170px;
+        padding: 22px;
+        background: var(--dark-surface);
+    }
+
+    .metric-card span {
         color: var(--heading-dark);
-        font-family: var(--font-display);
-        font-size: 4.4rem;
-        font-weight: 400;
-        line-height: 1;
-        letter-spacing: -0.04em;
-        font-variant-numeric: tabular-nums;
-        white-space: nowrap;
-    }
-
-    .impact-stat-figure span {
-        margin-left: 2px;
-        font-size: .46em;
-        vertical-align: super;
-    }
-
-    .impact-stat-label {
-        display: block;
-        margin-bottom: 10px;
-        color: var(--impact-signal);
-        font-family: var(--font-display);
-        font-size: .62rem;
+        font-family: "Inter", sans-serif;
+        font-size: .68rem;
         font-weight: 500;
-        letter-spacing: .12em;
-        line-height: 1.3;
+        letter-spacing: 0.14em;
         text-transform: uppercase;
     }
 
-    .impact-stat-body p {
-        color: var(--body-dark);
-        font-size: .98rem;
-        line-height: 1.7;
-    }
-
-    .impact-stat-outcome {
-        display: block;
-        margin-top: 10px;
-        color: var(--heading-dark);
-        font-family: var(--font-display);
-        font-size: 1.08rem;
+    .metric-card h3 {
+        margin-top: 32px;
+        font-size: 1.15rem;
         font-weight: 400;
-        line-height: 1.35;
-        text-wrap: balance;
-    }
-
-    .impact-layout {
-        display: grid;
-        grid-template-columns: minmax(0, .82fr) minmax(0, 1.04fr);
-        gap: 40px;
-        align-items: stretch;
-        margin-top: 54px;
-    }
-
-    .impact-col {
-        min-width: 0;
-        position: relative;
-    }
-
-    /* Hairline rules make the differentiators read as one considered argument, not tiles. */
-    .impact-points { list-style: none; }
-
-    .impact-point {
-        display: grid;
-        grid-template-columns: 38px minmax(0, 1fr);
-        gap: 20px;
-        padding: 34px 0;
-        border-top: 1px solid var(--hairline-dark);
-    }
-
-    .impact-point:last-child { border-bottom: 1px solid var(--hairline-dark); }
-
-    .impact-point-num {
-        color: var(--impact-signal);
-        font-family: var(--font-display);
-        font-size: .74rem;
-        font-weight: 500;
-        letter-spacing: .1em;
-        font-variant-numeric: tabular-nums;
-        padding-top: 4px;
-    }
-
-    .impact-point-num::after {
-        content: "";
-        display: block;
-        width: 20px;
-        height: 1px;
-        margin-top: 10px;
-        background: currentColor;
-        opacity: .72;
-    }
-
-    .impact-point h3 {
+        line-height: 1.22;
         color: var(--heading-dark);
-        font-size: 1.12rem;
-        font-weight: 400;
-        line-height: 1.25;
     }
 
-    .impact-point p {
-        margin-top: 9px;
+    .metric-card p {
+        margin-top: 10px;
         color: var(--body-dark);
-        font-size: .9rem;
-        line-height: 1.66;
+        font-size: .88rem;
+        line-height: 1.64;
     }
 
     .impact-image {
@@ -2427,6 +1910,126 @@
         background: var(--cream-strong);
     }
 
+    /* expandable services */
+    .service-row { display: block; padding: 0; }
+
+    .service-row[open] {
+        background: var(--dark-elevated);
+        box-shadow: inset 3px 0 0 var(--heading-dark);
+    }
+
+    .service-toggle {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 38px minmax(0, 1fr) auto;
+        gap: 18px;
+        align-items: start;
+        padding: 24px;
+        color: inherit;
+        cursor: pointer;
+        list-style: none;
+    }
+
+    .service-toggle::-webkit-details-marker { display: none; }
+
+    .service-side {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .service-chevron {
+        width: 16px;
+        height: 16px;
+        color: #FFFFFF;
+        transition: transform var(--fast);
+    }
+
+    .service-row[open] .service-icon {
+        border-color: rgba(247, 244, 238, 0.75);
+        color: var(--heading-dark);
+    }
+
+    .service-row[open] .service-num,
+    .service-row[open] .service-chevron { color: #FFFFFF; }
+
+    .service-row[open] .service-chevron { transform: rotate(45deg); }
+
+    .service-detail {
+        margin-left: 80px;
+        padding: 0 24px 24px;
+    }
+
+    .service-detail-inner {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(178, 172, 163, .14);
+    }
+
+    .service-detail-inner.single {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .service-detail-inner.single > :not(h4) { grid-column: auto; }
+    .service-detail-inner.single > p { margin-top: 0; }
+
+    .service-row[open] .service-detail-inner {
+        animation: disclosure-in 180ms ease-out both;
+    }
+
+    @keyframes disclosure-in {
+        from { opacity: 0; transform: translateY(6px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .service-detail h4 {
+        color: var(--cream);
+        font-family: var(--font-display);
+        font-size: .72rem;
+        font-weight: 500;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+    }
+
+    .service-detail p {
+        max-width: 62ch;
+        margin-top: 8px;
+        color: var(--body-dark);
+        font-size: .88rem;
+        line-height: 1.68;
+    }
+
+    .detail-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 28px;
+        row-gap: 4px;
+        margin-top: 0;
+        list-style: none;
+    }
+
+    .detail-list li {
+        position: relative;
+        padding: 4px 0 4px 14px;
+        color: var(--body-dark);
+        font-size: .84rem;
+        line-height: 1.5;
+    }
+
+    .detail-list li::before {
+        content: "";
+        position: absolute;
+        top: .7em;
+        left: 0;
+        width: 4px;
+        height: 4px;
+        border-radius: 999px;
+        background: var(--cream);
+    }
+
     .service-jump {
         display: inline-flex;
         align-items: center;
@@ -2440,12 +2043,21 @@
         text-transform: uppercase;
     }
 
+    /* data-backed coaching */
+    .impact-copy-stack { display: grid; gap: 14px; margin-top: 20px; }
+
+    .impact-copy-stack p {
+        color: var(--body-dark);
+        font-size: .96rem;
+        line-height: 1.76;
+    }
+
+    .metric-card h3 { margin-top: 24px; }
 
     .eq-visual {
-        min-height: 0;
+        min-height: 640px;
         display: block;
-        position: relative;
-        padding: 12px 0;
+        padding: 24px;
         border: 0;
         overflow: visible;
         background: transparent;
@@ -2455,18 +2067,40 @@
 
     .assessment-graphic {
         height: 100%;
-        min-height: 570px;
+        min-height: 590px;
         display: grid;
-        grid-template-rows: minmax(400px, 1fr) auto;
-        gap: 30px;
+        grid-template-rows: auto minmax(360px, 1fr) auto;
+        gap: 18px;
+    }
+
+    .assessment-graphic-head {
+        display: grid;
+        justify-items: start;
+        gap: 6px;
+    }
+
+    .assessment-graphic-head span {
+        color: var(--cream);
+        font-family: var(--font-display);
+        font-size: .64rem;
+        font-weight: 500;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+    }
+
+    .assessment-graphic-head strong {
+        color: var(--heading-dark);
+        font-family: var(--font-display);
+        font-size: .88rem;
+        font-weight: 400;
+        text-align: left;
     }
 
     .assessment-map {
         position: relative;
-        width: min(100%, 460px);
+        width: min(100%, 390px);
         aspect-ratio: 1;
         margin: auto;
-        background: radial-gradient(circle at center, rgba(174, 181, 167, .10) 0%, rgba(174, 181, 167, .035) 30%, transparent 68%);
     }
 
     .assessment-map-lines {
@@ -2479,26 +2113,26 @@
 
     .assessment-map-lines .outer-ring {
         fill: none;
-        stroke: rgba(178, 172, 163, .30);
+        stroke: rgba(178, 172, 163, .35);
         stroke-width: 1;
     }
 
     .assessment-map-lines .inner-ring {
         fill: none;
-        stroke: rgba(178, 172, 163, .16);
+        stroke: rgba(178, 172, 163, .2);
         stroke-width: 1;
         stroke-dasharray: 2 6;
     }
 
     .assessment-map-lines .connection {
         fill: none;
-        stroke: rgba(174, 181, 167, .52);
-        stroke-width: 1.3;
+        stroke: rgba(178, 172, 163, .24);
+        stroke-width: 1;
     }
 
     .assessment-map-lines .competency-dot {
-        fill: var(--impact-panel);
-        stroke: rgba(166, 159, 149, .62);
+        fill: var(--ink);
+        stroke: var(--muted-dark);
         stroke-width: 1;
     }
 
@@ -2507,7 +2141,7 @@
         left: 50%;
         top: 50%;
         z-index: 1;
-        width: 190px;
+        width: 168px;
         display: grid;
         place-content: center;
         gap: 7px;
@@ -2519,7 +2153,7 @@
     }
 
     .assessment-core span {
-        color: var(--impact-signal);
+        color: var(--muted-dark);
         font-family: var(--font-display);
         font-size: .58rem;
         font-weight: 500;
@@ -2530,8 +2164,8 @@
     .assessment-core strong {
         color: var(--heading-dark);
         font-family: var(--font-display);
-        font-size: 1.9rem;
-        font-weight: 500;
+        font-size: 1.5rem;
+        font-weight: 400;
         line-height: 1.1;
     }
 
@@ -2564,10 +2198,10 @@
         height: 48px;
         display: grid;
         place-items: center;
-        border: 1px solid rgba(247, 244, 238, .62);
+        border: 1px solid rgba(166, 159, 149, .5);
         border-radius: 999px;
-        background: rgba(23, 22, 20, .45);
-        color: var(--heading-dark);
+        background: var(--ink);
+        color: var(--muted-dark);
     }
 
     .assessment-node-icon svg {
@@ -2578,7 +2212,7 @@
 
     .assessment-node strong {
         margin-top: 8px;
-        color: var(--heading-dark);
+        color: var(--body-dark);
         font-family: var(--font-display);
         font-size: .72rem;
         font-weight: 500;
@@ -2589,14 +2223,14 @@
 
     .assessment-node-detail {
         margin-top: 4px;
-        color: var(--body-dark);
+        color: var(--muted-dark);
         font-size: .64rem;
         line-height: 1.35;
     }
 
     .assessment-node.is-active .assessment-node-icon {
-        border-color: var(--impact-signal);
-        background: rgba(23, 22, 20, .58);
+        border-color: var(--heading-dark);
+        background: var(--dark-elevated);
         color: var(--heading-dark);
     }
 
@@ -2605,7 +2239,7 @@
     .coaching-flow {
         display: grid;
         grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 20px;
+        gap: 22px;
         border: 0;
         background: transparent;
         list-style: none;
@@ -2613,11 +2247,11 @@
 
     .coaching-flow li {
         position: relative;
-        min-height: 118px;
+        min-height: 106px;
         display: grid;
         align-content: center;
         gap: 5px;
-        padding: 16px 0;
+        padding: 13px 0;
         border-top: 1px solid var(--hairline-dark);
         background: transparent;
     }
@@ -2625,20 +2259,20 @@
     .flow-num {
         color: var(--muted-dark);
         font-family: var(--font-display);
-        font-size: .68rem;
+        font-size: .6rem;
         font-variant-numeric: tabular-nums;
     }
 
     .coaching-flow strong {
         color: var(--heading-dark);
         font-family: var(--font-display);
-        font-size: .9rem;
+        font-size: .78rem;
         font-weight: 400;
     }
 
     .coaching-flow small {
         color: var(--muted-dark);
-        font-size: .74rem;
+        font-size: .62rem;
         line-height: 1.35;
     }
 
@@ -2717,84 +2351,82 @@
             var(--paper);
     }
 
+    /* One star tile, 24x20, drawn as a mask so the row inherits a single ink colour and
+       repeats five times without five copies of the markup. */
+    .review-stars {
+        --star-tile: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 20'%3E%3Cpath fill='%23000' d='M10 1.6l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.2l-4.94 2.6.94-5.5-4-3.9 5.53-.8z'/%3E%3C/svg%3E");
+        display: block;
+        flex: 0 0 auto;
+        width: 84px;
+        height: 14px;
+        background-color: var(--ink);
+        -webkit-mask-image: var(--star-tile);
+        mask-image: var(--star-tile);
+        -webkit-mask-size: 16.8px 14px;
+        mask-size: 16.8px 14px;
+        -webkit-mask-repeat: repeat-x;
+        mask-repeat: repeat-x;
+    }
+
     .review-card {
         position: relative;
         overflow: hidden;
-        gap: 18px;
-        border-color: rgba(23, 22, 20, .065);
+        gap: 14px;
+        border-color: rgba(23, 22, 20, .08);
         border-radius: 10px;
         background: #FFFFFF;
-        box-shadow: 0 1px 2px rgba(23, 22, 20, .025), 0 12px 28px -24px rgba(23, 22, 20, .24);
-        transition: transform var(--fast), background var(--fast), box-shadow var(--fast), border-color var(--fast);
+        box-shadow: 0 1px 2px rgba(23, 22, 20, .04), 0 14px 26px -20px rgba(23, 22, 20, .3);
+        transition: transform var(--fast), box-shadow var(--fast), border-color var(--fast);
     }
 
     /* The quote glyph opens the card at top left; the tight line-height keeps its box from
        adding dead space above the quote it belongs to. */
     .review-mark {
         display: block;
-        color: rgba(178, 172, 163, .34);
+        color: var(--cream-strong);
         font-family: var(--font-display);
-        font-size: 10rem;
+        font-size: 3.2rem;
         font-weight: 500;
-        line-height: .48;
-        transform: translateY(18px);
+        line-height: .6;
     }
 
-    /* Attribution sits under the hairline, pushed to the card foot. */
+    /* Stars sit with the attribution: the quote lands first, the rating confirms it. */
     .review-author {
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
-        gap: 3px;
+        gap: 12px;
         margin-top: auto;
-        padding-top: 18px;
-        border-top: 1px solid rgba(23, 22, 20, .08);
-        text-align: left;
     }
 
-    .review-author strong {
-        color: var(--ink);
-        font-family: var(--font-display);
-        font-size: .84rem;
-        font-weight: 500;
-        line-height: 1.3;
-    }
-
-    .review-author span {
-        color: var(--muted-light);
-        font-size: .72rem;
-        line-height: 1.3;
-    }
-
-    /* A quiet ink rule marks the selected testimonial without adding a heavy shadow. */
+    /* An ink rule wipes across the top of the card that is in focus. */
     .review-card::after {
         content: "";
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
-        height: 3px;
-        background: var(--ink);
+        height: 2px;
+        background: linear-gradient(90deg, var(--ink), rgba(23, 22, 20, 0));
         transform: scaleX(0);
         transform-origin: left;
-        transition: transform var(--fast);
+        transition: transform 460ms cubic-bezier(.22, .61, .36, 1);
     }
 
     .review-card:hover {
-        transform: translateY(-4px);
-        border-color: rgba(23, 22, 20, .09);
-        box-shadow: 0 2px 4px rgba(23, 22, 20, .04), 0 18px 34px -26px rgba(23, 22, 20, .34);
+        transform: translateY(-6px);
+        border-color: rgba(23, 22, 20, .14);
+        box-shadow: 0 2px 4px rgba(23, 22, 20, .05), 0 22px 38px -24px rgba(23, 22, 20, .4);
     }
 
     .review-card.active {
-        transform: translateY(-8px);
-        border-color: rgba(23, 22, 20, .10);
-        background: #FFFFFF;
-        box-shadow: 0 3px 7px rgba(23, 22, 20, .045), 0 24px 46px -28px rgba(23, 22, 20, .42);
+        transform: translateY(-10px);
+        border-color: rgba(23, 22, 20, .14);
+        box-shadow: 0 2px 4px rgba(23, 22, 20, .05), 0 24px 40px -24px rgba(23, 22, 20, .42);
     }
 
-    .review-card.active:hover { transform: translateY(-10px); }
+    .review-card.active:hover { transform: translateY(-14px); }
 
+    .review-card:hover::after,
     .review-card.active::after { transform: scaleX(1); }
 
 
@@ -2807,6 +2439,11 @@
     }
 
     .carousel-ready .carousel-controls { display: flex; }
+
+    /* The workshop carousel runs below the full five-across grid; hide its controls only on desktop. */
+    @media (min-width: 1121px) {
+        .carousel-ready .workshop-controls { display: none; }
+    }
 
     .carousel-buttons { display: flex; gap: 8px; }
 
@@ -2922,6 +2559,7 @@
     .ceo-card span,
     .team-pill span,
     .team-pill strong,
+    .metric-card span,
     .contact-detail span,
     .field label,
     .footer-brand,
@@ -3020,21 +2658,7 @@
             grid-template-columns: 1fr;
         }
 
-        /* Below the two-column breakpoint the scrim reads top-to-bottom, not left-to-right. */
-        #hero {
-            background-image:
-                linear-gradient(180deg, rgba(23, 22, 20, 0.94) 0%, rgba(23, 22, 20, 0.86) 42%, rgba(23, 22, 20, 0.62) 78%, rgba(23, 22, 20, 0.5) 100%),
-                url("img/hero.png");
-            background-position: 60% center;
-        }
-        #hero::before {
-            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,.55), transparent 72%);
-            mask-image: linear-gradient(to bottom, rgba(0,0,0,.55), transparent 72%);
-        }
-        /* Stacked: the proof band left-aligns and runs the full width. */
-        .hero-brands { justify-self: start; justify-items: start; width: 100%; }
-        .hero-brand-marquee { -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 94%, transparent 100%); mask-image: linear-gradient(90deg, #000 0%, #000 94%, transparent 100%); }
-        .hero-main { min-height: 0; gap: 32px; }
+        .hero-main { gap: 32px; }
         .hero-content { max-width: none; }
         .hero-h { max-width: 900px; }
         .hero-p { max-width: 720px; }
@@ -3069,12 +2693,9 @@
         .trust-row { display: grid; align-items: start; }
         .trust-tags { justify-content: flex-start; }
 
-        .services-split { grid-template-columns: 1fr; gap: 36px; }
-        .services-photo { flex: none; min-height: 0; margin-top: 28px; aspect-ratio: 16 / 10; }
-        #services .section-title { font-size: 2.65rem; }
-        #services .section-copy { max-width: 590px; }
-        .offer-feature .offer-name { font-size: 1.5rem; }
-        .offer-feature .offer-hook { font-size: 1.06rem; }
+        .services-split { grid-template-columns: 1fr; gap: 32px; }
+        .services-intro { position: static; }
+        .services-photo { aspect-ratio: 16 / 10; }
         .team-pill-grid { grid-template-columns: 1fr; }
         .reviews-grid { grid-template-columns: 1fr; }
         .contact-info h2 { font-size: 2.2rem; }
@@ -3102,35 +2723,15 @@
         .proof-grid,
         .contact-form, .footer-grid { grid-template-columns: 1fr; }
 
-        /* Stat band stacks so the figure keeps its scale on a phone. */
-        .impact-lede { font-size: 1.08rem; }
-        .impact-stat { gap: 20px; padding: 24px 20px; }
-        .impact-stat-figure { font-size: 3.2rem; }
-        .impact-point { grid-template-columns: 34px minmax(0, 1fr); gap: 12px; padding: 18px 0; }
-        .impact-point h3 { font-size: 1.02rem; }
-        .impact-point p { margin-top: 8px; font-size: .84rem; line-height: 1.6; }
-        .offer-face { padding: 20px; gap: 14px; }
-        .offer-icon { width: 36px; height: 36px; }
-        .offer-icon svg { width: 16px; height: 16px; }
-        .offer-feature .offer-icon { width: 42px; height: 42px; }
-        .offer-feature .offer-icon svg { width: 18px; height: 18px; }
-        .offer-feature .offer-face { padding: 22px 20px; }
-        .offer-name { font-size: 1.06rem; }
-        .offer-hook { margin-top: 8px; font-size: .9rem; }
-        .offer-feature .offer-name { font-size: 1.3rem; }
-        .offer-feature .offer-hook { font-size: .98rem; }
-        .offer-num { display: none; }
-        .offer-detail,
-        .offer-feature .offer-detail { margin: 0 20px; padding: 16px 0 20px; }
-        .chip { font-size: .72rem; padding: 6px 11px; }
+        /* Keep the metric cards a 2x2 grid on phones; shrink the type so they stay legible. */
+        .metric-card { min-height: 0; padding: 16px; }
+        .metric-card span { font-size: .62rem; letter-spacing: .1em; }
+        .metric-card h3 { margin-top: 16px; font-size: 1.02rem; }
+        .metric-card p { margin-top: 8px; font-size: .82rem; line-height: 1.55; }
 
+        .service-row { padding: 20px; }
 
         .hero-visual { min-height: auto; padding: 28px 0 60px; }
-        .hero-brands { gap: 12px; }
-        .hero-brands-label { font-size: .6rem; letter-spacing: .14em; }
-        .hero-brands-label::after { width: 20px; }
-        .hero-brand-marquee { -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 92%, transparent 100%); mask-image: linear-gradient(90deg, #000 0%, #000 92%, transparent 100%); }
-        .hero-brand-marquee .organization-logo { max-height: 22px; max-width: 104px; }
         .system-card { width: 100%; }
         .module-row { grid-template-columns: 38px 1fr; }
         .module-meter { grid-column: 2; width: 100%; }
@@ -3155,23 +2756,41 @@
 
     /* Only below 320px is there too little room for two columns. */
     @media (max-width: 319.98px) {
+        .impact-grid { grid-template-columns: 1fr; }
+        .metric-card { min-height: 0; }
         .coaching-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         .flow-arrow { display: none; }
     }
 
     @media (min-width: 1121px) {
-        .hero-h { font-size: 5.1rem; }
+        .hero-h { font-size: 4.35rem; }
     }
 
     @media (max-width: 1120px) {
         .ceo-photo { width: min(100%, 620px); }
         .effectiveness-head { grid-template-columns: 1fr; gap: 24px; }
         .effectiveness-outcome { max-width: 620px; }
-        /* Pyramid and detail stack; the vertical axis loses its meaning once they do. */
-        .effectiveness-body { grid-template-columns: 1fr; gap: 40px; }
-        .pyramid-axis { display: none; }
-        .pyramid-stack { max-width: 620px; }
-        .tier { height: 72px; }
+        .model-axis { display: none; }
+        /* Below the five-across grid the workshops become a windowed carousel: cards keep their
+           desktop width and ascending heights, and you navigate the row instead of reflowing it. */
+        .workshop-stages {
+            grid-template-columns: none;
+            grid-auto-flow: column;
+            grid-auto-columns: 240px;
+            align-items: end;
+            gap: 12px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            overscroll-behavior-inline: contain;
+            scrollbar-width: none;
+        }
+        .workshop-stages::-webkit-scrollbar { display: none; }
+        .workshop-stage {
+            min-height: calc(300px + var(--rise));
+            scroll-snap-align: start;
+        }
+        .workshop-stage:last-child { grid-column: auto; }
+        .workshop-barrier { min-height: 0; }
         #why .why-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
         .testimonial-track { grid-auto-columns: calc((100% - 16px) / 2); }
     }
@@ -3186,9 +2805,6 @@
     @media (max-width: 640px) {
         html { scroll-padding-top: 96px; }
         main section[id] { scroll-margin-top: 96px; }
-        .impact-head { padding-bottom: 26px; }
-        .impact-layout { margin-top: 32px; gap: 36px; }
-        .impact-stat { grid-template-columns: 1fr; }
         #organizations { padding: 28px 0; }
         .organizations-layout { grid-template-columns: 1fr; gap: 18px; }
         .organizations-title { max-width: 250px; }
@@ -3196,10 +2812,20 @@
         .organization-run { gap: 24px; padding-right: 24px; }
         .organization-run li { gap: 24px; font-size: .9rem; }
         .purpose-statement { padding-left: 16px; font-size: 1.05rem; }
+        .service-toggle { grid-template-columns: 34px minmax(0, 1fr); gap: 14px; padding: 20px; }
+        .service-toggle .service-icon { width: 34px; height: 34px; }
+        .service-side { grid-column: 2; justify-content: space-between; width: 100%; }
+        .service-detail { margin-left: 0; padding: 0 20px 20px; }
+        .service-detail-inner,
+        .service-detail-inner.single { grid-template-columns: 1fr; gap: 18px; }
+        .service-detail-inner.single > :not(h4) { grid-column: auto; }
+        .service-detail-inner.single .detail-list { grid-template-columns: 1fr; }
         /* Stacked on mobile there's no tall neighbour to match, so let the graphic hug its content
            instead of stretching the middle row and padding the circle with empty space. */
-        .eq-visual { min-height: 0; padding: 0; }
-        .assessment-graphic { min-height: 0; grid-template-rows: auto auto; gap: 24px; }
+        .eq-visual { min-height: 0; padding: 16px; }
+        .assessment-graphic { min-height: 0; grid-template-rows: auto auto auto; gap: 20px; }
+        .assessment-graphic-head { gap: 5px; padding-bottom: 12px; }
+        .assessment-graphic-head strong { text-align: left; }
         .assessment-map { width: min(100%, 330px); }
         .assessment-core { width: 144px; min-height: 0; padding: 0; }
         .assessment-core strong { font-size: 1.25rem; }
@@ -3207,15 +2833,18 @@
         .assessment-node-icon { width: 42px; height: 42px; }
         .assessment-node strong { font-size: .66rem; }
         .assessment-node-detail { font-size: .58rem; }
-        .coaching-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 20px; }
-        .coaching-flow li { min-height: 102px; padding: 14px 0; }
-        .coaching-flow strong { font-size: .82rem; }
-        .coaching-flow small { font-size: .7rem; line-height: 1.4; }
-        .flow-num { font-size: .62rem; }
-        .flow-arrow { display: none; }
+        /* Keep the four-step flow with its connecting arrows on phones; tighten spacing and type to fit. */
+        .coaching-flow { gap: 14px; }
+        .coaching-flow li { min-height: 84px; padding: 11px 0; }
+        .coaching-flow strong { font-size: .72rem; }
+        .coaching-flow small { font-size: .56rem; line-height: 1.3; }
+        .flow-num { font-size: .55rem; }
+        .flow-arrow { right: -13px; width: 12px; height: 9px; }
+        /* Phone: narrow to one workshop at a time; the carousel mechanics carry over from ≤1120px. */
+        .workshop-stages { grid-auto-columns: 100%; gap: 0; }
         .testimonial-track { grid-auto-columns: 100%; gap: 12px; }
         .review-card { min-height: 0; padding: 26px 22px; }
-        .review-mark { font-size: 7rem; transform: translateY(14px); }
+        .review-mark { font-size: 3rem; }
         .review-card.active { transform: translateY(-6px); }
         .carousel-controls { align-items: flex-start; }
         .carousel-pagination { max-width: 210px; flex-wrap: wrap; gap: 2px; }
@@ -3228,10 +2857,6 @@
         .organization-track { width: 100%; animation: none; }
         .organization-run { width: 100%; flex-wrap: wrap; row-gap: 14px; }
         .organization-run[aria-hidden="true"] { display: none; }
-        /* Hero band keeps its single line without the animation; it simply clips. */
-        .hero-brand-marquee .organization-track { width: max-content; }
-        .hero-brand-marquee .organization-run { width: auto; flex-wrap: nowrap; }
-        .hero-brand-marquee .organization-run[aria-hidden="true"] { display: flex; }
 
         .motion-ready .r:not(.on) {
             opacity: 1;
@@ -3240,11 +2865,9 @@
 
         *, *::before, *::after {
             animation-duration: .01ms !important;
-            animation-delay: 0ms !important;
             animation-iteration-count: 1 !important;
             scroll-behavior: auto !important;
             transition-duration: .01ms !important;
-            transition-delay: 0ms !important;
         }
     }
     </style>
@@ -3305,49 +2928,115 @@
                         </a>
                     </div>
                 </div>
-                <div class="hero-brands r on d3">
-                    <p class="hero-brands-label">Trusted by leaders from</p>
-                    <div class="hero-brand-marquee">
-                        <div class="organization-track">
-                            <ul class="organization-run">
-                                <li><img class="organization-logo" src="clientcarousel/Samsung_idkTmfps1i_1.png" alt="Samsung" decoding="async"></li>
-                                <li><img class="organization-logo" src="clientcarousel/id-BsLLUQM_1784685028447.png" alt="TD Bank" decoding="async"></li>
-                                <li><img class="organization-logo" src="clientcarousel/Flipp_idNUXNh8VO_0.png" alt="Flipp" decoding="async"></li>
-                                <li><img class="organization-logo" src="clientcarousel/Heart___Stroke_idNZTVmqDj_0.png" alt="Heart &amp; Stroke Foundation" decoding="async"></li>
-                                <li><img class="organization-logo" src="clientcarousel/Relay_idBghtMyL1_1.png" alt="Relay" decoding="async"></li>
-                                <li><img class="organization-logo" src="clientcarousel/idm8xCB7X6_logos.png" alt="Achievers" decoding="async"></li>
-                                <li><img class="organization-logo" src="clientcarousel/Softchoice_iddBjw919c_0.png" alt="Softchoice" decoding="async"></li>
-                                <li><img class="organization-logo" src="clientcarousel/CONMED_idLrRxO_D9_0.png" alt="CONMED" decoding="async"></li>
-                                <li><img class="organization-logo" src="clientcarousel/idH48EE9k0_logos.png" alt="ExpensePoint" decoding="async"></li>
-                                <li><img class="organization-logo" src="clientcarousel/Wajax_idTz3X7Fgc_0.png" alt="Wajax" decoding="async"></li>
-                                <li><img class="organization-logo" src="clientcarousel/idEswU7Mfb_1784685224962.webp" alt="White Ribbon" decoding="async"></li>
-                                <li><img class="organization-logo" src="clientcarousel/Shiseido_idrPXoF87T_0.png" alt="Shiseido" decoding="async"></li>
-                                <li><img class="organization-logo" src="clientcarousel/Alzheimer's_Society_idehyqO17Q_0.png" alt="Alzheimer's Society" decoding="async"></li>
-                                <li><img class="organization-logo" src="clientcarousel/Tundra_Technical_Solutions_ideJGeEhch_0.png" alt="Tundra Technical Solutions" decoding="async"></li>
-                            </ul>
-                            <ul class="organization-run" aria-hidden="true">
-                                <li><img class="organization-logo" src="clientcarousel/Samsung_idkTmfps1i_1.png" alt="" decoding="async"></li>
-                                <li><img class="organization-logo" src="clientcarousel/id-BsLLUQM_1784685028447.png" alt="" decoding="async"></li>
-                                <li><img class="organization-logo" src="clientcarousel/Flipp_idNUXNh8VO_0.png" alt="" decoding="async"></li>
-                                <li><img class="organization-logo" src="clientcarousel/Heart___Stroke_idNZTVmqDj_0.png" alt="" decoding="async"></li>
-                                <li><img class="organization-logo" src="clientcarousel/Relay_idBghtMyL1_1.png" alt="" decoding="async"></li>
-                                <li><img class="organization-logo" src="clientcarousel/idm8xCB7X6_logos.png" alt="" decoding="async"></li>
-                                <li><img class="organization-logo" src="clientcarousel/Softchoice_iddBjw919c_0.png" alt="" decoding="async"></li>
-                                <li><img class="organization-logo" src="clientcarousel/CONMED_idLrRxO_D9_0.png" alt="" decoding="async"></li>
-                                <li><img class="organization-logo" src="clientcarousel/idH48EE9k0_logos.png" alt="" decoding="async"></li>
-                                <li><img class="organization-logo" src="clientcarousel/Wajax_idTz3X7Fgc_0.png" alt="" decoding="async"></li>
-                                <li><img class="organization-logo" src="clientcarousel/idEswU7Mfb_1784685224962.webp" alt="" decoding="async"></li>
-                                <li><img class="organization-logo" src="clientcarousel/Shiseido_idrPXoF87T_0.png" alt="" decoding="async"></li>
-                                <li><img class="organization-logo" src="clientcarousel/Alzheimer's_Society_idehyqO17Q_0.png" alt="" decoding="async"></li>
-                                <li><img class="organization-logo" src="clientcarousel/Tundra_Technical_Solutions_ideJGeEhch_0.png" alt="" decoding="async"></li>
-                            </ul>
+                <div class="hero-visual r on d2" aria-label="Elevated Coaching Group leadership capabilities">
+                    <div class="visual-glow" aria-hidden="true"></div>
+                    <div class="visual-badge badge-a">
+                        <span>Growth Partnership</span>
+                        <strong>Support through pivotal periods of growth</strong>
+                    </div>
+                    <div class="system-card hero-sequence">
+                        <div class="system-top">
+                            <div class="traffic" aria-hidden="true"><span></span><span></span><span></span></div>
+                            <div class="system-label">Leadership Capabilities</div>
                         </div>
+                        <div class="system-body">
+                            <article class="module-row">
+                                <div class="module-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none"><path d="M4 12h16M13 5l7 7-7 7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </div>
+                                <div>
+                                    <p class="module-title">Executive Coaching</p>
+                                    <p>Sharper decisions, stronger presence, and the confidence to lead at the next level.</p>
+                                </div>
+                                <div class="module-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                            </article>
+                            <article class="module-row">
+                                <div class="module-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none"><path d="M6 7h12M6 12h9M6 17h6" stroke="currentColor" stroke-linecap="round"/></svg>
+                                </div>
+                                <div>
+                                    <p class="module-title">Leadership Development</p>
+                                    <p>Build exceptional leaders and strengthen management capability.</p>
+                                </div>
+                                <div class="module-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                            </article>
+                            <article class="module-row">
+                                <div class="module-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none"><path d="M4 19V5M4 19h16M8 15l3-4 3 2 5-7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </div>
+                                <div>
+                                    <p class="module-title">Emotional Intelligence</p>
+                                    <p>Turn self-awareness into a leadership advantage.</p>
+                                </div>
+                                <div class="module-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                            </article>
+                            <article class="module-row">
+                                <div class="module-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none"><path d="M5 6h14v10H8l-3 3V6z" stroke="currentColor" stroke-linejoin="round"/></svg>
+                                </div>
+                                <div>
+                                    <p class="module-title">Fractional CHRO</p>
+                                    <p>Senior HR leadership without the full-time investment.</p>
+                                </div>
+                                <div class="module-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                            </article>
+                        </div>
+                    </div>
+                    <div class="visual-badge badge-b proof-badge">
+                        <span>Our Purpose</span>
+                        <strong>Helping people unlock their potential so businesses can reach theirs.</strong>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="organizations" aria-labelledby="organizations-title">
+        <div class="shell">
+            <div class="organizations-layout r">
+                <div class="organizations-head">
+                    <h2 class="organizations-title" id="organizations-title">Trusted by Leaders From Organizations Including</h2>
+                </div>
+                <div class="organizations-viewport">
+                    <div class="organization-track">
+                        <ul class="organization-run">
+                            <li><img class="organization-logo" src="clientcarousel/Samsung_idkTmfps1i_1.png" alt="Samsung"></li>
+                            <li><img class="organization-logo" src="clientcarousel/id-BsLLUQM_1784685028447.png" alt="TD Bank"></li>
+                            <li><img class="organization-logo" src="clientcarousel/Flipp_idNUXNh8VO_0.png" alt="Flipp"></li>
+                            <li><img class="organization-logo" src="clientcarousel/Heart___Stroke_idNZTVmqDj_0.png" alt="Heart &amp; Stroke Foundation"></li>
+                            <li><img class="organization-logo" src="clientcarousel/Relay_idBghtMyL1_1.png" alt="Relay"></li>
+                            <li><img class="organization-logo" src="clientcarousel/idm8xCB7X6_logos.png" alt="Achievers"></li>
+                            <li><img class="organization-logo" src="clientcarousel/Softchoice_iddBjw919c_0.png" alt="Softchoice"></li>
+                            <li><img class="organization-logo" src="clientcarousel/CONMED_idLrRxO_D9_0.png" alt="CONMED"></li>
+                            <li><img class="organization-logo" src="clientcarousel/idH48EE9k0_logos.png" alt="ExpensePoint"></li>
+                            <li><img class="organization-logo" src="clientcarousel/Wajax_idTz3X7Fgc_0.png" alt="Wajax"></li>
+                            <li><img class="organization-logo" src="clientcarousel/idEswU7Mfb_1784685224962.webp" alt="White Ribbon"></li>
+                            <li><img class="organization-logo" src="clientcarousel/Shiseido_idrPXoF87T_0.png" alt="Shiseido"></li>
+                            <li><img class="organization-logo" src="clientcarousel/Alzheimer's_Society_idehyqO17Q_0.png" alt="Alzheimer's Society"></li>
+                            <li><img class="organization-logo" src="clientcarousel/Tundra_Technical_Solutions_ideJGeEhch_0.png" alt="Tundra Technical Solutions"></li>
+                        </ul>
+                        <ul class="organization-run" aria-hidden="true">
+                            <li><img class="organization-logo" src="clientcarousel/Samsung_idkTmfps1i_1.png" alt=""></li>
+                            <li><img class="organization-logo" src="clientcarousel/id-BsLLUQM_1784685028447.png" alt=""></li>
+                            <li><img class="organization-logo" src="clientcarousel/Flipp_idNUXNh8VO_0.png" alt=""></li>
+                            <li><img class="organization-logo" src="clientcarousel/Heart___Stroke_idNZTVmqDj_0.png" alt=""></li>
+                            <li><img class="organization-logo" src="clientcarousel/Relay_idBghtMyL1_1.png" alt=""></li>
+                            <li><img class="organization-logo" src="clientcarousel/idm8xCB7X6_logos.png" alt=""></li>
+                            <li><img class="organization-logo" src="clientcarousel/Softchoice_iddBjw919c_0.png" alt=""></li>
+                            <li><img class="organization-logo" src="clientcarousel/CONMED_idLrRxO_D9_0.png" alt=""></li>
+                            <li><img class="organization-logo" src="clientcarousel/idH48EE9k0_logos.png" alt=""></li>
+                            <li><img class="organization-logo" src="clientcarousel/Wajax_idTz3X7Fgc_0.png" alt=""></li>
+                            <li><img class="organization-logo" src="clientcarousel/idEswU7Mfb_1784685224962.webp" alt=""></li>
+                            <li><img class="organization-logo" src="clientcarousel/Shiseido_idrPXoF87T_0.png" alt=""></li>
+                            <li><img class="organization-logo" src="clientcarousel/Alzheimer's_Society_idehyqO17Q_0.png" alt=""></li>
+                            <li><img class="organization-logo" src="clientcarousel/Tundra_Technical_Solutions_ideJGeEhch_0.png" alt=""></li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
 
     <section class="section section-soft" id="about">
         <div class="shell">
@@ -3392,161 +3081,126 @@
                 <aside class="services-intro">
                     <span class="eyebrow r">Services</span>
                     <h2 class="section-title r d1">Coaching Programs Built to Scale Leaders.</h2>
-                    <p class="section-copy r d2">Six ways we build leadership capability &mdash; standalone, or combined into a complete leadership system for your organization.</p>
+                    <p class="section-copy r d2">Coaching, training, and HR guidance for leaders at every stage.</p>
                     <div class="services-photo r d2">
-                        <img src="img/services.png" alt="Three leaders in conversation across a boardroom table, an Elevated Group notebook in the foreground" width="1024" height="1536" loading="lazy" decoding="async">
+                        <img src="img/team-meeting-modern-office-med.jpg" srcset="img/team-meeting-modern-office-sml.jpg 684w, img/team-meeting-modern-office-med.jpg 1026w, img/team-meeting-modern-office-lrg.jpg 1368w" sizes="(max-width: 880px) 100vw, 42vw" alt="Leaders and team members in a collaborative coaching conversation" width="1026" height="1500" loading="lazy" decoding="async">
                     </div>
                 </aside>
-
-                <div class="service-tiers">
-                    <div class="service-tier tier-individual r">
-                        <div class="tier-rule"><span>The Individual Leader</span></div>
-                        <details class="offer offer-feature">
-                            <summary class="offer-face" id="offer-01-toggle" aria-controls="offer-01-detail">
-                                <span class="offer-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l2.8 6.2 6.7.7-5 4.5 1.4 6.6L12 17.6 6.1 21l1.4-6.6-5-4.5 6.7-.7L12 3z" stroke="currentColor" stroke-linejoin="round"/></svg></span>
-                                <div class="offer-copy">
-                                    <span class="offer-name">Executive Coaching</span>
-                                    <p class="offer-hook">The confidence to lead at the next level.</p>
-                                </div>
-                                <span class="offer-side"><span class="offer-num">01</span><svg class="offer-plus" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-linecap="round"/></svg></span>
-                            </summary>
-                            <div class="offer-detail" id="offer-01-detail" role="region" aria-labelledby="offer-01-toggle">
-                                <p class="offer-detail-lede">One-on-one coaching for founders, executives, and high-potential leaders &mdash; sharper decisions and stronger presence.</p>
-                                <p class="offer-detail-label">Formats</p>
-                                <ul class="chips">
-                                    <li class="chip chip-lead">Leadership Accelerator &middot; 6 months</li>
-                                    <li class="chip">Monthly Executive Growth Partnership</li>
-                                    <li class="chip">Bi-weekly Executive Coaching</li>
-                                    <li class="chip">Executive Transition Coaching</li>
-                                </ul>
-                                <p class="offer-detail-label">Coaching Areas</p>
-                                <ul class="chips">
-                                    <li class="chip">Executive Presence</li>
-                                    <li class="chip">Leadership Confidence</li>
-                                    <li class="chip">Difficult Conversations</li>
-                                    <li class="chip">Strategic Thinking</li>
-                                    <li class="chip">Executive Influence</li>
-                                    <li class="chip">Communication</li>
-                                    <li class="chip">Decision-Making</li>
-                                    <li class="chip">Career Growth</li>
-                                    <li class="chip">Leading Through Change</li>
+                <div class="service-list">
+                    <details class="service-row r">
+                        <summary class="service-toggle" id="service-01-toggle" aria-controls="service-01-detail">
+                            <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l2.8 6.2 6.7.7-5 4.5 1.4 6.6L12 17.6 6.1 21l1.4-6.6-5-4.5 6.7-.7L12 3z" stroke="currentColor" stroke-linejoin="round"/></svg></div>
+                            <div class="service-row-body">
+                                <h3>Executive Coaching</h3>
+                                <p>1:1 coaching that builds confident, effective leaders.</p>
+                            </div>
+                            <span class="service-side"><span class="service-num">01</span><svg class="service-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-linecap="round"/></svg></span>
+                        </summary>
+                        <div class="service-detail" id="service-01-detail" role="region" aria-labelledby="service-01-toggle">
+                            <div class="service-detail-inner single">
+                                <h4>Tailored Focus</h4>
+                                <ul class="detail-list">
+                                    <li>Leadership presence &amp; confidence</li>
+                                    <li>Communication &amp; difficult conversations</li>
+                                    <li>Strategic thinking &amp; decision-making</li>
+                                    <li>Executive influence &amp; career growth</li>
+                                    <li>Leading through change</li>
                                 </ul>
                             </div>
-                        </details>
-                        <details class="offer">
-                            <summary class="offer-face" id="offer-02-toggle" aria-controls="offer-02-detail">
-                                <span class="offer-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM8.5 12.5l2 2 5-5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                                <div class="offer-copy">
-                                    <span class="offer-name">360 Leadership Assessments</span>
-                                    <p class="offer-hook">Self-awareness, turned into a leadership advantage.</p>
-                                </div>
-                                <span class="offer-side"><span class="offer-num">02</span><svg class="offer-plus" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-linecap="round"/></svg></span>
-                            </summary>
-                            <div class="offer-detail" id="offer-02-detail" role="region" aria-labelledby="offer-02-toggle">
-                                <p class="offer-detail-lede">EQ-i 2.0 and EQ 360 assessments deliver measurable growth in resilience, empathy, and executive presence.</p>
-                                <ul class="chips">
-                                    <li class="chip">EQ-i 2.0 Individual</li>
-                                    <li class="chip">EQ 360 Multi-Rater</li>
-                                    <li class="chip">Team Emotional Intelligence</li>
-                                </ul>
-                                <p class="offer-detail-note">Every assessment includes a personalized debrief, development plan, and coaching integration.</p>
+                        </div>
+                    </details>
+                    <details class="service-row r">
+                        <summary class="service-toggle" id="service-02-toggle" aria-controls="service-02-detail">
+                            <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM8.5 12.5l2 2 5-5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                            <div class="service-row-body">
+                                <h3>360 Leadership Assessments</h3>
+                                <p>Assessments that turn self-awareness into stronger leadership.</p>
                             </div>
-                        </details>
-                        <details class="offer">
-                            <summary class="offer-face" id="offer-04-toggle" aria-controls="offer-04-detail">
-                                <span class="offer-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 4v4M12 16v4M4 12h4M16 12h4M7.1 7.1l2.8 2.8M14.1 14.1l2.8 2.8M16.9 7.1l-2.8 2.8M9.9 14.1l-2.8 2.8" stroke="currentColor" stroke-linecap="round"/></svg></span>
-                                <div class="offer-copy">
-                                    <span class="offer-name">Self Leadership Training</span>
-                                    <p class="offer-hook">Leadership starts before the title.</p>
-                                </div>
-                                <span class="offer-side"><span class="offer-num">03</span><svg class="offer-plus" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-linecap="round"/></svg></span>
-                            </summary>
-                            <div class="offer-detail" id="offer-04-detail" role="region" aria-labelledby="offer-04-toggle">
-                                <p class="offer-detail-lede">For individual contributors and emerging leaders ready to own their growth.</p>
-                                <ul class="chips">
-                                    <li class="chip">Confidence</li>
-                                    <li class="chip">Communication</li>
-                                    <li class="chip">Ownership of Career Growth</li>
-                                </ul>
+                            <span class="service-side"><span class="service-num">02</span><svg class="service-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-linecap="round"/></svg></span>
+                        </summary>
+                        <div class="service-detail" id="service-02-detail" role="region" aria-labelledby="service-02-toggle">
+                            <div class="service-detail-inner single">
+                                <h4>Availability</h4>
+                                <p>Available as part of an engagement or on its own for individuals, teams, and executive groups.</p>
                             </div>
-                        </details>
-                    </div>
-
-                    <div class="service-tier tier-team r">
-                        <div class="tier-rule"><span>The Leadership Team</span></div>
-                        <details class="offer">
-                            <summary class="offer-face" id="offer-03-toggle" aria-controls="offer-03-detail">
-                                <span class="offer-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 6h14M5 12h10M5 18h6" stroke="currentColor" stroke-linecap="round"/></svg></span>
-                                <div class="offer-copy">
-                                    <span class="offer-name">Situational Leadership&reg; (SLII) Training</span>
-                                    <p class="offer-hook">Know when to direct, coach, support, or delegate.</p>
-                                </div>
-                                <span class="offer-side"><span class="offer-num">04</span><svg class="offer-plus" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-linecap="round"/></svg></span>
-                            </summary>
-                            <div class="offer-detail" id="offer-03-detail" role="region" aria-labelledby="offer-03-toggle">
-                                <p class="offer-detail-lede">Certified training for managers and people leaders &mdash; and a team that delivers.</p>
-                                <ul class="chips">
-                                    <li class="chip">Manager Effectiveness</li>
-                                    <li class="chip">Accountability</li>
-                                    <li class="chip">Delegation</li>
-                                    <li class="chip">Coaching Capability</li>
-                                    <li class="chip">Employee Engagement</li>
-                                    <li class="chip">Performance Conversations</li>
+                        </div>
+                    </details>
+                    <details class="service-row r">
+                        <summary class="service-toggle" id="service-03-toggle" aria-controls="service-03-detail">
+                            <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 6h14M5 12h10M5 18h6" stroke="currentColor" stroke-linecap="round"/></svg></div>
+                            <div class="service-row-body">
+                                <h3>Situational Leadership® (SLII) Training</h3>
+                                <p>Practical training that helps managers adapt how they lead.</p>
+                            </div>
+                            <span class="service-side"><span class="service-num">03</span><svg class="service-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-linecap="round"/></svg></span>
+                        </summary>
+                        <div class="service-detail" id="service-03-detail" role="region" aria-labelledby="service-03-toggle">
+                            <div class="service-detail-inner single">
+                                <h4>Improves</h4>
+                                <ul class="detail-list">
+                                    <li>Manager effectiveness &amp; coaching</li>
+                                    <li>Accountability &amp; delegation</li>
+                                    <li>Employee engagement</li>
+                                    <li>Performance conversations</li>
                                 </ul>
                             </div>
-                        </details>
-                        <details class="offer">
-                            <summary class="offer-face" id="offer-06-toggle" aria-controls="offer-06-detail">
-                                <span class="offer-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 19V5M8 17v-5M12 17V8M16 17v-7M20 17V6" stroke="currentColor" stroke-linecap="round"/></svg></span>
-                                <div class="offer-copy">
-                                    <span class="offer-name">Team Effectiveness: The Five Dysfunctions Series</span>
-                                    <p class="offer-hook">From friction to trust. From politics to results.</p>
-                                </div>
-                                <span class="offer-side"><span class="offer-num">05</span><svg class="offer-plus" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-linecap="round"/></svg></span>
-                            </summary>
-                            <div class="offer-detail" id="offer-06-detail" role="region" aria-labelledby="offer-06-toggle">
-                                <p class="offer-detail-lede">Built on Patrick Lencioni's model &mdash; five workshops, one for each dysfunction.</p>
-                                <ul class="chips">
-                                    <li class="chip">01 &middot; Building Trust</li>
-                                    <li class="chip">02 &middot; Mastering Conflict</li>
-                                    <li class="chip">03 &middot; Achieving Commitment</li>
-                                    <li class="chip">04 &middot; Embracing Accountability</li>
-                                    <li class="chip">05 &middot; Focusing on Results</li>
+                        </div>
+                    </details>
+                    <details class="service-row r">
+                        <summary class="service-toggle" id="service-04-toggle" aria-controls="service-04-detail">
+                            <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 4v4M12 16v4M4 12h4M16 12h4M7.1 7.1l2.8 2.8M14.1 14.1l2.8 2.8M16.9 7.1l-2.8 2.8M9.9 14.1l-2.8 2.8" stroke="currentColor" stroke-linecap="round"/></svg></div>
+                            <div class="service-row-body">
+                                <h3>Self Leadership Coaching</h3>
+                                <p>Coaching for emerging leaders and individual contributors.</p>
+                            </div>
+                            <span class="service-side"><span class="service-num">04</span><svg class="service-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-linecap="round"/></svg></span>
+                        </summary>
+                        <div class="service-detail" id="service-04-detail" role="region" aria-labelledby="service-04-toggle">
+                            <div class="service-detail-inner single">
+                                <h4>Who It Supports</h4>
+                                <p>Build confidence, communication, and ownership of your career growth.</p>
+                            </div>
+                        </div>
+                    </details>
+                    <details class="service-row r">
+                        <summary class="service-toggle" id="service-05-toggle" aria-controls="service-05-detail">
+                            <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="6" height="6" rx="1" stroke="currentColor"/><rect x="14" y="4" width="6" height="6" rx="1" stroke="currentColor"/><rect x="4" y="14" width="6" height="6" rx="1" stroke="currentColor"/><path d="M15 17h5M17.5 14.5v5" stroke="currentColor" stroke-linecap="round"/></svg></div>
+                            <div class="service-row-body">
+                                <h3>Fractional CHRO &amp; Strategic HR Advisory</h3>
+                                <p>Senior HR leadership for growing companies &mdash; without a full-time hire.</p>
+                            </div>
+                            <span class="service-side"><span class="service-num">05</span><svg class="service-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-linecap="round"/></svg></span>
+                        </summary>
+                        <div class="service-detail" id="service-05-detail" role="region" aria-labelledby="service-05-toggle">
+                            <div class="service-detail-inner single">
+                                <h4>Full Scope</h4>
+                                <ul class="detail-list">
+                                    <li>Talent, culture &amp; engagement</li>
+                                    <li>Organizational design &amp; change</li>
+                                    <li>Compensation, succession &amp; development</li>
+                                    <li>Executive hiring &amp; team effectiveness</li>
+                                    <li>Restructures &amp; offboarding</li>
                                 </ul>
+                            </div>
+                        </div>
+                    </details>
+                    <details class="service-row r">
+                        <summary class="service-toggle" id="service-06-toggle" aria-controls="service-06-detail">
+                            <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 19V5M8 17v-5M12 17V8M16 17v-7M20 17V6" stroke="currentColor" stroke-linecap="round"/></svg></div>
+                            <div class="service-row-body">
+                                <h3>Team Effectiveness: The Five Dysfunctions Workshop Series</h3>
+                                <p>Five workshops that move leadership teams from friction to results.</p>
+                            </div>
+                            <span class="service-side"><span class="service-num">06</span><svg class="service-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-linecap="round"/></svg></span>
+                        </summary>
+                        <div class="service-detail" id="service-06-detail" role="region" aria-labelledby="service-06-toggle">
+                            <div class="service-detail-inner single">
+                                <h4>Workshop Series</h4>
+                                <p>Explore the full five-workshop model.</p>
                                 <a class="service-jump" href="#team-effectiveness">View the five-workshop model <span aria-hidden="true">&rarr;</span></a>
                             </div>
-                        </details>
-                    </div>
-
-                    <div class="service-tier tier-org r">
-                        <div class="tier-rule"><span>The Organization</span></div>
-                        <details class="offer">
-                            <summary class="offer-face" id="offer-05-toggle" aria-controls="offer-05-detail">
-                                <span class="offer-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="6" height="6" rx="1" stroke="currentColor"/><rect x="14" y="4" width="6" height="6" rx="1" stroke="currentColor"/><rect x="4" y="14" width="6" height="6" rx="1" stroke="currentColor"/><path d="M15 17h5M17.5 14.5v5" stroke="currentColor" stroke-linecap="round"/></svg></span>
-                                <div class="offer-copy">
-                                    <span class="offer-name">Fractional CHRO &amp; Strategic HR Advisory</span>
-                                    <p class="offer-hook">Senior HR leadership, without the full-time investment.</p>
-                                </div>
-                                <span class="offer-side"><span class="offer-num">06</span><svg class="offer-plus" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-linecap="round"/></svg></span>
-                            </summary>
-                            <div class="offer-detail" id="offer-05-detail" role="region" aria-labelledby="offer-05-toggle">
-                                <p class="offer-detail-lede">Full-scope strategic HR support built for startups and scale-ups navigating rapid growth.</p>
-                                <ul class="chips">
-                                    <li class="chip">Talent Strategy</li>
-                                    <li class="chip">Organizational Design</li>
-                                    <li class="chip">Driving High Performance</li>
-                                    <li class="chip">Compensation Structure</li>
-                                    <li class="chip">Engagement Surveys &amp; Strategy</li>
-                                    <li class="chip">Talent Development &amp; Succession</li>
-                                    <li class="chip">Restructures &amp; Offboarding</li>
-                                    <li class="chip">Executive Hiring</li>
-                                    <li class="chip">Culture</li>
-                                    <li class="chip">Change Management</li>
-                                    <li class="chip">Executive Team Effectiveness</li>
-                                </ul>
-                            </div>
-                        </details>
-                    </div>
+                        </div>
+                    </details>
                 </div>
             </div>
         </div>
@@ -3558,7 +3212,7 @@
                 <div>
                     <span class="eyebrow">Team Effectiveness</span>
                     <h2 class="section-title" id="team-effectiveness-title">Five Workshops for Stronger Leadership Teams.</h2>
-                    <p class="section-copy">Based on Patrick Lencioni's <em>The Five Dysfunctions of a Team</em> model, each workshop addresses one barrier to team effectiveness. Progress runs upward &mdash; trust is the foundation everything else rests on.</p>
+                    <p class="section-copy">Based on Patrick Lencioni's <em>The Five Dysfunctions of a Team</em> model, each workshop addresses one barrier to team effectiveness.</p>
                 </div>
                 <aside class="effectiveness-outcome" aria-label="Workshop series outcome">
                     <span>Series Outcome</span>
@@ -3566,196 +3220,118 @@
                 </aside>
             </div>
 
-            <div class="effectiveness-body">
-                <div class="pyramid-col">
-                    <div class="pyramid-axis" aria-hidden="true">
-                        <span class="pyramid-axis-cap">Collective Results</span>
-                        <span class="pyramid-axis-line"></span>
-                        <span class="pyramid-axis-cap">Foundation</span>
-                    </div>
-                    <div class="pyramid-stack">
-                        <div class="pyramid r sequence-reveal" role="tablist" aria-orientation="vertical" aria-label="Five barriers to team effectiveness">
-                            <button class="tier tier-5 sequence-item" id="tier-05" type="button" role="tab" aria-selected="false" aria-controls="panel-05" tabindex="-1">
-                                <span class="tier-shape" aria-hidden="true"></span>
-                                <span class="tier-inner">
-                                    <span class="tier-num">05</span>
-                                    <span class="tier-name">Inattention to Results</span>
-                                </span>
-                            </button>
-                            <button class="tier tier-4 sequence-item" id="tier-04" type="button" role="tab" aria-selected="false" aria-controls="panel-04" tabindex="-1">
-                                <span class="tier-shape" aria-hidden="true"></span>
-                                <span class="tier-inner">
-                                    <span class="tier-num">04</span>
-                                    <span class="tier-name">Avoidance of Accountability</span>
-                                </span>
-                            </button>
-                            <button class="tier tier-3 sequence-item" id="tier-03" type="button" role="tab" aria-selected="false" aria-controls="panel-03" tabindex="-1">
-                                <span class="tier-shape" aria-hidden="true"></span>
-                                <span class="tier-inner">
-                                    <span class="tier-num">03</span>
-                                    <span class="tier-name">Lack of Commitment</span>
-                                </span>
-                            </button>
-                            <button class="tier tier-2 sequence-item" id="tier-02" type="button" role="tab" aria-selected="false" aria-controls="panel-02" tabindex="-1">
-                                <span class="tier-shape" aria-hidden="true"></span>
-                                <span class="tier-inner">
-                                    <span class="tier-num">02</span>
-                                    <span class="tier-name">Fear of Conflict</span>
-                                </span>
-                            </button>
-                            <button class="tier tier-1 sequence-item is-active" id="tier-01" type="button" role="tab" aria-selected="true" aria-controls="panel-01" tabindex="0">
-                                <span class="tier-shape" aria-hidden="true"></span>
-                                <span class="tier-inner">
-                                    <span class="tier-num">01</span>
-                                    <span class="tier-name">Absence of Trust</span>
-                                </span>
-                            </button>
-                        </div>
-                        <p class="pyramid-foot">Start Here</p>
-                    </div>
-                </div>
+            <div class="model-axis" aria-hidden="true">
+                <span>Foundation: Trust</span>
+                <span class="model-axis-line"></span>
+                <span>Collective Results</span>
+            </div>
 
-                <div class="workshop-detail">
-                    <div class="workshop-panel is-active" id="panel-01" role="tabpanel" aria-labelledby="tier-01">
-                        <p class="panel-index">Workshop 01 of 05</p>
-                        <div class="panel-field">
-                            <span class="panel-label">Barrier</span>
-                            <p class="panel-barrier">Absence of Trust</p>
-                        </div>
-                        <div class="panel-rule"></div>
-                        <div class="panel-field">
-                            <span class="panel-label">Workshop</span>
-                            <h3 class="panel-workshop">Building Trust</h3>
-                        </div>
-                        <p class="panel-body">Vulnerability-based exercises help the team speak candidly, admit mistakes, and ask for help without fear of it being used against them.</p>
-                        <div class="panel-shift">
-                            <span class="panel-label">The Shift</span>
-                            <p>From guarded to open.</p>
-                        </div>
+            <ol class="workshop-stages r sequence-reveal" id="workshop-track" tabindex="0" aria-label="Five-part team effectiveness workshop series">
+                <li class="workshop-stage sequence-item" style="--rise: 0px">
+                    <span class="workshop-num">01</span>
+                    <div class="workshop-barrier">
+                        <span>Barrier</span>
+                        <strong>Absence of Trust</strong>
                     </div>
-                    <div class="workshop-panel" id="panel-02" role="tabpanel" aria-labelledby="tier-02" hidden>
-                        <p class="panel-index">Workshop 02 of 05</p>
-                        <div class="panel-field">
-                            <span class="panel-label">Barrier</span>
-                            <p class="panel-barrier">Fear of Conflict</p>
-                        </div>
-                        <div class="panel-rule"></div>
-                        <div class="panel-field">
-                            <span class="panel-label">Workshop</span>
-                            <h3 class="panel-workshop">Mastering Conflict</h3>
-                        </div>
-                        <p class="panel-body">Normalize productive, unfiltered debate around ideas so disagreement sharpens decisions instead of damaging relationships.</p>
-                        <div class="panel-shift">
-                            <span class="panel-label">The Shift</span>
-                            <p>From artificial harmony to honest debate.</p>
-                        </div>
+                    <span class="workshop-label">Workshop</span>
+                    <h3>Building Trust</h3>
+                    <p>Vulnerability-based exercises help the team speak candidly, admit mistakes, and ask for help.</p>
+                </li>
+                <li class="workshop-stage sequence-item" style="--rise: 20px">
+                    <span class="workshop-num">02</span>
+                    <div class="workshop-barrier">
+                        <span>Barrier</span>
+                        <strong>Fear of Conflict</strong>
                     </div>
-                    <div class="workshop-panel" id="panel-03" role="tabpanel" aria-labelledby="tier-03" hidden>
-                        <p class="panel-index">Workshop 03 of 05</p>
-                        <div class="panel-field">
-                            <span class="panel-label">Barrier</span>
-                            <p class="panel-barrier">Lack of Commitment</p>
-                        </div>
-                        <div class="panel-rule"></div>
-                        <div class="panel-field">
-                            <span class="panel-label">Workshop</span>
-                            <h3 class="panel-workshop">Achieving Commitment</h3>
-                        </div>
-                        <p class="panel-body">Build the clarity and buy-in that lets the team commit fully to decisions, even when not everyone agreed with them.</p>
-                        <div class="panel-shift">
-                            <span class="panel-label">The Shift</span>
-                            <p>From ambiguity to alignment.</p>
-                        </div>
+                    <span class="workshop-label">Workshop</span>
+                    <h3>Mastering Conflict</h3>
+                    <p>Normalize productive, unfiltered debate around ideas without damaging relationships.</p>
+                </li>
+                <li class="workshop-stage sequence-item" style="--rise: 40px">
+                    <span class="workshop-num">03</span>
+                    <div class="workshop-barrier">
+                        <span>Barrier</span>
+                        <strong>Lack of Commitment</strong>
                     </div>
-                    <div class="workshop-panel" id="panel-04" role="tabpanel" aria-labelledby="tier-04" hidden>
-                        <p class="panel-index">Workshop 04 of 05</p>
-                        <div class="panel-field">
-                            <span class="panel-label">Barrier</span>
-                            <p class="panel-barrier">Avoidance of Accountability</p>
-                        </div>
-                        <div class="panel-rule"></div>
-                        <div class="panel-field">
-                            <span class="panel-label">Workshop</span>
-                            <h3 class="panel-workshop">Embracing Accountability</h3>
-                        </div>
-                        <p class="panel-body">Build peer-to-peer accountability so the team holds itself to shared standards rather than waiting for the leader to intervene.</p>
-                        <div class="panel-shift">
-                            <span class="panel-label">The Shift</span>
-                            <p>From deference to shared ownership.</p>
-                        </div>
+                    <span class="workshop-label">Workshop</span>
+                    <h3>Achieving Commitment</h3>
+                    <p>Build clarity and buy-in so the team commits fully to decisions, even amid disagreement.</p>
+                </li>
+                <li class="workshop-stage sequence-item" style="--rise: 60px">
+                    <span class="workshop-num">04</span>
+                    <div class="workshop-barrier">
+                        <span>Barrier</span>
+                        <strong>Avoidance of Accountability</strong>
                     </div>
-                    <div class="workshop-panel" id="panel-05" role="tabpanel" aria-labelledby="tier-05" hidden>
-                        <p class="panel-index">Workshop 05 of 05</p>
-                        <div class="panel-field">
-                            <span class="panel-label">Barrier</span>
-                            <p class="panel-barrier">Inattention to Results</p>
-                        </div>
-                        <div class="panel-rule"></div>
-                        <div class="panel-field">
-                            <span class="panel-label">Workshop</span>
-                            <h3 class="panel-workshop">Focusing on Results</h3>
-                        </div>
-                        <p class="panel-body">Align the team around collective outcomes so individual agendas and status stop competing with what the company needs.</p>
-                        <div class="panel-shift">
-                            <span class="panel-label">The Shift</span>
-                            <p>From individual agendas to collective results.</p>
-                        </div>
+                    <span class="workshop-label">Workshop</span>
+                    <h3>Embracing Accountability</h3>
+                    <p>Build peer-to-peer accountability so the team holds itself to shared standards.</p>
+                </li>
+                <li class="workshop-stage sequence-item" style="--rise: 80px">
+                    <span class="workshop-num">05</span>
+                    <div class="workshop-barrier">
+                        <span>Barrier</span>
+                        <strong>Inattention to Results</strong>
                     </div>
+                    <span class="workshop-label">Workshop</span>
+                    <h3>Focusing on Results</h3>
+                    <p>Align the team around collective outcomes over individual agendas or status.</p>
+                </li>
+            </ol>
+
+            <div class="carousel-controls workshop-controls" aria-label="Workshop series controls">
+                <div class="carousel-buttons">
+                    <button class="carousel-button" id="workshop-prev" type="button" aria-label="Previous workshop">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <button class="carousel-button" id="workshop-next" type="button" aria-label="Next workshop">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
                 </div>
+                <div class="carousel-pagination" id="workshop-pagination" aria-label="Choose a workshop"></div>
             </div>
         </div>
     </section>
 
     <section class="section" id="impact">
         <div class="shell">
-            <div class="impact-head">
-                <span class="eyebrow r">Why Elevated</span>
-                <h2 class="section-title r d1">The Impact of Coaching, Backed by Experience.</h2>
-                <p class="impact-lede r d2">Most executive coaches rely on conversation alone. Elevated starts with insight.</p>
-            </div>
-
-
             <div class="impact-layout">
-                <div class="impact-col">
-                <ol class="impact-points r d3">
-                    <li class="impact-point">
-                        <span class="impact-point-num">01</span>
-                        <div>
-                            <h3>Executive Experience</h3>
-                            <p>15+ years leading talent strategy inside high-growth organizations &mdash; held the seat, not just advised it.</p>
-                        </div>
-                    </li>
-                    <li class="impact-point">
-                        <span class="impact-point-num">02</span>
-                        <div>
-                            <h3>Assessment-Led Method</h3>
-                            <p>Every engagement opens with EQ-i 2.0 or EQ 360 data.</p>
-                        </div>
-                    </li>
-                    <li class="impact-point">
-                        <span class="impact-point-num">03</span>
-                        <div>
-                            <h3>Individual to Organization</h3>
-                            <p>Executive coaching, team workshops, and fractional CHRO advisory in one practice.</p>
-                        </div>
-                    </li>
-                </ol>
-
-                <!-- TODO: Confirm the source and basis of the 15-20% figure with the client before launch;
-                     a performance claim like this usually needs an attributable reference. -->
-                <aside class="impact-stat r d3" aria-label="Coaching outcome">
-                    <div>
-                        <span class="impact-stat-label">Measured leadership growth</span>
-                        <p class="impact-stat-figure">15&ndash;20<span>%</span></p>
+                <div>
+                    <span class="eyebrow r">Why Elevated</span>
+                    <h2 class="section-title r d1">Experience-Led. Evidence-Informed.</h2>
+                    <div class="impact-copy-stack r d2">
+                        <p>Practical coaching grounded in senior HR experience and evidence-led assessment.</p>
                     </div>
-                    <div class="impact-stat-body">
-                        <p>A year of coaching lifts emotional-intelligence scores 15&ndash;20%. <span class="impact-stat-outcome">Turning insight into stronger leadership.</span></p>
+                    <div class="impact-grid r d3">
+                        <article class="metric-card">
+                            <span>Experience</span>
+                            <h3>15+ Years in High-Growth HR</h3>
+                            <p>Senior talent leadership inside fast-growing organizations.</p>
+                        </article>
+                        <article class="metric-card">
+                            <span>Evidence</span>
+                            <h3>Assessments That Reveal What Matters</h3>
+                            <p>EQ-i 2.0, EQ 360, and team assessments.</p>
+                        </article>
+                        <article class="metric-card">
+                            <span>Application</span>
+                            <h3>Strategies for the Real World</h3>
+                            <p>Tools leaders can apply immediately.</p>
+                        </article>
+                        <article class="metric-card">
+                            <span>Partnership</span>
+                            <h3>Human-Centred Support</h3>
+                            <p>Trusted coaching built on curiosity and accountability.</p>
+                        </article>
                     </div>
-                </aside>
                 </div>
-
                 <div class="impact-image eq-visual r d2">
                     <div class="assessment-graphic r sequence-reveal assessment-sequence" role="img" aria-label="EQ-i 2.0 assessment system: individual, EQ 360, and team insights move through assess, debrief, develop, and coach stages.">
+                        <div class="assessment-graphic-head" aria-hidden="true">
+                            <span>Assessment-Led Coaching</span>
+                            <strong>Insight Before Intervention</strong>
+                        </div>
+
                         <div class="assessment-map" aria-hidden="true">
                             <svg class="assessment-map-lines" viewBox="0 0 400 400">
                                 <circle class="outer-ring" cx="200" cy="200" r="155"/>
@@ -3826,54 +3402,50 @@
                 <div class="testimonial-track" id="testimonial-track">
                     <article class="review-card" aria-label="Testimonial 1 of 6">
                         <span class="review-mark" aria-hidden="true">&ldquo;</span>
-                        <p class="review-pull">Working with Joana transformed the way I lead.</p>
-                        <p class="review-quote">Her coaching strengthened my executive presence, improved my confidence, and gave me practical tools I continue to use every day.</p>
+                        <p class="review-quote">Working with Joana transformed the way I lead. Her coaching strengthened my executive presence, improved my confidence, and gave me practical tools I continue to use every day.</p>
                         <div class="review-author">
-                            <strong>Chief Executive Officer</strong>
-                            <span>Technology</span>
+                            <span class="review-stars" role="img" aria-label="Rated 5 out of 5"></span>
+                            <strong>Chief Executive Officer &mdash; Technology</strong>
                         </div>
                     </article>
                     <article class="review-card" aria-label="Testimonial 2 of 6">
                         <span class="review-mark" aria-hidden="true">&ldquo;</span>
-                        <p class="review-pull">The EQ coaching fundamentally changed how I communicate, make decisions, and lead my team.</p>
-                        <p class="review-quote">It has been one of the best leadership investments I've made.</p>
+                        <p class="review-quote">The EQ coaching fundamentally changed how I communicate, make decisions, and lead my team. It has been one of the best leadership investments I've made.</p>
                         <div class="review-author">
-                            <strong>VP, Product</strong>
-                            <span>SaaS</span>
+                            <span class="review-stars" role="img" aria-label="Rated 5 out of 5"></span>
+                            <strong>VP, Product &mdash; SaaS</strong>
                         </div>
                     </article>
                     <article class="review-card" aria-label="Testimonial 3 of 6">
                         <span class="review-mark" aria-hidden="true">&ldquo;</span>
-                        <p class="review-pull">Joana combines emotional intelligence with real executive experience.</p>
-                        <p class="review-quote">She challenged my thinking, helped me identify blind spots, and became a trusted advisor throughout my leadership journey.</p>
+                        <p class="review-quote">Joana combines emotional intelligence with real executive experience. She challenged my thinking, helped me identify blind spots, and became a trusted advisor throughout my leadership journey.</p>
                         <div class="review-author">
+                            <span class="review-stars" role="img" aria-label="Rated 5 out of 5"></span>
                             <strong>Chief People Officer</strong>
                         </div>
                     </article>
                     <article class="review-card" aria-label="Testimonial 4 of 6">
                         <span class="review-mark" aria-hidden="true">&ldquo;</span>
-                        <p class="review-pull">Her strategic HR guidance helped us navigate rapid growth while strengthening our leadership team.</p>
-                        <p class="review-quote">Joana quickly became an extension of our executive team.</p>
+                        <p class="review-quote">Her strategic HR guidance helped us navigate rapid growth while strengthening our leadership team. Joana quickly became an extension of our executive team.</p>
                         <div class="review-author">
-                            <strong>Founder &amp; CEO</strong>
-                            <span>High-Growth Technology</span>
+                            <span class="review-stars" role="img" aria-label="Rated 5 out of 5"></span>
+                            <strong>Founder &amp; CEO &mdash; High-Growth Technology</strong>
                         </div>
                     </article>
                     <article class="review-card" aria-label="Testimonial 5 of 6">
                         <span class="review-mark" aria-hidden="true">&ldquo;</span>
-                        <p class="review-pull">Joana has a remarkable ability to ask the right questions, helping me gain clarity and confidence while discovering solutions that felt authentic to me.</p>
-                        <p class="review-quote">Her coaching has positively impacted both my professional and personal life.</p>
+                        <p class="review-quote">Joana has a remarkable ability to ask the right questions, helping me gain clarity and confidence while discovering solutions that felt authentic to me. Her coaching has positively impacted both my professional and personal life.</p>
                         <div class="review-author">
+                            <span class="review-stars" role="img" aria-label="Rated 5 out of 5"></span>
                             <strong>Chief Executive Officer</strong>
                         </div>
                     </article>
                     <article class="review-card" aria-label="Testimonial 6 of 6">
                         <span class="review-mark" aria-hidden="true">&ldquo;</span>
-                        <p class="review-pull">Working with Joana helped me become a more self-aware and intentional leader.</p>
-                        <p class="review-quote">She creates a space where you feel challenged, supported, and empowered to grow.</p>
+                        <p class="review-quote">Working with Joana helped me become a more self-aware and intentional leader. She creates a space where you feel challenged, supported, and empowered to grow.</p>
                         <div class="review-author">
-                            <strong>Vice President</strong>
-                            <span>Technology</span>
+                            <span class="review-stars" role="img" aria-label="Rated 5 out of 5"></span>
+                            <strong>Vice President &mdash; Technology</strong>
                         </div>
                     </article>
                 </div>
@@ -3931,7 +3503,7 @@
                             <option>Executive Coaching</option>
                             <option>360 Leadership Assessments</option>
                             <option>Situational Leadership® (SLII) Training</option>
-                            <option>Self Leadership Training</option>
+                            <option>Self Leadership Coaching</option>
                             <option>Fractional CHRO &amp; Strategic HR Advisory</option>
                             <option>Team Effectiveness: The Five Dysfunctions Workshop Series</option>
                         </select>
@@ -4079,26 +3651,25 @@ if ('IntersectionObserver' in window) {
     document.querySelectorAll('.r').forEach(element => element.classList.add('on'));
 }
 
-/* The client marquee now lives in the hero; pause it once it scrolls out of view. */
-const heroMarquee = document.querySelector('.hero-brand-marquee');
+const organizationsSection = document.getElementById('organizations');
 
-if (heroMarquee && 'IntersectionObserver' in window) {
-    const heroMarqueeObserver = new IntersectionObserver(([entry]) => {
-        heroMarquee.classList.toggle('is-paused', !entry.isIntersecting);
+if (organizationsSection && 'IntersectionObserver' in window) {
+    const organizationsObserver = new IntersectionObserver(([entry]) => {
+        organizationsSection.classList.toggle('is-offscreen', !entry.isIntersecting);
     }, { threshold: 0 });
 
-    heroMarqueeObserver.observe(heroMarquee);
+    organizationsObserver.observe(organizationsSection);
 }
 
-/* Native disclosures stay usable without JavaScript; enhancement keeps one offer open. */
-const offerRows = [...document.querySelectorAll('.offer')];
-offerRows.forEach(row => {
+/* Native service disclosures remain usable without JavaScript; enhancement keeps one open. */
+const serviceRows = [...document.querySelectorAll('.service-row')];
+serviceRows.forEach(row => {
     const summary = row.querySelector('summary');
     const syncState = () => summary.setAttribute('aria-expanded', String(row.open));
     syncState();
     row.addEventListener('toggle', () => {
         if (row.open) {
-            offerRows.forEach(other => {
+            serviceRows.forEach(other => {
                 if (other !== row) other.open = false;
             });
         }
@@ -4200,47 +3771,95 @@ if ('ResizeObserver' in window) {
 buildTestimonialPagination();
 document.getElementById('reviews').classList.add('carousel-ready');
 
-/* Pyramid tiers are a vertical tablist: selecting a tier swaps in its workshop panel.
-   Roving tabindex keeps one stop in the tab order; arrows move between tiers. */
-const pyramidTiers = [...document.querySelectorAll('.tier')];
-const workshopPanels = [...document.querySelectorAll('.workshop-panel')];
+/* Workshop series becomes a windowed carousel below the full grid: several cards on a tablet,
+   one at a time on a phone. The visible count is derived from the card width, like the reviews. */
+const workshopTrack = document.getElementById('workshop-track');
+const workshopStages = [...document.querySelectorAll('.workshop-stage')];
+const workshopPrevious = document.getElementById('workshop-prev');
+const workshopNext = document.getElementById('workshop-next');
+const workshopPagination = document.getElementById('workshop-pagination');
 
-function selectTier(tier) {
-    pyramidTiers.forEach(item => {
-        const active = item === tier;
-        item.classList.toggle('is-active', active);
-        item.setAttribute('aria-selected', String(active));
-        item.tabIndex = active ? 0 : -1;
-    });
+let workshopPage = 0;
+let workshopsVisible = 1;
+let workshopScrollTimer;
 
-    const panelId = tier.getAttribute('aria-controls');
-    workshopPanels.forEach(panel => {
-        const active = panel.id === panelId;
-        panel.classList.toggle('is-active', active);
-        panel.hidden = !active;
+function workshopMetrics() {
+    if (!workshopStages.length) return { step: 1, maxPage: 0 };
+    const gap = Number.parseFloat(getComputedStyle(workshopTrack).columnGap) || 0;
+    const cardWidth = workshopStages[0].getBoundingClientRect().width;
+    workshopsVisible = Math.max(1, Math.min(workshopStages.length, Math.round((workshopTrack.clientWidth + gap) / (cardWidth + gap))));
+    return { step: cardWidth + gap, maxPage: Math.max(0, workshopStages.length - workshopsVisible) };
+}
+
+function updateWorkshopState() {
+    const { maxPage } = workshopMetrics();
+    workshopPage = Math.max(0, Math.min(workshopPage, maxPage));
+    workshopPrevious.disabled = workshopPage === 0;
+    workshopNext.disabled = workshopPage === maxPage;
+    [...workshopPagination.children].forEach((dot, index) => {
+        if (index === workshopPage) dot.setAttribute('aria-current', 'true');
+        else dot.removeAttribute('aria-current');
     });
 }
 
-pyramidTiers.forEach(tier => {
-    tier.addEventListener('click', () => selectTier(tier));
-    tier.addEventListener('keydown', event => {
-        /* Up/Left climb toward the apex, matching what the eye does on the shape. */
-        const step = (event.key === 'ArrowUp' || event.key === 'ArrowLeft') ? -1
-            : (event.key === 'ArrowDown' || event.key === 'ArrowRight') ? 1
-                : (event.key === 'Home') ? 'first'
-                    : (event.key === 'End') ? 'last' : 0;
-        if (!step) return;
+function buildWorkshopPagination() {
+    const { maxPage } = workshopMetrics();
+    workshopPage = Math.min(workshopPage, maxPage);
+    workshopPagination.replaceChildren();
 
+    for (let page = 0; page <= maxPage; page += 1) {
+        const dot = document.createElement('button');
+        const last = Math.min(workshopStages.length, page + workshopsVisible);
+        dot.type = 'button';
+        dot.className = 'carousel-dot';
+        dot.setAttribute('aria-label', workshopsVisible === 1
+            ? `Show workshop ${page + 1}`
+            : `Show workshops ${page + 1} through ${last}`);
+        dot.addEventListener('click', () => goToWorkshopPage(page));
+        workshopPagination.append(dot);
+    }
+
+    updateWorkshopState();
+}
+
+function goToWorkshopPage(page, behavior = reduceMotion.matches ? 'auto' : 'smooth') {
+    const { step, maxPage } = workshopMetrics();
+    workshopPage = Math.max(0, Math.min(page, maxPage));
+    workshopTrack.scrollTo({ left: workshopPage * step, behavior });
+    updateWorkshopState();
+}
+
+workshopPrevious.addEventListener('click', () => goToWorkshopPage(workshopPage - 1));
+workshopNext.addEventListener('click', () => goToWorkshopPage(workshopPage + 1));
+workshopTrack.addEventListener('keydown', event => {
+    if (event.key === 'ArrowLeft') {
         event.preventDefault();
-        const index = pyramidTiers.indexOf(tier);
-        const target = step === 'first' ? pyramidTiers[0]
-            : step === 'last' ? pyramidTiers[pyramidTiers.length - 1]
-                : pyramidTiers[Math.max(0, Math.min(pyramidTiers.length - 1, index + step))];
-
-        selectTier(target);
-        target.focus();
-    });
+        goToWorkshopPage(workshopPage - 1);
+    }
+    if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        goToWorkshopPage(workshopPage + 1);
+    }
 });
+workshopTrack.addEventListener('scroll', () => {
+    window.clearTimeout(workshopScrollTimer);
+    workshopScrollTimer = window.setTimeout(() => {
+        const { step, maxPage } = workshopMetrics();
+        workshopPage = Math.max(0, Math.min(Math.round(workshopTrack.scrollLeft / step), maxPage));
+        updateWorkshopState();
+    }, 120);
+}, { passive: true });
+
+if ('ResizeObserver' in window) {
+    new ResizeObserver(() => {
+        buildWorkshopPagination();
+        goToWorkshopPage(workshopPage, 'auto');
+    }).observe(workshopTrack);
+} else {
+    window.addEventListener('resize', buildWorkshopPagination, { passive: true });
+}
+buildWorkshopPagination();
+document.getElementById('team-effectiveness').classList.add('carousel-ready');
 
 function handleContactSubmit(event) {
     event.preventDefault();

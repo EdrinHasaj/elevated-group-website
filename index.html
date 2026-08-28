@@ -583,7 +583,7 @@
         max-width: 740px;
         margin-top: 32px;
         font-size: 4.9rem;
-        line-height: .92;
+        line-height: 1;
         color: var(--heading-dark);
         font-weight: 400;
     }
@@ -597,7 +597,7 @@
         font-size: .92em;
         font-style: normal;
         font-weight: 700;
-        line-height: .92;
+        line-height: 1;
     }
 
     .hero-p {
@@ -1113,13 +1113,18 @@
     /* Name leads, hook carries the promise beneath it. */
     .offer-hook {
         margin-top: 6px;
-        color: #FFFFFF;
+        color: var(--cream);
         font-family: var(--font-display);
         font-size: .92rem;
         font-weight: 400;
         line-height: 1.4;
         letter-spacing: -0.008em;
         text-wrap: pretty;
+    }
+
+    .offer-audience {
+        color: var(--heading-dark);
+        font-weight: 600;
     }
 
     .offer-feature .offer-name { font-size: 1.34rem; letter-spacing: -0.022em; }
@@ -1333,7 +1338,7 @@
         background: var(--ink);
     }
 
-    .effectiveness-outcome span {
+    .effectiveness-outcome > span {
         display: block;
         color: var(--cream);
         font-family: var(--font-display);
@@ -1350,7 +1355,25 @@
         font-family: var(--font-display);
         font-size: 1.05rem;
         font-weight: 400;
-        line-height: 1.45;
+        line-height: 1.25;
+        text-wrap: balance;
+    }
+
+    .effectiveness-outcome-detail {
+        display: block;
+        margin-top: 8px;
+        color: var(--cream);
+        font-family: var(--font-display);
+        font-size: .92rem;
+        font-weight: 400;
+        line-height: 1.55;
+        text-wrap: pretty;
+    }
+
+    .effectiveness-outcome-detail em {
+        color: var(--heading-dark);
+        font-style: normal;
+        font-weight: 600;
     }
 
     /* Literal pyramid: the five trapezoids share one continuous diagonal edge, each tier
@@ -1822,10 +1845,40 @@
         white-space: nowrap;
     }
 
-    .impact-stat-figure span {
+    .impact-stat-figure .impact-stat-percent {
         margin-left: 2px;
         font-size: .46em;
         vertical-align: super;
+    }
+
+    .impact-stat-range {
+        display: flex;
+        align-items: baseline;
+    }
+
+    .impact-stat-value,
+    .impact-stat-percent,
+    .impact-stat-range-rule {
+        display: inline-block;
+    }
+
+    .impact-stat-range-rule {
+        align-self: center;
+        width: .48em;
+        height: 1px;
+        margin: 0 .12em;
+        background: currentColor;
+        transform-origin: left center;
+    }
+
+    .impact-stat-a11y {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
     }
 
     .impact-stat-label {
@@ -1859,7 +1912,7 @@
 
     .impact-layout {
         display: grid;
-        grid-template-columns: minmax(0, .82fr) minmax(0, 1.04fr);
+        grid-template-columns: minmax(0, .74fr) minmax(0, 1.16fr);
         gap: 40px;
         align-items: stretch;
         margin-top: 54px;
@@ -2457,155 +2510,37 @@
         height: 100%;
         min-height: 570px;
         display: grid;
-        grid-template-rows: minmax(400px, 1fr) auto;
-        gap: 30px;
+        grid-template-rows: auto minmax(400px, 1fr) auto;
+        gap: 26px;
     }
 
-    .assessment-map {
-        position: relative;
-        width: min(100%, 460px);
-        aspect-ratio: 1;
-        margin: auto;
-        background: radial-gradient(circle at center, rgba(174, 181, 167, .10) 0%, rgba(174, 181, 167, .035) 30%, transparent 68%);
-    }
-
-    .assessment-map-lines {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        overflow: visible;
-    }
-
-    .assessment-map-lines .outer-ring {
-        fill: none;
-        stroke: rgba(178, 172, 163, .30);
-        stroke-width: 1;
-    }
-
-    .assessment-map-lines .inner-ring {
-        fill: none;
-        stroke: rgba(178, 172, 163, .16);
-        stroke-width: 1;
-        stroke-dasharray: 2 6;
-    }
-
-    .assessment-map-lines .connection {
-        fill: none;
-        stroke: rgba(174, 181, 167, .52);
-        stroke-width: 1.3;
-    }
-
-    .assessment-map-lines .competency-dot {
-        fill: var(--impact-panel);
-        stroke: rgba(166, 159, 149, .62);
-        stroke-width: 1;
-    }
-
-    .assessment-core {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        z-index: 1;
-        width: 190px;
-        display: grid;
-        place-content: center;
-        gap: 7px;
-        padding: 0;
-        border: 0;
-        background: transparent;
-        text-align: center;
-        transform: translate(-50%, -50%);
-    }
-
-    .assessment-core span {
+    .assessment-intro-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
         color: var(--impact-signal);
-        font-family: var(--font-display);
-        font-size: .58rem;
-        font-weight: 500;
-        letter-spacing: .12em;
-        text-transform: uppercase;
-    }
-
-    .assessment-core strong {
-        color: var(--heading-dark);
-        font-family: var(--font-display);
-        font-size: 1.9rem;
-        font-weight: 500;
-        line-height: 1.1;
-    }
-
-    .assessment-core em {
-        color: var(--body-dark);
-        font-family: var(--font-display);
-        font-size: .62rem;
-        font-weight: 500;
-        font-style: normal;
-        letter-spacing: .12em;
-        text-transform: uppercase;
-    }
-
-    .assessment-node {
-        position: absolute;
-        z-index: 1;
-        display: grid;
-        justify-items: center;
-        width: 118px;
-        color: var(--body-dark);
-        text-align: center;
-    }
-
-    .assessment-node-individual { left: 50%; top: 1px; transform: translateX(-50%); }
-    .assessment-node-360 { left: 0; bottom: 0; }
-    .assessment-node-team { right: 0; bottom: 0; }
-
-    .assessment-node-icon {
-        width: 48px;
-        height: 48px;
-        display: grid;
-        place-items: center;
-        border: 1px solid rgba(247, 244, 238, .62);
-        border-radius: 999px;
-        background: rgba(23, 22, 20, .45);
-        color: var(--heading-dark);
-    }
-
-    .assessment-node-icon svg {
-        width: 22px;
-        height: 22px;
-        stroke-width: 1.35;
-    }
-
-    .assessment-node strong {
-        margin-top: 8px;
-        color: var(--heading-dark);
-        font-family: var(--font-display);
+        font-family: "Inter", sans-serif;
         font-size: .72rem;
         font-weight: 500;
-        letter-spacing: .1em;
+        letter-spacing: 0.25em;
         line-height: 1.2;
         text-transform: uppercase;
     }
 
-    .assessment-node-detail {
-        margin-top: 4px;
-        color: var(--body-dark);
-        font-size: .64rem;
-        line-height: 1.35;
+    .assessment-intro-kicker::before {
+        content: "";
+        display: block;
+        width: 24px;
+        height: 1px;
+        background: currentColor;
+        flex-shrink: 0;
     }
-
-    .assessment-node.is-active .assessment-node-icon {
-        border-color: var(--impact-signal);
-        background: rgba(23, 22, 20, .58);
-        color: var(--heading-dark);
-    }
-
-    .assessment-node.is-active strong { color: var(--heading-dark); }
 
     .coaching-flow {
         display: grid;
         grid-template-columns: repeat(4, minmax(0, 1fr));
         gap: 20px;
+        padding: 0;
         border: 0;
         background: transparent;
         list-style: none;
@@ -2613,16 +2548,58 @@
 
     .coaching-flow li {
         position: relative;
-        min-height: 118px;
+        min-height: 158px;
         display: grid;
-        align-content: center;
+        align-content: start;
         gap: 5px;
-        padding: 16px 0;
-        border-top: 1px solid var(--hairline-dark);
+        padding: 0 0 12px;
         background: transparent;
     }
 
+    .coaching-flow li:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        top: 23px;
+        right: -10px;
+        left: 56px;
+        height: 1px;
+        background: var(--hairline-dark);
+    }
+
+    .coaching-flow li:not(:last-child)::before {
+        content: "";
+        position: absolute;
+        z-index: 1;
+        top: 20px;
+        right: -10px;
+        width: 7px;
+        height: 7px;
+        border-top: 1px solid var(--muted-dark);
+        border-right: 1px solid var(--muted-dark);
+        transform: rotate(45deg);
+    }
+
+    .flow-icon {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        width: 48px;
+        height: 48px;
+        place-items: center;
+        border: 1px solid rgba(178, 172, 163, .54);
+        border-radius: 50%;
+        background: var(--impact-panel);
+        color: var(--heading-dark);
+    }
+
+    .flow-icon svg {
+        width: 22px;
+        height: 22px;
+        stroke-width: 1.35;
+    }
+
     .flow-num {
+        margin-top: 10px;
         color: var(--muted-dark);
         font-family: var(--font-display);
         font-size: .68rem;
@@ -2642,24 +2619,187 @@
         line-height: 1.35;
     }
 
-    .flow-arrow {
-        position: absolute;
-        z-index: 1;
-        right: -20px;
-        top: 50%;
-        width: 18px;
-        height: 12px;
-        color: var(--muted-dark);
-        transform: translateY(-50%);
+    /* The assessment is a self-contained narrative: value, diagnostic model, then coaching cycle. */
+    .eq-visual {
+        width: 100%;
+        padding: 0;
     }
 
-    .flow-arrow path {
-        fill: none;
-        stroke: currentColor;
-        stroke-width: 1;
-        stroke-linecap: square;
-        stroke-linejoin: miter;
+    .assessment-graphic {
+        height: auto;
+        min-height: 0;
+        grid-template-rows: auto auto auto;
+        gap: 40px;
     }
+
+    .assessment-cycle {
+        position: relative;
+        width: 100%;
+        height: 520px;
+        margin: 0 auto;
+    }
+
+    .assessment-cycle-lines {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        color: rgba(178, 172, 163, .46);
+        overflow: visible;
+    }
+
+    .assessment-cycle-lines .cycle-path {
+        fill: none;
+        stroke: rgba(178, 172, 163, .46);
+        stroke-width: 1.2;
+    }
+
+    .assessment-cycle-lines .cycle-arrow {
+        fill: none;
+        stroke: rgba(178, 172, 163, .46);
+        stroke-width: 1.4;
+    }
+
+    .assessment-cycle-lines .cycle-ring {
+        fill: none;
+        stroke: rgba(178, 172, 163, .16);
+        stroke-width: 1;
+        stroke-dasharray: 2 7;
+    }
+
+    .cycle-core {
+        position: absolute;
+        top: 52%;
+        left: 50%;
+        z-index: 1;
+        width: 180px;
+        height: 180px;
+        display: grid;
+        place-content: center;
+        gap: 7px;
+        border: 1px solid rgba(178, 172, 163, .54);
+        border-radius: 50%;
+        background: var(--impact-panel);
+        color: var(--heading-dark);
+        text-align: center;
+        transform: translate(-50%, -50%);
+    }
+
+    .cycle-core::before {
+        content: "";
+        position: absolute;
+        inset: -14px;
+        border: 1px dashed rgba(178, 172, 163, .36);
+        border-radius: 50%;
+    }
+
+    .cycle-core em {
+        position: relative;
+        z-index: 1;
+        font-family: var(--font-display);
+        font-style: normal;
+    }
+
+    .cycle-core strong {
+        position: relative;
+        z-index: 1;
+        color: var(--heading-dark);
+        font-family: var(--font-display);
+        font-size: 1.62rem;
+        font-weight: 400;
+        line-height: 1.1;
+        text-wrap: balance;
+    }
+
+    .cycle-core em {
+        color: var(--body-dark);
+        font-size: .68rem;
+        font-weight: 500;
+    }
+
+    .cycle-stage {
+        position: absolute;
+        z-index: 1;
+        width: 225px;
+        min-height: 180px;
+        display: grid;
+        align-content: start;
+        justify-items: center;
+        color: var(--body-dark);
+        text-align: center;
+    }
+
+    .cycle-stage-measure {
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .cycle-stage-reveal { bottom: 28px; left: 80%; transform: translateX(-50%); }
+    .cycle-stage-develop { bottom: 28px; left: 20%; transform: translateX(-50%); }
+
+    .cycle-stage-icon {
+        width: 52px;
+        height: 52px;
+        display: grid;
+        place-items: center;
+        border: 1px solid rgba(178, 172, 163, .54);
+        border-radius: 50%;
+        background: var(--impact-panel);
+        color: var(--heading-dark);
+    }
+
+    .cycle-stage-icon svg {
+        width: 24px;
+        height: 24px;
+        stroke-width: 1.35;
+    }
+
+    .cycle-stage-index {
+        margin-top: 7px;
+        color: var(--muted-dark);
+        font-family: var(--font-display);
+        font-size: .68rem;
+        font-variant-numeric: tabular-nums;
+    }
+
+    .cycle-stage strong {
+        margin-top: 2px;
+        color: var(--heading-dark);
+        font-family: var(--font-display);
+        font-size: 1.02rem;
+        font-weight: 400;
+    }
+
+    .cycle-stage span:not(.cycle-stage-icon):not(.cycle-stage-index) {
+        margin-top: 1px;
+        color: var(--cream-mist);
+        font-family: var(--font-display);
+        font-size: .82rem;
+        font-weight: 400;
+    }
+
+    .cycle-stage p {
+        margin-top: 5px;
+        color: var(--muted-dark);
+        font-size: .8rem;
+        line-height: 1.45;
+        text-wrap: pretty;
+    }
+
+    .coaching-flow {
+        gap: 28px;
+    }
+
+    .coaching-flow li { min-height: 148px; }
+
+    .coaching-flow li:not(:last-child)::after {
+        right: -14px;
+        left: 60px;
+        background: rgba(178, 172, 163, .3);
+    }
+
+    .coaching-flow li:not(:last-child)::before { right: -14px; }
 
     /* floating testimonial carousel */
     .reviews-shell { position: relative; }
@@ -2952,6 +3092,30 @@
     }
 
     @media (prefers-reduced-motion: no-preference) {
+        .impact-stat-value,
+        .impact-stat-percent,
+        .impact-stat-range-rule,
+        .impact-stat-body {
+            transition: opacity 240ms ease-out, transform 240ms ease-out;
+        }
+
+        .motion-ready .impact-stat:not(.on) .impact-stat-value,
+        .motion-ready .impact-stat:not(.on) .impact-stat-percent,
+        .motion-ready .impact-stat:not(.on) .impact-stat-body {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        .motion-ready .impact-stat:not(.on) .impact-stat-range-rule {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        .motion-ready .impact-stat .impact-stat-range-rule { transition-delay: 120ms; }
+        .motion-ready .impact-stat .impact-stat-value-end { transition-delay: 220ms; }
+        .motion-ready .impact-stat .impact-stat-percent { transition-delay: 320ms; }
+        .motion-ready .impact-stat .impact-stat-body { transition-delay: 440ms; }
+
         .motion-ready .hero-sequence .module-row {
             animation: sequence-fade-up 200ms ease-out both;
         }
@@ -2962,10 +3126,41 @@
         .motion-ready .hero-sequence .module-row:nth-child(4) { animation-delay: 400ms; }
 
         .sequence-reveal .sequence-item,
-        .assessment-sequence .assessment-node,
+        .assessment-sequence .cycle-stage,
         .assessment-sequence .coaching-flow li {
             transition: opacity 200ms ease-out, transform 200ms ease-out;
         }
+
+        .assessment-sequence .cycle-stage { transition: opacity 200ms ease-out, translate 200ms ease-out; }
+
+        /* The core is the hub the diagram orbits, so it lands before anything it feeds.
+           Scaled via the scale property, not transform: the stacked layout resets the core
+           to transform: none, and an animated transform here would outrank and undo it. */
+        .assessment-sequence .cycle-core { transition: opacity 260ms ease-out, scale 260ms ease-out; }
+
+        /* Dash 1 on / 1 off against pathLength 1: offset 1 hides the arc, 0 draws it whole.
+           The dasharray stays applied in both states so the arc does not snap to solid. */
+        .assessment-sequence .cycle-path {
+            stroke-dasharray: 1;
+            transition: stroke-dashoffset 400ms ease-out;
+        }
+        .assessment-sequence .cycle-arrow { transition: opacity 200ms ease-out; }
+
+        .motion-ready .assessment-sequence:not(.on) .cycle-core {
+            opacity: 0;
+            scale: .94;
+        }
+
+        .motion-ready .assessment-sequence:not(.on) .cycle-path { stroke-dashoffset: 1; }
+        .motion-ready .assessment-sequence:not(.on) .cycle-arrow { opacity: 0; }
+
+        .motion-ready .assessment-sequence.on .cycle-core {
+            opacity: 1;
+            scale: 1;
+        }
+
+        .motion-ready .assessment-sequence.on .cycle-path { stroke-dashoffset: 0; }
+        .motion-ready .assessment-sequence.on .cycle-arrow { opacity: 1; }
 
         .motion-ready .sequence-reveal.r:not(.on) {
             opacity: 1;
@@ -2973,7 +3168,7 @@
         }
 
         .motion-ready .sequence-reveal:not(.on) .sequence-item,
-        .motion-ready .assessment-sequence:not(.on) .assessment-node,
+        .motion-ready .assessment-sequence:not(.on) .cycle-stage,
         .motion-ready .assessment-sequence:not(.on) .coaching-flow li {
             opacity: 0;
         }
@@ -2983,8 +3178,10 @@
             transform: translateY(12px);
         }
 
+        .motion-ready .assessment-sequence:not(.on) .cycle-stage { translate: 0 12px; }
+
         .motion-ready .sequence-reveal.on .sequence-item,
-        .motion-ready .assessment-sequence.on .assessment-node,
+        .motion-ready .assessment-sequence.on .cycle-stage,
         .motion-ready .assessment-sequence.on .coaching-flow li {
             opacity: 1;
         }
@@ -2994,20 +3191,34 @@
             transform: translateY(0);
         }
 
-        .sequence-reveal .sequence-item:nth-child(2),
-        .assessment-sequence .assessment-node-360 { transition-delay: 120ms; }
+        .motion-ready .assessment-sequence.on .cycle-stage { translate: 0; }
 
-        .sequence-reveal .sequence-item:nth-child(3),
-        .assessment-sequence .assessment-node-team { transition-delay: 240ms; }
-
+        .sequence-reveal .sequence-item:nth-child(2) { transition-delay: 120ms; }
+        .sequence-reveal .sequence-item:nth-child(3) { transition-delay: 240ms; }
         .sequence-reveal .sequence-item:nth-child(4) { transition-delay: 360ms; }
-        .assessment-sequence .coaching-flow li:nth-child(1) { transition-delay: 380ms; }
-
         .sequence-reveal .sequence-item:nth-child(5) { transition-delay: 480ms; }
-        .assessment-sequence .coaching-flow li:nth-child(2) { transition-delay: 500ms; }
 
-        .assessment-sequence .coaching-flow li:nth-child(3) { transition-delay: 620ms; }
-        .assessment-sequence .coaching-flow li:nth-child(4) { transition-delay: 740ms; }
+        /* The cycle plays as a lap of the loop rather than three cards appearing at once:
+           core, then Measure, then each arc drawing into the stage it points to, and the
+           last arc closing back onto Measure. The flow list picks up underneath it. */
+        .assessment-sequence .cycle-core { transition-delay: 0ms; }
+        .assessment-sequence .cycle-stage-measure { transition-delay: 140ms; }
+
+        .assessment-sequence .cycle-path-reveal { transition-delay: 240ms; }
+        .assessment-sequence .cycle-arrow-reveal { transition-delay: 600ms; }
+        .assessment-sequence .cycle-stage-reveal { transition-delay: 520ms; }
+
+        .assessment-sequence .cycle-path-develop { transition-delay: 620ms; }
+        .assessment-sequence .cycle-arrow-develop { transition-delay: 980ms; }
+        .assessment-sequence .cycle-stage-develop { transition-delay: 900ms; }
+
+        .assessment-sequence .cycle-path-measure { transition-delay: 1000ms; }
+        .assessment-sequence .cycle-arrow-measure { transition-delay: 1360ms; }
+
+        .assessment-sequence .coaching-flow li:nth-child(1) { transition-delay: 1160ms; }
+        .assessment-sequence .coaching-flow li:nth-child(2) { transition-delay: 1260ms; }
+        .assessment-sequence .coaching-flow li:nth-child(3) { transition-delay: 1360ms; }
+        .assessment-sequence .coaching-flow li:nth-child(4) { transition-delay: 1460ms; }
     }
 
     /* ===== RESPONSIVE ===== */
@@ -3049,6 +3260,7 @@
         .badge-a,
         .badge-b { display: none; }
         .impact-image { min-height: 390px; }
+        .assessment-cycle { height: 520px; }
         .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
 
@@ -3156,7 +3368,6 @@
     /* Only below 320px is there too little room for two columns. */
     @media (max-width: 319.98px) {
         .coaching-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-        .flow-arrow { display: none; }
     }
 
     @media (min-width: 1121px) {
@@ -3196,23 +3407,27 @@
         .organization-run { gap: 24px; padding-right: 24px; }
         .organization-run li { gap: 24px; font-size: .9rem; }
         .purpose-statement { padding-left: 16px; font-size: 1.05rem; }
-        /* Stacked on mobile there's no tall neighbour to match, so let the graphic hug its content
-           instead of stretching the middle row and padding the circle with empty space. */
         .eq-visual { min-height: 0; padding: 0; }
-        .assessment-graphic { min-height: 0; grid-template-rows: auto auto; gap: 24px; }
-        .assessment-map { width: min(100%, 330px); }
-        .assessment-core { width: 144px; min-height: 0; padding: 0; }
-        .assessment-core strong { font-size: 1.25rem; }
-        .assessment-node { width: 102px; }
-        .assessment-node-icon { width: 42px; height: 42px; }
-        .assessment-node strong { font-size: .66rem; }
-        .assessment-node-detail { font-size: .58rem; }
+        .assessment-graphic { min-height: 0; grid-template-rows: auto auto auto; gap: 28px; }
+        .assessment-cycle { height: auto; display: grid; grid-template-columns: 1fr; gap: 28px; }
+        .assessment-cycle-lines { display: none; }
+        .cycle-core,
+        .cycle-stage { position: relative; inset: auto; justify-self: center; transform: none; }
+        .cycle-core { order: 0; width: 170px; height: 170px; }
+        .cycle-core strong { font-size: 1.35rem; }
+        .cycle-stage { width: min(100%, 360px); }
+        .cycle-stage-measure { order: 1; }
+        .cycle-stage-reveal { order: 2; }
+        .cycle-stage-develop { order: 3; }
         .coaching-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 20px; }
-        .coaching-flow li { min-height: 102px; padding: 14px 0; }
+        .coaching-flow li { min-height: 146px; padding: 0 0 8px; }
+        .coaching-flow li::before,
+        .coaching-flow li::after { display: none; }
+        .flow-icon { width: 42px; height: 42px; }
+        .flow-icon svg { width: 20px; height: 20px; }
         .coaching-flow strong { font-size: .82rem; }
         .coaching-flow small { font-size: .7rem; line-height: 1.4; }
-        .flow-num { font-size: .62rem; }
-        .flow-arrow { display: none; }
+        .flow-num { margin-top: 8px; font-size: .62rem; }
         .testimonial-track { grid-auto-columns: 100%; gap: 12px; }
         .review-card { min-height: 0; padding: 26px 22px; }
         .review-mark { font-size: 7rem; transform: translateY(14px); }
@@ -3293,7 +3508,7 @@
             <div class="hero-main">
                 <div class="hero-content">
                     <div class="hero-kicker r on">Elevated Coaching Group</div>
-                    <h1 class="hero-h r on d1">Executive Coaching and Leadership Development <span>for Growing Companies.</span></h1>
+                    <h1 class="hero-h r on d1">Elevating Leaders. <span>Strengthening Organizations.</span></h1>
                     <p class="hero-p r on d2">Executive coaching, leadership development, and strategic HR guidance for founders, executives, and growing organizations.</p>
                     <div class="hero-actions r on d3">
                         <a class="btn-primary" href="#contact">Work With Us</a>
@@ -3412,23 +3627,13 @@
                             </summary>
                             <div class="offer-detail" id="offer-01-detail" role="region" aria-labelledby="offer-01-toggle">
                                 <p class="offer-detail-lede">One-on-one coaching for founders, executives, and high-potential leaders &mdash; sharper decisions and stronger presence.</p>
-                                <p class="offer-detail-label">Formats</p>
-                                <ul class="chips">
-                                    <li class="chip chip-lead">Leadership Accelerator &middot; 6 months</li>
-                                    <li class="chip">Monthly Executive Growth Partnership</li>
-                                    <li class="chip">Bi-weekly Executive Coaching</li>
-                                    <li class="chip">Executive Transition Coaching</li>
-                                </ul>
+                                <p class="offer-detail-note">Available as a 6-month, monthly, bi-weekly, or executive-transition engagement.</p>
                                 <p class="offer-detail-label">Coaching Areas</p>
                                 <ul class="chips">
                                     <li class="chip">Executive Presence</li>
-                                    <li class="chip">Leadership Confidence</li>
                                     <li class="chip">Difficult Conversations</li>
                                     <li class="chip">Strategic Thinking</li>
-                                    <li class="chip">Executive Influence</li>
-                                    <li class="chip">Communication</li>
                                     <li class="chip">Decision-Making</li>
-                                    <li class="chip">Career Growth</li>
                                     <li class="chip">Leading Through Change</li>
                                 </ul>
                             </div>
@@ -3457,7 +3662,7 @@
                                 <span class="offer-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 4v4M12 16v4M4 12h4M16 12h4M7.1 7.1l2.8 2.8M14.1 14.1l2.8 2.8M16.9 7.1l-2.8 2.8M9.9 14.1l-2.8 2.8" stroke="currentColor" stroke-linecap="round"/></svg></span>
                                 <div class="offer-copy">
                                     <span class="offer-name">Self Leadership Training</span>
-                                    <p class="offer-hook">Leadership starts before the title.</p>
+                                    <p class="offer-hook"><strong class="offer-audience">For non-managers</strong> &middot; Leadership starts before the title.</p>
                                 </div>
                                 <span class="offer-side"><span class="offer-num">03</span><svg class="offer-plus" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-linecap="round"/></svg></span>
                             </summary>
@@ -3466,7 +3671,7 @@
                                 <ul class="chips">
                                     <li class="chip">Confidence</li>
                                     <li class="chip">Communication</li>
-                                    <li class="chip">Ownership of Career Growth</li>
+                                    <li class="chip">Career Ownership</li>
                                 </ul>
                             </div>
                         </details>
@@ -3479,18 +3684,16 @@
                                 <span class="offer-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 6h14M5 12h10M5 18h6" stroke="currentColor" stroke-linecap="round"/></svg></span>
                                 <div class="offer-copy">
                                     <span class="offer-name">Situational Leadership&reg; (SLII) Training</span>
-                                    <p class="offer-hook">Know when to direct, coach, support, or delegate.</p>
+                                    <p class="offer-hook"><strong class="offer-audience">For managers</strong> &middot; Know when to direct, coach, support, or delegate.</p>
                                 </div>
                                 <span class="offer-side"><span class="offer-num">04</span><svg class="offer-plus" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-linecap="round"/></svg></span>
                             </summary>
                             <div class="offer-detail" id="offer-03-detail" role="region" aria-labelledby="offer-03-toggle">
                                 <p class="offer-detail-lede">Certified training for managers and people leaders &mdash; and a team that delivers.</p>
                                 <ul class="chips">
-                                    <li class="chip">Manager Effectiveness</li>
                                     <li class="chip">Accountability</li>
                                     <li class="chip">Delegation</li>
                                     <li class="chip">Coaching Capability</li>
-                                    <li class="chip">Employee Engagement</li>
                                     <li class="chip">Performance Conversations</li>
                                 </ul>
                             </div>
@@ -3506,13 +3709,6 @@
                             </summary>
                             <div class="offer-detail" id="offer-06-detail" role="region" aria-labelledby="offer-06-toggle">
                                 <p class="offer-detail-lede">Built on Patrick Lencioni's model &mdash; five workshops, one for each dysfunction.</p>
-                                <ul class="chips">
-                                    <li class="chip">01 &middot; Building Trust</li>
-                                    <li class="chip">02 &middot; Mastering Conflict</li>
-                                    <li class="chip">03 &middot; Achieving Commitment</li>
-                                    <li class="chip">04 &middot; Embracing Accountability</li>
-                                    <li class="chip">05 &middot; Focusing on Results</li>
-                                </ul>
                                 <a class="service-jump" href="#team-effectiveness">View the five-workshop model <span aria-hidden="true">&rarr;</span></a>
                             </div>
                         </details>
@@ -3532,16 +3728,11 @@
                             <div class="offer-detail" id="offer-05-detail" role="region" aria-labelledby="offer-05-toggle">
                                 <p class="offer-detail-lede">Full-scope strategic HR support built for startups and scale-ups navigating rapid growth.</p>
                                 <ul class="chips">
-                                    <li class="chip">Talent Strategy</li>
-                                    <li class="chip">Organizational Design</li>
-                                    <li class="chip">Driving High Performance</li>
-                                    <li class="chip">Compensation Structure</li>
-                                    <li class="chip">Engagement Surveys &amp; Strategy</li>
+                                    <li class="chip">Talent Strategy &amp; Organizational Design</li>
+                                    <li class="chip">Performance &amp; Compensation</li>
+                                    <li class="chip">Engagement, Culture &amp; Change</li>
                                     <li class="chip">Talent Development &amp; Succession</li>
-                                    <li class="chip">Restructures &amp; Offboarding</li>
-                                    <li class="chip">Executive Hiring</li>
-                                    <li class="chip">Culture</li>
-                                    <li class="chip">Change Management</li>
+                                    <li class="chip">Executive Hiring, Restructuring &amp; Offboarding</li>
                                     <li class="chip">Executive Team Effectiveness</li>
                                 </ul>
                             </div>
@@ -3562,7 +3753,8 @@
                 </div>
                 <aside class="effectiveness-outcome" aria-label="Workshop series outcome">
                     <span>Series Outcome</span>
-                    <strong>A high-trust team ready to lead through growth and change.</strong>
+                    <strong>A high-performing leadership team</strong>
+                    <span class="effectiveness-outcome-detail">Ready to navigate growth, drive accountability, and <em>deliver results.</em></span>
                 </aside>
             </div>
 
@@ -3746,7 +3938,7 @@
                 <aside class="impact-stat r d3" aria-label="Coaching outcome">
                     <div>
                         <span class="impact-stat-label">Measured leadership growth</span>
-                        <p class="impact-stat-figure">15&ndash;20<span>%</span></p>
+                        <p class="impact-stat-figure impact-stat-range"><span class="impact-stat-value">15</span><span class="impact-stat-range-rule" aria-hidden="true"></span><span class="impact-stat-a11y"> to </span><span class="impact-stat-value impact-stat-value-end">20</span><span class="impact-stat-percent">%</span></p>
                     </div>
                     <div class="impact-stat-body">
                         <p>A year of coaching lifts emotional-intelligence scores 15&ndash;20%. <span class="impact-stat-outcome">Turning insight into stronger leadership.</span></p>
@@ -3755,58 +3947,65 @@
                 </div>
 
                 <div class="impact-image eq-visual r d2">
-                    <div class="assessment-graphic r sequence-reveal assessment-sequence" role="img" aria-label="EQ-i 2.0 assessment system: individual, EQ 360, and team insights move through assess, debrief, develop, and coach stages.">
-                        <div class="assessment-map" aria-hidden="true">
-                            <svg class="assessment-map-lines" viewBox="0 0 400 400">
-                                <circle class="outer-ring" cx="200" cy="200" r="155"/>
-                                <circle class="inner-ring" cx="200" cy="200" r="105"/>
-                                <path class="connection" d="M200 62L74 320H326L200 62ZM200 62V200M74 320L200 200L326 320"/>
-                                <circle class="competency-dot" cx="200" cy="45" r="5"/><circle class="competency-dot" cx="263" cy="58" r="5"/>
-                                <circle class="competency-dot" cx="315" cy="96" r="5"/><circle class="competency-dot" cx="347" cy="152" r="5"/>
-                                <circle class="competency-dot" cx="354" cy="216" r="5"/><circle class="competency-dot" cx="334" cy="278" r="5"/>
-                                <circle class="competency-dot" cx="291" cy="325" r="5"/><circle class="competency-dot" cx="232" cy="352" r="5"/>
-                                <circle class="competency-dot" cx="168" cy="352" r="5"/><circle class="competency-dot" cx="109" cy="325" r="5"/>
-                                <circle class="competency-dot" cx="66" cy="278" r="5"/><circle class="competency-dot" cx="46" cy="216" r="5"/>
-                                <circle class="competency-dot" cx="53" cy="152" r="5"/><circle class="competency-dot" cx="85" cy="96" r="5"/>
-                                <circle class="competency-dot" cx="137" cy="58" r="5"/>
+                    <div class="assessment-graphic r sequence-reveal assessment-sequence" role="img" aria-label="Measurable leadership development: EQ-i 2.0 and EQ 360 use 15 competencies across individual, multi-rater, and team perspectives to inform an ongoing assess, debrief, develop, and reassess cycle.">
+                        <span class="assessment-intro-kicker" aria-hidden="true">Measurable Leadership Development</span>
+                        <div class="assessment-cycle" aria-hidden="true">
+                            <!-- Each arc is named for the stage it points into, so the draw sequence can
+                                 hand off arc -> stage around the loop. The heads are separate paths rather
+                                 than a shared marker: a marker sits fully drawn at the destination while
+                                 its line is still drawing, and marker contents do not transition reliably.
+                                 Each head reproduces the old marker geometry -- refX/refY 8/5 at the arc
+                                 end, scaled 0.6 (markerWidth 5 x stroke-width 1.2 over a 10-unit viewBox),
+                                 rotated to the arc's end tangent. pathLength normalises every arc to 1 so
+                                 one dashoffset value draws all three. -->
+                            <svg class="assessment-cycle-lines" viewBox="0 0 680 520" preserveAspectRatio="none">
+                                <path class="cycle-path cycle-path-reveal" pathLength="1" d="M340 26C490 26 585 163 544 338"/>
+                                <path class="cycle-arrow cycle-arrow-reveal" d="M0 0L10 5L0 10" transform="translate(544 338) rotate(103.2) scale(.6) translate(-8 -5)"/>
+
+                                <path class="cycle-path cycle-path-develop" pathLength="1" d="M544 338C442 458 238 458 136 338"/>
+                                <path class="cycle-arrow cycle-arrow-develop" d="M0 0L10 5L0 10" transform="translate(136 338) rotate(229.6) scale(.6) translate(-8 -5)"/>
+
+                                <path class="cycle-path cycle-path-measure" pathLength="1" d="M136 338C95 163 190 26 340 26"/>
+                                <path class="cycle-arrow cycle-arrow-measure" d="M0 0L10 5L0 10" transform="translate(340 26) rotate(0) scale(.6) translate(-8 -5)"/>
+
+                                <ellipse class="cycle-ring" cx="340" cy="270" rx="106" ry="104"/>
                             </svg>
 
-                            <div class="assessment-core">
-                                <span>Leadership Signal</span>
-                                <strong>EQ-i 2.0</strong>
-                                <em>15 Competencies</em>
+                            <div class="cycle-core">
+                                <strong>EQ-i 2.0<br>+ EQ 360</strong>
+                                <em>Leadership Assessment</em>
                             </div>
 
-                            <div class="assessment-node assessment-node-individual is-active">
-                                <span class="assessment-node-icon">
-                                    <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="7" r="3.5" stroke="currentColor"/><path d="M6 20v-3.5a6 6 0 0 1 12 0V20" stroke="currentColor" stroke-linecap="round"/></svg>
-                                </span>
-                                <strong>Individual</strong>
-                                <span class="assessment-node-detail">1:1 assessment</span>
+                            <div class="cycle-stage cycle-stage-measure">
+                                <span class="cycle-stage-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="4" width="14" height="17" rx="1" stroke="currentColor"/><path d="M9 4V3h6v1M8 12h3M8 16h3M15 17v-5M18 17V8M21 17v-8" stroke="currentColor" stroke-linecap="round"/></svg></span>
+                                <span class="cycle-stage-index">01</span>
+                                <strong>Measure</strong>
+                                <span>15 EQ competencies</span>
+                                <p>Identify the EQ capabilities that shape effective leadership.</p>
                             </div>
 
-                            <div class="assessment-node assessment-node-360">
-                                <span class="assessment-node-icon">
-                                    <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="7" r="3" stroke="currentColor"/><circle cx="5" cy="9" r="2.2" stroke="currentColor"/><circle cx="19" cy="9" r="2.2" stroke="currentColor"/><path d="M7 20v-3a5 5 0 0 1 10 0v3M2 19v-2a3 3 0 0 1 4-2.8M22 19v-2a3 3 0 0 0-4-2.8" stroke="currentColor" stroke-linecap="round"/></svg>
-                                </span>
-                                <strong>EQ 360</strong>
-                                <span class="assessment-node-detail">Multi-rater feedback</span>
+                            <div class="cycle-stage cycle-stage-reveal">
+                                <span class="cycle-stage-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="5.5" stroke="currentColor"/><path d="m15 15 5 5M7 10.5h7M10.5 7v7" stroke="currentColor" stroke-linecap="round"/></svg></span>
+                                <span class="cycle-stage-index">02</span>
+                                <strong>Reveal</strong>
+                                <span>Self + 360 perspective</span>
+                                <p>See strengths, blind spots, and gaps between intent and impact.</p>
                             </div>
 
-                            <div class="assessment-node assessment-node-team">
-                                <span class="assessment-node-icon">
-                                    <svg viewBox="0 0 24 24" fill="none"><rect x="9" y="3" width="6" height="5" stroke="currentColor"/><rect x="2" y="16" width="6" height="5" stroke="currentColor"/><rect x="16" y="16" width="6" height="5" stroke="currentColor"/><path d="M12 8v4M5 16v-4h14v4" stroke="currentColor" stroke-linecap="round"/></svg>
-                                </span>
-                                <strong>Team</strong>
-                                <span class="assessment-node-detail">Collective effectiveness</span>
+                            <div class="cycle-stage cycle-stage-develop">
+                                <span class="cycle-stage-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="7" r="3" stroke="currentColor"/><path d="M4 20v-2.5a5 5 0 0 1 10 0V20M15 6h5M17.5 3.5 20 6l-2.5 2.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                                <span class="cycle-stage-index">03</span>
+                                <strong>Develop</strong>
+                                <span>Targeted coaching</span>
+                                <p>Turn insight into focused priorities and measurable behaviour change.</p>
                             </div>
                         </div>
 
                         <ol class="coaching-flow" aria-hidden="true">
-                            <li><span class="flow-num">01</span><strong>Assess</strong><small>Measure what matters.</small><svg class="flow-arrow" viewBox="0 0 18 12"><path d="M1 6h15M11 1l5 5-5 5"/></svg></li>
-                            <li><span class="flow-num">02</span><strong>Debrief</strong><small>Reveal insight and blind spots.</small><svg class="flow-arrow" viewBox="0 0 18 12"><path d="M1 6h15M11 1l5 5-5 5"/></svg></li>
-                            <li><span class="flow-num">03</span><strong>Develop</strong><small>Build a focused plan.</small><svg class="flow-arrow" viewBox="0 0 18 12"><path d="M1 6h15M11 1l5 5-5 5"/></svg></li>
-                            <li><span class="flow-num">04</span><strong>Coach</strong><small>Turn insight into practice.</small></li>
+                            <li><span class="flow-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="4" width="14" height="17" rx="1" stroke="currentColor"/><path d="M9 4V3h6v1M8 11h8M8 15h8M8 19h5" stroke="currentColor" stroke-linecap="round"/></svg></span><span class="flow-num">01</span><strong>Assess</strong><small>Measure what matters.</small></li>
+                            <li><span class="flow-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 5h12a3 3 0 0 1 3 3v4a3 3 0 0 1-3 3H9l-4 4v-4H4a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3Z" stroke="currentColor" stroke-linejoin="round"/><path d="M7 10h.01M11 10h.01M15 10h.01" stroke="currentColor" stroke-linecap="round" stroke-width="2"/></svg></span><span class="flow-num">02</span><strong>Debrief</strong><small>Reveal insight and priorities.</small></li>
+                            <li><span class="flow-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="7" r="3" stroke="currentColor"/><path d="M4 20v-2.5a5 5 0 0 1 10 0V20M15 6h5M17.5 3.5 20 6l-2.5 2.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="flow-num">03</span><strong>Develop</strong><small>Build capability and drive change.</small></li>
+                            <li><span class="flow-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M5 19V9M11 19V5M17 19v-7M3 19h18" stroke="currentColor" stroke-linecap="round"/><path d="M5 6a8 8 0 0 1 13.2-1.8M19 4v4h-4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="flow-num">04</span><strong>Reassess</strong><small>Track progress and sustain growth.</small></li>
                         </ol>
                     </div>
                 </div>

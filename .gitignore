@@ -3,3 +3,8 @@
 *.pdf
 Thumbs.db
 node_modules/
+
+# deploy build output
+dist/
+elevated-site.zip
+firebase-debug.log

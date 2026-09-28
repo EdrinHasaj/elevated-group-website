@@ -12,7 +12,7 @@ cp index.html contact.php dist/
 # hero.webp only — the 2MB hero.png it replaced stays out of the deploy.
 cp img/hero.webp img/joana.jpg img/services.webp img/services-wide.webp dist/img/
 cp fonts/*.ttf dist/fonts/
-cp branding/branding3wide.png branding/elevatedlogo.png branding/favicon.png dist/branding/
+cp branding/branding3wide.png branding/elevatedlogo.png branding/favicon.png branding/elevated-group-social-share.png dist/branding/
 cp clientcarousel/* dist/clientcarousel/
 
 # Zip the CONTENTS of dist, so extracting in public_html doesn't nest a folder.

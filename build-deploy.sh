@@ -10,7 +10,7 @@ mkdir -p dist/img dist/branding dist/clientcarousel dist/fonts
 cp index.html contact.php dist/
 
 # hero.webp only — the 2MB hero.png it replaced stays out of the deploy.
-cp img/hero.webp img/joana.jpg img/services.webp img/services-wide.webp dist/img/
+cp img/hero.webp img/joana.jpg img/services.png img/services.webp img/services-wide.webp dist/img/
 cp fonts/*.ttf dist/fonts/
 cp branding/branding3wide.png branding/elevatedlogo.png branding/favicon.png branding/elevated-group-social-share.png dist/branding/
 cp clientcarousel/* dist/clientcarousel/

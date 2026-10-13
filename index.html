@@ -479,21 +479,24 @@
         background-image:
             /* Corner scrim: the only thing protecting the white client logos once the right
                side opens up, so it is scoped to just that corner. */
-            radial-gradient(130% 62% at 100% 100%,
-                rgba(23, 22, 20, 0.66) 0%,
-                rgba(23, 22, 20, 0.34) 42%,
-                rgba(23, 22, 20, 0) 74%),
-            /* Left stays near-solid ink for headline contrast; right runs out to clear. */
+            radial-gradient(120% 46% at 100% 100%,
+                rgba(23, 22, 20, 0.76) 0%,
+                rgba(23, 22, 20, 0.50) 46%,
+                rgba(23, 22, 20, 0) 80%),
+            /* Left stays near-solid ink for the copy; the fade to clear happens early, between
+               roughly 33% and 53% of the width, so the woman at the centre is not dimmed. */
             linear-gradient(90deg,
                 rgba(23, 22, 20, 0.97) 0%,
-                rgba(23, 22, 20, 0.95) 22%,
-                rgba(23, 22, 20, 0.78) 42%,
-                rgba(23, 22, 20, 0.44) 60%,
-                rgba(23, 22, 20, 0.16) 79%,
-                rgba(23, 22, 20, 0.02) 93%,
-                rgba(23, 22, 20, 0) 100%),
-            linear-gradient(180deg, rgba(23, 22, 20, 0.40) 0%, rgba(23, 22, 20, 0.10) 42%, rgba(23, 22, 20, 0.22) 78%, rgba(23, 22, 20, 0.50) 100%),
-            url("img/hero.webp");
+                rgba(23, 22, 20, 0.95) 21%,
+                rgba(23, 22, 20, 0.84) 32%,
+                rgba(23, 22, 20, 0.58) 40%,
+                rgba(23, 22, 20, 0.36) 47%,
+                rgba(23, 22, 20, 0.20) 54%,
+                rgba(23, 22, 20, 0.08) 64%,
+                rgba(23, 22, 20, 0.02) 78%,
+                rgba(23, 22, 20, 0) 91%),
+            linear-gradient(180deg, rgba(23, 22, 20, 0.30) 0%, rgba(23, 22, 20, 0.04) 42%, rgba(23, 22, 20, 0.12) 78%, rgba(23, 22, 20, 0.38) 100%),
+            url("img/hero-option-1-crop.webp");
         background-position: 44% center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -585,34 +588,11 @@
     .hero-brand-marquee.is-paused .organization-track { animation-play-state: paused; }
     .hero-brand-marquee:hover .organization-track { animation-play-state: paused; }
 
-    .hero-kicker {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        min-height: 38px;
-        padding: 0 14px;
-        border: 1px solid rgba(247, 244, 238, 0.18);
-        border-radius: 6px;
-        color: var(--heading-dark);
-        font-family: "Inter", sans-serif;
-        font-size: .74rem;
-        font-weight: 500;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-    }
-
-    .hero-kicker::before {
-        content: "";
-        width: 6px;
-        height: 6px;
-        border-radius: 999px;
-        background: #FFFFFF;
-        flex-shrink: 0;
-    }
-
     .hero-h {
         max-width: 740px;
-        margin-top: 32px;
+        /* Holds the space the eyebrow used to take, so the copy keeps its position
+           against the photo. */
+        margin-top: 70px;
         font-size: 4.9rem;
         line-height: 1;
         color: var(--heading-dark);
@@ -629,7 +609,7 @@
     }
 
     .hero-p {
-        max-width: 520px;
+        max-width: 400px;
         margin-top: 30px;
         color: rgba(247, 244, 238, 0.82);
         font-size: 1.14rem;
@@ -964,18 +944,16 @@
     #services .section-title { font-size: 2.9rem; }
     #services .section-copy { max-width: 44ch; }
 
-    /* No fixed ratio: the photo runs at its own dimensions so a swapped-in shot is never
-       cropped. It is the taller rail, so it sets the section height and the tier list
-       ends above it. */
     .services-intro {
         display: flex;
         flex-direction: column;
     }
 
+    /* The photo is landscape and shown whole, at its own 3:2 shape, within the rail. */
     .services-photo {
         position: relative;
-        flex: 1;
-        min-height: 420px;
+        flex: none;
+        aspect-ratio: 3 / 2;
         margin-top: 34px;
         overflow: hidden;
         border: 1px solid var(--hairline-dark);
@@ -986,7 +964,6 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        object-position: center 30%;
     }
 
     /* Three tiers instead of one run of six: the offer reads as a progression from the
@@ -2862,7 +2839,7 @@
     .coaching-flow li:not(:last-child)::before { right: -14px; }
 
     /* floating testimonial carousel */
-    .reviews-shell { position: relative; }
+    .reviews-shell { position: relative; z-index: 1; }
 
     .testimonial-viewport {
         overflow-x: auto;
@@ -2915,6 +2892,29 @@
         background:
             radial-gradient(110% 70% at 50% 0%, #FFFFFF 0%, rgba(255, 255, 255, 0) 60%),
             var(--paper);
+        isolation: isolate;
+        overflow: hidden;
+    }
+
+    /* A faint photo in the empty top-right corner, beside the heading. It takes the same
+       grey-sepia treatment as the other photos and dissolves before it reaches the heading
+       or the cards, so it reads as texture rather than as a picture. */
+    #reviews::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        /* Just under half the screen: from tablet up, that starts it past the end of the
+           heading, whether the heading is on two lines or three. */
+        width: calc(50vw - 40px);
+        height: 520px;
+        background: url("img/reviews-team.webp") center 30% / cover no-repeat;
+        filter: grayscale(100%) sepia(12%);
+        mix-blend-mode: multiply;
+        opacity: .36;
+        -webkit-mask-image: radial-gradient(100% 100% at 78% 22%, #000 0%, rgba(0, 0, 0, .8) 40%, transparent 72%);
+        mask-image: radial-gradient(100% 100% at 78% 22%, #000 0%, rgba(0, 0, 0, .8) 40%, transparent 72%);
+        pointer-events: none;
     }
 
     .review-card {
@@ -3131,7 +3131,6 @@
     .nav-links a,
     .nav-cta,
     .mob-links a,
-    .hero-kicker,
     .system-label,
     .module-row h3,
     .visual-badge span,
@@ -3319,7 +3318,7 @@
         #hero {
             background-image:
                 linear-gradient(180deg, rgba(23, 22, 20, 0.94) 0%, rgba(23, 22, 20, 0.86) 42%, rgba(23, 22, 20, 0.62) 78%, rgba(23, 22, 20, 0.5) 100%),
-                url("img/hero.webp");
+                url("img/hero-option-1-crop.webp");
             background-position: 60% center;
         }
         #hero::before {
@@ -3365,8 +3364,20 @@
         .trust-row { display: grid; align-items: start; }
         .trust-tags { justify-content: flex-start; }
 
+        /* Stacked, the reviews heading runs the full width, so there is no empty corner for
+           the photo. It becomes a band across the top that dissolves above the heading. */
+        #reviews { padding-top: 204px; }
+        #reviews::before {
+            left: 0;
+            width: auto;
+            height: 236px;
+            background-position: center 26%;
+            -webkit-mask-image: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, .85) 45%, transparent 100%);
+            mask-image: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, .85) 45%, transparent 100%);
+        }
+
         .services-split { grid-template-columns: 1fr; gap: 36px; }
-        .services-photo { flex: none; min-height: 0; margin-top: 28px; aspect-ratio: 16 / 10; }
+        .services-photo { margin-top: 28px; }
         #services .section-title { font-size: 2.65rem; }
         #services .section-copy { max-width: 590px; }
         .offer-feature .offer-name { font-size: 1.5rem; }
@@ -3381,14 +3392,13 @@
         #hero {
             min-height: auto;
             padding-top: 118px;
-            background-position: 32% center;
+            background-position: 41% center;
         }
         #services { padding: 70px 0; }
 
         .brand-logo { height: 46px; }
 
         .hero-h { max-width: 100%; overflow-wrap: break-word; font-size: 2.35rem; line-height: 1.1; }
-        .hero-kicker { max-width: 100%; white-space: normal; }
         .section-title, .contact-info h2 { font-size: 2.1rem; }
         .hero-p { font-size: 1rem; }
 
@@ -3456,6 +3466,13 @@
 
     @media (min-width: 1121px) {
         .hero-h { font-size: 5.1rem; }
+
+        /* The copy lifts as one block so the headline clears the faces in the photo, while
+           the client logos keep their centred position. The lift grows with screen width
+           (the people scale with it) and is capped by the room left under the nav. */
+        .hero-content {
+            top: calc(-1 * clamp(0px, 14px + (100svh - 800px) / 2, 55px + 2.3vw));
+        }
     }
 
     @media (max-width: 1120px) {
@@ -3593,7 +3610,6 @@
         <div class="hero-wrap">
             <div class="hero-main">
                 <div class="hero-content">
-                    <div class="hero-kicker r on">Elevated Coaching Group</div>
                     <h1 class="hero-h r on d1">Elevating Leaders. <span>Strengthening Organizations.</span></h1>
                     <p class="hero-p r on d2">Executive coaching, leadership development, and strategic HR guidance for founders, executives, and growing organizations.</p>
                     <div class="hero-actions r on d3">
@@ -3701,12 +3717,7 @@
                     <h2 class="section-title r d1">Coaching Programs Built to Scale Leaders.</h2>
                     <p class="section-copy r d2">Six ways we build leadership capability &mdash; standalone, or combined into a complete leadership system for your organization.</p>
                     <div class="services-photo r d2">
-                        <picture>
-                            <!-- Below 880px the frame turns 16:10, so serve a pre-cropped band
-                                 instead of shipping the tall original for the browser to discard. -->
-                            <source media="(max-width: 880px)" srcset="img/services-wide.webp" width="980" height="613">
-                            <img src="img/services.webp" alt="Five colleagues in discussion around a boardroom table in a warmly lit office" width="1118" height="1407" loading="lazy" decoding="async">
-                        </picture>
+                        <img src="img/services-office.webp" alt="Four colleagues in discussion around a table in a warmly lit office, seen through a glass wall" width="1400" height="934" loading="lazy" decoding="async">
                     </div>
                 </aside>
 
